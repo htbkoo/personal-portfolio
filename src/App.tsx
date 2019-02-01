@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import ClippedDrawer from "./ClippedDrawer";
 
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
     render() {
