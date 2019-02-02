@@ -1,10 +1,13 @@
+import RssParser from "rss-parser";
+
 import CodePenRssFeedsParser from "../../services/CodePenRssFeedsParser";
 
 describe("CodePenRssFeedsParser (external test)", function () {
     it("should parse given URL to RSS feeds", async function () {
         // given
         const url = "https://codepen.io/collection/neBvQa/feed";
-        const parser = new CodePenRssFeedsParser();
+        const rssParser = new RssParser();
+        const parser = new CodePenRssFeedsParser(rssParser);
 
         // when
         const results = await parser.parseUrl(url);

@@ -1,20 +1,21 @@
-import RssParser from "rss-parser";
+import {Output} from "rss-parser";
 
-const rssParser = new RssParser();
+type RssParser = {
+    // parseString(xml: string, callback?: (err: Error, feed: Output) => void): Promise<Output>;
+    parseURL(feedUrl: string, callback?: (err: Error, feed: Output) => void, redirectCount?: number): Promise<Output>;
+}
 
 export default class CodePenRssFeedsParser {
+    private readonly rssParser: RssParser;
 
-    async parse(rssFeeds: string) {
-        const output = await rssParser.parseString(rssFeeds);
-        return output;
+    constructor(rssParser: RssParser) {
+        this.rssParser = rssParser;
     }
 
-    async parseUrl(url: string){
-        const output = await rssParser.parseURL(url);
-        if (output.items){
-            return output.items ;
-        }else{
-            throw new Error(`Unable t`)
-        }
+    async parseUrl(url: string) {
+        return this.rssParser.parseURL(url)
+            .catch(e => {
+                throw new Error(`Unable to parse from url: '${url} due to ${e}'`);
+            });
     }
 }
