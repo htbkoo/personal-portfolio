@@ -45,13 +45,16 @@ describe("CodePenRssFeedsParser", function () {
             whenParseUrl(url) {
                 return {
                     willResolve(value) {
-                        when(mockRssParser.parseURL).calledWith(url).mockResolvedValue(value);
-                        return mockRssParser;
+                        return withMockImplementation("mockResolvedValue", value);
                     },
                     willReject(error) {
-                        when(mockRssParser.parseURL).calledWith(url).mockRejectedValue(error);
-                        return mockRssParser;
+                        return withMockImplementation("mockRejectedValue", error);
                     }
+                };
+
+                function withMockImplementation(method, arg) {
+                    when(mockRssParser.parseURL).calledWith(url)[method](arg);
+                    return mockRssParser;
                 }
             },
         };
