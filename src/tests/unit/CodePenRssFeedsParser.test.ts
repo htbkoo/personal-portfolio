@@ -15,12 +15,7 @@ describe("CodePenRssFeedsParser", function () {
             const items = await parser.parseUrl(url);
 
             // then
-            expect(items).toBeInstanceOf(Array);
-            items.forEach(item => {
-                expect(item).toHaveProperty("title");
-                expect(item).toHaveProperty("link");
-                expect(item).toHaveProperty("content");
-            });
+            return expect(items).toEqual(sampleParseOutput.items);
         });
 
         it("should throw error if trying to parse unreachable url", async function () {
