@@ -22,7 +22,7 @@ export default class CodePenRssFeedsParser {
                 }
             })
             .catch(e => {
-                throw new Error(`Unable to parse from url: '${url} due to ${e}'`);
+                throw new Error(`Unable to parse from url: '${url}' due to ${e}`);
             });
     }
 }

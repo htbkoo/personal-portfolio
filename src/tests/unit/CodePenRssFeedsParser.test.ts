@@ -30,7 +30,7 @@ describe("CodePenRssFeedsParser", function () {
 
             // then
             return parser.parseUrl(url)
-                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'https://codepen.io/collection/invalid/feed due to Error: Missing 'items' from the parsed output'"));
+                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'https://codepen.io/collection/invalid/feed' due to Error: Missing 'items' from the parsed output"));
         });
 
         it("should throw error if trying to parse unreachable url", async function () {
@@ -43,7 +43,7 @@ describe("CodePenRssFeedsParser", function () {
 
             // then
             return parser.parseUrl(url)
-                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'some unreachable url due to Error: getaddrinfo ENOTFOUND some unreachable url'"));
+                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'some unreachable url' due to Error: getaddrinfo ENOTFOUND some unreachable url"));
         });
     });
 
