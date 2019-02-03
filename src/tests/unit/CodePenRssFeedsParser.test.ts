@@ -1,7 +1,9 @@
 import {when} from "jest-when";
-import sampleParseOutput from "../resources/services/CodePenRssFeedsParser/sampleParsedOutput.json";
 
 import CodePenRssFeedsParser from "../../services/CodePenRssFeedsParser";
+
+import sampleParseOutput from "../resources/services/CodePenRssFeedsParser/sampleParsedOutput.json";
+import invalidParsedOutput from "../resources/services/CodePenRssFeedsParser/invalidParsedOutput.json";
 
 describe("CodePenRssFeedsParser", function () {
     describe("parseUrl", function () {
@@ -16,6 +18,19 @@ describe("CodePenRssFeedsParser", function () {
 
             // then
             return expect(items).toEqual(sampleParseOutput.items);
+        });
+
+        it("should throw error if parsed rss feeds is invalid (missing 'items')", async function () {
+            // given
+            const url = "https://codepen.io/collection/invalid/feed";
+            const mockRssParser = createMockRssParser().whenParseUrl(url).willResolve(invalidParsedOutput);
+
+            // when
+            const parser = new CodePenRssFeedsParser(mockRssParser);
+
+            // then
+            return parser.parseUrl(url)
+                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'https://codepen.io/collection/invalid/feed due to Error: Missing 'items' from the parsed output'"));
         });
 
         it("should throw error if trying to parse unreachable url", async function () {
