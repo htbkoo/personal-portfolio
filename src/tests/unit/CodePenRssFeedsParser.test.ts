@@ -45,7 +45,7 @@ describe("CodePenRssFeedsParser", function () {
             whenParseUrl(url) {
                 return {
                     willResolve(value) {
-                        when(mockRssParser.parseURL).calledWith(url).mockResolvedValue(sampleParseOutput);
+                        when(mockRssParser.parseURL).calledWith(url).mockResolvedValue(value);
                         return mockRssParser;
                     },
                     willReject(error) {
