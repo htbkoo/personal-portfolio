@@ -44,7 +44,7 @@ function ClippedDrawer(props: ClippedDrawerProps) {
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" noWrap>
-                        Clipped drawer
+                        Hey's Personal Portfolio
                     </Typography>
                 </Toolbar>
             </AppBar>
