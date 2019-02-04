@@ -32,10 +32,10 @@ const styles = (theme: Theme) => createStyles({
     toolbar: theme.mixins.toolbar,
 });
 
-interface ClippedDrawerProps extends WithStyles<typeof styles> {
+interface PortfolioPageProps extends WithStyles<typeof styles> {
 }
 
-function ClippedDrawer(props: ClippedDrawerProps) {
+function PortfolioPage(props: PortfolioPageProps) {
     const {classes} = props;
 
     return (
@@ -286,4 +286,4 @@ function ClippedDrawer(props: ClippedDrawerProps) {
     );
 }
 
-export default withStyles(styles)(ClippedDrawer);
+export default withStyles(styles)(PortfolioPage);
