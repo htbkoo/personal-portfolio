@@ -53,8 +53,8 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
                 className={classes.scrollSpyList}
             >
                 {items.map((text, index) => (
-                    <a href={itemToHref(text)} className={classes.scrollSpyListItem}>
-                        <ListItem button key={text}>
+                    <a key={text} href={itemToHref(text)} className={classes.scrollSpyListItem}>
+                        <ListItem button>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
                             <ListItemText primary={text}/>
                         </ListItem>
