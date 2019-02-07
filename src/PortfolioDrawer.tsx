@@ -18,11 +18,11 @@ const styles = (theme: Theme) => createStyles({
     toolbar: theme.mixins.toolbar,
 });
 
-interface PortfolioPageProps extends WithStyles<typeof styles> {
+interface PortfolioDrawerProps extends WithStyles<typeof styles> {
     sectionConfigs: SectionMetadata[]
 }
 
-function PortfolioPage(props: PortfolioPageProps) {
+function PortfolioDrawer(props: PortfolioDrawerProps) {
     const {classes, sectionConfigs} = props;
 
     return (
@@ -45,4 +45,4 @@ function asItems(sectionConfigs: SectionMetadata[]): string[] {
     return sectionConfigs.map(config => config.name);
 }
 
-export default withStyles(styles)(PortfolioPage);
+export default withStyles(styles)(PortfolioDrawer);
