@@ -1,8 +1,6 @@
 import React from 'react';
 import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -49,34 +47,20 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
 
     return (
         <React.Fragment>
-
-            {/*<List></List>*/}
-
-
             <Scrollspy
                 items={items}
                 currentClassName="is-current"
                 className={classes.scrollSpyList}
             >
                 {items.map((text, index) => (
-                    <ListItem button key={text}>
-                        <a href={itemToHref(text)} className={classes.scrollSpyListItem}>
+                    <a href={itemToHref(text)} className={classes.scrollSpyListItem}>
+                        <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
                             <ListItemText primary={text}/>
-                        </a>
-                    </ListItem>
+                        </ListItem>
+                    </a>
                 ))}
             </Scrollspy>
-
-            <Divider/>
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                        <ListItemText primary={text}/>
-                    </ListItem>
-                ))}
-            </List>
         </React.Fragment>
     );
 }
