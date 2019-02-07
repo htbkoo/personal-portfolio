@@ -3,6 +3,7 @@ import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
+import SectionMetadata from "./model/SectionMetadata";
 
 const drawerWidth = 240;
 
@@ -18,10 +19,11 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
+    sectionConfigs: SectionMetadata[]
 }
 
 function PortfolioPage(props: PortfolioPageProps) {
-    const {classes} = props;
+    const {classes, sectionConfigs} = props;
 
     return (
         <Drawer
@@ -33,10 +35,14 @@ function PortfolioPage(props: PortfolioPageProps) {
         >
             <div className={classes.toolbar}/>
 
-            <DrawerItemsWithScrollspy items={['Home', 'About', 'Portfolio', 'Contact']}/>
+            <DrawerItemsWithScrollspy items={asItems(sectionConfigs)}/>
 
         </Drawer>
     );
+}
+
+function asItems(sectionConfigs: SectionMetadata[]): string[] {
+    return sectionConfigs.map(config => config.name);
 }
 
 export default withStyles(styles)(PortfolioPage);

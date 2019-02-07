@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import PortfolioAppBar from "./PortfolioAppBar";
 import PortfolioDrawer from "./PortfolioDrawer";
 import PortfolioMain from "./PortfolioMain";
+import SectionMetadata from "./model/SectionMetadata";
 
 const drawerWidth = 240;
 
@@ -30,17 +31,18 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
+    sectionConfigs: SectionMetadata[]
 }
 
 function PortfolioPage(props: PortfolioPageProps) {
-    const {classes} = props;
+    const {classes, sectionConfigs} = props;
 
     return (
         <div className={classes.root}>
             <CssBaseline/>
             <PortfolioAppBar/>
-            <PortfolioDrawer/>
-            <PortfolioMain/>
+            <PortfolioDrawer sectionConfigs={sectionConfigs}/>
+            <PortfolioMain sectionConfigs={sectionConfigs}/>
         </div>
     );
 }
