@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import RssParser from "rss-parser";
 
 import CodePenRssFeedsParser from "./services/CodePenRssFeedsParser";
@@ -9,6 +9,8 @@ import PortfoliosPanel from "./PortfoliosPanel";
 import ContactPanel from "./ContactPanel";
 
 const parser = new CodePenRssFeedsParser(new RssParser());
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
+const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
 
 const sectionConfigs: SectionMetadata[] = [
     {
@@ -21,7 +23,7 @@ const sectionConfigs: SectionMetadata[] = [
     },
     {
         name: 'Portfolio',
-        component: <PortfoliosPanel parser={parser} rssFeedUrl="https://codepen.io/collection/neBvQa/feed"/>
+        component: <PortfoliosPanel parser={parser} rssFeedUrl={rssFeedUrl}/>
     },
     {
         name: 'Contact',
