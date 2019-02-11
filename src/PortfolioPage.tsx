@@ -2,7 +2,7 @@ import React from 'react';
 import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import PortfolioAppBar from "./PortfolioAppBar";
+import PageAppBar from "./PageAppBar";
 import PortfolioDrawer from "./PortfolioDrawer";
 import PortfolioMain from "./PortfolioMain";
 import SectionMetadata from "./model/SectionMetadata";
@@ -40,7 +40,7 @@ function PortfolioPage(props: PortfolioPageProps) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <PortfolioAppBar/>
+            <PageAppBar/>
             <PortfolioDrawer sectionConfigs={sectionConfigs}/>
             <PortfolioMain sectionConfigs={sectionConfigs}/>
         </div>
