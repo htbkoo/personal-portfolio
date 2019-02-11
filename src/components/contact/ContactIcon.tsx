@@ -1,6 +1,6 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
-import ContactMetadata from "./model/ContactMetadata";
+import ContactMetadata from "../../model/ContactMetadata";
 
 const styles = (theme: Theme) => createStyles({
     icon: {
