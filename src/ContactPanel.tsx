@@ -42,13 +42,7 @@ function ContactPanel(props: ContactPanelProps) {
 }
 
 function contactIcons(metadatas: ContactMetadata[]) {
-    return metadatas.map(toIconComponent);
-
-    function toIconComponent(metadata) {
-        return (
-            <ContactIcon metadata={metadata}/>
-        )
-    }
+    return metadatas.map(metadata => <ContactIcon metadata={metadata}/>);
 }
 
 export default withStyles(styles)(ContactPanel);
