@@ -14,9 +14,6 @@ const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-    },
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
