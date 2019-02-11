@@ -14,17 +14,12 @@ interface Content {
     technologies: string[]
 }
 
-interface OptionalContent extends Partial<Content> {
-
-}
-
-
 export default class CodePenPortfolioContentParser {
 
     constructor() {
     }
 
-    async parseContent(rawContent: string): Promise<OptionalContent> {
+    async parseContent(rawContent: string): Promise<Partial<Content>> {
         const $ = cheerio.load(rawContent);
 
         const img = extractImg($);
