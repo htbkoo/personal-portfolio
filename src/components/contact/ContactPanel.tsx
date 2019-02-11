@@ -1,6 +1,7 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
+import Typography from "@material-ui/core/Typography";
 
 import ContactIcon from "./ContactIcon";
 
@@ -27,8 +28,8 @@ function ContactPanel(props: ContactPanelProps) {
     return (
         <div id="contact">
             <div>
-                <h1>Contact</h1>
-                <h2>Check me out at the following!</h2>
+                <Typography variant="h3" paragraph>Contact</Typography>
+                <Typography variant="h5" paragraph>Check me out at the following!</Typography>
             </div>
             <Divider/>
             <div className={classes.icons}>
