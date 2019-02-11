@@ -1,6 +1,6 @@
 import {when} from "jest-when";
 
-import CodePenPortfolioContentParser from "../../services/CodePenPortfolioContentParser";
+import CodePenPortfolioContentParser from "../../../services/CodePenPortfolioContentParser";
 
 describe("CodePenPortfolioContentParser", function () {
     describe("parseContent", function () {
