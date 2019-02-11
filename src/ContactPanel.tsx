@@ -42,7 +42,9 @@ function ContactPanel(props: ContactPanelProps) {
 }
 
 function contactIcons(metadatas: ContactMetadata[]) {
-    return metadatas.map(metadata => <ContactIcon metadata={metadata}/>);
+    return metadatas.map((metadata, i) => (
+        <ContactIcon key={`${i.toString()}_${metadata.img.alt}`} metadata={metadata}/>
+    ));
 }
 
 export default withStyles(styles)(ContactPanel);
