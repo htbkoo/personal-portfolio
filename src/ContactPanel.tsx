@@ -12,6 +12,7 @@ const styles = (theme: Theme) => createStyles({
         display: "flex",
         flexFlow: "wrap",
         justifyContent: "center",
+        alignItems: "baseline"
     },
     badges: {}
 });
