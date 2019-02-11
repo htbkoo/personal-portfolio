@@ -6,6 +6,7 @@ import ContactIcon from "./ContactIcon";
 
 import iconMetadatas from "./metadata/contact/icons.json";
 import badgeMetadatas from "./metadata/contact/badges.json";
+import ContactMetadata from "./metadata/contact/ContactMetadata";
 
 const styles = (theme: Theme) => createStyles({
     icons: {
@@ -40,7 +41,7 @@ function ContactPanel(props: ContactPanelProps) {
     );
 }
 
-function contactIcons(metadatas: any) {
+function contactIcons(metadatas: ContactMetadata[]) {
     return metadatas.map(toIconComponent);
 
     function toIconComponent(metadata) {

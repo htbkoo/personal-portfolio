@@ -1,5 +1,6 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
+import ContactMetadata from "./metadata/contact/ContactMetadata";
 
 const styles = (theme: Theme) => createStyles({
     icon: {
@@ -8,13 +9,7 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface ContactIconProps extends WithStyles<typeof styles> {
-    metadata: {
-        href: string,
-        img: {
-            src: string,
-            alt: string
-        }
-    }
+    metadata: ContactMetadata
 }
 
 function ContactIcon(props: ContactIconProps) {
