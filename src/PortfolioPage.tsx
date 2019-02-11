@@ -4,7 +4,7 @@ import {createStyles, WithStyles} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./PageDrawer";
-import PortfolioMain from "./PortfolioMain";
+import PageMain from "./PageMain";
 import SectionMetadata from "./model/SectionMetadata";
 
 const drawerWidth = 240;
@@ -42,7 +42,7 @@ function PortfolioPage(props: PortfolioPageProps) {
             <CssBaseline/>
             <PageAppBar/>
             <PageDrawer sectionConfigs={sectionConfigs}/>
-            <PortfolioMain sectionConfigs={sectionConfigs}/>
+            <PageMain sectionConfigs={sectionConfigs}/>
         </div>
     );
 }
