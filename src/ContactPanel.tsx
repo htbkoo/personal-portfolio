@@ -2,6 +2,8 @@ import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
 
+import ContactIcon from "./ContactIcon";
+
 import iconMetadatas from "./metadata/contact/icons.json";
 
 const styles = (theme: Theme) => createStyles({
@@ -11,9 +13,7 @@ const styles = (theme: Theme) => createStyles({
         flexFlow: "wrap",
         justifyContent: "center",
     },
-    icon: {
-        padding: theme.spacing.unit * 2,
-    }
+    badges: {}
 });
 
 interface ContactPanelProps extends WithStyles<typeof styles> {
@@ -29,9 +29,9 @@ function ContactPanel(props: ContactPanelProps) {
             </div>
             <Divider/>
             <div className={classes.icons}>
-                {contactIcons({classes})}
+                {contactIcons()}
             </div>
-            <div className="contact-badges">
+            <div className={classes.badges}>
                 <div>
                     <a href="https://www.codewars.com/users/htbkoo" target="_blank">
                         <img
@@ -44,18 +44,12 @@ function ContactPanel(props: ContactPanelProps) {
     );
 }
 
-function contactIcons({classes}) {
+function contactIcons() {
     return iconMetadatas.map(toIconComponent);
 
     function toIconComponent(metadata) {
         return (
-            <div className={classes.icon}>
-                <a href={metadata.href} target="_blank">
-                    <img
-                        src={metadata.img.src}
-                        alt={metadata.img.alt}/>
-                </a>
-            </div>
+            <ContactIcon metadata={metadata}/>
         )
     }
 }
