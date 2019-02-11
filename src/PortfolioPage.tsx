@@ -3,7 +3,7 @@ import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PageAppBar from "./PageAppBar";
-import PortfolioDrawer from "./PortfolioDrawer";
+import PageDrawer from "./PageDrawer";
 import PortfolioMain from "./PortfolioMain";
 import SectionMetadata from "./model/SectionMetadata";
 
@@ -41,7 +41,7 @@ function PortfolioPage(props: PortfolioPageProps) {
         <div className={classes.root}>
             <CssBaseline/>
             <PageAppBar/>
-            <PortfolioDrawer sectionConfigs={sectionConfigs}/>
+            <PageDrawer sectionConfigs={sectionConfigs}/>
             <PortfolioMain sectionConfigs={sectionConfigs}/>
         </div>
     );
