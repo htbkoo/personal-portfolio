@@ -3,7 +3,7 @@ import RssParser from "rss-parser";
 
 import CodePenRssFeedsParser from "../services/CodePenRssFeedsParser";
 import SectionMetadata from "../model/SectionMetadata";
-import HomePanel from "../HomePanel";
+import HomePanel from "../components/home/HomePanel";
 import AboutPanel from "../components/about/AboutPanel";
 import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
 import ContactPanel from "../components/contact/ContactPanel";
