@@ -6,6 +6,9 @@ import Divider from '@material-ui/core/Divider';
 import {ThemeStyle} from "@material-ui/core/styles/createTypography";
 
 const styles = (theme: Theme) => createStyles({
+    section: {
+        padding: theme.spacing.unit * 3
+    },
     header: {},
     body: {},
 });
@@ -18,7 +21,7 @@ interface SectionProps extends WithStyles<typeof styles> {
 }
 
 const Section: FunctionComponent<SectionProps> = ({id, title, subtitle, hasDivider, children, classes}) => (
-    <div id={id}>
+    <div id={id} className={classes.section}>
         <div className={classes.header}>
             {optionalTitle(title)}
             {optionalSubtitle(subtitle)}
