@@ -6,7 +6,7 @@ import ContactIcon from "./ContactIcon";
 
 import iconMetadatas from "./metadata/contact/icons.json";
 import badgeMetadatas from "./metadata/contact/badges.json";
-import ContactMetadata from "./metadata/contact/ContactMetadata";
+import ContactMetadata from "./model/ContactMetadata";
 
 const styles = (theme: Theme) => createStyles({
     icons: {
