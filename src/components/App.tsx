@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 
 import PortfolioPage from "./PortfolioPage";
-import sectionConfigs from "./metadata/sectionConfigs";
-import {theme} from "./services/MuiThemeFactory";
+import sectionConfigs from "../metadata/sectionConfigs";
+import {theme} from "../services/MuiThemeFactory";
 
-import './css/App.css';
+import '../css/App.css';
 
 class App extends Component {
     render() {

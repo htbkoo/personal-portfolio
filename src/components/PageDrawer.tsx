@@ -3,7 +3,7 @@ import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
-import SectionMetadata from "./model/SectionMetadata";
+import SectionMetadata from "../model/SectionMetadata";
 
 const drawerWidth = 240;
 
