@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./PageDrawer";
 import PageMain from "./PageMain";
-import SectionMetadata from "../model/SectionMetadata";
+import SectionMetadata from "../../model/SectionMetadata";
 
 const drawerWidth = 240;
 

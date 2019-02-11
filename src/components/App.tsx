@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 
-import PortfolioPage from "./PortfolioPage";
+import PortfolioPage from "./page/PortfolioPage";
 import sectionConfigs from "../metadata/sectionConfigs";
 import {theme} from "../services/MuiThemeFactory";
 
