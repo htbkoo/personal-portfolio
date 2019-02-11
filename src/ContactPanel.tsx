@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import ContactIcon from "./ContactIcon";
 
 import iconMetadatas from "./metadata/contact/icons.json";
+import badgeMetadatas from "./metadata/contact/badges.json";
 
 const styles = (theme: Theme) => createStyles({
     icons: {
@@ -30,23 +31,17 @@ function ContactPanel(props: ContactPanelProps) {
             </div>
             <Divider/>
             <div className={classes.icons}>
-                {contactIcons()}
+                {contactIcons(iconMetadatas)}
             </div>
             <div className={classes.badges}>
-                <div>
-                    <a href="https://www.codewars.com/users/htbkoo" target="_blank">
-                        <img
-                            src="https://www.codewars.com/users/htbkoo/badges/large"
-                            alt="Codewars"/>
-                    </a>
-                </div>
+                {contactIcons(badgeMetadatas)}
             </div>
         </div>
     );
 }
 
-function contactIcons() {
-    return iconMetadatas.map(toIconComponent);
+function contactIcons(metadatas: any) {
+    return metadatas.map(toIconComponent);
 
     function toIconComponent(metadata) {
         return (
