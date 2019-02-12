@@ -66,16 +66,34 @@ type Entry = {
 }
 
 function toTableGroups(group: Entry[], i: number) {
-    return group.map((entry: Entry, j: number) => (
-        <TableRow key={`${i}_${j}_${entry.key}`}>
-            <TableCell component="th" scope="row" align="right">
-                <strong>{entry.key}</strong>
-            </TableCell>
-            <TableCell align="left">
-                <span>{entry.value}</span>
-            </TableCell>
-        </TableRow>
-    ));
+    return (
+        <React.Fragment>
+            {group.map(toRow)}
+            {dividerRow()}
+        </React.Fragment>
+    );
+
+    function toRow(entry: Entry, j: number) {
+        return (
+            <TableRow key={`${i}_${j}_${entry.key}`}>
+                <TableCell component="th" scope="row" align="right">
+                    <strong>{entry.key}</strong>
+                </TableCell>
+                <TableCell align="left">
+                    <span>{entry.value}</span>
+                </TableCell>
+            </TableRow>
+        );
+    }
+
+    function dividerRow(){
+        return (
+            <TableRow key={`${i}_divider}`}>
+                <TableCell component="th" scope="row" align="right"/>
+                <TableCell align="left"/>
+            </TableRow>
+        );
+    }
 }
 
 export default withStyles(styles)(AboutInformation);
