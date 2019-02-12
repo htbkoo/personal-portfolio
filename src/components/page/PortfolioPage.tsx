@@ -2,19 +2,16 @@ import React from 'react';
 import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import PortfolioAppBar from "./PortfolioAppBar";
-import PortfolioDrawer from "./PortfolioDrawer";
-import PortfolioMain from "./PortfolioMain";
-import SectionMetadata from "./model/SectionMetadata";
+import PageAppBar from "./PageAppBar";
+import PageDrawer from "./PageDrawer";
+import PageMain from "./PageMain";
+import SectionMetadata from "../../model/SectionMetadata";
 
 const drawerWidth = 240;
 
 const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
     },
     drawer: {
         width: drawerWidth,
@@ -40,9 +37,9 @@ function PortfolioPage(props: PortfolioPageProps) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <PortfolioAppBar/>
-            <PortfolioDrawer sectionConfigs={sectionConfigs}/>
-            <PortfolioMain sectionConfigs={sectionConfigs}/>
+            <PageAppBar/>
+            <PageDrawer sectionConfigs={sectionConfigs}/>
+            <PageMain sectionConfigs={sectionConfigs}/>
         </div>
     );
 }

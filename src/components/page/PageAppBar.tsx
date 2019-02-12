@@ -11,10 +11,10 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
-interface PortfolioAppBarProps extends WithStyles<typeof styles> {
+interface PageAppBarProps extends WithStyles<typeof styles> {
 }
 
-function PortfolioAppBar(props: PortfolioAppBarProps) {
+function PageAppBar(props: PageAppBarProps) {
     const {classes} = props;
 
     return (
@@ -28,4 +28,4 @@ function PortfolioAppBar(props: PortfolioAppBarProps) {
     );
 }
 
-export default withStyles(styles)(PortfolioAppBar);
+export default withStyles(styles)(PageAppBar);

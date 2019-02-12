@@ -3,8 +3,9 @@ import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 
 import {Items} from "rss-parser";
 
-import CodePenRssFeedsParser from "./services/CodePenRssFeedsParser";
+import CodePenRssFeedsParser from "../../services/CodePenRssFeedsParser";
 import Portfolio from "./Portfolio";
+import Section from "../common/Section";
 
 const styles = (theme: Theme) => createStyles({});
 
@@ -32,9 +33,18 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
     }
 
     render(): React.ReactNode {
-        return <div>
-            {this.state.items.map(toPortfolioComponent)}
-        </div>;
+        return (
+            <Section
+                id="portfolio"
+                hasDivider={true}
+                title="Portfolio"
+                subtitle="Some of my previous works"
+            >
+                <div>
+                    {this.state.items.map(toPortfolioComponent)}
+                </div>
+            </Section>
+        );
     }
 }
 

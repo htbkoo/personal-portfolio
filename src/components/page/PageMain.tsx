@@ -2,7 +2,7 @@ import React from 'react';
 import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-import SectionMetadata from "./model/SectionMetadata";
+import SectionMetadata from "../../model/SectionMetadata";
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -15,11 +15,11 @@ const styles = (theme: Theme) => createStyles({
     toolbar: theme.mixins.toolbar,
 });
 
-interface PortfolioMainProps extends WithStyles<typeof styles> {
+interface PageMainProps extends WithStyles<typeof styles> {
     sectionConfigs: SectionMetadata[]
 }
 
-function PortfolioMain(props: PortfolioMainProps) {
+function PageMain(props: PageMainProps) {
     const {classes, sectionConfigs} = props;
 
     return (
@@ -36,4 +36,4 @@ function PortfolioMain(props: PortfolioMainProps) {
     );
 }
 
-export default withStyles(styles)(PortfolioMain);
+export default withStyles(styles)(PageMain);
