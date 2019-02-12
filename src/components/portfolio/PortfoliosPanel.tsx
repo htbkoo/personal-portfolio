@@ -48,8 +48,7 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
     }
 }
 
-function toPortfolioComponent(item: Items, index: number) {
-    const {content = "", link = "", title = ""} = item;
+function toPortfolioComponent({content = "", link = "", title = ""}: Items, index: number) {
     return <Portfolio content={content} link={link} title={title} key={`${index}_${title}`}/>
 }
 
