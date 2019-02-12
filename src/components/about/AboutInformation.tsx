@@ -21,7 +21,8 @@ const styles = (theme: Theme) => createStyles({
         // minWidth: 700,
     },
     row: {
-        color: theme.palette.secondary.contrastText
+        color: theme.palette.secondary.contrastText,
+        height: theme.spacing.unit * 4,
     },
     divider: {
         backgroundColor: theme.palette.secondary.light,
