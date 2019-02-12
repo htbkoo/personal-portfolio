@@ -9,6 +9,16 @@ const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
     },
+    overrides:{
+        MuiTableRow: {
+            root: { //for the body
+                height: "100%"
+            },
+            head: { //for the head
+                height: "100%"
+            }
+        }
+    }
 });
 
 export {theme};
