@@ -1,7 +1,7 @@
 import React from 'react';
 import RssParser from "rss-parser";
 
-import CodePenRssFeedsParser from "../services/CodePenRssFeedsParser";
+import CodePenRssFeedsParser from "../services/portfolio/CodePenRssFeedsParser";
 import SectionMetadata from "../model/SectionMetadata";
 import HomePanel from "../components/home/HomePanel";
 import AboutPanel from "../components/about/AboutPanel";
