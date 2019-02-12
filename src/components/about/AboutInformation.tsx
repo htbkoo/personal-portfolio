@@ -50,7 +50,7 @@ type Entry = {
 
 function toTableGroups(group: Entry[], i: number) {
     return (
-        <React.Fragment>
+        <React.Fragment key={i}>
             {group.map(toRow)}
             {dividerRow()}
         </React.Fragment>
