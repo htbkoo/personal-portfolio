@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import informationMetadatas from "../../metadata/about/information.json";
+import AboutEntry from "../../model/AboutEntry";
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -36,19 +37,14 @@ function AboutInformation(props: AboutInformationProps) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {(informationMetadatas as Entry[][]).map(toTableGroups)}
+                    {(informationMetadatas as AboutEntry[][]).map(toTableGroups)}
                 </TableBody>
             </Table>
         </Paper>
     );
 }
 
-type Entry = {
-    key: string,
-    value: string,
-}
-
-function toTableGroups(group: Entry[], i: number) {
+function toTableGroups(group: AboutEntry[], i: number) {
     return (
         <React.Fragment key={i}>
             {group.map(toRow)}
@@ -56,7 +52,7 @@ function toTableGroups(group: Entry[], i: number) {
         </React.Fragment>
     );
 
-    function toRow(entry: Entry, j: number) {
+    function toRow(entry: AboutEntry, j: number) {
         return (
             <TableRow key={`${i}_${j}_${entry.key}`}>
                 <TableCell component="th" scope="row" align="right">
@@ -71,9 +67,9 @@ function toTableGroups(group: Entry[], i: number) {
 
     function dividerRow(){
         return (
-            <TableRow key={`${i}_divider}`}>
-                <TableCell component="th" scope="row" align="right"/>
-                <TableCell align="left"/>
+            <TableRow>
+                <TableCell />
+                <TableCell />
             </TableRow>
         );
     }
