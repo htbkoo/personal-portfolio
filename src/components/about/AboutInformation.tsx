@@ -20,6 +20,13 @@ const styles = (theme: Theme) => createStyles({
         height: "auto"
         // minWidth: 700,
     },
+    row: {
+        color: theme.palette.secondary.contrastText
+    },
+    divider: {
+        backgroundColor: theme.palette.secondary.light,
+        color: theme.palette.secondary.contrastText
+    }
 });
 
 interface AboutInformationProps extends WithStyles<typeof styles> {
@@ -31,10 +38,7 @@ function AboutInformation(props: AboutInformationProps) {
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
-                    <TableRow>
-                        <TableCell align="right"/>
-                        <TableCell align="left"/>
-                    </TableRow>
+                    {dividerRow()}
                 </TableHead>
                 <TableBody>
                     {(informationMetadatas as AboutEntry[][]).map(toTableGroups)}
@@ -42,34 +46,34 @@ function AboutInformation(props: AboutInformationProps) {
             </Table>
         </Paper>
     );
-}
 
-function toTableGroups(group: AboutEntry[], i: number) {
-    return (
-        <React.Fragment key={i}>
-            {group.map(toRow)}
-            {dividerRow()}
-        </React.Fragment>
-    );
-
-    function toRow(entry: AboutEntry, j: number) {
+    function toTableGroups(group: AboutEntry[], i: number) {
         return (
-            <TableRow key={`${i}_${j}_${entry.key}`}>
-                <TableCell component="th" scope="row" align="right">
-                    <strong>{entry.key}</strong>
-                </TableCell>
-                <TableCell align="left">
-                    <span>{entry.value}</span>
-                </TableCell>
-            </TableRow>
+            <React.Fragment key={i}>
+                {group.map(toRow)}
+                {dividerRow()}
+            </React.Fragment>
         );
+
+        function toRow(entry: AboutEntry, j: number) {
+            return (
+                <TableRow key={`${i}_${j}_${entry.key}`} className={classes.row}>
+                    <TableCell component="th" scope="row" align="right">
+                        <strong>{entry.key}</strong>
+                    </TableCell>
+                    <TableCell align="left">
+                        <span>{entry.value}</span>
+                    </TableCell>
+                </TableRow>
+            );
+        }
     }
 
-    function dividerRow(){
+    function dividerRow() {
         return (
-            <TableRow>
-                <TableCell />
-                <TableCell />
+            <TableRow className={classes.divider}>
+                <TableCell/>
+                <TableCell/>
             </TableRow>
         );
     }

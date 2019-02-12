@@ -1,15 +1,15 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import {blue, indigo} from "@material-ui/core/colors";
+import {createMuiTheme} from '@material-ui/core/styles';
+import {indigo} from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
     palette: {
         primary: indigo,
-        secondary: blue,
+        secondary: {main: '#e6f0fe',},
     },
     typography: {
         useNextVariants: true,
     },
-    overrides:{
+    overrides: {
         MuiTableRow: {
             root: { //for the body
                 height: "100%"
