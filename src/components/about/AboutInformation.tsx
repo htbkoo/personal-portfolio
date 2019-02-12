@@ -24,23 +24,6 @@ const styles = (theme: Theme) => createStyles({
 interface AboutInformationProps extends WithStyles<typeof styles> {
 }
 
-/*
-
-Name: ${findItAtContact}
-Is-a: Software Developer
-
-Frontend: React
-Backend: TypeScript / ES6+ or Java
-Self-study: Python for Machine Learning
-
-Love: Learning interesting things
-Example: Science, art and programming
-
-Aspiration: To leverage IT as a business enabler
-Currently: Working in the financial industry
-
-* */
-
 function AboutInformation(props: AboutInformationProps) {
     const {classes} = props;
     return (
