@@ -4,10 +4,10 @@ import {PortfolioProps} from "./PortfolioProps";
 
 const styles = (theme: Theme) => createStyles({});
 
-interface DirectlyDisplayHtmlContentPortfolio extends PortfolioProps, WithStyles<typeof styles> {
+interface DirectlyDisplayHtmlContentPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
 }
 
-function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPortfolio) {
+function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPortfolioProps) {
     const {title, link, content} = props;
     return (
         <div>
