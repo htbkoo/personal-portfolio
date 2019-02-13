@@ -14,7 +14,7 @@ interface Content {
     technologies: string[]
 }
 
-export default class CodePenPortfolioContentParser {
+export default class CodePenItemContentParser {
 
     constructor() {
     }
