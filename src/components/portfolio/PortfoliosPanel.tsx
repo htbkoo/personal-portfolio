@@ -3,8 +3,8 @@ import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 
 import {Items} from "rss-parser";
 
-import CodePenRssFeedsParser from "../../services/CodePenRssFeedsParser";
-import Portfolio from "./Portfolio";
+import CodePenRssFeedsParser from "../../services/portfolio/CodePenRssFeedsParser";
+import Portfolio from "./DirectlyDisplayHtmlContentPortfolio";
 import Section from "../common/Section";
 
 const styles = (theme: Theme) => createStyles({});
@@ -48,8 +48,7 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
     }
 }
 
-function toPortfolioComponent(item: Items, index: number) {
-    const {content = "", link = "", title = ""} = item;
+function toPortfolioComponent({content = "", link = "", title = ""}: Items, index: number) {
     return <Portfolio content={content} link={link} title={title} key={`${index}_${title}`}/>
 }
 

@@ -1,15 +1,13 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
+import {PortfolioProps} from "./PortfolioProps";
 
 const styles = (theme: Theme) => createStyles({});
 
-interface PortfolioProps extends WithStyles<typeof styles> {
-    title: string,
-    link: string,
-    content: string
+interface DirectlyDisplayHtmlContentPortfolio extends PortfolioProps, WithStyles<typeof styles> {
 }
 
-function Portfolio(props: PortfolioProps) {
+function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPortfolio) {
     const {title, link, content} = props;
     return (
         <div>
@@ -22,4 +20,4 @@ function Portfolio(props: PortfolioProps) {
     );
 }
 
-export default withStyles(styles)(Portfolio);
+export default withStyles(styles)(DirectlyDisplayHtmlContentPortfolio);
