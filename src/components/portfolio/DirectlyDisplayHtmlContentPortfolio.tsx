@@ -3,13 +3,13 @@ import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 
 const styles = (theme: Theme) => createStyles({});
 
-interface PortfolioProps extends WithStyles<typeof styles> {
+interface DirectlyDisplayHtmlContentPortfolio extends WithStyles<typeof styles> {
     title: string,
     link: string,
     content: string
 }
 
-function Portfolio(props: PortfolioProps) {
+function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPortfolio) {
     const {title, link, content} = props;
     return (
         <div>
@@ -22,4 +22,4 @@ function Portfolio(props: PortfolioProps) {
     );
 }
 
-export default withStyles(styles)(Portfolio);
+export default withStyles(styles)(DirectlyDisplayHtmlContentPortfolio);
