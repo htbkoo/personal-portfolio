@@ -1,12 +1,10 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
+import {PortfolioProps} from "./PortfolioProps";
 
 const styles = (theme: Theme) => createStyles({});
 
-interface DirectlyDisplayHtmlContentPortfolio extends WithStyles<typeof styles> {
-    title: string,
-    link: string,
-    content: string
+interface DirectlyDisplayHtmlContentPortfolio extends PortfolioProps, WithStyles<typeof styles> {
 }
 
 function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPortfolio) {
