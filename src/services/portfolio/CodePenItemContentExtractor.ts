@@ -20,7 +20,7 @@ export interface Content {
 
 export default interface CodePenItemContentExtractor<ContentType extends keyof Content> {
     key: string,
-    extract: ($) => Content[ContentType]
+    extract: ($: CheerioStatic) => Content[ContentType]
 }
 
 const imgExtractor: CodePenItemContentExtractor<"img"> = {
@@ -57,16 +57,17 @@ const technologiesExtractor: CodePenItemContentExtractor<"technologies"> = {
     extract: $ => {
         const elements = $("small");
         const sentence = elements[0].children[0].data;
-        const matchResult = REGEX_PATTERN.exec(sentence);
-        if (matchResult && matchResult[1]) {
-            return matchResult[1].split(",")
-                .map(s => s.trim())
-                .filter(s => "and" !== s);
-        } else {
-            // TODO: add test
-            console.debug(`Unable to extract technologies from '${sentence}'`);
-            return [];
+        if (sentence) {
+            const matchResult = REGEX_PATTERN.exec(sentence);
+            if (matchResult && matchResult[1]) {
+                return matchResult[1].split(",")
+                    .map(s => s.trim())
+                    .filter(s => "and" !== s);
+            }
         }
+        // TODO: add test
+        console.debug(`Unable to extract technologies from '${sentence}'`);
+        return [];
     }
 };
 
