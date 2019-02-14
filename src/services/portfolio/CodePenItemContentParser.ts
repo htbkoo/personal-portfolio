@@ -15,7 +15,7 @@ export default class CodePenItemContentParser {
         return new CodePenItemContentParser($);
     }
 
-    async parseContent(extractor: Extractor): Promise<Content[keyof Content]> {
+    parseContent(extractor: Extractor): Content[keyof Content] {
         return extractor.extract(this.$);
     }
 }

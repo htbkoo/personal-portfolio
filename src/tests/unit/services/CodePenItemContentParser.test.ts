@@ -36,7 +36,7 @@ describe("CodePenItemContentParser", function () {
                 expected: ["HTML", "CSS", "JavaScript"]
             },
         ].forEach(({extractorName, expected,}) =>
-            it(`should, with "${extractorName}", parse content retrieved from rss feed`, async function () {
+            it(`should, with "${extractorName}", parse content retrieved from rss feed`, function () {
                 // given
                 /*
                 <p>
@@ -56,7 +56,7 @@ describe("CodePenItemContentParser", function () {
 
                 // when
                 const extractor = extractors[extractorName];
-                const extracted = await parser.parseContent(extractor);
+                const extracted = parser.parseContent(extractor);
 
                 // then
                 expect(extracted).toEqual(expected);
