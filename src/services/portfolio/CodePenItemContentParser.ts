@@ -2,9 +2,9 @@ import cheerio from "cheerio";
 import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtractor";
 
 export default class CodePenItemContentParser {
-    private extractors: CodePenItemContentExtractor<any>[];
+    private extractors: CodePenItemContentExtractor<keyof Content>[];
 
-    constructor(extractors: CodePenItemContentExtractor<any>[] = []) {
+    constructor(extractors: CodePenItemContentExtractor<keyof Content>[] = []) {
         this.extractors = extractors;
     }
 
