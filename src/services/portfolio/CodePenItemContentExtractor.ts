@@ -1,5 +1,3 @@
-import {URL} from "url";
-
 enum ImageType {
     screenshot = "screenshot"
 }
