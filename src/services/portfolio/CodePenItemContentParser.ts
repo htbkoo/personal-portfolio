@@ -1,7 +1,7 @@
 import cheerio from "cheerio";
 import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtractor";
 
-type Extractors = CodePenItemContentExtractor<keyof Content>[];
+type Extractor = CodePenItemContentExtractor<keyof Content>;
 
 export default class CodePenItemContentParser {
     private readonly $: CheerioStatic;
@@ -15,10 +15,7 @@ export default class CodePenItemContentParser {
         return new CodePenItemContentParser($);
     }
 
-    async parseContent(extractors: Extractors): Promise<Partial<Content>> {
-        return extractors.reduce((obj, extractor) => {
-            obj[extractor.key] = extractor.extract(this.$);
-            return obj;
-        }, {});
+    async parseContent(extractor: Extractor): Promise<Content[keyof Content]> {
+        return extractor.extract(this.$);
     }
 }
