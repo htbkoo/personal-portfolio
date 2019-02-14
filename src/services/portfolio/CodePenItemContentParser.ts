@@ -10,7 +10,7 @@ export default class CodePenItemContentParser {
         this.extractors = extractors;
     }
 
-    public static newParser(extractors: Extractors = []): CodePenItemContentParser {
+    public static newParser(extractors: Extractors): CodePenItemContentParser {
         return new CodePenItemContentParser(extractors);
     }
 
