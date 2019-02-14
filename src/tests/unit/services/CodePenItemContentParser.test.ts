@@ -2,6 +2,7 @@ import {when} from "jest-when";
 
 import CodePenItemContentParser from "../../../services/portfolio/CodePenItemContentParser";
 import {
+    credentialsExtractor,
     imgExtractor,
     linksExtractor,
     technologiesExtractor
@@ -28,7 +29,7 @@ describe("CodePenItemContentParser", function () {
             const parser = CodePenItemContentParser.newParser(rawContent);
 
             // when
-            const extractors = [imgExtractor, linksExtractor, technologiesExtractor];
+            const extractors = [imgExtractor, linksExtractor, technologiesExtractor, credentialsExtractor];
             const content = await parser.parseContent(extractors);
 
             // then
@@ -45,6 +46,10 @@ describe("CodePenItemContentParser", function () {
                 details: "https://codepen.io/htbkoo/details/MJWmGz",
             });
             expect(content.technologies).toEqual(["HTML", "CSS", "JavaScript"]);
+            expect(content.credentials).toEqual({
+                user: "htbkoo",
+                hash: "MJWmGz"
+            });
         });
     });
 });

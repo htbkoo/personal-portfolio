@@ -1,3 +1,5 @@
+import {URL} from "url";
+
 enum ImageType {
     screenshot = "screenshot"
 }
@@ -9,7 +11,11 @@ enum LinkType {
 export interface Content {
     img: { [type in ImageType]?: Partial<HTMLImageElement> },
     links: { [type in LinkType]?: string },
-    technologies: string[]
+    technologies: string[],
+    credentials: {
+        user: string,
+        hash: string
+    }
 }
 
 export default interface CodePenItemContentExtractor<ContentType extends keyof Content> {
@@ -64,4 +70,20 @@ const technologiesExtractor: CodePenItemContentExtractor<"technologies"> = {
     }
 };
 
-export {imgExtractor, linksExtractor, technologiesExtractor};
+const credentialsExtractor: CodePenItemContentExtractor<"credentials"> = {
+    key: "credentials",
+    extract: $ => {
+        const elements = $("a");
+        const firstLink = elements[0];
+        const penUrl = new URL(firstLink.attribs.href);
+        const pathname = penUrl.pathname;
+        const parts = pathname.split("/");
+
+        return {
+            user: parts[1],
+            hash: parts[3],
+        };
+    }
+};
+
+export {imgExtractor, linksExtractor, technologiesExtractor, credentialsExtractor};
