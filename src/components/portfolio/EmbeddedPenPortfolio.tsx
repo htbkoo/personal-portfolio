@@ -1,27 +1,32 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
-import {PortfolioProps} from "./PortfolioProps";
 import CodePen from "react-codepen-embed";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import {PortfolioProps} from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
 import {credentialsExtractor} from "../../services/portfolio/CodePenItemContentExtractor";
 
-const styles = (theme: Theme) => createStyles({});
+const styles = (theme: Theme) => createStyles({
+    embeddedContainer: {}
+});
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
 }
 
 function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
-    const {title, link, content} = props;
+    const {title, content, classes} = props;
     const contentParser = CodePenItemContentParser.newParser(content);
     const {user, hash} = contentParser.parseContent(credentialsExtractor);
 
     return (
-        <div>
+        <div className={classes.embeddedContainer}>
             <CodePen
                 user={user}
                 hash={hash}
                 title={title}
-                loader={() => <div>Loading...</div>}
+                height={512}
+                loader={() => <CircularProgress/>}
             />
         </div>
     );
