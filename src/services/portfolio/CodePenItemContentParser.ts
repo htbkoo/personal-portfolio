@@ -4,21 +4,20 @@ import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtracto
 type Extractors = CodePenItemContentExtractor<keyof Content>[];
 
 export default class CodePenItemContentParser {
-    private extractors: Extractors;
+    private readonly $: CheerioStatic;
 
-    private constructor(extractors: Extractors) {
-        this.extractors = extractors;
+    private constructor($: CheerioStatic) {
+        this.$ = $;
     }
 
-    public static newParser(extractors: Extractors): CodePenItemContentParser {
-        return new CodePenItemContentParser(extractors);
-    }
-
-    async parseContent(rawContent: string): Promise<Partial<Content>> {
+    public static newParser(rawContent: string): CodePenItemContentParser {
         const $ = cheerio.load(rawContent);
+        return new CodePenItemContentParser($);
+    }
 
-        return this.extractors.reduce((obj, extractor) => {
-            obj[extractor.key] = extractor.extract($);
+    async parseContent(extractors: Extractors): Promise<Partial<Content>> {
+        return extractors.reduce((obj, extractor) => {
+            obj[extractor.key] = extractor.extract(this.$);
             return obj;
         }, {});
     }
