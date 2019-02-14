@@ -7,7 +7,11 @@ import CodePenRssFeedsParser from "../../services/portfolio/CodePenRssFeedsParse
 import Portfolio from "./Portfolio";
 import Section from "../common/Section";
 
-const styles = (theme: Theme) => createStyles({});
+const styles = (theme: Theme) => createStyles({
+    portfolio: {
+        margin: "5%"
+    }
+});
 
 interface PortfoliosPanelProps extends WithStyles<typeof styles> {
     rssFeedUrl: string,
@@ -41,15 +45,17 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
                 subtitle="Some of my previous works"
             >
                 <div>
-                    {this.state.items.map(toPortfolioComponent)}
+                    {
+                        this.state.items.map(({content = "", link = "", title = ""}: Items, index: number) =>
+                            <div className={this.props.classes.portfolio} key={`${index}_${title}`}>
+                                <Portfolio content={content} link={link} title={title}/>
+                            </div>
+                        )
+                    }
                 </div>
             </Section>
         );
     }
-}
-
-function toPortfolioComponent({content = "", link = "", title = ""}: Items, index: number) {
-    return <Portfolio content={content} link={link} title={title} key={`${index}_${title}`}/>
 }
 
 export default withStyles(styles)(PortfoliosPanel);
