@@ -1,25 +1,20 @@
 import {when} from "jest-when";
 
 import CodePenItemContentParser from "../../../services/portfolio/CodePenItemContentParser";
-import {
-    credentialsExtractor,
-    imgExtractor,
-    linksExtractor,
-    technologiesExtractor
-} from "../../../services/portfolio/CodePenItemContentExtractor";
+import * as extractors from "../../../services/portfolio/CodePenItemContentExtractor";
 
 describe("CodePenItemContentParser", function () {
     describe("parseContent", function () {
         [
             {
-                extractorName: "credentialsExtractor", extractor: credentialsExtractor,
+                extractorName: "credentialsExtractor",
                 expected: {
                     user: "htbkoo",
                     hash: "MJWmGz"
                 }
             },
             {
-                extractorName: "imgExtractor", extractor: imgExtractor,
+                extractorName: "imgExtractor",
                 expected: {
                     screenshot: {
                         src: "https://codepen.io/htbkoo/pen/MJWmGz/image/large.png",
@@ -29,7 +24,7 @@ describe("CodePenItemContentParser", function () {
                 }
             },
             {
-                extractorName: "linksExtractor", extractor: linksExtractor,
+                extractorName: "linksExtractor",
                 expected: {
                     code: "https://codepen.io/htbkoo/pen/MJWmGz",
                     full: "https://codepen.io/htbkoo/full/MJWmGz",
@@ -37,11 +32,11 @@ describe("CodePenItemContentParser", function () {
                 }
             },
             {
-                extractorName: "technologiesExtractor", extractor: technologiesExtractor,
+                extractorName: "technologiesExtractor",
                 expected: ["HTML", "CSS", "JavaScript"]
             },
-        ].forEach(({extractorName, extractor, expected,}) =>
-            it(`should parse content retrieved from rss feed with ${extractorName}`, async function () {
+        ].forEach(({extractorName, expected,}) =>
+            it(`should, with "${extractorName}", parse content retrieved from rss feed`, async function () {
                 // given
                 /*
                 <p>
@@ -60,6 +55,7 @@ describe("CodePenItemContentParser", function () {
                 const parser = CodePenItemContentParser.newParser(rawContent);
 
                 // when
+                const extractor = extractors[extractorName];
                 const extracted = await parser.parseContent(extractor);
 
                 // then
