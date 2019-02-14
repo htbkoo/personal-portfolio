@@ -1,8 +1,6 @@
 import cheerio from "cheerio";
 import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtractor";
 
-type Extractor = CodePenItemContentExtractor<keyof Content>;
-
 export default class CodePenItemContentParser {
     private readonly $: CheerioStatic;
 
@@ -15,7 +13,7 @@ export default class CodePenItemContentParser {
         return new CodePenItemContentParser($);
     }
 
-    parseContent(extractor: Extractor): Content[keyof Content] {
+    parseContent<T extends keyof Content>(extractor: CodePenItemContentExtractor<T>): Content[T] {
         return extractor.extract(this.$);
     }
 }
