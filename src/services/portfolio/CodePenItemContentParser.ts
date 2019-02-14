@@ -1,11 +1,17 @@
 import cheerio from "cheerio";
 import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtractor";
 
-export default class CodePenItemContentParser {
-    private extractors: CodePenItemContentExtractor<keyof Content>[];
+type Extractors = CodePenItemContentExtractor<keyof Content>[];
 
-    constructor(extractors: CodePenItemContentExtractor<keyof Content>[] = []) {
+export default class CodePenItemContentParser {
+    private extractors: Extractors;
+
+    private constructor(extractors: Extractors) {
         this.extractors = extractors;
+    }
+
+    public static newParser(extractors: Extractors = []): CodePenItemContentParser {
+        return new CodePenItemContentParser(extractors);
     }
 
     async parseContent(rawContent: string): Promise<Partial<Content>> {
