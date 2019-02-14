@@ -4,7 +4,7 @@ import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 import {Items} from "rss-parser";
 
 import CodePenRssFeedsParser from "../../services/portfolio/CodePenRssFeedsParser";
-import Portfolio from "./DirectlyDisplayHtmlContentPortfolio";
+import Portfolio from "./Portfolio";
 import Section from "../common/Section";
 
 const styles = (theme: Theme) => createStyles({});
