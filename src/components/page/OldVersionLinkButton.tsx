@@ -16,7 +16,7 @@ function OldVersionLinkButton(props: OldVersionLinkButtonProps) {
     return (
         <Hidden xsDown>
             <Button href={OLD_VERSION_URL} variant="contained" color="inherit">
-                Switch To old version
+                Switch to old version
             </Button>
         </Hidden>
     );
