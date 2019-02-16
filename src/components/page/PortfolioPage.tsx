@@ -6,6 +6,7 @@ import PageAppBar from "./PageAppBar";
 import PageDrawer from "./PageDrawer";
 import PageMain from "./PageMain";
 import SectionMetadata from "../../model/SectionMetadata";
+import {onlyDisplayIfWidthAtLeast} from "../../css/stylesHelpers/conditionalDisplay";
 
 const drawerWidth = 240;
 
@@ -13,18 +14,7 @@ const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing.unit * 3,
-    },
-    toolbar: theme.mixins.toolbar,
+    drawer: onlyDisplayIfWidthAtLeast(theme, "md")
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
@@ -37,9 +27,15 @@ function PortfolioPage(props: PortfolioPageProps) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <PageAppBar/>
-            <PageDrawer sectionConfigs={sectionConfigs}/>
-            <PageMain sectionConfigs={sectionConfigs}/>
+            <div>
+                <PageAppBar/>
+            </div>
+            <div className={classes.drawer}>
+                <PageDrawer sectionConfigs={sectionConfigs}/>
+            </div>
+            <div>
+                <PageMain sectionConfigs={sectionConfigs}/>
+            </div>
         </div>
     );
 }
