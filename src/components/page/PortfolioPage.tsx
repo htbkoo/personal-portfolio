@@ -6,7 +6,7 @@ import PageAppBar from "./PageAppBar";
 import PageDrawer from "./PageDrawer";
 import PageMain from "./PageMain";
 import SectionMetadata from "../../model/SectionMetadata";
-import {onlyDisplayIfWidthAtLeast} from "../../css/stylesHelpers/conditionalDisplay";
+import Hidden from '@material-ui/core/Hidden';
 
 const drawerWidth = 240;
 
@@ -14,7 +14,6 @@ const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    drawer: onlyDisplayIfWidthAtLeast(theme, "md")
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
@@ -30,9 +29,11 @@ function PortfolioPage(props: PortfolioPageProps) {
             <div>
                 <PageAppBar/>
             </div>
-            <div className={classes.drawer}>
-                <PageDrawer sectionConfigs={sectionConfigs}/>
-            </div>
+            <Hidden smDown>
+                <div>
+                    <PageDrawer sectionConfigs={sectionConfigs}/>
+                </div>
+            </Hidden>
             <div>
                 <PageMain sectionConfigs={sectionConfigs}/>
             </div>
