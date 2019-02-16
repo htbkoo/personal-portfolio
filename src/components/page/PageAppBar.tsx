@@ -4,10 +4,17 @@ import {createStyles, WithStyles} from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import OldVersionLinkButton from "./OldVersionLinkButton";
 
 const styles = (theme: Theme) => createStyles({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
+    },
+    root: {
+        flexGrow: 1,
+    },
+    grow: {
+        flexGrow: 1,
     },
 });
 
@@ -20,9 +27,10 @@ function PageAppBar(props: PageAppBarProps) {
     return (
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
-                <Typography variant="h6" color="inherit" noWrap>
+                <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
                     Hey's Personal Portfolio
                 </Typography>
+                <OldVersionLinkButton/>
             </Toolbar>
         </AppBar>
     );
