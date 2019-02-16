@@ -2,21 +2,10 @@ import React from 'react';
 import {Theme, withStyles} from '@material-ui/core/styles';
 import {createStyles, WithStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import {onlyDisplayIfWidthAtLeast} from "../../css/stylesHelpers/conditionalDisplay";
 
 const styles = (theme: Theme) => createStyles({
-    linkButton: {
-        display: "none",
-        // Match [sm, ∞[
-        //       [600px, ∞[
-        [theme.breakpoints.up('sm')]: {
-            display: "unset",
-        },
-        // Match [md, ∞[
-        //       [960px, ∞[
-        [theme.breakpoints.up('md')]: {
-            display: "unset",
-        },
-    }
+    linkButton: onlyDisplayIfWidthAtLeast(theme, 'sm')
 });
 
 interface OldVersionLinkButtonProps extends WithStyles<typeof styles> {
