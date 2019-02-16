@@ -21,6 +21,7 @@
     "rss-parser": "^3.6.2",
     "typescript": "^3.2.4"
   },
+  "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
