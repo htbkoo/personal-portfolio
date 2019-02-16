@@ -6,6 +6,7 @@ import PageAppBar from "./PageAppBar";
 import PageDrawer from "./PageDrawer";
 import PageMain from "./PageMain";
 import SectionMetadata from "../../model/SectionMetadata";
+import Hidden from '@material-ui/core/Hidden';
 
 const drawerWidth = 240;
 
@@ -13,18 +14,6 @@ const styles = (theme: Theme) => createStyles({
     root: {
         display: 'flex',
     },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing.unit * 3,
-    },
-    toolbar: theme.mixins.toolbar,
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
@@ -37,9 +26,17 @@ function PortfolioPage(props: PortfolioPageProps) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <PageAppBar/>
-            <PageDrawer sectionConfigs={sectionConfigs}/>
-            <PageMain sectionConfigs={sectionConfigs}/>
+            <div>
+                <PageAppBar/>
+            </div>
+            <Hidden smDown>
+                <div>
+                    <PageDrawer sectionConfigs={sectionConfigs}/>
+                </div>
+            </Hidden>
+            <div>
+                <PageMain sectionConfigs={sectionConfigs}/>
+            </div>
         </div>
     );
 }
