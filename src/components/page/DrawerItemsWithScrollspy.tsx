@@ -7,6 +7,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Scrollspy from 'react-scrollspy';
+import Hidden from '@material-ui/core/Hidden';
+
+import OldVersionLinkButton from "./OldVersionLinkButton";
 
 const drawerWidth = 240;
 
@@ -32,6 +35,9 @@ const styles = (theme: Theme) => createStyles({
     },
     scrollSpyListItem: {
         display: 'flex',
+    },
+    oldVersionLinkButton: {
+        margin: "5%"
     }
 });
 
@@ -58,6 +64,11 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
                     </a>
                 ))}
             </Scrollspy>
+            <Hidden smUp>
+                <div className={classes.oldVersionLinkButton}>
+                    <OldVersionLinkButton/>
+                </div>
+            </Hidden>
         </React.Fragment>
     );
 }
