@@ -10,7 +10,12 @@ const styles = (theme: Theme) => createStyles({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        [theme.breakpoints.down('xs')]: {
+            padding: "unset"
+        },
+        [theme.breakpoints.up('sm')]: {
+            padding: theme.spacing.unit * 3
+        },
     },
     toolbar: theme.mixins.toolbar,
 });
