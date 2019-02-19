@@ -14,7 +14,7 @@ import OldVersionLinkButton from "./OldVersionLinkButton";
 const styles = (theme: Theme) => createStyles({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             zIndex: theme.zIndex.modal + 1,
         },
     },
@@ -24,7 +24,7 @@ const styles = (theme: Theme) => createStyles({
     },
     menuButton: {
         marginRight: 20,
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: 'none',
         },
     },
@@ -51,7 +51,7 @@ function PageAppBar(props: PageAppBarProps) {
                 <Typography variant="h6" color="inherit" noWrap className={classNames(classes.title)}>
                     Hey's Personal Portfolio
                 </Typography>
-                <Hidden xsDown>
+                <Hidden smDown>
                     <OldVersionLinkButton/>
                 </Hidden>
             </Toolbar>

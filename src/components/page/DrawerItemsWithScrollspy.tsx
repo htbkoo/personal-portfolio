@@ -64,7 +64,7 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
                     </a>
                 ))}
             </Scrollspy>
-            <Hidden smUp>
+            <Hidden mdUp>
                 <div className={classes.oldVersionLinkButton}>
                     <OldVersionLinkButton/>
                 </div>
