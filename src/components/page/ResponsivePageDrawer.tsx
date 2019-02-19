@@ -9,10 +9,6 @@ import Hidden from '@material-ui/core/Hidden';
 const drawerWidth = 240;
 
 const styles = (theme: Theme) => createStyles({
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
     drawerPaper: {
         width: drawerWidth,
     },
