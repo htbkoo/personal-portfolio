@@ -1,11 +1,8 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 
-import {Items} from "rss-parser";
-
-import Portfolio from "./Portfolio";
 import Section from "../common/Section";
-import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
+import {PortfoliosFactory} from "./PortfoliosFactory";
 
 const styles = (theme: Theme) => createStyles({
     portfolio: {
@@ -14,12 +11,11 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface PortfoliosPanelProps extends WithStyles<typeof styles> {
-    rssFeedUrl: string,
-    parser: RssFeedsParser
+    portfoliosFactory: PortfoliosFactory
 }
 
 interface PortfoliosPanelState {
-    items: Items[]
+    portfolios: React.ReactNode[]
 }
 
 class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPanelState> {
@@ -27,13 +23,13 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
         super(props);
 
         this.state = {
-            items: []
+            portfolios: []
         };
     }
 
     componentDidMount(): void {
-        this.props.parser.parseUrl(this.props.rssFeedUrl)
-            .then(items => this.setState({items}))
+        this.props.portfoliosFactory.createPortfolios()
+            .then(portfolios => this.setState({portfolios}))
     }
 
     render(): React.ReactNode {
@@ -45,13 +41,7 @@ class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPa
                 subtitle="Some of my previous works"
             >
                 <div>
-                    {
-                        this.state.items.map(({content = "", link = "", title = ""}: Items, index: number) =>
-                            <div className={this.props.classes.portfolio} key={`${index}_${title}`}>
-                                <Portfolio content={content} link={link} title={title}/>
-                            </div>
-                        )
-                    }
+                    {this.state.portfolios}
                 </div>
             </Section>
         );
