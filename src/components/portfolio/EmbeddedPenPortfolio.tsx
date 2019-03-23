@@ -1,11 +1,16 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
-import CodePen from "react-codepen-embed";
+import {Breakpoint} from '@material-ui/core/styles/createBreakpoints';
+import CodePen from "responsive-react-codepen-embed";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import withWidth from "@material-ui/core/withWidth";
+import toRenderProps from 'recompose/toRenderProps';
 
 import {PortfolioProps} from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
 import {credentialsExtractor} from "../../services/portfolio/CodePenItemContentExtractor";
+
+const WithWidth = toRenderProps(withWidth());
 
 const styles = (theme: Theme) => createStyles({
     embeddedContainer: {
@@ -15,6 +20,14 @@ const styles = (theme: Theme) => createStyles({
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
 }
+
+const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
+    xs: 128,
+    sm: 256,
+    md: 384,
+    lg: 512,
+    xl: 512,
+};
 
 function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
     const {title, content, classes} = props;
@@ -27,11 +40,16 @@ function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
                 user={user}
                 hash={hash}
                 title={title}
-                height={512}
+                height={getHeight()}
                 loader={() => <CircularProgress/>}
             />
         </div>
     );
+
+    function getHeight() {
+        const width: Breakpoint = (props as any).width;
+        return MAPPING_HEIGHTS[width];
+    }
 }
 
-export default withStyles(styles)(EmbeddedPenPortfolio);
+export default withWidth()(withStyles(styles)(EmbeddedPenPortfolio));
