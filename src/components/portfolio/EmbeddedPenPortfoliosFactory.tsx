@@ -1,8 +1,9 @@
 import * as React from "react";
+import {Items} from "rss-parser";
 
 import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 import {PortfoliosFactory} from "./PortfoliosFactory";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import EmbeddedPenPortfolio from "./EmbeddedPenPortfolio";
 
 export default class EmbeddedPenPortfoliosFactory implements PortfoliosFactory {
     private readonly parser: RssFeedsParser;
@@ -14,7 +15,12 @@ export default class EmbeddedPenPortfoliosFactory implements PortfoliosFactory {
     }
 
     createPortfolios() {
-        return Promise.resolve([<CircularProgress/>]);
+        return this.parser.parseUrl(this.rssFeedUrl)
+            .then(items => items.map(({content = "", link = "", title = ""}: Items, index: number) =>
+                (<EmbeddedPenPortfolio key={`${index}_${title}`} content={content} link={link} title={title}/>)
+            ));
+        //
+        // return Promise.resolve([<CircularProgress/>]);
     }
 
     /*

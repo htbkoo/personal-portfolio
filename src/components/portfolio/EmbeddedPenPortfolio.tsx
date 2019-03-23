@@ -8,7 +8,9 @@ import CodePenItemContentParser from "../../services/portfolio/CodePenItemConten
 import {credentialsExtractor} from "../../services/portfolio/CodePenItemContentExtractor";
 
 const styles = (theme: Theme) => createStyles({
-    embeddedContainer: {}
+    embeddedContainer: {
+        margin: "5%"
+    }
 });
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
