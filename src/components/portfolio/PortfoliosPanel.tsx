@@ -3,9 +3,9 @@ import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 
 import {Items} from "rss-parser";
 
-import CodePenRssFeedsParser from "../../services/portfolio/CodePenRssFeedsParser";
 import Portfolio from "./Portfolio";
 import Section from "../common/Section";
+import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 
 const styles = (theme: Theme) => createStyles({
     portfolio: {
@@ -15,7 +15,7 @@ const styles = (theme: Theme) => createStyles({
 
 interface PortfoliosPanelProps extends WithStyles<typeof styles> {
     rssFeedUrl: string,
-    parser: CodePenRssFeedsParser
+    parser: RssFeedsParser
 }
 
 interface PortfoliosPanelState {
