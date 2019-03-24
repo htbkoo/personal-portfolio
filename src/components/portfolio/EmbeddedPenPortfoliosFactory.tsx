@@ -4,7 +4,6 @@ import {Items} from "rss-parser";
 import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 import {PortfoliosFactory} from "./PortfoliosFactory";
 import EmbeddedPenPortfolio from "./EmbeddedPenPortfolio";
-import {CircularProgress} from "@material-ui/core";
 
 export default class EmbeddedPenPortfoliosFactory implements PortfoliosFactory {
     private readonly parser: RssFeedsParser;
@@ -16,35 +15,9 @@ export default class EmbeddedPenPortfoliosFactory implements PortfoliosFactory {
     }
 
     createPortfolios() {
-        // return
-        // return Promise.resolve([<CircularProgress/>]);
         return Promise.resolve(<PenPortfolios parser={this.parser} rssFeedUrl={this.rssFeedUrl}/>);
     }
 }
-
-/*
-
-interface PortfoliosPanelProps extends WithStyles<typeof styles> {
-rssFeedUrl: string,
-parser: RssFeedsParser
-}
-
-
-import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
-
-
-
-this.props.parser.parseUrl(this.props.rssFeedUrl)
-    .then(items => this.setState({items}))
-
-{
-    this.state.items.map(({content = "", link = "", title = ""}: Items, index: number) =>
-        <div className={this.props.classes.portfolio} key={`${index}_${title}`}>
-            <Portfolio content={content} link={link} title={title}/>
-        </div>
-    )
-}
-*/
 
 interface PenPortfoliosProps {
     parser: RssFeedsParser;
