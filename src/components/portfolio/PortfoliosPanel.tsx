@@ -15,7 +15,7 @@ interface PortfoliosPanelProps extends WithStyles<typeof styles> {
 }
 
 interface PortfoliosPanelState {
-    portfolios: React.ReactNode[]
+    portfolios: React.ReactNode
 }
 
 class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPanelState> {
