@@ -19,6 +19,7 @@ const styles = (theme: Theme) => createStyles({
 });
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
+    isScriptLoaded?: boolean
 }
 
 const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
@@ -30,7 +31,7 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
 };
 
 function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
-    const {title, content, classes} = props;
+    const {title, content, isScriptLoaded, classes} = props;
     const contentParser = CodePenItemContentParser.newParser(content);
     const {user, hash} = contentParser.parseContent(credentialsExtractor);
 
@@ -42,6 +43,8 @@ function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
                 title={title}
                 height={getHeight()}
                 loader={() => <CircularProgress/>}
+                shouldLoadScript={false}
+                overrideAsLoaded={isScriptLoaded}
             />
         </div>
     );
