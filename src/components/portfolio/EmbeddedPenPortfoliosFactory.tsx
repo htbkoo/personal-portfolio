@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Items} from "rss-parser";
+import {CodepenEmbedScriptTagBuilder, ScriptTagBuilder} from "responsive-react-codepen-embed";
 
 import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 import {PortfoliosFactory} from "./PortfoliosFactory";
@@ -27,21 +28,22 @@ interface PenPortfoliosProps {
 interface PenPortfoliosState {
     items: Items[],
     loaded: boolean,
-    loading: boolean,
     error?: string,
 }
-
-const SCRIPT_URL = 'https://production-assets.codepen.io/assets/embed/ei.js';
 
 class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosState> {
 
     private _mounted: boolean = false;
+    private scriptTagBuilder: ScriptTagBuilder;
 
     constructor(props: Readonly<PenPortfoliosProps>) {
         super(props);
-        this.state = {loaded: false, loading: true, items: []};
+        this.state = {loaded: false, items: []};
 
-        this.loadScript = this.loadScript.bind(this);
+        this.scriptTagBuilder = new CodepenEmbedScriptTagBuilder()
+            .setAsync(true)
+            .withOnLoadHandler(this.handleScriptLoad.bind(this))
+            .withOnErrorHandler(this.handleScriptError.bind(this));
     }
 
     componentDidMount(): void {
@@ -49,7 +51,8 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
 
         this.props.parser.parseUrl(this.props.rssFeedUrl)
             .then(items => this.setState({items}))
-            .then(() => this.loadScript(true));
+            .then(() => this.scriptTagBuilder.appendTo(document.body))
+            .catch(error => console.log(error));
     }
 
     componentWillUnmount() {
@@ -65,37 +68,23 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
                         content={content}
                         link={link}
                         title={title}
-                        isScriptLoaded={!this.state.loading}
+                        isScriptLoaded={this.state.loaded}
                     />)
                 )}
             </div>
         );
     }
 
-    private loadScript(isPreFlight) {
-        // load the codepen embed script
-        const script = document.createElement('script');
-        script.src = SCRIPT_URL;
-        if (isPreFlight) {
-            script.onload = () => {
-                // do not do anything if the component is already unmounted.
-                if (!this._mounted) return;
+    private handleScriptLoad() {
+        // do not do anything if the component is already unmounted.
+        if (!this._mounted) return;
 
-                this.setState({
-                    loaded: true,
-                    loading: false
-                });
+        this.setState({loaded: true,});
+    }
 
-                this.loadScript(false);
-            };
-            script.onerror = () => {
-                if (!this._mounted) return;
+    private handleScriptError() {
+        if (!this._mounted) return;
 
-                this.setState({
-                    error: 'Failed to load the pen'
-                });
-            };
-        }
-        document.body.appendChild(script);
+        this.setState({error: 'Failed to load the pen'});
     }
 }
