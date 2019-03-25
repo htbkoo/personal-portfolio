@@ -25,7 +25,7 @@ interface PenPortfoliosProps {
 }
 
 interface PenPortfoliosState {
-    portfolios: React.ReactNode[],
+    items: Items[],
     loaded: boolean,
     loading: boolean,
     error?: string,
@@ -39,44 +39,17 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
 
     constructor(props: Readonly<PenPortfoliosProps>) {
         super(props);
-        this.state = {loaded: false, loading: true, portfolios: []};
+        this.state = {loaded: false, loading: true, items: []};
+
+        this.loadScript = this.loadScript.bind(this);
     }
 
     componentDidMount(): void {
         this._mounted = true;
 
         this.props.parser.parseUrl(this.props.rssFeedUrl)
-            .then(items =>
-                items.map(({content = "", link = "", title = ""}: Items, index: number) =>
-                    (<EmbeddedPenPortfolio key={`${index}_${title}`} content={content} link={link} title={title}
-                                           isScriptLoaded={true}/>)
-                )
-            )
-            .then(portfolios => this.setState({portfolios}))
-            .then(() => {
-                // load the codepen embed script
-                const script = document.createElement('script');
-                script.src = SCRIPT_URL;
-                script.async = true;
-                script.onload = () => {
-                    // do not do anything if the component is already unmounted.
-                    if (!this._mounted) return;
-
-                    this.setState({
-                        loaded: true,
-                        loading: false
-                    });
-                };
-                script.onerror = () => {
-                    if (!this._mounted) return;
-
-                    this.setState({
-                        error: 'Failed to load the pen'
-                    });
-                };
-
-                document.body.appendChild(script);
-            });
+            .then(items => this.setState({items}))
+            .then(() => this.loadScript(true));
     }
 
     componentWillUnmount() {
@@ -86,8 +59,43 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
     render() {
         return (
             <div>
-                {this.state.portfolios}
+                {this.state.items.map(({content = "", link = "", title = ""}: Items, index: number) =>
+                    (<EmbeddedPenPortfolio
+                        key={`${index}_${title}`}
+                        content={content}
+                        link={link}
+                        title={title}
+                        isScriptLoaded={!this.state.loading}
+                    />)
+                )}
             </div>
         );
+    }
+
+    private loadScript(isPreFlight) {
+        // load the codepen embed script
+        const script = document.createElement('script');
+        script.src = SCRIPT_URL;
+        if (isPreFlight) {
+            script.onload = () => {
+                // do not do anything if the component is already unmounted.
+                if (!this._mounted) return;
+
+                this.setState({
+                    loaded: true,
+                    loading: false
+                });
+
+                this.loadScript(false);
+            };
+            script.onerror = () => {
+                if (!this._mounted) return;
+
+                this.setState({
+                    error: 'Failed to load the pen'
+                });
+            };
+        }
+        document.body.appendChild(script);
     }
 }
