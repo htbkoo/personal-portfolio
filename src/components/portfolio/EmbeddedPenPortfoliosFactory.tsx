@@ -76,15 +76,15 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
     }
 
     private handleScriptLoad() {
+        if (this._mounted) {
+            this.setState({loaded: true,});
+        }
         // do not do anything if the component is already unmounted.
-        if (!this._mounted) return;
-
-        this.setState({loaded: true,});
     }
 
     private handleScriptError() {
-        if (!this._mounted) return;
-
-        this.setState({error: 'Failed to load the pen'});
+        if (this._mounted){
+            this.setState({error: 'Failed to load the pen'});
+        }
     }
 }
