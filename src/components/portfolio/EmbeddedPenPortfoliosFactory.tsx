@@ -32,8 +32,6 @@ interface PenPortfoliosState {
 }
 
 class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosState> {
-
-    private _mounted: boolean = false;
     private scriptTagBuilder: ScriptTagBuilder;
 
     constructor(props: Readonly<PenPortfoliosProps>) {
@@ -42,21 +40,15 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
 
         this.scriptTagBuilder = new CodepenEmbedScriptTagBuilder()
             .setAsync(true)
-            .withOnLoadHandler(this.handleScriptLoad.bind(this))
-            .withOnErrorHandler(this.handleScriptError.bind(this));
+            .withOnLoadHandler(() => this.setState({loaded: true,}))
+            .withOnErrorHandler(() => this.setState({error: 'Failed to load the pen'}));
     }
 
     componentDidMount(): void {
-        this._mounted = true;
-
         this.props.parser.parseUrl(this.props.rssFeedUrl)
             .then(items => this.setState({items}))
             .then(() => this.scriptTagBuilder.appendTo(document.body))
             .catch(error => console.log(error));
-    }
-
-    componentWillUnmount() {
-        this._mounted = false;
     }
 
     render() {
@@ -73,18 +65,5 @@ class PenPortfolios extends React.Component<PenPortfoliosProps, PenPortfoliosSta
                 )}
             </div>
         );
-    }
-
-    private handleScriptLoad() {
-        if (this._mounted) {
-            this.setState({loaded: true,});
-        }
-        // do not do anything if the component is already unmounted.
-    }
-
-    private handleScriptError() {
-        if (this._mounted){
-            this.setState({error: 'Failed to load the pen'});
-        }
     }
 }
