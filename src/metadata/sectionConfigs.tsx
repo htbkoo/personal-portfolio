@@ -1,16 +1,17 @@
 import React from 'react';
 import RssParser from "rss-parser";
 
-import CodePenRssFeedsParser from "../services/portfolio/CodePenRssFeedsParser";
 import SectionMetadata from "../model/SectionMetadata";
 import HomePanel from "../components/home/HomePanel";
 import AboutPanel from "../components/about/AboutPanel";
 import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
 import ContactPanel from "../components/contact/ContactPanel";
+import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
+import CodePenRssFeedsParser from "../services/portfolio/CodePenRssFeedsParser";
 
-const parser = new CodePenRssFeedsParser(new RssParser());
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
+const factory = new EmbeddedPenPortfoliosFactory(new CodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
 const sectionConfigs: SectionMetadata[] = [
     {
@@ -23,7 +24,7 @@ const sectionConfigs: SectionMetadata[] = [
     },
     {
         name: 'Portfolio',
-        component: <PortfoliosPanel parser={parser} rssFeedUrl={rssFeedUrl}/>
+        component: <PortfoliosPanel portfoliosFactory={factory}/>
     },
     {
         name: 'Contact',

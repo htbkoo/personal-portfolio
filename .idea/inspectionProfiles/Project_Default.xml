@@ -6,5 +6,8 @@
     <inspection_tool class="JSMethodCanBeStatic" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="JSUnusedGlobalSymbols" enabled="true" level="UNUSED ENTRY" enabled_by_default="true" />
     <inspection_tool class="JSUnusedLocalSymbols" enabled="true" level="UNUSED ENTRY" enabled_by_default="true" />
+    <inspection_tool class="RequiredAttributes" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="myAdditionalRequiredHtmlAttributes" value="" />
+    </inspection_tool>
   </profile>
 </component>
