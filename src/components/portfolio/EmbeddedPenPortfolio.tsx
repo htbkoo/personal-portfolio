@@ -1,7 +1,7 @@
 import * as React from "react";
 import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
 import {Breakpoint} from '@material-ui/core/styles/createBreakpoints';
-import CodePen from "responsive-react-codepen-embed";
+import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import withWidth from "@material-ui/core/withWidth";
 import toRenderProps from 'recompose/toRenderProps';

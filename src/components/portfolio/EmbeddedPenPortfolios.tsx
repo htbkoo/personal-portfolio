@@ -1,7 +1,7 @@
 import * as React from "react";
 import {createStyles, Theme, WithStyles, withStyles} from "@material-ui/core";
 import {Items} from "rss-parser";
-import {CodepenEmbedScriptTagBuilder, ScriptTagBuilder} from "responsive-react-codepen-embed";
+import {CodepenEmbedScriptTagBuilder, ScriptTagBuilder} from "ts-react-codepen-embed";
 
 import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 import EmbeddedPenPortfolio from "./EmbeddedPenPortfolio";
