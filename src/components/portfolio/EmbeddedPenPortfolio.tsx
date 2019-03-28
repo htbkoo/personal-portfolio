@@ -23,11 +23,11 @@ interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof st
 }
 
 const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
-    xs: 128,
-    sm: 256,
+    xs: 288,
+    sm: 384,
     md: 384,
-    lg: 512,
-    xl: 512,
+    lg: 640,
+    xl: 768,
 };
 
 function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {

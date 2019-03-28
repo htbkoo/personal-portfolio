@@ -19,6 +19,9 @@ const styles = (theme: Theme) => createStyles({
             flexShrink: 0,
         },
     },
+    main:{
+        width: "100%"
+    }
 });
 
 interface PortfolioPageProps extends WithStyles<typeof styles> {
@@ -51,7 +54,7 @@ class PortfolioPage extends Component<PortfolioPageProps, PortfolioPageState> {
                         onDrawerClose={this.handleDrawerToggle}
                     />
                 </nav>
-                <div>
+                <div className={classes.main}>
                     <PageMain sectionConfigs={sectionConfigs}/>
                 </div>
             </div>
