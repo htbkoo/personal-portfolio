@@ -32,9 +32,6 @@
     "gh-pages:clean": "rimraf docs",
     "gh-pages:rename": "node ./bin/rename -s build -d docs"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
