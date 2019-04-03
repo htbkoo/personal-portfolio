@@ -6,8 +6,26 @@ import sectionConfigs from "../metadata/sectionConfigs";
 import {theme} from "../services/MuiThemeFactory";
 
 import '../css/App.css';
+import GoogleAnalyticsManager from "../services/GoogleAnalyticsManager";
 
-class App extends Component {
+interface Props {
+}
+
+class App extends Component<Props> {
+    private readonly gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
+
+    constructor(props: Readonly<Props>);
+    constructor(props: Props, context?: any);
+    constructor(props: Props | Readonly<Props>, context?: any) {
+        super(props, context);
+        this.gAManager.init();
+    }
+
+    componentDidMount(): void {
+        const path = window.location.pathname + window.location.search;
+        this.gAManager.pageview(path);
+    }
+
     render() {
         return (
             <MuiThemeProvider theme={theme}>
