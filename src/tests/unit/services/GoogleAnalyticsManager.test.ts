@@ -8,6 +8,7 @@ describe("GoogleAnalyticsManager", function () {
     beforeEach(function () {
         processEnv = {...process.env};
         (ReactGA.initialize as any).mockReset();
+        (ReactGA.pageview as any).mockReset();
     });
 
     afterEach(function () {
@@ -52,6 +53,40 @@ describe("GoogleAnalyticsManager", function () {
             // then
             expect(manager.isInitialized()).toEqual(false);
             expect(ReactGA.initialize).not.toBeCalled();
+        });
+    });
+
+    describe("pageview", function () {
+        it("should fire pageview if initialized", function () {
+            // given
+            const manager = new GoogleAnalyticsManager();
+            manager.isInitialized = function(){
+                return true;
+            };
+
+            const path = "path";
+
+            // when
+            manager.pageview(path);
+
+            // then
+            expect(ReactGA.pageview).toBeCalledWith(path);
+        });
+
+        it("should not fire pageview if not initialized", function () {
+            // given
+            const manager = new GoogleAnalyticsManager();
+            manager.isInitialized = function () {
+                return false;
+            };
+
+            const path = "path";
+
+            // when
+            manager.pageview(path);
+
+            // then
+            expect(ReactGA.pageview).not.toBeCalled();
         });
     });
 
