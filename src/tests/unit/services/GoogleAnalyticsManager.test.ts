@@ -6,13 +6,12 @@ describe("GoogleAnalyticsManager", function () {
     let processEnv;
 
     beforeEach(function () {
-        processEnv = {...process.env};
-        (ReactGA.initialize as any).mockReset();
-        (ReactGA.pageview as any).mockReset();
+        backupProcessEnv();
+        resetMocks();
     });
 
     afterEach(function () {
-        process.env = processEnv;
+        restoreProcessEnv();
     });
 
     describe("initialize", function () {
@@ -60,7 +59,7 @@ describe("GoogleAnalyticsManager", function () {
         it("should fire pageview if initialized", function () {
             // given
             const manager = new GoogleAnalyticsManager();
-            manager.isInitialized = function(){
+            manager.isInitialized = function () {
                 return true;
             };
 
@@ -89,6 +88,19 @@ describe("GoogleAnalyticsManager", function () {
             expect(ReactGA.pageview).not.toBeCalled();
         });
     });
+
+    function backupProcessEnv() {
+        processEnv = {...process.env};
+    }
+
+    function restoreProcessEnv() {
+        process.env = processEnv;
+    }
+
+    function resetMocks() {
+        (ReactGA.initialize as any).mockReset();
+        (ReactGA.pageview as any).mockReset();
+    }
 
     function overrideProcessEnv({trackingEnabled, trackingId}: { trackingEnabled?: string; trackingId?: string }) {
         process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED = trackingEnabled;
