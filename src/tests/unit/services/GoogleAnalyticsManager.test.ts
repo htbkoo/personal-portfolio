@@ -59,9 +59,7 @@ describe("GoogleAnalyticsManager", function () {
         it("should fire pageview if initialized", function () {
             // given
             const manager = new GoogleAnalyticsManager();
-            manager.isInitialized = function () {
-                return true;
-            };
+            setIsInitialized(manager, true);
 
             const path = "path";
 
@@ -75,14 +73,10 @@ describe("GoogleAnalyticsManager", function () {
         it("should not fire pageview if not initialized", function () {
             // given
             const manager = new GoogleAnalyticsManager();
-            manager.isInitialized = function () {
-                return false;
-            };
-
-            const path = "path";
+            setIsInitialized(manager, false);
 
             // when
-            manager.pageview(path);
+            manager.pageview("anything");
 
             // then
             expect(ReactGA.pageview).not.toBeCalled();
@@ -105,5 +99,9 @@ describe("GoogleAnalyticsManager", function () {
     function overrideProcessEnv({trackingEnabled, trackingId}: { trackingEnabled?: string; trackingId?: string }) {
         process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED = trackingEnabled;
         process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID = trackingId;
+    }
+
+    function setIsInitialized(manager, isInitialized) {
+        manager.isInitialized = () => isInitialized;
     }
 });
