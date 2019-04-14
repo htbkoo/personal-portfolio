@@ -1,11 +1,5 @@
-import {Output} from "rss-parser";
 import RssFeedsParser from "./RssFeedsParser";
-
-interface RssParser {
-    parseString(xml: string, callback?: (err: Error, feed: Output) => void): Promise<Output>;
-
-    parseURL(feedUrl: string, callback?: (err: Error, feed: Output) => void, redirectCount?: number): Promise<Output>;
-}
+import {RssParser} from "./RssParser";
 
 export default class CodePenRssFeedsParser implements RssFeedsParser {
     private readonly rssParser: RssParser;
