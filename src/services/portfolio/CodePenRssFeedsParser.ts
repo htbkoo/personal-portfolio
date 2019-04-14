@@ -2,7 +2,8 @@ import {Output} from "rss-parser";
 import RssFeedsParser from "./RssFeedsParser";
 
 interface RssParser {
-    // parseString(xml: string, callback?: (err: Error, feed: Output) => void): Promise<Output>;
+    parseString(xml: string, callback?: (err: Error, feed: Output) => void): Promise<Output>;
+
     parseURL(feedUrl: string, callback?: (err: Error, feed: Output) => void, redirectCount?: number): Promise<Output>;
 }
 

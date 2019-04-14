@@ -49,7 +49,8 @@ describe("CodePenRssFeedsParser", function () {
 
     function createMockRssParser() {
         const mockRssParser = {
-            parseURL: jest.fn()
+            parseURL: jest.fn(),
+            parseString: jest.fn(),
         };
         return {
             whenParseUrl(url) {
