@@ -1,38 +1,22 @@
 import RssFeedsParser from "./RssFeedsParser";
 import {RssParser} from "./RssParser";
+import {rssFeedsContent} from "../../metadata/portfolios/rssFeeds.json";
 
-import fs from "fs";
-import path from "path";
-
-function tryReadLocalRssFeedFile(): string {
-    try {
-        const filePath = path.normalize("../../metadata/portfolios/feed.xml");
-        return fs.readFileSync(filePath, 'utf8');
-    } catch (e) {
-        console.warn("Unable to read from the local rssFeeds file, portfolio section will be rendered as empty");
-        return "";
-    }
-}
-
-const rssFeedsFile = tryReadLocalRssFeedFile();
-
-export default class CodePenRssFeedsParser implements RssFeedsParser {
+export default class LocalCodePenRssFeedsParser implements RssFeedsParser {
     private readonly rssParser: RssParser;
-    private readonly asyncReadFeeds: () => Promise<string>;
+    private rssFeeds: string;
 
-    constructor(rssParser: RssParser, readFeeds: () => Promise<string> = readLocalRssFeeds) {
+    constructor(rssParser: RssParser, rssFeeds: string = rssFeedsContent) {
         this.rssParser = rssParser;
-        this.asyncReadFeeds = readFeeds;
+        this.rssFeeds = rssFeeds;
     }
 
     async parseUrl() {
         let output;
 
         try {
-            const rssFeedsString = await this.asyncReadFeeds();
-            console.log(`read rssFeeds as string: ${rssFeedsString}`);
-
-            output = await this.rssParser.parseString(rssFeedsString);
+            console.debug(`provided rssFeeds: ${this.rssFeeds}`);
+            output = await this.rssParser.parseString(this.rssFeeds);
         } catch (e) {
             throw new Error(`Unable to read or parse rssFeedsString due to ${e}`);
         }
@@ -43,8 +27,4 @@ export default class CodePenRssFeedsParser implements RssFeedsParser {
             throw new Error(`Missing 'items' from the parsed output: ${output}`);
         }
     }
-}
-
-async function readLocalRssFeeds(): Promise<string> {
-    return rssFeedsFile;
 }
