@@ -7,11 +7,11 @@ import AboutPanel from "../components/about/AboutPanel";
 import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
 import ContactPanel from "../components/contact/ContactPanel";
 import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
-import CodePenRssFeedsParser from "../services/portfolio/CodePenRssFeedsParser";
+import LocalCodePenRssFeedsParser from "../services/portfolio/LocalCodePenRssFeedsParser";
 
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
-const factory = new EmbeddedPenPortfoliosFactory(new CodePenRssFeedsParser(new RssParser()), rssFeedUrl);
+const factory = new EmbeddedPenPortfoliosFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
 const sectionConfigs: SectionMetadata[] = [
     {
