@@ -14,7 +14,7 @@ function HomePanel(props: HomePanelProps) {
         <Section
             id="home"
             hasDivider={false}
-            title="Welcome To My Portfolio"
+            title="Updates"
         >
             <Typography paragraph >
 
