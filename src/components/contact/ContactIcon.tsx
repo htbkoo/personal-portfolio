@@ -16,7 +16,7 @@ function ContactIcon(props: ContactIconProps) {
     const {classes, metadata} = props;
     return (
         <div className={classes.icon}>
-            <a href={metadata.href} target="_blank">
+            <a href={metadata.href} target="_blank" rel="noopener">
                 <img
                     src={metadata.img.src}
                     alt={metadata.img.alt}/>
