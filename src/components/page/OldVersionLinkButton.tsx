@@ -8,12 +8,12 @@ const styles = (theme: Theme) => createStyles({});
 interface OldVersionLinkButtonProps extends WithStyles<typeof styles> {
 }
 
-const OLD_VERSION_URL = "https://codepen.io/htbkoo/full/ZyYWNN/";
+const OLD_VERSION_URL = "https://codepen.io/htbkoo/";
 
 function OldVersionLinkButton(props: OldVersionLinkButtonProps) {
     return (
         <Button href={OLD_VERSION_URL} variant="contained" color="inherit">
-            Switch to old version
+            View on CodePen
         </Button>
     );
 }

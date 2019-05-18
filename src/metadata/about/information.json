@@ -2,7 +2,7 @@
   [
     {
       "key": "Name",
-      "value": "${findItAtContact}"
+      "value": "Hey"
     },
     {
       "key": "Is-a",
