@@ -12,6 +12,7 @@
     "@types/react": "^16.7.22",
     "@types/react-dom": "^16.0.11",
     "cheerio": "^1.0.0-rc.2",
+    "promise-polyfill": "^8.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-ga": "^2.5.7",
@@ -20,7 +21,8 @@
     "react-scrollspy": "^3.3.5",
     "rss-parser": "3.6.2",
     "ts-react-codepen-embed": "^0.3.3",
-    "typescript": "^3.2.4"
+    "typescript": "^3.2.4",
+    "url-polyfill": "^1.1.5"
   },
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
