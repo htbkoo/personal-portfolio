@@ -7,7 +7,6 @@ const theme = createMuiTheme({
         secondary: {main: '#e6f0fe',},
     },
     typography: {
-        useNextVariants: true,
     },
     overrides: {
         MuiTableRow: {
