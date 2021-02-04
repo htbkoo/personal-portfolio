@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.1",
@@ -26,8 +26,8 @@
   },
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none react-scripts start",
+    "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,6 +46,7 @@
     "cross-env": "^5.2.0",
     "jest-when": "^2.2.0",
     "mv": "^2.1.1",
+    "prettier": "^2.2.1",
     "rimraf": "^2.6.3"
   }
 }
