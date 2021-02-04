@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {Theme, withStyles} from '@material-ui/core/styles';
-import {createStyles, WithStyles} from '@material-ui/core';
+import React, { Component } from 'react';
+import { Theme, withStyles } from '@material-ui/core/styles';
+import { createStyles, WithStyles } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
 import SectionMetadata from "../../model/SectionMetadata";
-import Hidden from '@material-ui/core/Hidden';
 import { version } from "../../../package.json"
 
 const drawerWidth = 240;
