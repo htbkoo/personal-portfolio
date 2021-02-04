@@ -29,7 +29,7 @@ interface ResponsivePageDrawerProps extends WithStyles<typeof styles, true> {
 
 class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
     render() {
-        const {classes, sectionConfigs, theme} = this.props;
+        const { classes, sectionConfigs, theme } = this.props;
 
         return (
             <React.Fragment>
@@ -84,4 +84,4 @@ function VersionText() {
     return <div>v{version}-{process.env.REACT_APP_GIT_SHA}</div>
 }
 
-export default withStyles(styles, {withTheme: true})(ResponsivePageDrawer);
+export default withStyles(styles, { withTheme: true })(ResponsivePageDrawer);
