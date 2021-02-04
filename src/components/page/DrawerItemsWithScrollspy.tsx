@@ -26,7 +26,7 @@ const styles = (theme: Theme) => createStyles({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing.unit * 3,
+        padding: theme.spacing(3),
     },
     toolbar: theme.mixins.toolbar,
     scrollSpyList: {

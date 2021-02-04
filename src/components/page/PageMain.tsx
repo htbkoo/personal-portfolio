@@ -14,7 +14,7 @@ const styles = (theme: Theme) => createStyles({
             padding: "unset"
         },
         [theme.breakpoints.up('sm')]: {
-            padding: theme.spacing.unit * 3
+            padding: theme.spacing(3)
         },
     },
     toolbar: theme.mixins.toolbar,
