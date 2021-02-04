@@ -5,6 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
 import SectionMetadata from "../../model/SectionMetadata";
 import Hidden from '@material-ui/core/Hidden';
+import { version } from "../../../package.json"
 
 const drawerWidth = 240;
 
@@ -13,6 +14,11 @@ const styles = (theme: Theme) => createStyles({
         width: drawerWidth,
     },
     toolbar: theme.mixins.toolbar,
+    versionText: {
+        position: "absolute",
+        left: "16px",
+        bottom: "16px",
+    }
 });
 
 interface ResponsivePageDrawerProps extends WithStyles<typeof styles, true> {
@@ -60,6 +66,9 @@ class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
                 <React.Fragment>
                     <div className={classes.toolbar}/>
                     <DrawerItemsWithScrollspy items={asItems(sectionConfigs)}/>
+                    <div className={classes.versionText}>
+                        <VersionText/>
+                    </div>
                 </React.Fragment>
             )
         }
@@ -69,6 +78,10 @@ class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
 
 function asItems(sectionConfigs: SectionMetadata[]): string[] {
     return sectionConfigs.map(config => config.name);
+}
+
+function VersionText() {
+    return <div>v{version}-{process.env.REACT_APP_GIT_SHA}</div>
 }
 
 export default withStyles(styles, {withTheme: true})(ResponsivePageDrawer);
