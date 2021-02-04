@@ -26,8 +26,8 @@
   },
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none react-scripts start",
+    "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
