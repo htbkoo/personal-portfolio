@@ -4,13 +4,10 @@ import {Breakpoint} from '@material-ui/core/styles/createBreakpoints';
 import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import withWidth from "@material-ui/core/withWidth";
-import toRenderProps from 'recompose/toRenderProps';
 
 import {PortfolioProps} from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
 import {credentialsExtractor} from "../../services/portfolio/CodePenItemContentExtractor";
-
-const WithWidth = toRenderProps(withWidth());
 
 const styles = (theme: Theme) => createStyles({
     embeddedContainer: {
