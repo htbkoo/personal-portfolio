@@ -1,3 +1,5 @@
+jest.mock('react-ga');
+
 import GoogleAnalyticsManager from "../../../services/GoogleAnalyticsManager";
 import ReactGA from 'react-ga';
 
