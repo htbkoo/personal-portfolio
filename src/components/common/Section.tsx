@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FunctionComponent} from "react";
-import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
+import { createStyles, Theme, TypographyTypeMap, withStyles, WithStyles } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
