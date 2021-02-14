@@ -1,5 +1,4 @@
 import * as React from "react";
-import {CodepenEmbedScriptTagBuilder, ScriptTagBuilder} from "ts-react-codepen-embed";
 
 import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
 import {PortfoliosFactory} from "./PortfoliosFactory";

@@ -21,7 +21,7 @@ interface ContactIconProps extends WithStyles<typeof styles> {
 function ContactIcon({ classes, metadata, cappedIconSize }: ContactIconProps) {
     return (
         <div className={classes.icon}>
-            <a href={metadata.href} target="_blank" rel="noopener">
+            <a href={metadata.href} target="_blank" rel="noopener noreferrer">
                 <img
                     className={cappedIconSize ? classes.iconImg : ""}
                     src={metadata.img.src}
