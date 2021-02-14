@@ -3,13 +3,6 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ## TODOs
-3. [ ] ([#34](https://github.com/htbkoo/personal-portfolio/pull/34)) Update project dependencies, which includes:
-    1. `react` + `react-dom`
-    2. `typescript`
-    3. `react-scripts`
-    4. `material-ui`
-    5. `cheerio`
-    6. `react-ga`
 4. [ ] Fix the content at anchor hidden by header bar issue, references:
     1. [`css-tricks`](https://css-tricks.com/)
         1. [Hash Tag Links That Don’t Headbutt The Browser Window](https://css-tricks.com/hash-tag-links-padding/)
@@ -19,6 +12,19 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
         1. [Jump links and viewport positioning](http://nicolasgallagher.com/jump-links-and-viewport-positioning/)
     3. [`stackoverflow`](https://stackoverflow.com)
         1. [Fixed page header overlaps in-page anchors](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors)
-5. [ ] Update `README.md`
+5. [ ] Add `Fork me on GitHub` ribbon
+6. [ ] Add `GitHub` action to automatically:
+    1. [ ] Run tests for all `PRs` and `merges` into `master`
+    2. [ ] Build `docs/` and deploy for `gh-pages` 
+6. [ ] Add more section `README.md`, e.g.
+    1. [ ] Quick Overview
+    2. [ ] Installation
 1. [x] Update project license
 2. [x] (If applicable) merge the PRs raised by `dependabot` to fix potential security vulnerabilities
+3. [x] ([#34](https://github.com/htbkoo/personal-portfolio/pull/34)) Update project dependencies, which includes:
+    1. `react` + `react-dom`
+    2. `typescript`
+    3. `react-scripts`
+    4. `material-ui`
+    5. `cheerio`
+    6. `react-ga`
