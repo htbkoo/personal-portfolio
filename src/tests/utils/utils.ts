@@ -1,13 +1,13 @@
 export function overrideGoogleAnalyticsRelatedProcessEnv({
   trackingEnabled,
   trackingId,
-  testMode = false,
+  testMode,
 }: {
   trackingEnabled?: string;
   trackingId?: string;
-  testMode?: boolean;
+  testMode?: string;
 }) {
   process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED = trackingEnabled;
   process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID = trackingId;
-  process.env.REACT_APP_REACT_GA_TEST_MODE = testMode.toString();
+  process.env.REACT_APP_REACT_GA_TEST_MODE = testMode;
 }
