@@ -32,7 +32,7 @@ jobs:
     # reference: https://stackoverflow.com/a/58525708
     - run: yarn install --frozen-lockfile
     - run: yarn test
-    - run: yarn run build --if-present
+    - run: yarn build
       env:
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID }}
