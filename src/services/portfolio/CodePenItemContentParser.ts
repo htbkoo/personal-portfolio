@@ -2,9 +2,9 @@ import cheerio from "cheerio";
 import CodePenItemContentExtractor, {Content} from "./CodePenItemContentExtractor";
 
 export default class CodePenItemContentParser {
-    private readonly $: CheerioStatic;
+    private readonly $: cheerio.Root;
 
-    private constructor($: CheerioStatic) {
+    private constructor($: cheerio.Root) {
         this.$ = $;
     }
 

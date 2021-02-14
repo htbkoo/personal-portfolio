@@ -4,7 +4,7 @@ import ContactMetadata from "../../model/ContactMetadata";
 
 const styles = (theme: Theme) => createStyles({
     icon: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
     }
 });
 

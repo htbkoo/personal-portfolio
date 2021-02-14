@@ -12,7 +12,7 @@ import Section from "../common/Section";
 
 const styles = (theme: Theme) => createStyles({
     icons: {
-        padding: theme.spacing.unit * 3,
+        padding: theme.spacing(3),
         display: "flex",
         flexFlow: "wrap",
         justifyContent: "center",

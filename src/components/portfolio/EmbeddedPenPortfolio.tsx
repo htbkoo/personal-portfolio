@@ -1,16 +1,13 @@
 import * as React from "react";
-import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
-import {Breakpoint} from '@material-ui/core/styles/createBreakpoints';
+import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import withWidth from "@material-ui/core/withWidth";
-import toRenderProps from 'recompose/toRenderProps';
 
-import {PortfolioProps} from "./PortfolioProps";
+import { PortfolioProps } from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
-import {credentialsExtractor} from "../../services/portfolio/CodePenItemContentExtractor";
-
-const WithWidth = toRenderProps(withWidth());
+import { credentialsExtractor } from "../../services/portfolio/CodePenItemContentExtractor";
 
 const styles = (theme: Theme) => createStyles({
     embeddedContainer: {
@@ -31,9 +28,9 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
 };
 
 function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
-    const {title, content, isScriptLoaded, classes} = props;
+    const { title, content, isScriptLoaded, classes } = props;
     const contentParser = CodePenItemContentParser.newParser(content);
-    const {user, hash} = contentParser.parseContent(credentialsExtractor);
+    const { user, hash } = contentParser.parseContent(credentialsExtractor);
 
     return (
         <div className={classes.embeddedContainer}>

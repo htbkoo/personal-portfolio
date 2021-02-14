@@ -1,13 +1,12 @@
 import * as React from "react";
 import {FunctionComponent} from "react";
-import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
+import { createStyles, Theme, TypographyTypeMap, withStyles, WithStyles } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import {ThemeStyle} from "@material-ui/core/styles/createTypography";
 
 const styles = (theme: Theme) => createStyles({
     section: {
-        padding: theme.spacing.unit * 3
+        padding: theme.spacing(3)
     },
     header: {},
     body: {},
@@ -41,9 +40,7 @@ function optionalSubtitle(subtitle?: string) {
     return optionalTypography({text: subtitle, variant: "h5"});
 }
 
-type Variant = ThemeStyle | 'srOnly' | 'inherit';
-
-function optionalTypography({text, variant}: { text?: string, variant: Variant }) {
+function optionalTypography({text, variant}: { text?: string, variant: TypographyTypeMap["props"]["variant"] }) {
     return text
         ? <Typography variant={variant} paragraph>{text}</Typography>
         : "";

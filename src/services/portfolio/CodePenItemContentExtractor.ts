@@ -18,7 +18,7 @@ export interface Content {
 
 export default interface CodePenItemContentExtractor<ContentType extends keyof Content> {
     key: string,
-    extract: ($: CheerioStatic) => Content[ContentType]
+    extract: ($: any) => Content[ContentType], // TODO: fix the typing
 }
 
 const imgExtractor: CodePenItemContentExtractor<"img"> = {

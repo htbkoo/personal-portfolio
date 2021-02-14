@@ -13,7 +13,7 @@ import AboutEntry from "../../model/AboutEntry";
 const styles = (theme: Theme) => createStyles({
     root: {
         // width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing(3),
         overflowX: 'auto',
     },
     table: {
@@ -22,7 +22,7 @@ const styles = (theme: Theme) => createStyles({
     },
     row: {
         color: theme.palette.secondary.contrastText,
-        height: theme.spacing.unit * 4,
+        height: theme.spacing(4),
     },
     divider: {
         backgroundColor: theme.palette.secondary.light,
