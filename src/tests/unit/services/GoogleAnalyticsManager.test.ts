@@ -1,3 +1,5 @@
+import { overrideGoogleAnalyticsRelatedProcessEnv } from "../../utils/utils";
+
 jest.mock('react-ga');
 
 import GoogleAnalyticsManager from "../../../services/GoogleAnalyticsManager";
@@ -19,7 +21,7 @@ describe("GoogleAnalyticsManager", function () {
     describe("initialize", function () {
         it("should init if tracking is enabled and tracking id is provided", function () {
             // given
-            overrideProcessEnv({ trackingEnabled: ENABLED, trackingId: "someId" });
+            overrideGoogleAnalyticsRelatedProcessEnv({ trackingEnabled: ENABLED, trackingId: "someId", testMode: "true" });
             const manager = new GoogleAnalyticsManager();
 
             // when
@@ -32,7 +34,7 @@ describe("GoogleAnalyticsManager", function () {
 
         it("should not init if tracking is disabled", function () {
             // given
-            overrideProcessEnv({ trackingEnabled: "false", trackingId: "someId" });
+            overrideGoogleAnalyticsRelatedProcessEnv({ trackingEnabled: "false", trackingId: "someId", testMode: "true"  });
             const manager = new GoogleAnalyticsManager();
 
             // when
@@ -45,7 +47,7 @@ describe("GoogleAnalyticsManager", function () {
 
         it("should not init if tracking id is not provided", function () {
             // given
-            overrideProcessEnv({ trackingEnabled: ENABLED });
+            overrideGoogleAnalyticsRelatedProcessEnv({ trackingEnabled: ENABLED, testMode: "true" });
             const manager = new GoogleAnalyticsManager();
 
             // when
@@ -96,11 +98,6 @@ describe("GoogleAnalyticsManager", function () {
     function resetMocks() {
         (ReactGA.initialize as any).mockReset();
         (ReactGA.pageview as any).mockReset();
-    }
-
-    function overrideProcessEnv({ trackingEnabled, trackingId }: { trackingEnabled?: string; trackingId?: string }) {
-        process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED = trackingEnabled;
-        process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID = trackingId;
     }
 
     function setIsInitialized(manager, isInitialized) {
