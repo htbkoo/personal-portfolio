@@ -11,4 +11,12 @@ describe('<App/>', function () {
         ReactDOM.render(<App/>, div);
         ReactDOM.unmountComponentAtNode(div);
     });
+
+    it('with GA enabled, renders without crashing', () => {
+        overrideGoogleAnalyticsRelatedProcessEnv({ trackingEnabled: "true", trackingId: "someId", testMode: "true" });
+
+        const div = document.createElement('div');
+        ReactDOM.render(<App/>, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
 });
