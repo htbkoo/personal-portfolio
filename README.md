@@ -20,7 +20,11 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
 8. [ ] Improve tests
-9. [ ] Add more section `README.md`, e.g.
+9. [ ] Refactor code, e.g.
+    1. [ ] Migrate to [`React Hooks`](https://reactjs.org/docs/hooks-intro.html) for clarity wherever applicable
+    2. [ ] Review components splitting / architecture wherever applicable
+    3. [ ] Generic code refactoring
+10. [ ] Add more section `README.md`, e.g.
     1. [ ] Quick Overview
     2. [ ] Installation
 1. [x] Update project license
