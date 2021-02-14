@@ -1,17 +1,18 @@
 import * as React from "react";
-import {FunctionComponent} from "react";
+import { FunctionComponent } from "react";
 import { createStyles, Theme, TypographyTypeMap, withStyles, WithStyles } from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
-const styles = (theme: Theme) => createStyles({
-    section: {
-        padding: theme.spacing(3),
-        ...getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme),
-    },
-    header: {},
-    body: {},
-});
+const styles = (theme: Theme) =>
+    createStyles({
+        section: {
+            padding: theme.spacing(3),
+            ...getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme),
+        },
+        header: {},
+        body: {},
+    });
 
 interface SectionProps extends WithStyles<typeof styles> {
     id: string,
