@@ -22,9 +22,6 @@ jobs:
         # node-version: [10.x, 12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    env:
-      IS_PUSH_TO_MASTER: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -64,7 +61,7 @@ jobs:
 
     - name: Deploy (if merging to `master`)
       # reference: https://kevsoft.net/2020/06/10/running-github-action-steps-and-jobs-only-on-push-to-master.html
-      if: ${{ env.IS_PUSH_TO_MASTER }}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
