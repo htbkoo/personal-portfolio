@@ -34,12 +34,25 @@ function ContactPanel(props: ContactPanelProps) {
             subtitle="Check me out at the following!"
         >
             <div className={classes.icons}>
-                {contactIcons(iconMetadatas)}
+                <Icons/>
             </div>
             <div className={classes.badges}>
                 <Badges/>
             </div>
         </Section>
+    );
+}
+
+function Icons() {
+    return (
+        <React.Fragment>
+            <Hidden smUp>
+                {contactIcons(iconMetadatas, true)}
+            </Hidden>
+            <Hidden xsDown>
+                {contactIcons(iconMetadatas)}
+            </Hidden>
+        </React.Fragment>
     );
 }
 
@@ -56,9 +69,9 @@ function Badges() {
     );
 }
 
-function contactIcons(metadatas: ContactMetadata[]) {
+function contactIcons(metadatas: ContactMetadata[], cappedIconSize: boolean = false) {
     return metadatas.map((metadata, i) => (
-        <ContactIcon key={`${i.toString()}_${metadata.img.alt}`} metadata={metadata}/>
+        <ContactIcon key={`${i.toString()}_${metadata.img.alt}`} metadata={metadata} cappedIconSize={cappedIconSize}/>
     ));
 }
 
