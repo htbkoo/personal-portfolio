@@ -22,6 +22,9 @@ jobs:
         # node-version: [10.x, 12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+    env:
+      IS_PUSH_TO_MASTER: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -50,6 +53,25 @@ jobs:
       env:
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID }}
+
+    - name: Prepare tag
+      id: prepare_tag
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        TAG_NAME="${GITHUB_REF##refs/tags/}"
+        echo "::set-output name=tag_name::${TAG_NAME}"
+        echo "::set-output name=deploy_tag_name::deploy-${TAG_NAME}"
+
+    - name: Deploy (if merging to `master`)
+      # reference: https://kevsoft.net/2020/06/10/running-github-action-steps-and-jobs-only-on-push-to-master.html
+      if: ${{ env.IS_PUSH_TO_MASTER }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+        # reference: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-git-tag
+        tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
+        tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
     # - run: npm ci
     # - run: npm run build --if-present
     # - run: npm test
