@@ -6,7 +6,9 @@ import Divider from '@material-ui/core/Divider';
 
 const styles = (theme: Theme) => createStyles({
     section: {
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        paddingTop: getPaddingTopForSection(theme),
+        marginTop: -getPaddingTopForSection(theme),
     },
     header: {},
     body: {},
@@ -50,6 +52,21 @@ function optionalDivider(hasDivider?: boolean) {
     return hasDivider
         ? <Divider/>
         : "";
+}
+
+function getPaddingTopForSection(theme: Theme): string | number {
+    // To fix the AppBar overlapping in-page anchors issue
+    // Reference: https://stackoverflow.com/a/13117744
+    const minHeight = theme.mixins.toolbar.minHeight;
+    if (minHeight) {
+        if (typeof minHeight === "number") {
+            return theme.spacing(3) + minHeight;
+        } else {
+            return minHeight;
+        }
+    } else {
+        return theme.spacing(3);
+    }
 }
 
 Section.defaultProps = {
