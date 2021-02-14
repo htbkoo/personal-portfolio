@@ -4,9 +4,6 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 
 ## TODOs
 5. [ ] Add `Fork me on GitHub` ribbon
-6. [ ] Add `GitHub` action to automatically:
-    1. [ ] Run tests for all `PRs` and `merges` into `master`
-    2. [ ] Build `docs/` and deploy for `gh-pages`
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
@@ -36,3 +33,6 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
         1. [Jump links and viewport positioning](http://nicolasgallagher.com/jump-links-and-viewport-positioning/)
     3. [`stackoverflow`](https://stackoverflow.com)
         1. [Fixed page header overlaps in-page anchors](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors)
+6. [x] Add `GitHub` action to automatically:
+    1. [x] Run tests for all `PRs` and `merges` into `master`
+    2. [x] Build `docs/` and deploy to `gh-pages`
