@@ -19,7 +19,8 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [ ] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
-8. [ ] Add more section `README.md`, e.g.
+8. [ ] Improve tests
+9. [ ] Add more section `README.md`, e.g.
     1. [ ] Quick Overview
     2. [ ] Installation
 1. [x] Update project license
