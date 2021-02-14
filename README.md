@@ -3,19 +3,10 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ## TODOs
-4. [ ] Fix the content at anchor hidden by header bar issue, references:
-    1. [`css-tricks`](https://css-tricks.com/)
-        1. [Hash Tag Links That Don’t Headbutt The Browser Window](https://css-tricks.com/hash-tag-links-padding/)
-        2. [Fixed Headers, On-Page Links, and Overlapping Content, Oh My!](https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/)
-        3. [Link in Header? Or Header in Link?](https://css-tricks.com/link-header-header-link/)        
-    2. [`nicolasgallagher.com`](http://nicolasgallagher.com/)
-        1. [Jump links and viewport positioning](http://nicolasgallagher.com/jump-links-and-viewport-positioning/)
-    3. [`stackoverflow`](https://stackoverflow.com)
-        1. [Fixed page header overlaps in-page anchors](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors)
 5. [ ] Add `Fork me on GitHub` ribbon
 6. [ ] Add `GitHub` action to automatically:
     1. [ ] Run tests for all `PRs` and `merges` into `master`
-    2. [ ] Build `docs/` and deploy for `gh-pages` 
+    2. [ ] Build `docs/` and deploy for `gh-pages`
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
@@ -36,3 +27,12 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
     4. `material-ui`
     5. `cheerio`
     6. `react-ga`
+4. [x] Fix the content at anchor hidden by header bar issue, references:
+    1. [`css-tricks`](https://css-tricks.com/)
+        1. [Hash Tag Links That Don’t Headbutt The Browser Window](https://css-tricks.com/hash-tag-links-padding/)
+        2. [Fixed Headers, On-Page Links, and Overlapping Content, Oh My!](https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/)
+        3. [Link in Header? Or Header in Link?](https://css-tricks.com/link-header-header-link/)
+    2. [`nicolasgallagher.com`](http://nicolasgallagher.com/)
+        1. [Jump links and viewport positioning](http://nicolasgallagher.com/jump-links-and-viewport-positioning/)
+    3. [`stackoverflow`](https://stackoverflow.com)
+        1. [Fixed page header overlaps in-page anchors](https://stackoverflow.com/questions/4086107/fixed-page-header-overlaps-in-page-anchors)
