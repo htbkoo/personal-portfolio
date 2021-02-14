@@ -40,6 +40,7 @@ function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
                 title={title}
                 height={getHeight()}
                 loader={() => <CircularProgress/>}
+                defaultTab="result"
                 shouldLoadScript={false}
                 overrideAsLoaded={isScriptLoaded}
             />
