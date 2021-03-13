@@ -38,6 +38,11 @@ const styles = (theme: Theme) => createStyles({
     },
     oldVersionLinkButton: {
         margin: "5%"
+    },
+    isCurrent: {
+        fontWeight: "bolder",
+        color: "#770077",
+        backgroundColor: "#dadaff"
     }
 });
 
@@ -45,15 +50,18 @@ interface DrawerItemsWithScrollspyProps extends WithStyles<typeof styles> {
     items: string[],
 }
 
+const EMPIRICAL_OFFSET = -80;
+
 function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
     const {items, classes} = props;
 
     return (
         <React.Fragment>
             <Scrollspy
-                items={items}
-                currentClassName="is-current"
+                items={items.map(item => item.toLowerCase())}  // TODO: refactor this
+                currentClassName={classes.isCurrent}
                 className={classes.scrollSpyList}
+                offset={EMPIRICAL_OFFSET}
             >
                 {items.map((text, index) => (
                     <a key={text} href={itemToHref(text)} className={classes.scrollSpyListItem}>
