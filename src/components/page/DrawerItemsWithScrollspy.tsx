@@ -50,6 +50,8 @@ interface DrawerItemsWithScrollspyProps extends WithStyles<typeof styles> {
     items: string[],
 }
 
+const EMPIRICAL_OFFSET = -80;
+
 function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
     const {items, classes} = props;
 
@@ -59,6 +61,7 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
                 items={items.map(item => item.toLowerCase())}  // TODO: refactor this
                 currentClassName={classes.isCurrent}
                 className={classes.scrollSpyList}
+                offset={EMPIRICAL_OFFSET}
             >
                 {items.map((text, index) => (
                     <a key={text} href={itemToHref(text)} className={classes.scrollSpyListItem}>
