@@ -3,7 +3,6 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ## TODOs
-5. [ ] Add `Fork me on GitHub` ribbon
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
@@ -15,6 +14,16 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 10. [ ] Add more section `README.md`, e.g.
     1. [ ] Quick Overview
     2. [ ] Installation
+11. [ ] Re-architecture, e.g. 
+    1. [ ] [Add `react-navigation` support](https://reactnavigation.org/)
+    2. [ ] Try out if [`micro-frontend`](https://martinfowler.com/articles/micro-frontends.html) is a good fit for this project
+12. [ ] Revamp design, e.g.
+    1. [ ] Re-organize components layout, e.g. 
+        1. [ ] replace `Drawer` by `navbar`?
+    2. [ ] Add `Blog` / `My learning notes` section 
+        1. [ ] The contents can be stored as `markdown` in GitHub repo directly? 
+    3. [ ] Group pages and do not put all of them at the same page?
+    4. [ ] Add animation
 1. [x] Update project license
 2. [x] (If applicable) merge the PRs raised by `dependabot` to fix potential security vulnerabilities
 3. [x] ([#34](https://github.com/htbkoo/personal-portfolio/pull/34)) Update project dependencies, which includes:
@@ -36,3 +45,5 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 6. [x] Add `GitHub` action to automatically:
     1. [x] Run tests for all `PRs` and `merges` into `master`
     2. [x] Build `docs/` and deploy to `gh-pages`
+5. [x] Add `Fork me on GitHub` ribbon
+    1. Done by adding link to repo at version text
