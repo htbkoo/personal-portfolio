@@ -3,7 +3,6 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ## TODOs
-5. [ ] Add `Fork me on GitHub` ribbon
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
@@ -46,3 +45,5 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 6. [x] Add `GitHub` action to automatically:
     1. [x] Run tests for all `PRs` and `merges` into `master`
     2. [x] Build `docs/` and deploy to `gh-pages`
+5. [x] Add `Fork me on GitHub` ribbon
+    1. Done by adding link to repo at version text
