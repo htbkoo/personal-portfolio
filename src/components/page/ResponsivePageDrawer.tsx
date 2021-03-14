@@ -33,7 +33,7 @@ class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
         const { classes, sectionConfigs, theme } = this.props;
 
         return (
-            <React.Fragment>
+            <>
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden mdUp>
                     <Drawer
@@ -59,18 +59,18 @@ class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
                         {drawerContent()}
                     </Drawer>
                 </Hidden>
-            </React.Fragment>
+            </>
         );
 
         function drawerContent() {
             return (
-                <React.Fragment>
+                <>
                     <div className={classes.toolbar}/>
                     <DrawerItemsWithScrollspy items={asItems(sectionConfigs)}/>
                     <div className={classes.versionText}>
                         <VersionText/>
                     </div>
-                </React.Fragment>
+                </>
             )
         }
     }
