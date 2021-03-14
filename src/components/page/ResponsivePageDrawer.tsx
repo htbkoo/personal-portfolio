@@ -6,7 +6,7 @@ import Hidden from "@material-ui/core/Hidden";
 
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
 import SectionMetadata from "../../model/SectionMetadata";
-import { version } from "../../../package.json";
+import { VersionText } from "../common/VersionText";
 
 const drawerWidth = 240;
 
@@ -77,14 +77,6 @@ class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
 
 function asItems(sectionConfigs: SectionMetadata[]): string[] {
     return sectionConfigs.map((config) => config.name);
-}
-
-function VersionText() {
-    return (
-        <div>
-            v{version}-{process.env.REACT_APP_GIT_SHA}
-        </div>
-    );
 }
 
 export default withStyles(styles, { withTheme: true })(ResponsivePageDrawer);
