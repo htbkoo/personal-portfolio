@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
     "gh-pages:clean": "rimraf docs",
-    "gh-pages:rename": "node ./bin/rename -s build -d docs"
+    "gh-pages:rename": "node ./bin/rename -s build -d docs",
+    "cypress:open": "yarn run cypress open"
   },
   "browserslist": [
     ">0.2%",
