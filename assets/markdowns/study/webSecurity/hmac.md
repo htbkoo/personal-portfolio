@@ -29,3 +29,5 @@
 - no known `extension attacks` exist for current HMAC spec
 
 ### HMAC with JWTs
+- can use for authentication in web app
+- can keep track who is who
