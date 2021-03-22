@@ -154,3 +154,8 @@ typings/
 
 # Serverless directories
 .serverless
+
+# cypress
+# reference: https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Configuring-Folder-Structure
+cypress/screenshots/
+cypress/videos/
