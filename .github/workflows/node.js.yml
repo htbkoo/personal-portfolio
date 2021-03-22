@@ -51,6 +51,14 @@ jobs:
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
         REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID }}
 
+    # Install NPM dependencies, cache them correctly
+    # and run all Cypress tests
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        build: npm run build
+        start: npm start
+
     - name: Prepare tag
       id: prepare_tag
       if: startsWith(github.ref, 'refs/tags/')
