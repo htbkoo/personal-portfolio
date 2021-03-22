@@ -12,8 +12,7 @@ A methodology for building `software-as-a-service` apps (aka `web apps`)
 - nowadays, software is commonly delivered as a service, i.e. `web apps` or `software-as-a-service`
 - `twelve-factor app` is a methodology for build such apps that:
     - use **declarative** formats for setup automation, to minimize time and cost for new developers joining the project
-    - have a **clean contract** with the underlying operating system, offering **maximum portability** between execution
-      environments
+    - have a **clean contract** with the underlying operating system, offering **maximum portability** between execution environments
     - suitable for **deployment** on modern **cloud platforms**, removing the need for servers and system administration
     - **minimize divergence** between development and production, enabling **continuous deployment** for maximum agility
     - can **scale up** without significant changes to tooling, architecture, or development practices.
