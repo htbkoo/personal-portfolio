@@ -7,16 +7,21 @@ describe("Integration tests - Home Page", () => {
         beforeEach(() => {
             cy.visit("/");
         });
+        [
+            { linkText: "About", expectedUrlAnchor: "#about" },
+            { linkText: "Portfolio", expectedUrlAnchor: "#portfolio" },
+            { linkText: "Contact", expectedUrlAnchor: "#contact" },
+        ].forEach(({ linkText, expectedUrlAnchor }) =>
+            it(`should jump to "${expectedUrlAnchor}" when clicked on link "${linkText}"`, () => {
+                // given
+                const linkEl = cy.get("a").contains(linkText);
 
-        it("should jump to contact when clicked on Contact", () => {
-            // given
-            const linkEl = cy.get("a").contains("Contact");
+                // when
+                linkEl.click();
 
-            // when
-            linkEl.click();
-
-            // then
-            cy.url().should("include", "#contact");
-        });
+                // then
+                cy.url().should("include", expectedUrlAnchor);
+            }),
+        );
     });
 });
