@@ -16,8 +16,7 @@ A methodology for building `software-as-a-service` apps (aka `web apps`)
     - suitable for **deployment** on modern **cloud platforms**, removing the need for servers and system administration
     - **minimize divergence** between development and production, enabling **continuous deployment** for maximum agility
     - can **scale up** without significant changes to tooling, architecture, or development practices.
-- applicable to apps written in **any programming languages**, and which use **any combination of backing services** (
-  database, queue, memory cache, etc)
+- applicable to apps written in **any programming languages**, and which use **any combination of backing services** (database, queue, memory cache, etc)
 
 ## List
 
