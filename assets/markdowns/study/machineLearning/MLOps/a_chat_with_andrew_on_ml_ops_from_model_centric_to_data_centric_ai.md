@@ -106,4 +106,14 @@ Need to
 ### MLOps
 Ensuring consistently high quality data:
 1. At `Collect data` phase: how do I define and collect my data
-1. At `Train model` phase: how do I modify data to improve model perfomance
+2. At `Train model` phase: how do I modify data to improve model performance
+3. At `Deploy in production` phase: what data do I need to track concept / data drift?
+
+### From Big Data to Good Data
+- MLOps's most important task:
+    - ensure consistently high-quality data in all phases of the ML project lifecycle
+- Good data is:
+    - defined consistently (definition of labels y is unambiguous)
+    - cover of important cases (good coverage of inputs x)
+    - has timely feedback from production data (distribution covers data drift and concept drift)
+    - sized appropriately
