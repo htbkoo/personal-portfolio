@@ -76,3 +76,34 @@ Need to
 - monitor performance in deployment, and flow new data back for continuous refinement of model
     - systematically check for concept drift / data drift (performance degradation)
     - flow data back to retrain / update model regularly
+
+### Making it systematic - The rise of `MLOps`
+1. For `Code`,
+- `Software engineers` for `Creation`
+- `DevOps` for `Quality / Infrastructure`
+
+2. For `Data`,
+- `ML engineers` for `Creation`
+- `MLOps` for `Quality / Infrastructure`
+
+3. AI systems = `Code` + `Data`
+
+### Traditional software vs AI software
+1. Traditional software:
+    1. Scope project => 
+    2. Develop code => 
+    3. Deploy in production
+
+
+2. AI software:
+    1. Scope project => 
+    2. Collect data =>
+    3. Train model => (could go back to ii)
+    4. Deploy in production (could go back to ii or iii) 
+        
+        a. a lot of feed back received in this stage (More iterative)
+    
+### MLOps
+Ensuring consistently high quality data:
+1. At `Collect data` phase: how do I define and collect my data
+1. At `Train model` phase: how do I modify data to improve model perfomance
