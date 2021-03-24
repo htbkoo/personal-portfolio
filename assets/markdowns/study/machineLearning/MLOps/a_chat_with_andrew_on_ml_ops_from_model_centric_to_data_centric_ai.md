@@ -66,3 +66,13 @@ With a data centric view
     2. Error analysis to identify the types of data the algorithm does poorly on (e.g. speech with car noise)
     3. Either get more of that data via data augmentation, data generation or data collection (change inputs x) or give more consistent definition for labels if they were found to be ambiguous (change labels y)
 
+### Making it systematic - for `Deploy in production` phase
+Deploy, monitor and maintain system
+
+- deploy in production does not mean at the finish line already
+- only half way done in a ML project
+
+Need to
+- monitor performance in deployment, and flow new data back for continuous refinement of model
+    - systematically check for concept drift / data drift (performance degradation)
+    - flow data back to retrain / update model regularly
