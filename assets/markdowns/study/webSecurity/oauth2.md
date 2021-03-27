@@ -32,7 +32,19 @@
 - [What the heck is PKCE](https://medium.com/identity-beyond-borders/what-the-heck-is-pkce-40662e801a76)
 - [OAuth 2.0 | PKCE | RFC 7636: Proof Key for Code Exchange](https://oauth.net/2/pkce/)
 
-#### Introduction 
+#### Introduction
+- an enhanced version of `Authorization Code Flow` to make use of a `Proof Key for Code Exchange (PKCE)`
+    - defined in [`OAuth 2.0 RFC 7636`](https://tools.ietf.org/html/rfc7636)
+- `Code Verifier`
+    - a secret created by the calling application
+    - to be verified by the authorization server
+- `Code Challenge`
+    - a transform value of the `Code Verifier` 
+    - also created by the calling application
+    - sent over HTTPS to receive an `Authorization Code`
+    - malicious attacker can only intercept the Authorization Code but canNOT exchnage it for a token without the `Code Verifier`
+
+#### Why  
 - when **public clients** (e.g. **native** and **single-page applications**) request Access Tokens, some additional security concerns are posed that are not mitigated by the Authorization Code Flow alone, because:
     - Native apps:
         - cannot securely store Client Secret 
@@ -40,7 +52,24 @@
             - Client Secret is bound to the app and is the same for all users and devices
         - may make use of custom URL scheme to capture redirects (e.g. `MyApp://`)
             - potentially allows malicious applications to receive the Authorization Code from the Authorization Server
-    - 
+    - Single-page apps
+        - cannot securely store Client Secret
+            - the entire source is available to the browser
 
 #### How it works
-1. 
+
+(Because PKCE-enhanced Authorization Code Flow builds upon the standard Authorization Code Flow, the steps are very similar)
+
+1. User clicks **Login** within the application
+2. SDK creates a cryptographically-random `code_verifier` and from this generates a `code_challenge`
+3. SDK redirects user to Authorization Server (`/authorize` endpoint) along with the `code_challenge`
+4. Authorization Server redirects user to login and authorization prompt
+5. User authenticates using one of the configured login options
+    5a. User may see a consent page listing the permissions that would be given to the application
+6. Authorization Server stores the `code_challenge` and redirects user back to the application with an authorization `code`
+    6a. the `code` is only good for one use
+7. SDK sends this `code` and `code_verifier` (created in step 2) to the Authorization Server (`/oauth/token` endpoint)
+8. Authorization Server verifies the `code_challenge` and `code_verifier`
+9. Authorization Sever responds with `ID Token` and `Access Token` (and optionally a `Refresh Token`).
+10. Application can use `Access Token` to call a protected API
+11. API responds with requested data
