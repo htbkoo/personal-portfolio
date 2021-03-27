@@ -10,7 +10,7 @@
 ## OpenID Connect (OIDC)
 - the flow looks the same as `OAuth`
 - only differences:
-    - in the initial request, a specfic scope of `openid` is used
+    - in the initial request, a specific scope of `openid` is used
     - in the final exchange the `Client` receives both an `Access Token` and an `ID token`
 
 ## OAuth 2.0 Flows
