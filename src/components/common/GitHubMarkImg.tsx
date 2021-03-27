@@ -13,7 +13,17 @@ const useStyles = makeStyles<Theme, { size: number }>({
     },
 });
 
-export function GitHubMarkImg({ size = DEFAULT_MAX_ICON_SIZE }: { size?: number }) {
+export interface GitHubMarkImgProps {
+    /**
+     * How large should the image be?
+     */
+    size?: number;
+}
+
+/**
+ * A common img component to display the GitHub mark image (Octocat)
+ */
+export function GitHubMarkImg({ size = DEFAULT_MAX_ICON_SIZE }: GitHubMarkImgProps) {
     const classes = useStyles({ size });
     return <img className={classes.icon} src={GitHubMark120Plus} alt="github-htbkoo-personal-portfolio" />;
 }
