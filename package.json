@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "private": true,
   "dependencies": {
     "@material-ui/core": "4.11.3",
@@ -33,7 +33,9 @@
     "eject": "react-scripts eject",
     "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
     "gh-pages:clean": "rimraf docs",
-    "gh-pages:rename": "node ./bin/rename -s build -d docs"
+    "gh-pages:rename": "node ./bin/rename -s build -d docs",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "browserslist": [
     ">0.2%",
@@ -42,6 +44,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/node-logger": "^6.1.21",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.1.21",
     "args": "^5.0.0",
     "cross-env": "^5.2.0",
     "jest-when": "^2.2.0",
