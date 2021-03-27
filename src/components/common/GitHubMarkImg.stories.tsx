@@ -6,9 +6,6 @@ import { GitHubMarkImg, GitHubMarkImgProps } from "./GitHubMarkImg";
 export default {
     title: "Common/GitHubMarkImg",
     component: GitHubMarkImg,
-    argTypes: {
-        backgroundColor: { control: "color" },
-    },
 } as Meta;
 
 const Template: Story<GitHubMarkImgProps> = (args) => <GitHubMarkImg {...args} />;
