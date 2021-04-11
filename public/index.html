@@ -40,23 +40,29 @@
             flex-direction: column;
             overflow: hidden;
         }
-      .loading {
-          width: 128px;
-          height: 128px;
-          border: 16px solid rgba(49, 126, 251, 0.2);
-          border-radius: 50%;
-          border-top-color: rgba(49, 126, 251, 0.4);
-          animation: spin 1s ease-in-out infinite;
-          -webkit-animation: spin 1s ease-in-out infinite;
-          z-index: 1;
-      }
 
-      @keyframes spin {
-          to { -webkit-transform: rotate(360deg); }
-      }
-      @-webkit-keyframes spin {
-          to { -webkit-transform: rotate(360deg); }
-      }
+        .loading {
+            width: 128px;
+            height: 128px;
+            border: 16px solid rgba(49, 126, 251, 0.2);
+            border-radius: 50%;
+            border-top-color: rgba(49, 126, 251, 0.4);
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
     </style>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
