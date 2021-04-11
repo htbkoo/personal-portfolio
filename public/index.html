@@ -52,6 +52,13 @@
             z-index: 1;
         }
 
+        .loading-text {
+            margin-top: 16px;
+            font-size: 32px;
+            font-weight: bolder;
+            color: rgb(29, 78, 158);
+        }
+
         @keyframes spin {
             to {
                 -webkit-transform: rotate(360deg);
@@ -75,6 +82,7 @@
     <div id="root">
       <div class="loading-container">
         <div class="loading"></div>
+        <div class="loading-text">Loading</div>
       </div>
     </div>
     <!--
