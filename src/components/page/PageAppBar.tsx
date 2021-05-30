@@ -35,16 +35,14 @@ interface PageAppBarProps extends WithStyles<typeof styles> {
     onIconButtonClick: () => void;
 }
 
-function PageAppBar(props: PageAppBarProps) {
-    const { classes } = props;
-
+function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
     return (
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
                 <IconButton
                     color="inherit"
                     aria-label="Open drawer"
-                    onClick={props.onIconButtonClick}
+                    onClick={onIconButtonClick}
                     className={classes.menuButton}>
                     <MenuIcon />
                 </IconButton>
