@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme, withStyles } from "@material-ui/core/styles";
+import { Theme, useTheme, withStyles } from "@material-ui/core/styles";
 import { createStyles, WithStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,7 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useDarkLightModeToggler } from "services/MuiThemeFactory";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
@@ -36,6 +39,9 @@ interface PageAppBarProps extends WithStyles<typeof styles> {
 }
 
 function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
+    const theme = useTheme();
+    const toggleDarkLightMode = useDarkLightModeToggler();
+
     return (
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
@@ -49,9 +55,14 @@ function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
                 <Typography variant="h6" color="inherit" noWrap className={classNames(classes.title)}>
                     Hey's Personal Portfolio
                 </Typography>
-                <Hidden smDown>
-                    <OldVersionLinkButton />
-                </Hidden>
+                <>
+                    <IconButton aria-label="dark-mode" onClick={toggleDarkLightMode}>
+                        {theme.palette.type === "dark" ? <BrightnessHighIcon /> : <Brightness4Icon />}
+                    </IconButton>
+                    <Hidden smDown>
+                        <OldVersionLinkButton />
+                    </Hidden>
+                </>
             </Toolbar>
         </AppBar>
     );

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import { theme } from "services/MuiThemeFactory";
+import { AppThemeProvider } from "services/MuiThemeFactory";
 import GoogleAnalyticsManager from "services/GoogleAnalyticsManager";
 
 import PortfolioPage from "./page/PortfolioPage";
@@ -24,10 +23,10 @@ export default function App(_: Props) {
     });
 
     return (
-        <MuiThemeProvider theme={theme}>
+        <AppThemeProvider>
             <div className="App">
                 <PortfolioPage sectionConfigs={sectionConfigs} />
             </div>
-        </MuiThemeProvider>
+        </AppThemeProvider>
     );
 }
