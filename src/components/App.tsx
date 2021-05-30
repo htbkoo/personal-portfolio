@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
-import {MuiThemeProvider} from '@material-ui/core/styles';
+import React, { Component } from "react";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import PortfolioPage from "./page/PortfolioPage";
 import sectionConfigs from "../metadata/sectionConfigs";
-import {theme} from "../services/MuiThemeFactory";
+import { theme } from "../services/MuiThemeFactory";
 
-import '../css/App.css';
+import "../css/App.css";
 import GoogleAnalyticsManager from "../services/GoogleAnalyticsManager";
 
-interface Props {
-}
+interface Props {}
 
 class App extends Component<Props> {
     private readonly gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
@@ -30,7 +29,7 @@ class App extends Component<Props> {
         return (
             <MuiThemeProvider theme={theme}>
                 <div className="App">
-                    <PortfolioPage sectionConfigs={sectionConfigs}/>
+                    <PortfolioPage sectionConfigs={sectionConfigs} />
                 </div>
             </MuiThemeProvider>
         );
