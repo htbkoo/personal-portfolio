@@ -5,20 +5,20 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 ## TODOs
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
-    2. [ ] Issues under `Performance` section
+    2. [ ] ([#61](https://github.com/htbkoo/personal-portfolio/pull/61)) Issues under `Performance` section
         1. [x] ([#67](https://github.com/htbkoo/personal-portfolio/pull/67)) Reduced `First Contentful Paint` by adding explicit loading screen and refactored to download `font` and `icon` asynchronously
-8. [ ] Improve tests
+8. [ ] ([#68](https://github.com/htbkoo/personal-portfolio/pull/68)) Improve tests
 9. [ ] Refactor code, e.g.
-    1. [ ] Migrate to [`React Hooks`](https://reactjs.org/docs/hooks-intro.html) for clarity wherever applicable
-    2. [ ] Review components splitting / architecture wherever applicable
-    3. [ ] Generic code refactoring
+    1. [ ] ([#69](https://github.com/htbkoo/personal-portfolio/pull/69)) Migrate to [`React Hooks`](https://reactjs.org/docs/hooks-intro.html) for clarity wherever applicable
+    2. [ ] ([#70](https://github.com/htbkoo/personal-portfolio/pull/70)) Review components splitting / architecture wherever applicable
+    3. [ ] ([#71](https://github.com/htbkoo/personal-portfolio/pull/71)) Generic code refactoring
 10. [ ] Add more section `README.md`, e.g.
     1. [ ] Quick Overview
     2. [ ] Installation
-11. [ ] Re-architecture, e.g. 
+11. [ ] ([#46](https://github.com/htbkoo/personal-portfolio/pull/46)) Re-architecture, e.g. 
     1. [ ] [Add `react-navigation` support](https://reactnavigation.org/)
     2. [ ] Try out if [`micro-frontend`](https://martinfowler.com/articles/micro-frontends.html) is a good fit for this project
-12. [ ] Revamp design, e.g.
+12. [ ] ([#72](https://github.com/htbkoo/personal-portfolio/pull/72)) Revamp design, e.g.
     1. [ ] Re-organize components layout, e.g. 
         1. [ ] replace `Drawer` by `navbar`?
     2. [ ] Add `Blog` / `My learning notes` section 
