@@ -1,40 +1,32 @@
-import React, {Component} from 'react';
-import {MuiThemeProvider} from '@material-ui/core/styles';
+import React, { useEffect } from "react";
+
+import { AppThemeProvider } from "services/MuiThemeFactory";
+import GoogleAnalyticsManager from "services/GoogleAnalyticsManager";
 
 import PortfolioPage from "./page/PortfolioPage";
 import sectionConfigs from "../metadata/sectionConfigs";
-import {theme} from "../services/MuiThemeFactory";
 
-import '../css/App.css';
-import GoogleAnalyticsManager from "../services/GoogleAnalyticsManager";
+import "../css/App.css";
 
-interface Props {
-}
+interface Props {}
 
-class App extends Component<Props> {
-    private readonly gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
+const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
 
-    constructor(props: Readonly<Props>);
-    constructor(props: Props, context?: any);
-    constructor(props: Props | Readonly<Props>, context?: any) {
-        super(props, context);
-        this.gAManager.init();
-    }
+export default function App(_: Props) {
+    useEffect(() => {
+        gAManager.init();
+    }, []);
 
-    componentDidMount(): void {
+    useEffect(() => {
         const path = window.location.pathname + window.location.search;
-        this.gAManager.pageview(path);
-    }
+        gAManager.pageview(path);
+    });
 
-    render() {
-        return (
-            <MuiThemeProvider theme={theme}>
-                <div className="App">
-                    <PortfolioPage sectionConfigs={sectionConfigs}/>
-                </div>
-            </MuiThemeProvider>
-        );
-    }
+    return (
+        <AppThemeProvider>
+            <div className="App">
+                <PortfolioPage sectionConfigs={sectionConfigs} />
+            </div>
+        </AppThemeProvider>
+    );
 }
-
-export default App;
