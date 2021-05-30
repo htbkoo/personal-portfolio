@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons-192.png" >
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons-192.png" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -32,43 +32,60 @@
     <!-- Reference: https://stackoverflow.com/a/60404990 -->
     <style>
         .loading-container {
-            width: 100vw;
-            height: 100vh;
+            width: 98vw;
+            height: 98vh;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            overflow: hidden;
         }
-      .loading {
-          width: 128px;
-          height: 128px;
-          border: 16px solid rgba(49, 126, 251, 0.2);
-          border-radius: 50%;
-          border-top-color: rgba(49, 126, 251, 0.4);
-          animation: spin 1s ease-in-out infinite;
-          -webkit-animation: spin 1s ease-in-out infinite;
-          z-index: 1;
-      }
 
-      @keyframes spin {
-          to { -webkit-transform: rotate(360deg); }
-      }
-      @-webkit-keyframes spin {
-          to { -webkit-transform: rotate(360deg); }
-      }
+        .loading {
+            width: 128px;
+            height: 128px;
+            border: 16px solid rgba(49, 126, 251, 0.2);
+            border-radius: 50%;
+            border-top-color: rgba(49, 126, 251, 0.4);
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .loading-text {
+            margin-top: 16px;
+            font-size: 32px;
+            font-weight: bolder;
+            color: rgb(29, 78, 158);
+            font-family: "Roboto", monospace, "Helvetica", "Arial", sans-serif;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
     </style>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<!--  Moved to JS side to avoid blocking rendering -->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />-->
 
     <title>Hey's Personal Portfolio</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-        <div class="loading-container">
-            <div class="loading"></div>
-        </div>
+      <div class="loading-container">
+        <div class="loading"></div>
+        <div class="loading-text">Loading</div>
+      </div>
     </div>
     <!--
       This HTML file is a template.
