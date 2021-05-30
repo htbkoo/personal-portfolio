@@ -6,6 +6,7 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 7. [ ] Fix [issues mentioned in `PageSpeed`](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fhtbkoo.github.io%2Fpersonal-portfolio%2F) or [`Lighthouse`](https://developers.google.com/web/tools/lighthouse), e.g.
     1. [x] Issues under `PWA` section
     2. [ ] Issues under `Performance` section
+        1. [x] ([#67](https://github.com/htbkoo/personal-portfolio/pull/67)) Reduced `First Contentful Paint` by adding explicit loading screen and refactored to download `font` and `icon` asynchronously
 8. [ ] Improve tests
 9. [ ] Refactor code, e.g.
     1. [ ] Migrate to [`React Hooks`](https://reactjs.org/docs/hooks-intro.html) for clarity wherever applicable
