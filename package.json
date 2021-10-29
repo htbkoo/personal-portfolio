@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "private": true,
   "dependencies": {
     "@fontsource/roboto": "4.4.0",
