@@ -29,8 +29,8 @@
   "scripts": {
     "start": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none react-scripts start",
     "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
-    "start-win": "set REACT_APP_GIT_SHA=`git rev-parse --short HEAD` && set REACT_APP_GIT_DATE=`git log -1 --format=%cd` && set BROWSER=none && react-scripts start",
-    "build-win": "set REACT_APP_GIT_SHA=`git rev-parse --short HEAD` && set REACT_APP_GIT_DATE=`git log -1 --format=%cd` && react-scripts build",
+    "start-win": "git rev-parse HEAD >sha.txt && set /p REACT_APP_COMMIT_HASH= < sha.txt && del sha.txt && set BROWSER=none && react-scripts start",
+    "build-win": "git rev-parse HEAD >sha.txt && set /p REACT_APP_COMMIT_HASH= < sha.txt && del sha.txt && react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
