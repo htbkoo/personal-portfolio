@@ -16,7 +16,7 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
     1. [ ] Quick Overview
     2. [ ] Installation
 11. [ ] ([#46](https://github.com/htbkoo/personal-portfolio/pull/46)) Re-architecture, e.g. 
-    1. [ ] [Add `react-navigation` support](https://reactnavigation.org/)
+    1. [ ] [Add `react-router` support](https://reactrouter.com/)
     2. [ ] Try out if [`micro-frontend`](https://martinfowler.com/articles/micro-frontends.html) is a good fit for this project
 12. [ ] ([#72](https://github.com/htbkoo/personal-portfolio/pull/72)) Revamp design, e.g.
     1. [ ] Re-organize components layout, e.g. 
