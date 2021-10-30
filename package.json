@@ -6,6 +6,8 @@
   "scripts": {
     "start": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none react-scripts start",
     "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
+    "start-win": "git rev-parse --short HEAD >sha.txt && set /p REACT_APP_GIT_SHA= < sha.txt && del sha.txt && set BROWSER=none && react-scripts start",
+    "build-win": "git rev-parse --short HEAD >sha.txt && set /p REACT_APP_GIT_SHA= < sha.txt && del sha.txt && react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
