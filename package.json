@@ -25,9 +25,9 @@
   ],
   "dependencies": {
     "@fontsource/roboto": "4.4.0",
-    "@material-ui/core": "4.11.3",
+    "@material-ui/core": "4.11.4",
     "@material-ui/icons": "4.11.2",
-    "@material-ui/styles": "4.11.3",
+    "@material-ui/styles": "4.11.4",
     "cheerio": "1.0.0-rc.5",
     "promise-polyfill": "^8.1.0",
     "react": "17.0.2",
