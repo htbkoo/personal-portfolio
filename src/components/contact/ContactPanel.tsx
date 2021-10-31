@@ -9,6 +9,7 @@ import badgeMetadatas from "../../metadata/contact/badges.json";
 import badgeMicroMetadatas from "../../metadata/contact/badges_micro.json";
 import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
+import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -29,12 +30,35 @@ function ContactPanel(props: ContactPanelProps) {
     return (
         <Section id="contact" hasDivider={true} title="Contact" subtitle="Check me out at the following!">
             <div className={classes.icons}>
+                <GitHubIcon />
                 <Icons />
             </div>
             <div className={classes.badges}>
                 <Badges />
             </div>
         </Section>
+    );
+}
+
+function GitHubIcon() {
+    const color = useGitHubMarkImgColorBasedOnTheme();
+
+    const metadata = {
+        href: "https://github.com/htbkoo",
+        img: {
+            src: getGitHubMarkImgSrc(color),
+            alt: "GitHub",
+        },
+    };
+    return (
+        <React.Fragment>
+            <Hidden smUp>
+                <ContactIcon metadata={metadata} cappedIconSize={true} />
+            </Hidden>
+            <Hidden xsDown>
+                <ContactIcon metadata={metadata} />
+            </Hidden>
+        </React.Fragment>
     );
 }
 
