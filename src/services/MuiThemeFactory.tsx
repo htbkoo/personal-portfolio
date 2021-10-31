@@ -8,7 +8,7 @@ import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     light: {
         primary: indigo,
-        secondary: { main: "#e6f0fe" },
+        secondary: { main: grey["A100"] },
     },
     dark: {
         secondary: grey,
