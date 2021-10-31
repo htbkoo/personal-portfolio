@@ -42,8 +42,8 @@ const styles = (theme: Theme) =>
         },
         isCurrent: {
             fontWeight: "bolder",
-            color: "#770077",
-            backgroundColor: "#dadaff",
+            color: theme.palette.primary.contrastText,
+            backgroundColor: theme.palette.primary.light,
         },
     });
 
