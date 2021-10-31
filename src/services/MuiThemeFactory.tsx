@@ -40,7 +40,7 @@ const DarkLightModeContext = createContext<{
     darkLightMode: PaletteType;
     setDarkLightMode: (PaletteType) => void;
 }>({
-    darkLightMode: "light",
+    darkLightMode: "dark",
     setDarkLightMode: () => {},
 });
 
@@ -50,8 +50,8 @@ export const useDarkLightModeToggler = () => {
 };
 
 export const AppThemeProvider = ({ children }: { children?: React.ReactNode }) => {
-    const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-    const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersDarkMode ? "dark" : "light");
+    const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
+    const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersLightMode ? "light" : "dark");
 
     const theme = React.useMemo(() => createTheme(darkLightMode), [darkLightMode]);
 
