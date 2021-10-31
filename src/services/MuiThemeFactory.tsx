@@ -1,4 +1,4 @@
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme as createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { indigo } from "@material-ui/core/colors";
 import { PaletteType } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
