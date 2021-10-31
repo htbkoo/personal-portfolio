@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, makeStyles } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 
-import { GitHubMarkImg } from "./GitHubMarkImg";
+import { GitHubMarkImg, useGitHubMarkImgColorBasedOnTheme } from "./GitHubMarkImg";
 import { version } from "../../../package.json";
 
 const LINK_TO_GITHUB_REPO = "https://github.com/htbkoo/personal-portfolio";
@@ -19,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function VersionText() {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <Link
@@ -33,7 +31,7 @@ export function VersionText() {
                     v{version}-{process.env.REACT_APP_GIT_SHA}
                 </div>
                 <div className={classes.linkIconContainer}>
-                    <GitHubMarkImg color={theme.palette.type === "dark" ? "white" : "black"} />
+                    <GitHubMarkImg color={useGitHubMarkImgColorBasedOnTheme()} />
                 </div>
             </div>
         </Link>

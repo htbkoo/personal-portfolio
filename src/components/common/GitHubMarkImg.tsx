@@ -1,6 +1,6 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core";
-import { Theme } from "@material-ui/core/styles";
+import { Theme, useTheme } from "@material-ui/core/styles";
 
 import GitHubMark120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png";
 import GitHubMarkLight120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png";
@@ -39,4 +39,9 @@ export function GitHubMarkImg({
 
 export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
     return color === "black" ? GitHubMark120Plus : GitHubMarkLight120Plus;
+}
+
+export function useGitHubMarkImgColorBasedOnTheme(){
+    const theme = useTheme();
+    return theme.palette.type === "dark" ? "white" : "black"
 }
