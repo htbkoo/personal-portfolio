@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { Link, makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 
 import { GitHubMarkImg } from "./GitHubMarkImg";
@@ -22,7 +22,12 @@ export function VersionText() {
     const theme = useTheme();
 
     return (
-        <a href={LINK_TO_GITHUB_REPO} target="_blank" rel="noopener noreferrer">
+        <Link
+            color="inherit"
+            underline="always"
+            href={LINK_TO_GITHUB_REPO}
+            target="_blank"
+            rel="noopener noreferrer">
             <div className={classes.container}>
                 <div>
                     v{version}-{process.env.REACT_APP_GIT_SHA}
@@ -31,6 +36,6 @@ export function VersionText() {
                     <GitHubMarkImg color={theme.palette.type === "dark" ? "white" : "black"} />
                 </div>
             </div>
-        </a>
+        </Link>
     );
 }
