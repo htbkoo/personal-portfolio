@@ -1,6 +1,6 @@
 import React from "react";
 import { Theme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import { createStyles, Link, WithStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -64,12 +64,17 @@ function DrawerItemsWithScrollspy(props: DrawerItemsWithScrollspyProps) {
                 className={classes.scrollSpyList}
                 offset={EMPIRICAL_OFFSET}>
                 {items.map((text, index) => (
-                    <a key={text} href={itemToHref(text)} className={classes.scrollSpyListItem}>
+                    <Link
+                        color="inherit"
+                        underline="always"
+                        key={text}
+                        href={itemToHref(text)}
+                        className={classes.scrollSpyListItem}>
                         <ListItem button>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
-                    </a>
+                    </Link>
                 ))}
             </Scrollspy>
             <Hidden mdUp>
