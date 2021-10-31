@@ -33,6 +33,10 @@ export function GitHubMarkImg({
     color = DEFAULT_IS_LIGHT,
 }: GitHubMarkImgProps) {
     const classes = useStyles({ size });
-    const src = color === "black" ? GitHubMark120Plus : GitHubMarkLight120Plus;
+    const src = getGitHubMarkImgSrc(color);
     return <img className={classes.icon} src={src} alt="github-htbkoo-personal-portfolio" />;
+}
+
+export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
+    return color === "black" ? GitHubMark120Plus : GitHubMarkLight120Plus;
 }
