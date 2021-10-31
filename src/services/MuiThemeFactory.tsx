@@ -1,14 +1,24 @@
+import React, { createContext, useContext, useState } from "react";
 import { createTheme as createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { indigo } from "@material-ui/core/colors";
+import { grey, indigo } from "@material-ui/core/colors";
 import { PaletteType } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import React, { createContext, useContext, useState } from "react";
+import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+
+const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
+    light: {
+        primary: indigo,
+        secondary: { main: "#e6f0fe" },
+    },
+    dark: {
+        secondary: grey,
+    },
+};
 
 export const createTheme = (paletteType: PaletteType) =>
     createMuiTheme({
         palette: {
-            primary: indigo,
-            secondary: { main: "#e6f0fe" },
+            ...PALETTES[paletteType],
             type: paletteType,
         },
         typography: {},
