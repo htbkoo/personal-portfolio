@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Theme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./ResponsivePageDrawer";
 import PageMain from "./PageMain";
@@ -9,7 +9,7 @@ import SectionMetadata from "../../model/SectionMetadata";
 
 const drawerWidth = 240;
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             display: "flex",
@@ -23,43 +23,36 @@ const styles = (theme: Theme) =>
         main: {
             width: "100%",
         },
-    });
+    }),
+);
 
-interface PortfolioPageProps extends WithStyles<typeof styles> {
+interface PortfolioPageProps {
     sectionConfigs: SectionMetadata[];
 }
 
-interface PortfolioPageState {
-    drawerOpen: boolean;
-}
+export default ({ sectionConfigs }: PortfolioPageProps) => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
-class PortfolioPage extends Component<PortfolioPageProps, PortfolioPageState> {
-    state = { drawerOpen: false };
+    const handleDrawerToggle = () => setDrawerOpen(!drawerOpen);
 
-    private handleDrawerToggle = () => this.setState((state) => ({ drawerOpen: !state.drawerOpen }));
+    const classes = useStyles();
 
-    render() {
-        const { classes, sectionConfigs } = this.props;
-
-        return (
-            <div className={classes.root}>
-                <CssBaseline />
-                <div>
-                    <PageAppBar onIconButtonClick={this.handleDrawerToggle} />
-                </div>
-                <nav className={classes.drawer}>
-                    <PageDrawer
-                        sectionConfigs={sectionConfigs}
-                        drawerOpen={this.state.drawerOpen}
-                        onDrawerClose={this.handleDrawerToggle}
-                    />
-                </nav>
-                <div className={classes.main}>
-                    <PageMain sectionConfigs={sectionConfigs} />
-                </div>
+    return (
+        <div className={classes.root}>
+            <CssBaseline />
+            <div>
+                <PageAppBar onIconButtonClick={handleDrawerToggle} />
             </div>
-        );
-    }
-}
-
-export default withStyles(styles)(PortfolioPage);
+            <nav className={classes.drawer}>
+                <PageDrawer
+                    sectionConfigs={sectionConfigs}
+                    drawerOpen={drawerOpen}
+                    onDrawerClose={handleDrawerToggle}
+                />
+            </nav>
+            <div className={classes.main}>
+                <PageMain sectionConfigs={sectionConfigs} />
+            </div>
+        </div>
+    );
+};
