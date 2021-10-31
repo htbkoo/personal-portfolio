@@ -12,28 +12,21 @@ interface Props {
     rssFeedUrl: string;
 }
 
-interface State {
-    items: Items[];
-    loaded: boolean;
-    error?: string;
-}
-
 export default ({ parser, rssFeedUrl }: Props) => {
     const [loaded, setLoaded] = useState(false);
     const [items, setItems] = useState<Items[]>([]);
-    const [error, setError] = useState<string | undefined>(undefined);
 
     const scriptTagBuilder = new CodepenEmbedScriptTagBuilder()
         .setAsync(true)
         .withOnLoadHandler(() => setLoaded(true))
-        .withOnErrorHandler(() => setError("Failed to load the pen"));
+        .withOnErrorHandler(() => console.error("Failed to load the pen"));
 
     useEffect(() => {
         parser
             .parseUrl(rssFeedUrl)
             .then((items) => setItems(items))
             .then(() => scriptTagBuilder.appendTo(document.body))
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     }, []);
 
     return (
