@@ -16,7 +16,7 @@ const OLD_VERSION_URL = "https://codepen.io/htbkoo/";
 
 function OldVersionLinkButton({ classes }: OldVersionLinkButtonProps) {
     return (
-        <Button href={OLD_VERSION_URL} variant="contained" color="inherit" className={classes.button}>
+        <Button href={OLD_VERSION_URL} variant="contained" color="secondary" className={classes.button}>
             View on CodePen
         </Button>
     );

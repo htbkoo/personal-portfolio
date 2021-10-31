@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Brightness3Icon from "@material-ui/icons/Brightness3";
 import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useDarkLightModeToggler } from "services/MuiThemeFactory";
@@ -57,7 +57,7 @@ function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
                 </Typography>
                 <>
                     <IconButton aria-label="dark-mode" onClick={toggleDarkLightMode}>
-                        {theme.palette.type === "dark" ? <BrightnessHighIcon /> : <Brightness4Icon />}
+                        {theme.palette.type === "dark" ? <BrightnessHighIcon /> : <Brightness3Icon color="secondary" />}
                     </IconButton>
                     <Hidden smDown>
                         <OldVersionLinkButton />
