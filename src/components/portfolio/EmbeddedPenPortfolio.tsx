@@ -9,14 +9,15 @@ import { PortfolioProps } from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
 import { credentialsExtractor } from "../../services/portfolio/CodePenItemContentExtractor";
 
-const styles = (theme: Theme) => createStyles({
-    embeddedContainer: {
-        margin: "5%"
-    }
-});
+const styles = (theme: Theme) =>
+    createStyles({
+        embeddedContainer: {
+            margin: "5%",
+        },
+    });
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps, WithStyles<typeof styles> {
-    isScriptLoaded?: boolean
+    isScriptLoaded?: boolean;
 }
 
 const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
@@ -39,7 +40,7 @@ function EmbeddedPenPortfolio(props: EmbeddedPenPortfolioProps) {
                 hash={hash}
                 title={title}
                 height={getHeight()}
-                loader={() => <CircularProgress/>}
+                loader={() => <CircularProgress />}
                 defaultTab="result"
                 shouldLoadScript={false}
                 overrideAsLoaded={isScriptLoaded}
