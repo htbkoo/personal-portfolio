@@ -16,12 +16,12 @@ export default ({ parser, rssFeedUrl }: Props) => {
     const [loaded, setLoaded] = useState(false);
     const [items, setItems] = useState<Items[]>([]);
 
-    const scriptTagBuilder = new CodepenEmbedScriptTagBuilder()
-        .setAsync(true)
-        .withOnLoadHandler(() => setLoaded(true))
-        .withOnErrorHandler(() => console.error("Failed to load the pen"));
-
     useEffect(() => {
+        const scriptTagBuilder = new CodepenEmbedScriptTagBuilder()
+            .setAsync(true)
+            .withOnLoadHandler(() => setLoaded(true))
+            .withOnErrorHandler(() => console.error("Failed to load the pen"));
+
         parser
             .parseUrl(rssFeedUrl)
             .then((items) => setItems(items))
