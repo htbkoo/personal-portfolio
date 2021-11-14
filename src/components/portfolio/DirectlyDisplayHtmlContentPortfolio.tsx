@@ -13,7 +13,7 @@ function DirectlyDisplayHtmlContentPortfolio(props: DirectlyDisplayHtmlContentPo
             <div>
                 <a href={link}>{title}</a>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div dangerouslySetInnerHTML={{ __html: content }}/>
         </div>
     );
 }
