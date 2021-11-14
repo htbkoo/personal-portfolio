@@ -1,32 +1,33 @@
 import React from "react";
-import { Theme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import { Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
+
 import SectionMetadata from "../../model/SectionMetadata";
 
-const styles = (theme: Theme) =>
-    createStyles({
-        root: {
-            display: "flex",
+const useStyles = makeStyles((theme: Theme) => ({
+    root: {
+        display: "flex",
+    },
+    content: {
+        flexGrow: 1,
+        [theme.breakpoints.down("xs")]: {
+            padding: "unset",
         },
-        content: {
-            flexGrow: 1,
-            [theme.breakpoints.down("xs")]: {
-                padding: "unset",
-            },
-            [theme.breakpoints.up("sm")]: {
-                padding: theme.spacing(3),
-            },
+        [theme.breakpoints.up("sm")]: {
+            padding: theme.spacing(3),
         },
-        toolbar: theme.mixins.toolbar,
-    });
+    },
+    toolbar: theme.mixins.toolbar,
+}));
 
-interface PageMainProps extends WithStyles<typeof styles> {
+interface PageMainProps {
     sectionConfigs: SectionMetadata[];
 }
 
-function PageMain(props: PageMainProps) {
-    const { classes, sectionConfigs } = props;
+export default (props: PageMainProps) => {
+    const classes = useStyles();
+    const { sectionConfigs } = props;
 
     return (
         <main className={classes.content}>
@@ -40,6 +41,4 @@ function PageMain(props: PageMainProps) {
             ))}
         </main>
     );
-}
-
-export default withStyles(styles)(PageMain);
+};
