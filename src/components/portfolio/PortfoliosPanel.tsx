@@ -1,44 +1,32 @@
 import * as React from "react";
-import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { useEffect, useState } from "react";
+import { createStyles, makeStyles } from "@material-ui/core";
 
 import Section from "../common/Section";
 import { PortfoliosFactory } from "./PortfoliosFactory";
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
-        portfolio: {
-            margin: "5%",
-        },
-    });
+        portfolioPanel: {},
+    }),
+);
 
-interface PortfoliosPanelProps extends WithStyles<typeof styles> {
+interface PortfoliosPanelProps {
     portfoliosFactory: PortfoliosFactory;
 }
 
-interface PortfoliosPanelState {
-    portfolios: React.ReactNode;
-}
+export default ({ portfoliosFactory }: PortfoliosPanelProps) => {
+    const classes = useStyles();
 
-class PortfoliosPanel extends React.Component<PortfoliosPanelProps, PortfoliosPanelState> {
-    constructor(props: Readonly<PortfoliosPanelProps>) {
-        super(props);
+    const [portfolios, setPortfolios] = useState<React.ReactNode>([]);
 
-        this.state = {
-            portfolios: [],
-        };
-    }
+    useEffect(() => {
+        portfoliosFactory.createPortfolios().then((portfolios) => setPortfolios(portfolios));
+    });
 
-    componentDidMount(): void {
-        this.props.portfoliosFactory.createPortfolios().then((portfolios) => this.setState({ portfolios }));
-    }
-
-    render(): React.ReactNode {
-        return (
-            <Section id="portfolio" hasDivider={true} title="Portfolio" subtitle="Some of my previous works">
-                <div>{this.state.portfolios}</div>
-            </Section>
-        );
-    }
-}
-
-export default withStyles(styles)(PortfoliosPanel);
+    return (
+        <Section id="portfolio" hasDivider={true} title="Portfolio" subtitle="Some of my previous works">
+            <div className={classes.portfolioPanel}>{portfolios}</div>
+        </Section>
+    );
+};
