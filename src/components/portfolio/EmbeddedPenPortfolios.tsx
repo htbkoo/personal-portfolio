@@ -27,7 +27,7 @@ export default ({ parser, rssFeedUrl }: Props) => {
             .then((items) => setItems(items))
             .then(() => scriptTagBuilder.appendTo(document.body))
             .catch((error) => console.error(error));
-    }, []);
+    }, [parser, rssFeedUrl]);
 
     return (
         <div>

@@ -22,7 +22,7 @@ export default ({ portfoliosFactory }: PortfoliosPanelProps) => {
 
     useEffect(() => {
         portfoliosFactory.createPortfolios().then((portfolios) => setPortfolios(portfolios));
-    });
+    }, [portfoliosFactory]);
 
     return (
         <Section id="portfolio" hasDivider={true} title="Portfolio" subtitle="Some of my previous works">
