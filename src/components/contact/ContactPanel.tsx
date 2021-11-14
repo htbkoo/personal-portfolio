@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 
 import ContactIcon from "./ContactIcon";
@@ -11,22 +11,19 @@ import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
 import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
 
-const styles = (theme: Theme) =>
-    createStyles({
-        icons: {
-            padding: theme.spacing(3),
-            display: "flex",
-            flexFlow: "wrap",
-            justifyContent: "center",
-            alignItems: "baseline",
-        },
-        badges: {},
-    });
+const useStyles = makeStyles((theme: Theme) => ({
+    icons: {
+        padding: theme.spacing(3),
+        display: "flex",
+        flexFlow: "wrap",
+        justifyContent: "center",
+        alignItems: "baseline",
+    },
+    badges: {},
+}));
 
-interface ContactPanelProps extends WithStyles<typeof styles> {}
-
-function ContactPanel(props: ContactPanelProps) {
-    const { classes } = props;
+export default () => {
+    const classes = useStyles();
     return (
         <Section id="contact" hasDivider={true} title="Contact" subtitle="Check me out at the following!">
             <div className={classes.icons}>
@@ -38,7 +35,7 @@ function ContactPanel(props: ContactPanelProps) {
             </div>
         </Section>
     );
-}
+};
 
 function GitHubIcon() {
     const color = useGitHubMarkImgColorBasedOnTheme();
@@ -89,5 +86,3 @@ function contactIcons(metadatas: ContactMetadata[], cappedIconSize: boolean = fa
         />
     ));
 }
-
-export default withStyles(styles)(ContactPanel);
