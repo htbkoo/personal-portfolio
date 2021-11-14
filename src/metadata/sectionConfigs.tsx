@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import RssParser from "rss-parser";
 
 import SectionMetadata from "../model/SectionMetadata";
@@ -19,16 +19,16 @@ const sectionConfigs: SectionMetadata[] = [
     //     component: <HomePanel/>
     // },
     {
-        name: 'About',
-        component: <AboutPanel/>
+        name: "About",
+        component: <AboutPanel />,
     },
     {
-        name: 'Portfolio',
-        component: <PortfoliosPanel portfoliosFactory={factory}/>
+        name: "Portfolio",
+        component: <PortfoliosPanel portfoliosFactory={factory} />,
     },
     {
-        name: 'Contact',
-        component: <ContactPanel/>
+        name: "Contact",
+        component: <ContactPanel />,
     },
 ];
 
