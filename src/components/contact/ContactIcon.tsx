@@ -1,24 +1,24 @@
 import * as React from "react";
-import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import ContactMetadata from "../../model/ContactMetadata";
 
-const styles = (theme: Theme) =>
-    createStyles({
-        icon: {
-            padding: theme.spacing(2),
-        },
-        iconImg: {
-            maxHeight: theme.spacing(8),
-            maxWidth: theme.spacing(8),
-        },
-    });
+const useStyles = makeStyles((theme: Theme) => ({
+    icon: {
+        padding: theme.spacing(2),
+    },
+    iconImg: {
+        maxHeight: theme.spacing(8),
+        maxWidth: theme.spacing(8),
+    },
+}));
 
-interface ContactIconProps extends WithStyles<typeof styles> {
+interface ContactIconProps {
     metadata: ContactMetadata;
     cappedIconSize?: boolean;
 }
 
-function ContactIcon({ classes, metadata, cappedIconSize }: ContactIconProps) {
+export default ({ metadata, cappedIconSize }: ContactIconProps) => {
+    const classes = useStyles();
     return (
         <div className={classes.icon}>
             <a href={metadata.href} target="_blank" rel="noopener noreferrer">
@@ -30,6 +30,4 @@ function ContactIcon({ classes, metadata, cappedIconSize }: ContactIconProps) {
             </a>
         </div>
     );
-}
-
-export default withStyles(styles)(ContactIcon);
+};
