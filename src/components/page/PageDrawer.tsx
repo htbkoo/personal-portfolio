@@ -1,30 +1,31 @@
 import React from "react";
-import { Theme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import { Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
+
 import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
 import SectionMetadata from "../../model/SectionMetadata";
 
 const drawerWidth = 240;
 
-const styles = (theme: Theme) =>
-    createStyles({
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-        drawerPaper: {
-            width: drawerWidth,
-        },
-        toolbar: theme.mixins.toolbar,
-    });
+const useStyles = makeStyles((theme: Theme) => ({
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    toolbar: theme.mixins.toolbar,
+}));
 
-interface PageDrawerProps extends WithStyles<typeof styles> {
+interface PageDrawerProps {
     sectionConfigs: SectionMetadata[];
 }
 
-function PageDrawer(props: PageDrawerProps) {
-    const { classes, sectionConfigs } = props;
+export default (props: PageDrawerProps) => {
+    const classes = useStyles();
+    const { sectionConfigs } = props;
 
     return (
         <Drawer
@@ -38,10 +39,8 @@ function PageDrawer(props: PageDrawerProps) {
             <DrawerItemsWithScrollspy items={asItems(sectionConfigs)} />
         </Drawer>
     );
-}
+};
 
 function asItems(sectionConfigs: SectionMetadata[]): string[] {
     return sectionConfigs.map((config) => config.name);
 }
-
-export default withStyles(styles)(PageDrawer);
