@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FunctionComponent } from "react";
+import { PropsWithChildren } from "react";
 import { makeStyles, Theme, TypographyTypeMap } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -22,7 +22,7 @@ interface SectionProps {
     hasDivider?: boolean;
 }
 
-const Section: FunctionComponent<SectionProps> = ({ id, title, subtitle, hasDivider = false, children }) => {
+export default ({ id, title, subtitle, hasDivider = false, children }: PropsWithChildren<SectionProps>) => {
     const classes = useStyles();
     return (
         <div id={id} className={classes.section}>
@@ -63,5 +63,3 @@ function optionalTypography({
 function optionalDivider(hasDivider?: boolean) {
     return hasDivider ? <Divider /> : "";
 }
-
-export default Section;
