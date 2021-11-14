@@ -22,7 +22,7 @@ interface SectionProps {
     hasDivider?: boolean;
 }
 
-const Section: FunctionComponent<SectionProps> = ({ id, title, subtitle, hasDivider, children }) => {
+const Section: FunctionComponent<SectionProps> = ({ id, title, subtitle, hasDivider = false, children }) => {
     const classes = useStyles();
     return (
         <div id={id} className={classes.section}>
@@ -63,9 +63,5 @@ function optionalTypography({
 function optionalDivider(hasDivider?: boolean) {
     return hasDivider ? <Divider /> : "";
 }
-
-Section.defaultProps = {
-    hasDivider: false,
-};
 
 export default Section;
