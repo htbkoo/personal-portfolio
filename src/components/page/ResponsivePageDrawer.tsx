@@ -31,11 +31,26 @@ interface ResponsivePageDrawerProps {
 
 const asItems = (sectionConfigs: SectionMetadata[]): string[] => sectionConfigs.map((config) => config.name);
 
+const DrawerContent = ({ items }: { items: string[] }) => {
+    const classes = useStyles();
+
+    return (
+        <>
+            <div className={classes.toolbar} />
+            <DrawerItemsWithScrollspy items={items} />
+            <div className={classes.versionText}>
+                <VersionText />
+            </div>
+        </>
+    );
+};
+
 export default (props: ResponsivePageDrawerProps) => {
     const classes = useStyles();
     const theme = useTheme();
 
     const { sectionConfigs, drawerOpen, onDrawerClose } = props;
+    const items = asItems(sectionConfigs);
 
     return (
         <>
@@ -49,7 +64,7 @@ export default (props: ResponsivePageDrawerProps) => {
                     classes={{
                         paper: classes.drawerPaper,
                     }}>
-                    {drawerContent()}
+                    <DrawerContent items={items} />
                 </Drawer>
             </Hidden>
             <Hidden smDown>
@@ -59,21 +74,9 @@ export default (props: ResponsivePageDrawerProps) => {
                     }}
                     variant="permanent"
                     open>
-                    {drawerContent()}
+                    <DrawerContent items={items} />
                 </Drawer>
             </Hidden>
         </>
     );
-
-    function drawerContent() {
-        return (
-            <>
-                <div className={classes.toolbar} />
-                <DrawerItemsWithScrollspy items={asItems(sectionConfigs)} />
-                <div className={classes.versionText}>
-                    <VersionText />
-                </div>
-            </>
-        );
-    }
 };
