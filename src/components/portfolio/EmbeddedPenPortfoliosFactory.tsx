@@ -13,7 +13,7 @@ export default class EmbeddedPenPortfoliosFactory implements PortfoliosFactory {
         this.rssFeedUrl = rssFeedUrl;
     }
 
-    createPortfolios() {
-        return Promise.resolve(<EmbeddedPenPortfolios parser={this.parser} rssFeedUrl={this.rssFeedUrl}/>);
+    async createPortfolios() {
+        return <EmbeddedPenPortfolios parser={this.parser} rssFeedUrl={this.rssFeedUrl}/>;
     }
 }

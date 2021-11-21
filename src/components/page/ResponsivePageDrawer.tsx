@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import { Theme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import React from "react";
+import { createStyles, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 
@@ -10,7 +9,7 @@ import { VersionText } from "../common/VersionText";
 
 const drawerWidth = 240;
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         drawerPaper: {
             width: drawerWidth,
@@ -21,62 +20,63 @@ const styles = (theme: Theme) =>
             left: "16px",
             bottom: "16px",
         },
-    });
+    }),
+);
 
-interface ResponsivePageDrawerProps extends WithStyles<typeof styles, true> {
+interface ResponsivePageDrawerProps {
     sectionConfigs: SectionMetadata[];
     drawerOpen: boolean;
     onDrawerClose: () => void;
 }
 
-class ResponsivePageDrawer extends Component<ResponsivePageDrawerProps> {
-    render() {
-        const { classes, sectionConfigs, theme } = this.props;
+const asItems = (sectionConfigs: SectionMetadata[]): string[] => sectionConfigs.map((config) => config.name);
 
-        return (
-            <>
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-                <Hidden mdUp>
-                    <Drawer
-                        variant="temporary"
-                        anchor={theme.direction === "rtl" ? "right" : "left"}
-                        open={this.props.drawerOpen}
-                        onClose={this.props.onDrawerClose}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}>
-                        {drawerContent()}
-                    </Drawer>
-                </Hidden>
-                <Hidden smDown>
-                    <Drawer
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        variant="permanent"
-                        open>
-                        {drawerContent()}
-                    </Drawer>
-                </Hidden>
-            </>
-        );
+const DrawerContent = ({ items }: { items: string[] }) => {
+    const classes = useStyles();
 
-        function drawerContent() {
-            return (
-                <>
-                    <div className={classes.toolbar} />
-                    <DrawerItemsWithScrollspy items={asItems(sectionConfigs)} />
-                    <div className={classes.versionText}>
-                        <VersionText />
-                    </div>
-                </>
-            );
-        }
-    }
-}
+    return (
+        <>
+            <div className={classes.toolbar} />
+            <DrawerItemsWithScrollspy items={items} />
+            <div className={classes.versionText}>
+                <VersionText />
+            </div>
+        </>
+    );
+};
 
-function asItems(sectionConfigs: SectionMetadata[]): string[] {
-    return sectionConfigs.map((config) => config.name);
-}
+export default (props: ResponsivePageDrawerProps) => {
+    const classes = useStyles();
+    const theme = useTheme();
 
-export default withStyles(styles, { withTheme: true })(ResponsivePageDrawer);
+    const { sectionConfigs, drawerOpen, onDrawerClose } = props;
+    const items = asItems(sectionConfigs);
+
+    return (
+        <>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden mdUp>
+                <Drawer
+                    variant="temporary"
+                    anchor={theme.direction === "rtl" ? "right" : "left"}
+                    open={drawerOpen}
+                    onClose={onDrawerClose}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}>
+                    <DrawerContent items={items} />
+                </Drawer>
+            </Hidden>
+            <Hidden smDown>
+                <Drawer
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                    variant="permanent"
+                    open>
+                    <DrawerContent items={items} />
+                </Drawer>
+            </Hidden>
+        </>
+    );
+};

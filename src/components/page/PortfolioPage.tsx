@@ -33,7 +33,7 @@ interface PortfolioPageProps {
 export default ({ sectionConfigs }: PortfolioPageProps) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
-    const handleDrawerToggle = () => setDrawerOpen(!drawerOpen);
+    const handleDrawerToggle = () => setDrawerOpen((prevDrawerOpen) => !prevDrawerOpen);
 
     const classes = useStyles();
 
