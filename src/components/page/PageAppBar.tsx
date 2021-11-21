@@ -1,6 +1,5 @@
 import React from "react";
-import { Theme, useTheme, withStyles } from "@material-ui/core/styles";
-import { createStyles, WithStyles } from "@material-ui/core";
+import { createStyles, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -14,7 +13,7 @@ import { useDarkLightModeToggler } from "services/MuiThemeFactory";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         appBar: {
             zIndex: theme.zIndex.drawer + 1,
@@ -32,13 +31,16 @@ const styles = (theme: Theme) =>
                 display: "none",
             },
         },
-    });
+    }),
+);
 
-interface PageAppBarProps extends WithStyles<typeof styles> {
+interface PageAppBarProps {
     onIconButtonClick: () => void;
 }
 
-function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
+export default function PageAppBar({ onIconButtonClick }: PageAppBarProps) {
+    const classes = useStyles();
+
     const theme = useTheme();
     const toggleDarkLightMode = useDarkLightModeToggler();
 
@@ -67,5 +69,3 @@ function PageAppBar({ classes, onIconButtonClick }: PageAppBarProps) {
         </AppBar>
     );
 }
-
-export default withStyles(styles)(PageAppBar);
