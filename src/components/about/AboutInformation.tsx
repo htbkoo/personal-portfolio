@@ -1,23 +1,23 @@
 import * as React from "react";
-import {createStyles, Theme, withStyles, WithStyles} from "@material-ui/core";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles, Theme } from "@material-ui/core";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 import informationMetadatas from "../../metadata/about/information.json";
 import AboutEntry from "../../model/AboutEntry";
 
-const styles = (theme: Theme) => createStyles({
+const useStyles = makeStyles((theme: Theme) => ({
     root: {
         // width: '100%',
         marginTop: theme.spacing(3),
-        overflowX: 'auto',
+        overflowX: "auto",
     },
     table: {
-        height: "auto"
+        height: "auto",
         // minWidth: 700,
     },
     row: {
@@ -26,24 +26,17 @@ const styles = (theme: Theme) => createStyles({
     },
     divider: {
         backgroundColor: theme.palette.secondary.light,
-        color: theme.palette.secondary.contrastText
-    }
-});
+        color: theme.palette.secondary.contrastText,
+    },
+}));
 
-interface AboutInformationProps extends WithStyles<typeof styles> {
-}
-
-function AboutInformation(props: AboutInformationProps) {
-    const {classes} = props;
+export default () => {
+    const classes = useStyles();
     return (
         <Paper className={classes.root}>
             <Table className={classes.table}>
-                <TableHead>
-                    {dividerRow()}
-                </TableHead>
-                <TableBody>
-                    {(informationMetadatas as AboutEntry[][]).map(toTableGroups)}
-                </TableBody>
+                <TableHead>{dividerRow()}</TableHead>
+                <TableBody>{(informationMetadatas as AboutEntry[][]).map(toTableGroups)}</TableBody>
             </Table>
         </Paper>
     );
@@ -73,12 +66,9 @@ function AboutInformation(props: AboutInformationProps) {
     function dividerRow() {
         return (
             <TableRow className={classes.divider}>
-                <TableCell/>
-                <TableCell/>
+                <TableCell />
+                <TableCell />
             </TableRow>
         );
     }
-}
-
-export default withStyles(styles)(AboutInformation);
-
+};
