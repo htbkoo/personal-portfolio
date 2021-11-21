@@ -1,4 +1,3 @@
-import React from "react";
 import { Theme, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
