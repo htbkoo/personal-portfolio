@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         drawerPaper: {
             width: drawerWidth,
+            [theme.breakpoints.up("md")]: {
+                backgroundColor: theme.palette.type === "dark" ? "#42424242" : "#FFFFFF42",
+            },
         },
         toolbar: theme.mixins.toolbar,
         versionText: {

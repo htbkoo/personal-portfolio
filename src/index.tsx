@@ -7,7 +7,7 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
 // reference: https://material-ui.com/components/typography/#install-with-npm
-import '@fontsource/roboto';
+import "@fontsource/roboto";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

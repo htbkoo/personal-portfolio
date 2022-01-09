@@ -30,7 +30,8 @@
     -->
 
     <!-- Reference: https://stackoverflow.com/a/60404990 -->
-    <style>
+    <!--suppress CssUnknownTarget -->
+      <style>
         body{
             background-color: #333333;
         }
@@ -43,6 +44,9 @@
             justify-content: center;
             flex-direction: column;
             overflow: hidden;
+
+            animation-duration: 1s;
+            animation-name: fadein;
         }
 
         .loading {
@@ -75,6 +79,32 @@
                 -webkit-transform: rotate(360deg);
             }
         }
+
+        @keyframes fadein {
+            from {
+                filter: opacity(0%);
+            }
+
+            to {
+                filter: opacity(100%);
+            }
+        }
+
+        .background{
+            background: url("%PUBLIC_URL%/background.jpg");
+            -webkit-filter: blur(10px);
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat
+        }
     </style>
 
 <!--  Moved to JS side to avoid blocking rendering -->
@@ -85,6 +115,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="background"></div>
     <div id="root">
       <div class="loading-container">
         <div class="loading"></div>
