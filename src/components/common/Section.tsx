@@ -3,6 +3,7 @@ import { PropsWithChildren } from "react";
 import { makeStyles, Theme, TypographyTypeMap } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import classNames from "classnames";
 
 import { getStylesToFixPageHeaderOverlappingInPageAnchorIssue } from "../../utils/cssUtils";
 
@@ -11,8 +12,15 @@ const useStyles = makeStyles((theme: Theme) => ({
         padding: theme.spacing(3),
         ...getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme),
     },
-    header: {},
+    header: {
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        filter: "opacity(0.75)",
+    },
     body: {},
+    opaqueBody: {
+        filter: "opacity(0.75)",
+    },
 }));
 
 interface SectionProps {
@@ -20,9 +28,17 @@ interface SectionProps {
     title?: string;
     subtitle?: string;
     hasDivider?: boolean;
+    isBodyOpaque?: boolean;
 }
 
-export default ({ id, title, subtitle, hasDivider = false, children }: PropsWithChildren<SectionProps>) => {
+export default ({
+    id,
+    title,
+    subtitle,
+    hasDivider = false,
+    isBodyOpaque = false,
+    children,
+}: PropsWithChildren<SectionProps>) => {
     const classes = useStyles();
     return (
         <div id={id} className={classes.section}>
@@ -31,7 +47,7 @@ export default ({ id, title, subtitle, hasDivider = false, children }: PropsWith
                 {optionalSubtitle(subtitle)}
             </div>
             {optionalDivider(hasDivider)}
-            <div className={classes.body}>{children}</div>
+            <div className={classNames(classes.body, { [classes.opaqueBody]: isBodyOpaque })}>{children}</div>
         </div>
     );
 };
