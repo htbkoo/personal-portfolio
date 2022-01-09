@@ -57,7 +57,7 @@ export const AppThemeProvider = ({ children }: { children?: React.ReactNode }) =
 
     return (
         <DarkLightModeContext.Provider value={{ darkLightMode, setDarkLightMode }}>
-            <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+            <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
         </DarkLightModeContext.Provider>
     );
 };
