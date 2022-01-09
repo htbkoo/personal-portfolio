@@ -43,6 +43,9 @@
             justify-content: center;
             flex-direction: column;
             overflow: hidden;
+
+            animation-duration: 1s;
+            animation-name: fadein;
         }
 
         .loading {
@@ -73,6 +76,16 @@
         @-webkit-keyframes spin {
             to {
                 -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                filter: opacity(0%);
+            }
+
+            to {
+                filter: opacity(100%);
             }
         }
     </style>
