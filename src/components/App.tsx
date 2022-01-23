@@ -4,7 +4,6 @@ import { AppThemeProvider } from "services/MuiThemeFactory";
 import GoogleAnalyticsManager from "services/GoogleAnalyticsManager";
 
 import PortfolioPage from "./page/PortfolioPage";
-import sectionConfigs from "../metadata/sectionConfigs";
 
 import "../css/App.css";
 
@@ -25,7 +24,7 @@ export default function App(_: Props) {
     return (
         <AppThemeProvider>
             <div className="App">
-                <PortfolioPage sectionConfigs={sectionConfigs} />
+                <PortfolioPage />
             </div>
         </AppThemeProvider>
     );

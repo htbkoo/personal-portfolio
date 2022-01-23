@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./ResponsivePageDrawer";
 import PageMain from "./PageMain";
-import SectionMetadata from "../../model/SectionMetadata";
+import sectionConfigs from "metadata/sectionConfigs";
 
 const drawerWidth = 240;
 
@@ -26,11 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface PortfolioPageProps {
-    sectionConfigs: SectionMetadata[];
-}
-
-export default ({ sectionConfigs }: PortfolioPageProps) => {
+export default () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => setDrawerOpen((prevDrawerOpen) => !prevDrawerOpen);
