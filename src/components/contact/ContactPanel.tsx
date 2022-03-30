@@ -55,41 +55,41 @@ function GitHubIcon() {
         },
     };
     return (
-        <React.Fragment>
+        <>
             <Hidden smUp>
                 <ContactIcon metadata={metadata} cappedIconSize={"medium"} />
             </Hidden>
             <Hidden xsDown>
                 <ContactIcon metadata={metadata} />
             </Hidden>
-        </React.Fragment>
+        </>
     );
 }
 
 function Icons() {
     return (
-        <React.Fragment>
+        <>
             <Hidden smUp>{contactIcons(iconMetadatas, "medium")}</Hidden>
             <Hidden xsDown>{contactIcons(iconMetadatas)}</Hidden>
-        </React.Fragment>
+        </>
     );
 }
 
 function SecondaryIcons() {
     return (
-        <React.Fragment>
+        <>
             <Hidden smUp>{contactIcons(iconSecondaryMetadatas, "small")}</Hidden>
             <Hidden xsDown>{contactIcons(iconSecondaryMetadatas, "medium")}</Hidden>
-        </React.Fragment>
+        </>
     );
 }
 
 function Badges() {
     return (
-        <React.Fragment>
+        <>
             <Hidden smUp>{contactIcons(badgeMicroMetadatas)}</Hidden>
             <Hidden xsDown>{contactIcons(badgeMetadatas)}</Hidden>
-        </React.Fragment>
+        </>
     );
 }
 
