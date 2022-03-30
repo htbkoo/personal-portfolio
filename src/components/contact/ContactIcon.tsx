@@ -4,21 +4,6 @@ import ContactMetadata from "../../model/ContactMetadata";
 
 export type ContactIconSize = "small" | "medium";
 
-const getIconImgStyle = (theme: Theme, cappedIconSize?: ContactIconSize) => {
-    const getStyle = (spacing: number) => ({
-        maxHeight: theme.spacing(spacing),
-        maxWidth: theme.spacing(spacing),
-    });
-
-    if (cappedIconSize === "small") {
-        return getStyle(4);
-    } else if (cappedIconSize === "medium") {
-        return getStyle(8);
-    } else {
-        return {};
-    }
-};
-
 const contactIconSizesMappings: Readonly<Record<ContactIconSize, number>> = {
     small: 4,
     medium: 8,
