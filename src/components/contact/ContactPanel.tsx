@@ -5,6 +5,7 @@ import Hidden from "@material-ui/core/Hidden";
 import ContactIcon from "./ContactIcon";
 
 import iconMetadatas from "../../metadata/contact/icons.json";
+import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json";
 import badgeMetadatas from "../../metadata/contact/badges.json";
 import badgeMicroMetadatas from "../../metadata/contact/badges_micro.json";
 import ContactMetadata from "../../model/ContactMetadata";
@@ -31,6 +32,7 @@ export default () => {
                 <Icons />
             </div>
             <div className={classes.badges}>
+                <SecondaryIcons />
                 <Badges />
             </div>
         </Section>
@@ -66,6 +68,10 @@ function Icons() {
             <Hidden xsDown>{contactIcons(iconMetadatas)}</Hidden>
         </React.Fragment>
     );
+}
+
+function SecondaryIcons() {
+    return <>{contactIcons(iconSecondaryMetadatas, true)}</>;
 }
 
 function Badges() {
