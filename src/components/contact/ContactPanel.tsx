@@ -18,9 +18,14 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: "flex",
         flexFlow: "wrap",
         justifyContent: "center",
-        alignItems: "baseline",
+        alignItems: "center",
     },
-    badges: {},
+    badges: {
+        display: "flex",
+        flexFlow: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+    },
 }));
 
 export default () => {
