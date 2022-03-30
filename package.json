@@ -15,7 +15,8 @@
     "gh-pages:clean": "rimraf docs",
     "gh-pages:rename": "node ./bin/rename -s build -d docs",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "postbuild": "react-snap"
   },
   "browserslist": [
     ">0.2%",
