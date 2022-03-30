@@ -7,7 +7,7 @@ export type ContactIconSize = "small" | "medium";
 const contactIconSizesMappings: Readonly<Record<ContactIconSize, number>> = {
     small: 4,
     medium: 8,
-};
+} as const;
 
 const useStyles = makeStyles<Theme, { cappedIconSize?: ContactIconSize }>((theme: Theme) => ({
     icon: {
