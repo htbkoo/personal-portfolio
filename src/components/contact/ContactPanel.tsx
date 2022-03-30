@@ -2,7 +2,7 @@ import * as React from "react";
 import { makeStyles, Theme } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 
-import ContactIcon from "./ContactIcon";
+import ContactIcon, { ContactIconSize } from "./ContactIcon";
 
 import iconMetadatas from "../../metadata/contact/icons.json";
 import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json";
@@ -57,7 +57,7 @@ function GitHubIcon() {
     return (
         <React.Fragment>
             <Hidden smUp>
-                <ContactIcon metadata={metadata} cappedIconSize={true} />
+                <ContactIcon metadata={metadata} cappedIconSize={"medium"} />
             </Hidden>
             <Hidden xsDown>
                 <ContactIcon metadata={metadata} />
@@ -69,14 +69,19 @@ function GitHubIcon() {
 function Icons() {
     return (
         <React.Fragment>
-            <Hidden smUp>{contactIcons(iconMetadatas, true)}</Hidden>
+            <Hidden smUp>{contactIcons(iconMetadatas, "medium")}</Hidden>
             <Hidden xsDown>{contactIcons(iconMetadatas)}</Hidden>
         </React.Fragment>
     );
 }
 
 function SecondaryIcons() {
-    return <>{contactIcons(iconSecondaryMetadatas, true)}</>;
+    return (
+        <React.Fragment>
+            <Hidden smUp>{contactIcons(iconSecondaryMetadatas, "small")}</Hidden>
+            <Hidden xsDown>{contactIcons(iconSecondaryMetadatas, "medium")}</Hidden>
+        </React.Fragment>
+    );
 }
 
 function Badges() {
@@ -88,7 +93,7 @@ function Badges() {
     );
 }
 
-function contactIcons(metadatas: ContactMetadata[], cappedIconSize: boolean = false) {
+function contactIcons(metadatas: ContactMetadata[], cappedIconSize?: ContactIconSize) {
     return metadatas.map((metadata, i) => (
         <ContactIcon
             key={`${i.toString()}_${metadata.img.alt}`}
