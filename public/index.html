@@ -36,38 +36,6 @@
             background-color: #333333;
         }
 
-        .loading-container {
-            width: 98vw;
-            height: 98vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            overflow: hidden;
-
-            animation-duration: 1s;
-            animation-name: fadein;
-        }
-
-        .loading {
-            width: 128px;
-            height: 128px;
-            border: 16px solid rgba(49, 126, 251, 0.35);
-            border-radius: 50%;
-            border-top-color: rgba(49, 126, 251, 0.7);
-            animation: spin 1s ease-in-out infinite;
-            -webkit-animation: spin 1s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .loading-text {
-            margin-top: 16px;
-            font-size: 32px;
-            font-weight: bolder;
-            color: rgb(46, 125, 255);
-            font-family: "Roboto", monospace, "Helvetica", "Arial", sans-serif;
-        }
-
         @keyframes spin {
             to {
                 -webkit-transform: rotate(360deg);
@@ -116,12 +84,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="background"></div>
-    <div id="root">
-      <div class="loading-container">
-        <div class="loading"></div>
-        <div class="loading-text">Loading</div>
-      </div>
-    </div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
