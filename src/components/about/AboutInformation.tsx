@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-export default () => {
+const AboutInformation = () => {
     const classes = useStyles();
     return (
         <Paper className={classes.root}>
@@ -72,3 +72,4 @@ export default () => {
         );
     }
 };
+export default AboutInformation;

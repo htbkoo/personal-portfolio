@@ -15,7 +15,7 @@ interface PortfoliosPanelProps {
     portfoliosFactory: PortfoliosFactory;
 }
 
-export default ({ portfoliosFactory }: PortfoliosPanelProps) => {
+const PortfoliosPanel = ({ portfoliosFactory }: PortfoliosPanelProps) => {
     const classes = useStyles();
 
     const [portfolios, setPortfolios] = useState<React.ReactNode>([]);
@@ -30,3 +30,4 @@ export default ({ portfoliosFactory }: PortfoliosPanelProps) => {
         </Section>
     );
 };
+export default PortfoliosPanel;

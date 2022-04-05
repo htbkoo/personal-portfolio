@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-export default () => {
+const ContactPanel = () => {
     const classes = useStyles();
     return (
         <Section id="contact" hasDivider={true} title="Contact" subtitle="Check me out at the following!">
@@ -43,6 +43,7 @@ export default () => {
         </Section>
     );
 };
+export default ContactPanel;
 
 function GitHubIcon() {
     const color = useGitHubMarkImgColorBasedOnTheme();

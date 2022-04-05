@@ -4,7 +4,7 @@ import { PortfolioProps } from "./PortfolioProps";
 
 interface DirectlyDisplayHtmlContentPortfolioProps extends PortfolioProps {}
 
-export default (props: DirectlyDisplayHtmlContentPortfolioProps) => {
+const DirectlyDisplayHtmlContentPortfolio = (props: DirectlyDisplayHtmlContentPortfolioProps) => {
     const { title, link, content } = props;
     return (
         <div>
@@ -15,3 +15,4 @@ export default (props: DirectlyDisplayHtmlContentPortfolioProps) => {
         </div>
     );
 };
+export default DirectlyDisplayHtmlContentPortfolio;

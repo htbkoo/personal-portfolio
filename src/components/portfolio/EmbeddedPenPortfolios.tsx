@@ -12,7 +12,7 @@ interface Props {
     rssFeedUrl: string;
 }
 
-export default ({ parser, rssFeedUrl }: Props) => {
+const EmbeddedPenPortfolios = ({ parser, rssFeedUrl }: Props) => {
     const [loaded, setLoaded] = useState(false);
     const [items, setItems] = useState<Items[]>([]);
 
@@ -43,3 +43,4 @@ export default ({ parser, rssFeedUrl }: Props) => {
         </div>
     );
 };
+export default EmbeddedPenPortfolios;

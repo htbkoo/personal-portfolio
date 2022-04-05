@@ -31,14 +31,14 @@ interface SectionProps {
     isBodyOpaque?: boolean;
 }
 
-export default ({
-    id,
-    title,
-    subtitle,
-    hasDivider = false,
-    isBodyOpaque = false,
-    children,
-}: PropsWithChildren<SectionProps>) => {
+const Section = ({
+                     id,
+                     title,
+                     subtitle,
+                     hasDivider = false,
+                     isBodyOpaque = false,
+                     children,
+                 }: PropsWithChildren<SectionProps>) => {
     const classes = useStyles();
     return (
         <div id={id} className={classes.section}>
@@ -51,6 +51,7 @@ export default ({
         </div>
     );
 };
+export default Section;
 
 function optionalTitle(title?: string) {
     return optionalTypography({ text: title, variant: "h3" });
