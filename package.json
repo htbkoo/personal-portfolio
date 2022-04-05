@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "private": true,
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
@@ -16,6 +16,12 @@
     "gh-pages:rename": "node ./bin/rename -s build -d docs",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": [
     ">0.2%",
