@@ -23,7 +23,7 @@ interface PageDrawerProps {
     sectionConfigs: SectionMetadata[];
 }
 
-export default (props: PageDrawerProps) => {
+const PageDrawer = (props: PageDrawerProps) => {
     const classes = useStyles();
     const { sectionConfigs } = props;
 
@@ -40,6 +40,7 @@ export default (props: PageDrawerProps) => {
         </Drawer>
     );
 };
+export default PageDrawer;
 
 function asItems(sectionConfigs: SectionMetadata[]): string[] {
     return sectionConfigs.map((config) => config.name);

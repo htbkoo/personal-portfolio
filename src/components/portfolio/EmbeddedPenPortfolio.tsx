@@ -27,7 +27,7 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xl: 768,
 };
 
-export default (props: EmbeddedPenPortfolioProps) => {
+const EmbeddedPenPortfolio = (props: EmbeddedPenPortfolioProps) => {
     const classes = useStyles();
     const width = useWidth();
 
@@ -50,3 +50,4 @@ export default (props: EmbeddedPenPortfolioProps) => {
         </div>
     );
 };
+export default EmbeddedPenPortfolio;

@@ -27,7 +27,7 @@ interface ContactIconProps {
     cappedIconSize?: ContactIconSize;
 }
 
-export default ({ metadata, cappedIconSize }: ContactIconProps) => {
+const ContactIcon = ({ metadata, cappedIconSize }: ContactIconProps) => {
     const classes = useStyles({ cappedIconSize });
     return (
         <div className={classes.icon}>
@@ -41,3 +41,4 @@ export default ({ metadata, cappedIconSize }: ContactIconProps) => {
         </div>
     );
 };
+export default ContactIcon;

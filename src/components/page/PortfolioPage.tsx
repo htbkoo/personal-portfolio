@@ -30,7 +30,7 @@ interface PortfolioPageProps {
     sectionConfigs: SectionMetadata[];
 }
 
-export default ({ sectionConfigs }: PortfolioPageProps) => {
+const PortfolioPage = ({ sectionConfigs }: PortfolioPageProps) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => setDrawerOpen((prevDrawerOpen) => !prevDrawerOpen);
@@ -56,3 +56,4 @@ export default ({ sectionConfigs }: PortfolioPageProps) => {
         </div>
     );
 };
+export default PortfolioPage;

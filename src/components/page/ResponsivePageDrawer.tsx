@@ -48,7 +48,7 @@ const DrawerContent = ({ items }: { items: string[] }) => {
     );
 };
 
-export default (props: ResponsivePageDrawerProps) => {
+const ResponsivePageDrawer = (props: ResponsivePageDrawerProps) => {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -83,3 +83,4 @@ export default (props: ResponsivePageDrawerProps) => {
         </>
     );
 };
+export default ResponsivePageDrawer;

@@ -25,7 +25,7 @@ interface PageMainProps {
     sectionConfigs: SectionMetadata[];
 }
 
-export default (props: PageMainProps) => {
+const PageMain = (props: PageMainProps) => {
     const classes = useStyles();
     const { sectionConfigs } = props;
 
@@ -42,3 +42,4 @@ export default (props: PageMainProps) => {
         </main>
     );
 };
+export default PageMain;

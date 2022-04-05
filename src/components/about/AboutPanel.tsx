@@ -3,7 +3,7 @@ import * as React from "react";
 import Section from "../common/Section";
 import AboutInformation from "./AboutInformation";
 
-export default () => (
+const AboutPanel = () => (
     <Section
         id="about"
         hasDivider={false}
@@ -13,3 +13,4 @@ export default () => (
         <AboutInformation />
     </Section>
 );
+export default AboutPanel;

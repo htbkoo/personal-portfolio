@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const OLD_VERSION_URL = "https://codepen.io/htbkoo/";
 
-export default () => {
+const OldVersionLinkButton = () => {
     const classes = useStyles();
     return (
         <Button href={OLD_VERSION_URL} variant="contained" color="secondary" className={classes.button}>
@@ -19,3 +19,4 @@ export default () => {
         </Button>
     );
 };
+export default OldVersionLinkButton;

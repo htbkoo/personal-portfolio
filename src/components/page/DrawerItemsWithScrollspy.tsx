@@ -52,7 +52,7 @@ interface DrawerItemsWithScrollspyProps {
 
 const EMPIRICAL_OFFSET = -80;
 
-export default (props: DrawerItemsWithScrollspyProps) => {
+const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
     const classes = useStyles();
     const { items } = props;
 
@@ -85,6 +85,7 @@ export default (props: DrawerItemsWithScrollspyProps) => {
         </React.Fragment>
     );
 };
+export default DrawerItemsWithScrollspy;
 
 function itemToHref(item: string): string {
     return `#${item.replace(/ /g, "-").toLowerCase()}`;
