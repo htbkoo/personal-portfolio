@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "private": true,
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
@@ -21,6 +21,9 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "plugins": [
+      "only-warn"
     ]
   },
   "browserslist": [
