@@ -61,5 +61,8 @@
     "react-scripts": "3.4.4",
     "rimraf": "^2.6.3"
   },
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  },
   "license": "MIT"
 }
