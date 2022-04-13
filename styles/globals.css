@@ -14,3 +14,133 @@ a {
 * {
     box-sizing: border-box;
 }
+
+/* Legacy CSS from the old version created with create-react-app */
+
+/* From App.css */
+.App {
+    text-align: center;
+
+    animation-duration: 1s;
+    animation-name: fadein;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* From index.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* From index.html */
+body {
+    background-color: #333333;
+}
+
+.loading-container {
+    width: 98vw;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+
+    animation-duration: 1s;
+    animation-name: fadein;
+}
+
+.loading {
+    width: 128px;
+    height: 128px;
+    border: 16px solid rgba(49, 126, 251, 0.35);
+    border-radius: 50%;
+    border-top-color: rgba(49, 126, 251, 0.7);
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    z-index: 1;
+}
+
+.loading-text {
+    margin-top: 16px;
+    font-size: 32px;
+    font-weight: bolder;
+    color: rgb(46, 125, 255);
+    font-family: "Roboto", monospace, "Helvetica", "Arial", sans-serif;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes fadein {
+    from {
+        filter: opacity(0%);
+    }
+
+    to {
+        filter: opacity(100%);
+    }
+}
+
+.background {
+    background: url("%PUBLIC_URL%/background.jpg");
+    -webkit-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
