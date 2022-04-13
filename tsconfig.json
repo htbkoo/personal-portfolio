@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/pages/*": ["pages/*"]
+      "@/pages/*": ["pages/*"],
+      "@/services/*": ["src/services/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
