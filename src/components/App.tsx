@@ -6,8 +6,6 @@ import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 import PortfolioPage from "./page/PortfolioPage";
 import sectionConfigs from "../metadata/sectionConfigs";
 
-import "../css/App.css";
-
 interface Props {}
 
 const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
