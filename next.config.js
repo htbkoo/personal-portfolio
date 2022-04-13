@@ -1,3 +1,6 @@
+// reference: https://github.com/cyrilwanner/next-optimized-images#installation
+const withOptimizedImages = require('next-optimized-images');
+
 // reference: https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix
 const isProd = process.env.NODE_ENV === "production";
 
@@ -12,6 +15,11 @@ const nextConfig = {
     basePath,
     // Use the GitHub Pages subpath in production and localhost for development.
     assetPrefix: `${basePath}/`,
+
+    // reference: https://github.com/cyrilwanner/next-optimized-images/issues/272
+    images: {
+        loader: 'custom',
+    },
 };
 
-module.exports = nextConfig;
+module.exports = withOptimizedImages(nextConfig);
