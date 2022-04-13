@@ -4,9 +4,9 @@ export default class GoogleAnalyticsManager {
     private _isInitialized: boolean = false;
 
     public init() {
-        const isGoogleAnalyticsTrackingEnabled = isTrue(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED);
-        const trackingId = process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID;
-        const testMode = isTrue(process.env.REACT_APP_REACT_GA_TEST_MODE);
+        const isGoogleAnalyticsTrackingEnabled = isTrue(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED);
+        const trackingId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID;
+        const testMode = isTrue(process.env.NEXT_PUBLIC_REACT_GA_TEST_MODE);
 
         if (isGoogleAnalyticsTrackingEnabled && trackingId) {
             console.log("Google Analytics tracking is enabled and trackingId is defined, initializing Google Analytics module now");

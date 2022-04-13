@@ -28,7 +28,7 @@ export function VersionText() {
             rel="noopener noreferrer">
             <div className={classes.container}>
                 <div>
-                    v{version}-{process.env.REACT_APP_GIT_SHA}
+                    v{version}-{process.env.NEXT_PUBLIC_GIT_SHA}
                 </div>
                 <div className={classes.linkIconContainer}>
                     <GitHubMarkImg color={useGitHubMarkImgColorBasedOnTheme()} />
