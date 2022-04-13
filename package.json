@@ -7,7 +7,7 @@
     "lint": "next lint",
     "dev": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
     "start": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next start",
-    "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` next build",
+    "build": "cross-env REACT_APP_GIT_SHA=`git rev-parse --short HEAD` next build && next export",
     "dev-win": "git rev-parse --short HEAD >sha.txt && set /p REACT_APP_GIT_SHA= < sha.txt && del sha.txt && set BROWSER=none && next dev",
     "start-win": "git rev-parse --short HEAD >sha.txt && set /p REACT_APP_GIT_SHA= < sha.txt && del sha.txt && set BROWSER=none && next start",
     "build-win": "git rev-parse --short HEAD >sha.txt && set /p REACT_APP_GIT_SHA= < sha.txt && del sha.txt && next build",
