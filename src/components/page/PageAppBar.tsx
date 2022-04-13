@@ -55,7 +55,7 @@ export default function PageAppBar({ onIconButtonClick }: PageAppBarProps) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" color="inherit" noWrap className={classNames(classes.title)}>
-                    Hey's Personal Portfolio
+                    Hey&apos;s Personal Portfolio
                 </Typography>
                 <>
                     <IconButton aria-label="dark-mode" onClick={toggleDarkLightMode}>
