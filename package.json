@@ -15,7 +15,7 @@
     "test:watch": "jest --ci",
     "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
     "gh-pages:clean": "rimraf docs",
-    "gh-pages:rename": "node ./bin/rename -s build -d docs",
+    "gh-pages:rename": "node ./bin/rename -s out -d docs",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
