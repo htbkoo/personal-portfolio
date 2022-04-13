@@ -15,6 +15,8 @@ const customJestConfig = {
         // "^@/components/(.*)$": "<rootDir>/components/$1",
 
         "^@/pages/(.*)$": "<rootDir>/pages/$1",
+        "^@/services/(.*)$": "<rootDir>/src/services/$1",
+        "^@/public/(.*)$": "<rootDir>/public/$1",
     },
     testEnvironment: "jest-environment-jsdom",
 };
