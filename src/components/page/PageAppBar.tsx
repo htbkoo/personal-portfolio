@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import MenuIcon from "@material-ui/icons/Menu";
-import { useDarkLightModeToggler } from "services/MuiThemeFactory";
+import { useDarkLightModeToggler } from "@/services/MuiThemeFactory";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
