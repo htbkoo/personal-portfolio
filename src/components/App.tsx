@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import { AppThemeProvider } from "@/services/MuiThemeFactory";
-import GoogleAnalyticsManager from "@/services/GoogleAnalyticsManager";
+import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
+import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 
 import PortfolioPage from "./page/PortfolioPage";
 import sectionConfigs from "../metadata/sectionConfigs";
