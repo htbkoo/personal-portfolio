@@ -15,7 +15,7 @@ const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     },
 };
 
-export const createTheme = (paletteType: PaletteType) =>
+const createTheme = (paletteType: PaletteType) =>
     createMuiTheme({
         palette: {
             ...PALETTES[paletteType],
