@@ -3,6 +3,7 @@ import Document, { DocumentContext, Html, Head, Main, NextScript } from "next/do
 import { ServerStyleSheets } from "@material-ui/core/styles";
 
 import { DARK_THEME } from "@/src/services/MuiThemeFactory";
+import { withAssetPrefix } from "@/src/utils/assetUtils";
 
 // reference:
 // 1. https://nextjs.org/docs/advanced-features/custom-document#typescript
@@ -59,8 +60,8 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <meta charSet="utf-8" />
-                    <link rel="shortcut icon" href="/personal-portfolio/favicon.ico" />
-                    <link rel="apple-touch-icon" href="/personal-portfolio/icons-192.png" />
+                    <link rel="shortcut icon" href={withAssetPrefix("favicon.ico")} />
+                    <link rel="apple-touch-icon" href={withAssetPrefix("icons-192.png")} />
 
                     {/* PWA primary color */}
                     <meta name="theme-color" content={DARK_THEME.palette.primary.main} />
@@ -77,7 +78,7 @@ class MyDocument extends Document {
                       manifest.json provides metadata used when your web app is added to the
                       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
                     */}
-                    <link rel="manifest" href="/personal-portfolio/manifest.json" />
+                    <link rel="manifest" href={withAssetPrefix("manifest.json")} />
                 </Head>
                 <body>
                     <Main />

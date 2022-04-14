@@ -13,6 +13,7 @@ import { useTheme } from "@material-ui/core/styles";
 
 import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
 import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
+import { withAssetPrefix } from "@/src/utils/assetUtils";
 
 const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
 
@@ -50,10 +51,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
                 />
-                <link rel="icon" href="/personal-portfolio/favicon.ico" />
+                <link rel="icon" href={withAssetPrefix("favicon.ico")} />
 
-                <link rel="prefetch" href="/personal-portfolio/background.jpg" />
-                <link rel="prefetch" href="/personal-portfolio/background-light.jpg" />
+                <link rel="prefetch" href={withAssetPrefix("background.jpg")} />
+                <link rel="prefetch" href={withAssetPrefix("background-light.jpg")} />
             </Head>
             <AppThemeProvider>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
