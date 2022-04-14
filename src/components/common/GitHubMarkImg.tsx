@@ -2,8 +2,8 @@ import * as React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Theme, useTheme } from "@material-ui/core/styles";
 
-import GitHubMark120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png";
-import GitHubMarkLight120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png";
+const GitHubMark120Plus = require("@/public/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png").default;
+const GitHubMarkLight120Plus = require("@/public/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png").default;
 
 const DEFAULT_MAX_ICON_SIZE = 16;
 const DEFAULT_IS_LIGHT = "black";
