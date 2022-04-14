@@ -12,6 +12,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { useTheme } from "@material-ui/core/styles";
 
 import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
+import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
+
+const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
 
 const BackgroundImage = () => {
     const theme = useTheme();
@@ -21,7 +24,7 @@ const BackgroundImage = () => {
     />)
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
     useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector("#jss-server-side");
@@ -29,6 +32,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             jssStyles.parentElement?.removeChild(jssStyles);
         }
     }, []);
+
+    useEffect(() => {
+        gAManager.init();
+    }, []);
+
+    useEffect(() => {
+        const path = window.location.pathname + window.location.search;
+        gAManager.pageview(path);
+    });
 
     return (
         <>
@@ -49,6 +61,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             </AppThemeProvider>
         </>
     );
-}
+};
 
 export default MyApp;
