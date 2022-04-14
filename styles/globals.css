@@ -110,9 +110,7 @@ body {
     background-repeat: no-repeat
 }
 
-@media (prefers-color-scheme: light) {
-    .background {
-        /*noinspection CssUnknownTarget*/
-        background: url("/personal-portfolio/background-light.jpg");
-    }
+.background-light {
+    /*noinspection CssUnknownTarget*/
+    background: url("/personal-portfolio/background-light.jpg");
 }
