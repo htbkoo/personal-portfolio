@@ -19,6 +19,8 @@ const nextConfig = {
     // reference: https://github.com/cyrilwanner/next-optimized-images/issues/272
     images: {
         loader: 'custom',
+        // reference: https://stackoverflow.com/a/68012194
+        disableStaticImages: true,
     },
 };
 
