@@ -17,10 +17,6 @@ const MyDocument = ()=>{
                 <meta charSet="utf-8" />
                 <link rel="shortcut icon" href="/personal-portfolio/favicon.ico" />
                 <link rel="apple-touch-icon" href="/personal-portfolio/icons-192.png" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
                 <meta name="theme-color" content="#3f51b5" />
                 <meta name="Description" content="Contains the previous works and community contacts" />
                 {/* Reference: https://stackoverflow.com/a/52079972 */}
