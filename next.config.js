@@ -22,6 +22,10 @@ const nextConfig = {
         // reference: https://stackoverflow.com/a/68012194
         disableStaticImages: true,
     },
+
+    env: {
+        NEXT_PUBLIC_BASE_PATH: basePath,
+    },
 };
 
 module.exports = withOptimizedImages(nextConfig);
