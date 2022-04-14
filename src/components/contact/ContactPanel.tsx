@@ -2,7 +2,7 @@ import * as React from "react";
 import { makeStyles, Theme } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 
-import ContactIcon, { ContactIconSize } from "./ContactIcon";
+import ContactIcon, { ContactIconProps } from "./ContactIcon";
 
 import iconMetadatas from "../../metadata/contact/icons.json";
 import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json";
@@ -70,7 +70,7 @@ function GitHubIcon() {
 function Icons() {
     return (
         <>
-            <Hidden smUp>{contactIcons(iconMetadatas, "medium")}</Hidden>
+            <Hidden smUp>{contactIcons(iconMetadatas, { cappedIconSize: "medium" })}</Hidden>
             <Hidden xsDown>{contactIcons(iconMetadatas)}</Hidden>
         </>
     );
@@ -79,8 +79,8 @@ function Icons() {
 function SecondaryIcons() {
     return (
         <>
-            <Hidden smUp>{contactIcons(iconSecondaryMetadatas, "small")}</Hidden>
-            <Hidden xsDown>{contactIcons(iconSecondaryMetadatas, "medium")}</Hidden>
+            <Hidden smUp>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "small" })}</Hidden>
+            <Hidden xsDown>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "medium" })}</Hidden>
         </>
     );
 }
@@ -88,18 +88,22 @@ function SecondaryIcons() {
 function Badges() {
     return (
         <>
-            <Hidden smUp>{contactIcons(badgeMicroMetadatas)}</Hidden>
-            <Hidden xsDown>{contactIcons(badgeMetadatas)}</Hidden>
+            <Hidden smUp>{contactIcons(badgeMicroMetadatas, { useLegacyImgElement: true })}</Hidden>
+            <Hidden xsDown>{contactIcons(badgeMetadatas, { useLegacyImgElement: true })}</Hidden>
         </>
     );
 }
 
-function contactIcons(metadatas: ContactMetadata[], cappedIconSize?: ContactIconSize) {
+function contactIcons(
+    metadatas: ContactMetadata[],
+    { cappedIconSize, useLegacyImgElement }: Omit<ContactIconProps, "metadata"> = {},
+) {
     return metadatas.map((metadata, i) => (
         <ContactIcon
             key={`${i.toString()}_${metadata.img.alt}`}
             metadata={metadata}
             cappedIconSize={cappedIconSize}
+            useLegacyImgElement={useLegacyImgElement}
         />
     ));
 }
