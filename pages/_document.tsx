@@ -15,8 +15,8 @@ const MyDocument = ()=>{
         <Html>
             <Head>
                 <meta charSet="utf-8" />
-                <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-                <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons-192.png" />
+                <link rel="shortcut icon" href="/personal-portfolio/favicon.ico" />
+                <link rel="apple-touch-icon" href="/personal-portfolio/icons-192.png" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -30,7 +30,7 @@ const MyDocument = ()=>{
                   manifest.json provides metadata used when your web app is added to the
                   homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
                 */}
-                <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+                <link rel="manifest" href="/personal-portfolio/manifest.json" />
                 {/*
                   Notice the use of %PUBLIC_URL% in the tags above.
                   It will be replaced with the URL of the `public` folder during the build.

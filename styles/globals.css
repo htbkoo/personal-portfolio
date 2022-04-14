@@ -95,7 +95,8 @@ body {
 /* Reference: https://stackoverflow.com/a/60404990 */
 /* suppress CssUnknownTarget */
 .background {
-    background: url("%PUBLIC_URL%/background.jpg");
+    /*noinspection CssUnknownTarget*/
+    background: url("/personal-portfolio/background.jpg");
     -webkit-filter: blur(10px);
     -ms-filter: blur(10px);
     filter: blur(10px);
