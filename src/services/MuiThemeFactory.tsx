@@ -4,6 +4,7 @@ import { grey, indigo } from "@material-ui/core/colors";
 import { PaletteType } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { Theme } from "@material-ui/core/styles/createTheme";
 
 const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     light: {
@@ -36,6 +37,19 @@ const createTheme = (paletteType: PaletteType) =>
         },
     });
 
+export const DARK_THEME = createTheme("dark");
+
+const themesCache: Partial<Record<PaletteType, Theme>> = {
+    dark: DARK_THEME,
+};
+
+const getTheme = (paletteType: PaletteType): Theme => {
+    if (!(paletteType in themesCache)) {
+        themesCache[paletteType] = createTheme(paletteType);
+    }
+    return themesCache[paletteType]!;
+};
+
 const DarkLightModeContext = createContext<{
     darkLightMode: PaletteType;
     setDarkLightMode: (PaletteType) => void;
@@ -53,7 +67,7 @@ export const AppThemeProvider = ({ children }: { children?: ReactNode }) => {
     const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
     const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersLightMode ? "light" : "dark");
 
-    const theme = React.useMemo(() => createTheme(darkLightMode), [darkLightMode]);
+    const theme = getTheme(darkLightMode);
 
     return (
         <DarkLightModeContext.Provider value={{ darkLightMode, setDarkLightMode }}>
