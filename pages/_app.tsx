@@ -19,10 +19,10 @@ const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
 const BackgroundImage = () => {
     const theme = useTheme();
 
-    return (<div
-        className={classNames("background", { "background-light": theme.palette.type === "light" })}
-    />)
-}
+    return (
+        <div className={classNames("background", { "background-light": theme.palette.type === "light" })} />
+    );
+};
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     useEffect(() => {
