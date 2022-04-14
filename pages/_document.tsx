@@ -36,9 +36,9 @@ class MyDocument extends Document {
                     <meta name="ui-version" content={process.env.NEXT_PUBLIC_GIT_SHA} />
 
                     {/*
-                  manifest.json provides metadata used when your web app is added to the
-                  homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-                */}
+                      manifest.json provides metadata used when your web app is added to the
+                      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+                    */}
                     <link rel="manifest" href="/personal-portfolio/manifest.json" />
 
                     {/*  Moved to JS side to avoid blocking rendering */}
