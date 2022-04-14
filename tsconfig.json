@@ -4,6 +4,7 @@
     "paths": {
       "@/pages/*": ["pages/*"],
       "@/src/*": ["src/*"],
+      "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"]
     },
     "target": "es5",

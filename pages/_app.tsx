@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 import classNames from "classnames";
 import React, { useEffect } from "react";
