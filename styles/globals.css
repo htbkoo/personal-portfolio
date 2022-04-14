@@ -112,5 +112,5 @@ body {
 
 .background-light {
     /*noinspection CssUnknownTarget*/
-    background: url("/personal-portfolio/background-light.jpg");
+    background-image: url("/personal-portfolio/background-light.jpg");
 }
