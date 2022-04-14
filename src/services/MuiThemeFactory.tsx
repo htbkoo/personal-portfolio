@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import { createTheme as createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { grey, indigo } from "@material-ui/core/colors";
 import { PaletteType } from "@material-ui/core";
@@ -49,7 +49,7 @@ export const useDarkLightModeToggler = () => {
     return () => setDarkLightMode(darkLightMode === "dark" ? "light" : "dark");
 };
 
-export const AppThemeProvider = ({ children }: { children?: React.ReactNode }) => {
+export const AppThemeProvider = ({ children }: { children?: ReactNode }) => {
     const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
     const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersLightMode ? "light" : "dark");
 
