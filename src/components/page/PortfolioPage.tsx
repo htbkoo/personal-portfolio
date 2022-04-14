@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./ResponsivePageDrawer";
@@ -39,7 +38,6 @@ const PortfolioPage = ({ sectionConfigs }: PortfolioPageProps) => {
 
     return (
         <div className={classes.root}>
-            <CssBaseline />
             <div>
                 <PageAppBar onIconButtonClick={handleDrawerToggle} />
             </div>
