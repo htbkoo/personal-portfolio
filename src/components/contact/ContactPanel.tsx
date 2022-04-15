@@ -36,8 +36,10 @@ const ContactPanel = () => {
                 <GitHubIcon />
                 <Icons />
             </div>
-            <div className={classes.badges}>
+            <div className={classes.icons}>
                 <SecondaryIcons />
+            </div>
+            <div className={classes.badges}>
                 <Badges />
             </div>
         </Section>
