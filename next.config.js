@@ -16,7 +16,8 @@ const basePath = isProd ? "/personal-portfolio" : "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    // reference: https://stackoverflow.com/a/67276953
+    reactStrictMode: false, // or remove this line completely
 
     // reference: https://nextjs.org/docs/api-reference/next.config.js/basepath
     basePath,
