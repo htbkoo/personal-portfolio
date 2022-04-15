@@ -1,9 +1,6 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Theme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core";
-
-import PageSection from "./PageSection";
-import SectionMetadata from "@/src/model/SectionMetadata";
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -21,21 +18,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
 }));
 
-interface PageMainProps {
-    sectionConfigs: SectionMetadata[];
-}
-
-const PageMain = (props: PageMainProps) => {
+const PageMain = ({children}: {children: ReactNode}) => {
     const classes = useStyles();
-    const { sectionConfigs } = props;
 
     return (
         <main className={classes.content}>
             <div className={classes.toolbar} />
-
-            {sectionConfigs.map((config) => (
-                <PageSection key={config.name} config={config} />
-            ))}
+            {children}
         </main>
     );
 };

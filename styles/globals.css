@@ -6,6 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    overflow-y: scroll;
 }
 
 a {
@@ -18,14 +20,6 @@ a {
 }
 
 /* Legacy CSS from the old version created with create-react-app */
-
-/* From App.css */
-.App {
-    text-align: center;
-
-    animation-duration: 1s;
-    animation-name: fadein;
-}
 
 /* From index.css */
 code {

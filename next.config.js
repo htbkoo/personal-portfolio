@@ -33,6 +33,9 @@ const nextConfig = {
     env: {
         NEXT_PUBLIC_BASE_PATH: basePath,
     },
+
+    // reference: https://nextjs.org/docs/api-reference/next.config.js/exportPathMap#adding-a-trailing-slash
+    trailingSlash: true,
 };
 
 module.exports = withPlugins([

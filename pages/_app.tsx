@@ -7,16 +7,14 @@ import Head from "next/head";
 // 1. https://material-ui.com/components/typography/#install-with-npm
 // 2. https://fontsource.org/docs/guides/nextjs
 import "@fontsource/roboto";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { BackgroundImage } from "@/src/components/BackgroundImage";
-import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
+import AppBody from "@/src/components/AppBody";
 import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
 
 const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = (appProps: AppProps) => {
     useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector("#jss-server-side");
@@ -47,15 +45,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 <link rel="prefetch" href={withAssetPrefix("background.jpg")} />
                 <link rel="prefetch" href={withAssetPrefix("background-light.jpg")} />
             </Head>
-            <AppThemeProvider>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline />
-                <noscript>You need to enable JavaScript to run this app.</noscript>
-                <BackgroundImage />
-                <Component {...pageProps} />
-            </AppThemeProvider>
+            <AppBody {...appProps} />
         </>
     );
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default MyApp;

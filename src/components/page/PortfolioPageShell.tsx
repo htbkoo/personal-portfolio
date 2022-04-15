@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import styles from "@/styles/PortfolioPageShell.module.css";
+
+import React, { ReactNode, useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 import PageAppBar from "./PageAppBar";
 import PageDrawer from "./ResponsivePageDrawer";
 import PageMain from "./PageMain";
-import SectionMetadata from "../../model/SectionMetadata";
+import TransitionLayout from "@/src/components/TransitionLayout";
+import SectionConfigs, { PageType } from "@/src/metadata/sectionConfigs";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            display: "flex",
-        },
         drawer: {
             [theme.breakpoints.up("md")]: {
                 width: drawerWidth,
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface PortfolioPageProps {
-    sectionConfigs: SectionMetadata[];
-}
+const DRAWER_ITEMS: Array<PageType> = ["about", "portfolio", "contact"];
 
-const PortfolioPage = ({ sectionConfigs }: PortfolioPageProps) => {
+const sectionConfigs = DRAWER_ITEMS.map((page) => SectionConfigs[page]);
+
+const PortfolioPageShell = ({ children }: { children: ReactNode }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => setDrawerOpen((prevDrawerOpen) => !prevDrawerOpen);
@@ -37,7 +37,7 @@ const PortfolioPage = ({ sectionConfigs }: PortfolioPageProps) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={styles.App}>
             <div>
                 <PageAppBar onIconButtonClick={handleDrawerToggle} />
             </div>
@@ -49,9 +49,11 @@ const PortfolioPage = ({ sectionConfigs }: PortfolioPageProps) => {
                 />
             </nav>
             <div className={classes.main}>
-                <PageMain sectionConfigs={sectionConfigs} />
+                <TransitionLayout>
+                    <PageMain>{children}</PageMain>
+                </TransitionLayout>
             </div>
         </div>
     );
 };
-export default PortfolioPage;
+export default PortfolioPageShell;
