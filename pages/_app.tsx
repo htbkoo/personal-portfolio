@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 
-import classNames from "classnames";
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -9,21 +8,13 @@ import Head from "next/head";
 // 2. https://fontsource.org/docs/guides/nextjs
 import "@fontsource/roboto";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { useTheme } from "@material-ui/core/styles";
 
+import { BackgroundImage } from "@/src/components/BackgroundImage";
 import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
 import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
 
 const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
-
-const BackgroundImage = () => {
-    const theme = useTheme();
-
-    return (
-        <div className={classNames("background", { "background-light": theme.palette.type === "light" })} />
-    );
-};
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     useEffect(() => {

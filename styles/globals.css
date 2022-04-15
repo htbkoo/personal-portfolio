@@ -95,7 +95,6 @@ body {
 /* Reference: https://stackoverflow.com/a/60404990 */
 .background {
     /*noinspection CssUnknownTarget*/
-    background: url("/personal-portfolio/background.jpg");
     -webkit-filter: blur(10px);
     -ms-filter: blur(10px);
     filter: blur(10px);
@@ -108,9 +107,4 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat
-}
-
-.background-light {
-    /*noinspection CssUnknownTarget*/
-    background-image: url("/personal-portfolio/background-light.jpg");
 }
