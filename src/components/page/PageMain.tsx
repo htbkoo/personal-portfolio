@@ -1,9 +1,9 @@
 import React from "react";
 import { Theme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
 
-import SectionMetadata from "../../model/SectionMetadata";
+import PageSection from "./PageSection";
+import SectionMetadata from "@/src/model/SectionMetadata";
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -34,10 +34,7 @@ const PageMain = (props: PageMainProps) => {
             <div className={classes.toolbar} />
 
             {sectionConfigs.map((config) => (
-                <div key={config.name}>
-                    {config.component}
-                    <Divider />
-                </div>
+                <PageSection key={config.name} config={config} />
             ))}
         </main>
     );
