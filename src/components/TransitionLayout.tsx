@@ -9,6 +9,7 @@ type transitionStateType = "fadeIn" | "fadeOut";
 const TransitionLayout = ({ children }: { children: ReactNode }) => {
     const { pathname } = useRouter();
     const [currPathname, setCurrPathname] = useState(pathname);
+    const [displayChildren, setDisplayChildren] = useState(children);
 
     const [transitionStage, setTransitionStage] = useState<transitionStateType>("fadeOut");
     useEffect(() => {
@@ -18,19 +19,22 @@ const TransitionLayout = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         if (pathname !== currPathname) {
             setTransitionStage("fadeOut");
+        } else {
+            setDisplayChildren(children);
         }
-    }, [currPathname]);
+    }, [pathname, children]);
 
     return (
         <div
             onTransitionEnd={() => {
                 if (transitionStage === "fadeOut") {
                     setCurrPathname(pathname);
+                    setDisplayChildren(children);
                     setTransitionStage("fadeIn");
                 }
             }}
             className={`${styles.content} ${styles[transitionStage]}`}>
-            {children}
+            {displayChildren}
         </div>
     );
 };
