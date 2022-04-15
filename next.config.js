@@ -29,11 +29,13 @@ const nextConfig = {
     },
 };
 
-
 module.exports = withPlugins([
-    [optimizedImages, {
-        /* config for next-optimized-images */
-    }],
+    [
+        optimizedImages,
+        {
+            /* config for next-optimized-images */
+        },
+    ],
 
     // your other plugins here
     nextConfig,
