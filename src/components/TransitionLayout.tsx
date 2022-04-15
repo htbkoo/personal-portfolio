@@ -22,7 +22,7 @@ const TransitionLayout = ({ children }: { children: ReactNode }) => {
         } else {
             setDisplayChildren(children);
         }
-    }, [pathname, children]);
+    }, [pathname, currPathname, children]);
 
     return (
         <div
