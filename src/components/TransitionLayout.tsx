@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
+import React, { ReactNode, useEffect, useState } from "react";
 
 import styles from "@/styles/Layout.module.css";
-
-import React, { ReactNode, useEffect, useState } from "react";
 
 type transitionStateType = "fadeIn" | "fadeOut";
 
