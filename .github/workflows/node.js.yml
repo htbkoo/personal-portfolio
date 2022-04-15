@@ -52,10 +52,16 @@ jobs:
     # reference: https://stackoverflow.com/a/58525708
     - run: yarn install --frozen-lockfile
     - run: yarn test
-    - run: yarn build
       env:
         NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
         NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID }}
+
+    - name: Build (only for the active node version)
+      run: yarn build
+      env:
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID }}
+      if: ${{ matrix.node-version == env.NODE_ACTIVE_LTS_VERSION }}
 
     - name: Prepare tag
       id: prepare_tag
