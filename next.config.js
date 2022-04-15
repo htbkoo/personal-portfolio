@@ -1,5 +1,6 @@
 // reference: https://github.com/cyrilwanner/next-optimized-images#installation
-const withOptimizedImages = require('next-optimized-images');
+const withPlugins = require("next-compose-plugins");
+const optimizedImages = require("next-optimized-images");
 
 // reference: https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix
 const isProd = process.env.NODE_ENV === "production";
@@ -18,7 +19,7 @@ const nextConfig = {
 
     // reference: https://github.com/cyrilwanner/next-optimized-images/issues/272
     images: {
-        loader: 'custom',
+        loader: "custom",
         // reference: https://stackoverflow.com/a/68012194
         disableStaticImages: true,
     },
@@ -28,4 +29,12 @@ const nextConfig = {
     },
 };
 
-module.exports = withOptimizedImages(nextConfig);
+
+module.exports = withPlugins([
+    [optimizedImages, {
+        /* config for next-optimized-images */
+    }],
+
+    // your other plugins here
+    nextConfig,
+]);
