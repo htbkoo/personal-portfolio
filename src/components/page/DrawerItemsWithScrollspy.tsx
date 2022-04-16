@@ -9,6 +9,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "next/link";
 import Scrollspy from "react-scrollspy";
+import classNames from "classnames";
+import { useRouter } from "next/router";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 import SectionMetadata from "@/src/model/SectionMetadata";
@@ -61,6 +63,8 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
     const classes = useStyles();
     const { configs } = props;
 
+    const { pathname } = useRouter();
+
     return (
         <React.Fragment>
             <Scrollspy
@@ -70,7 +74,12 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
                 offset={EMPIRICAL_OFFSET}>
                 {configs.map(({ name, url }, index) => (
                     <Link key={name} href={url} passHref>
-                        <MuiLink color="inherit" underline="always" className={classes.scrollSpyListItem}>
+                        <MuiLink
+                            color="inherit"
+                            underline="always"
+                            className={classNames(classes.scrollSpyListItem, {
+                                [classes.isCurrent]: pathname === url,
+                            })}>
                             <ListItem button>
                                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                 <ListItemText primary={name} />
