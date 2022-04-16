@@ -40,11 +40,13 @@
     "url-polyfill": "^1.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/node-logger": "^6.1.21",
-    "@storybook/react": "^6.1.21",
+    "@storybook/addon-actions": "6.4.22",
+    "@storybook/addon-essentials": "6.4.22",
+    "@storybook/addon-links": "6.4.22",
+    "@storybook/builder-webpack5": "6.4.22",
+    "@storybook/manager-webpack5": "6.4.22",
+    "@storybook/node-logger": "6.4.22",
+    "@storybook/react": "6.4.22",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.0.1",
     "@testing-library/user-event": "14.1.0",
@@ -77,10 +79,11 @@
     "prop-types": "15.7.2",
     "responsive-loader": "2.3.0",
     "rimraf": "^2.6.3",
-    "storybook-addon-next": "^1.6.2",
+    "storybook-addon-next": "1.6.2",
     "svg-sprite-loader": "6.0.11",
     "typescript": "4.6.3",
-    "webp-loader": "0.6.0"
+    "webp-loader": "0.6.0",
+    "webpack": "5.72.0"
   },
   "resolutions": {
     "@types/react": "17.0.44",
