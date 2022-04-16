@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import { createTheme as createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { grey, indigo } from "@material-ui/core/colors";
 import { PaletteType } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { Theme } from "@material-ui/core/styles/createTheme";
 
 const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     light: {
@@ -15,7 +16,7 @@ const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     },
 };
 
-export const createTheme = (paletteType: PaletteType) =>
+const createTheme = (paletteType: PaletteType) =>
     createMuiTheme({
         palette: {
             ...PALETTES[paletteType],
@@ -36,6 +37,19 @@ export const createTheme = (paletteType: PaletteType) =>
         },
     });
 
+export const DARK_THEME = createTheme("dark");
+
+const themesCache: Partial<Record<PaletteType, Theme>> = {
+    dark: DARK_THEME,
+};
+
+const getTheme = (paletteType: PaletteType): Theme => {
+    if (!(paletteType in themesCache)) {
+        themesCache[paletteType] = createTheme(paletteType);
+    }
+    return themesCache[paletteType]!;
+};
+
 const DarkLightModeContext = createContext<{
     darkLightMode: PaletteType;
     setDarkLightMode: (PaletteType) => void;
@@ -49,11 +63,11 @@ export const useDarkLightModeToggler = () => {
     return () => setDarkLightMode(darkLightMode === "dark" ? "light" : "dark");
 };
 
-export const AppThemeProvider = ({ children }: { children?: React.ReactNode }) => {
+export const AppThemeProvider = ({ children }: { children?: ReactNode }) => {
     const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
     const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersLightMode ? "light" : "dark");
 
-    const theme = React.useMemo(() => createTheme(darkLightMode), [darkLightMode]);
+    const theme = getTheme(darkLightMode);
 
     return (
         <DarkLightModeContext.Provider value={{ darkLightMode, setDarkLightMode }}>

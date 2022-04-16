@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x, 14.x, 12.x]
         # node-version: [10.x, 12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -38,21 +38,30 @@ jobs:
       id: yarn-cache
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
+    # reference: https://nextjs.org/docs/messages/no-cache#github-actions
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
-        path: ${{ steps.yarn-cache.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        path: |
+          ${{ steps.yarn-cache.outputs.dir }}
+          ${{ github.workspace }}/.next/cache
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-nextjs-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
         restore-keys: |
-          ${{ runner.os }}-yarn-
+          ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-nextjs-
 
     # reference: https://stackoverflow.com/a/58525708
     - run: yarn install --frozen-lockfile
     - run: yarn test
-    - run: yarn build
       env:
-        REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
-        REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID }}
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID }}
+
+    - name: Build (only for the active node version)
+      run: yarn build
+      env:
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED }}
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID }}
+      if: ${{ matrix.node-version == env.NODE_ACTIVE_LTS_VERSION }}
 
     - name: Prepare tag
       id: prepare_tag
@@ -68,7 +77,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./out
         # reference: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-git-tag
         tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
         tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'

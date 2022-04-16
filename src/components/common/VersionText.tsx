@@ -6,15 +6,18 @@ import { version } from "../../../package.json";
 
 const LINK_TO_GITHUB_REPO = "https://github.com/htbkoo/personal-portfolio";
 
-const useStyles = makeStyles((theme) => ({
-    container: {
-        display: "flex",
-        flexDirection: "row",
-    },
-    linkIconContainer: {
-        marginLeft: theme.spacing(1),
-    },
-}));
+const useStyles = makeStyles(
+    (theme) => ({
+        container: {
+            display: "flex",
+            flexDirection: "row",
+        },
+        linkIconContainer: {
+            marginLeft: theme.spacing(1),
+        },
+    }),
+    { name: "MuiMyVersionText" },
+);
 
 export function VersionText() {
     const classes = useStyles();
@@ -28,7 +31,7 @@ export function VersionText() {
             rel="noopener noreferrer">
             <div className={classes.container}>
                 <div>
-                    v{version}-{process.env.REACT_APP_GIT_SHA}
+                    v{version}-{process.env.NEXT_PUBLIC_GIT_SHA}
                 </div>
                 <div className={classes.linkIconContainer}>
                     <GitHubMarkImg color={useGitHubMarkImgColorBasedOnTheme()} />

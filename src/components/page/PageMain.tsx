@@ -1,44 +1,33 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Theme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
 
-import SectionMetadata from "../../model/SectionMetadata";
-
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        display: "flex",
-    },
-    content: {
-        flexGrow: 1,
-        [theme.breakpoints.down("xs")]: {
-            padding: "unset",
+const useStyles = makeStyles(
+    (theme: Theme) => ({
+        root: {
+            display: "flex",
         },
-        [theme.breakpoints.up("sm")]: {
-            padding: theme.spacing(3),
+        content: {
+            flexGrow: 1,
+            [theme.breakpoints.down("xs")]: {
+                padding: "unset",
+            },
+            [theme.breakpoints.up("sm")]: {
+                padding: theme.spacing(3),
+            },
         },
-    },
-    toolbar: theme.mixins.toolbar,
-}));
+        toolbar: theme.mixins.toolbar,
+    }),
+    { name: "MuiMyPageMain" },
+);
 
-interface PageMainProps {
-    sectionConfigs: SectionMetadata[];
-}
-
-const PageMain = (props: PageMainProps) => {
+const PageMain = ({ children }: { children: ReactNode }) => {
     const classes = useStyles();
-    const { sectionConfigs } = props;
 
     return (
         <main className={classes.content}>
             <div className={classes.toolbar} />
-
-            {sectionConfigs.map((config) => (
-                <div key={config.name}>
-                    {config.component}
-                    <Divider />
-                </div>
-            ))}
+            {children}
         </main>
     );
 };

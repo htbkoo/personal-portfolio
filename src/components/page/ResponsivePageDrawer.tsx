@@ -9,21 +9,23 @@ import { VersionText } from "../common/VersionText";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        drawerPaper: {
-            width: drawerWidth,
-            [theme.breakpoints.up("md")]: {
-                backgroundColor: theme.palette.type === "dark" ? "#42424242" : "#FFFFFF42",
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            drawerPaper: {
+                width: drawerWidth,
+                [theme.breakpoints.up("md")]: {
+                    backgroundColor: theme.palette.type === "dark" ? "#42424242" : "#FFFFFF42",
+                },
             },
-        },
-        toolbar: theme.mixins.toolbar,
-        versionText: {
-            position: "absolute",
-            left: "16px",
-            bottom: "16px",
-        },
-    }),
+            toolbar: theme.mixins.toolbar,
+            versionText: {
+                position: "absolute",
+                left: "16px",
+                bottom: "16px",
+            },
+        }),
+    { name: "MuiMyResponsivePageDrawer" },
 );
 
 interface ResponsivePageDrawerProps {
@@ -32,15 +34,13 @@ interface ResponsivePageDrawerProps {
     onDrawerClose: () => void;
 }
 
-const asItems = (sectionConfigs: SectionMetadata[]): string[] => sectionConfigs.map((config) => config.name);
-
-const DrawerContent = ({ items }: { items: string[] }) => {
+const DrawerContent = ({ configs }: { configs: SectionMetadata[] }) => {
     const classes = useStyles();
 
     return (
         <>
             <div className={classes.toolbar} />
-            <DrawerItemsWithScrollspy items={items} />
+            <DrawerItemsWithScrollspy configs={configs} />
             <div className={classes.versionText}>
                 <VersionText />
             </div>
@@ -53,7 +53,6 @@ const ResponsivePageDrawer = (props: ResponsivePageDrawerProps) => {
     const theme = useTheme();
 
     const { sectionConfigs, drawerOpen, onDrawerClose } = props;
-    const items = asItems(sectionConfigs);
 
     return (
         <>
@@ -67,7 +66,7 @@ const ResponsivePageDrawer = (props: ResponsivePageDrawerProps) => {
                     classes={{
                         paper: classes.drawerPaper,
                     }}>
-                    <DrawerContent items={items} />
+                    <DrawerContent configs={sectionConfigs} />
                 </Drawer>
             </Hidden>
             <Hidden smDown>
@@ -77,7 +76,7 @@ const ResponsivePageDrawer = (props: ResponsivePageDrawerProps) => {
                     }}
                     variant="permanent"
                     open>
-                    <DrawerContent items={items} />
+                    <DrawerContent configs={sectionConfigs} />
                 </Drawer>
             </Hidden>
         </>

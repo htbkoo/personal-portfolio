@@ -1,19 +1,12 @@
 import * as React from "react";
-import { makeStyles } from "@material-ui/core";
-import { Theme, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import Image from "next/image";
 
-import GitHubMark120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png";
-import GitHubMarkLight120Plus from "img/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png";
+const GitHubMark120Plus = require("@/public/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png").default;
+const GitHubMarkLight120Plus = require("@/public/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png").default;
 
 const DEFAULT_MAX_ICON_SIZE = 16;
 const DEFAULT_IS_LIGHT = "black";
-
-const useStyles = makeStyles<Theme, { size: number }>({
-    icon: {
-        maxWidth: ({ size }) => size,
-        maxHeight: ({ size }) => size,
-    },
-});
 
 type GitHubMarkImgColor = "white" | "black";
 
@@ -32,9 +25,13 @@ export function GitHubMarkImg({
     size = DEFAULT_MAX_ICON_SIZE,
     color = DEFAULT_IS_LIGHT,
 }: GitHubMarkImgProps) {
-    const classes = useStyles({ size });
     const src = getGitHubMarkImgSrc(color);
-    return <img className={classes.icon} src={src} alt="github-htbkoo-personal-portfolio" />;
+    return <Image
+        src={src}
+        alt="github-htbkoo-personal-portfolio"
+        width={size}
+        height={size}
+    />;
 }
 
 export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {

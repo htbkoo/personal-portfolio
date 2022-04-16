@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+
+  animation-duration: 1s;
+  animation-name: fadein;
+
+  display: flex;
+}

@@ -9,29 +9,31 @@ import IconButton from "@material-ui/core/IconButton";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import MenuIcon from "@material-ui/icons/Menu";
-import { useDarkLightModeToggler } from "services/MuiThemeFactory";
+import { useDarkLightModeToggler } from "@/src/services/MuiThemeFactory";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-            [theme.breakpoints.down("sm")]: {
-                zIndex: theme.zIndex.modal + 1,
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            appBar: {
+                zIndex: theme.zIndex.drawer + 1,
+                [theme.breakpoints.down("sm")]: {
+                    zIndex: theme.zIndex.modal + 1,
+                },
             },
-        },
-        title: {
-            flexGrow: 1,
-            textAlign: "left",
-        },
-        menuButton: {
-            marginRight: 20,
-            [theme.breakpoints.up("md")]: {
-                display: "none",
+            title: {
+                flexGrow: 1,
+                textAlign: "left",
             },
-        },
-    }),
+            menuButton: {
+                marginRight: 20,
+                [theme.breakpoints.up("md")]: {
+                    display: "none",
+                },
+            },
+        }),
+    { name: "MuiMyPageAppBar" },
 );
 
 interface PageAppBarProps {
@@ -55,7 +57,7 @@ export default function PageAppBar({ onIconButtonClick }: PageAppBarProps) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" color="inherit" noWrap className={classNames(classes.title)}>
-                    Hey's Personal Portfolio
+                    Hey&apos;s Personal Portfolio
                 </Typography>
                 <>
                     <IconButton aria-label="dark-mode" onClick={toggleDarkLightMode}>
