@@ -11,18 +11,20 @@ import SectionConfigs, { PageType } from "@/src/metadata/sectionConfigs";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        drawer: {
-            [theme.breakpoints.up("md")]: {
-                width: drawerWidth,
-                flexShrink: 0,
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            drawer: {
+                [theme.breakpoints.up("md")]: {
+                    width: drawerWidth,
+                    flexShrink: 0,
+                },
             },
-        },
-        main: {
-            width: "100%",
-        },
-    }),
+            main: {
+                width: "100%",
+            },
+        }),
+    { name: "MuiMyPortfolioPageShell" },
 );
 
 const DRAWER_ITEMS: Array<PageType> = ["about", "portfolio", "contact"];

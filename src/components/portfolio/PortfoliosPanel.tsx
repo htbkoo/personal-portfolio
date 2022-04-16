@@ -5,10 +5,12 @@ import { createStyles, makeStyles } from "@material-ui/core";
 import Section from "../common/Section";
 import { PortfoliosFactory } from "./PortfoliosFactory";
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        portfolioPanel: {},
-    }),
+const useStyles = makeStyles(
+    () =>
+        createStyles({
+            portfolioPanel: {},
+        }),
+    { name: "MuiMyPortfoliosPanel" },
 );
 
 interface PortfoliosPanelProps {

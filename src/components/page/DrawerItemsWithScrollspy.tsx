@@ -15,38 +15,41 @@ import SectionMetadata from "@/src/model/SectionMetadata";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        display: "flex",
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-    toolbar: theme.mixins.toolbar,
-    scrollSpyList: {
-        margin: 0,
-        padding: 0,
-    },
-    scrollSpyListItem: {
-        display: "flex",
-    },
-    oldVersionLinkButton: {
-        margin: "5%",
-    },
-    isCurrent: {
-        fontWeight: "bolder",
-        color: theme.palette.primary.contrastText,
-        backgroundColor: theme.palette.primary.light,
-    },
-}));
+const useStyles = makeStyles(
+    (theme: Theme) => ({
+        root: {
+            display: "flex",
+        },
+        drawer: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+        drawerPaper: {
+            width: drawerWidth,
+        },
+        content: {
+            flexGrow: 1,
+            padding: theme.spacing(3),
+        },
+        toolbar: theme.mixins.toolbar,
+        scrollSpyList: {
+            margin: 0,
+            padding: 0,
+        },
+        scrollSpyListItem: {
+            display: "flex",
+        },
+        oldVersionLinkButton: {
+            margin: "5%",
+        },
+        isCurrent: {
+            fontWeight: "bolder",
+            color: theme.palette.primary.contrastText,
+            backgroundColor: theme.palette.primary.light,
+        },
+    }),
+    { name: "MuiMyDrawerItemsWithScrollspy" },
+);
 
 interface DrawerItemsWithScrollspyProps {
     configs: SectionMetadata[];

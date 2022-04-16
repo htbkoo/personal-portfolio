@@ -13,25 +13,27 @@ import { useDarkLightModeToggler } from "@/src/services/MuiThemeFactory";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-            [theme.breakpoints.down("sm")]: {
-                zIndex: theme.zIndex.modal + 1,
+const useStyles = makeStyles(
+    (theme: Theme) =>
+        createStyles({
+            appBar: {
+                zIndex: theme.zIndex.drawer + 1,
+                [theme.breakpoints.down("sm")]: {
+                    zIndex: theme.zIndex.modal + 1,
+                },
             },
-        },
-        title: {
-            flexGrow: 1,
-            textAlign: "left",
-        },
-        menuButton: {
-            marginRight: 20,
-            [theme.breakpoints.up("md")]: {
-                display: "none",
+            title: {
+                flexGrow: 1,
+                textAlign: "left",
             },
-        },
-    }),
+            menuButton: {
+                marginRight: 20,
+                [theme.breakpoints.up("md")]: {
+                    display: "none",
+                },
+            },
+        }),
+    { name: "MuiMyPageAppBar" },
 );
 
 interface PageAppBarProps {

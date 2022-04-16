@@ -9,11 +9,14 @@ import CodePenItemContentParser from "../../services/portfolio/CodePenItemConten
 import { credentialsExtractor } from "../../services/portfolio/CodePenItemContentExtractor";
 import { useWidth } from "../../hooks/muiHooks";
 
-const useStyles = makeStyles(() => ({
-    embeddedContainer: {
-        margin: "5%",
-    },
-}));
+const useStyles = makeStyles(
+    () => ({
+        embeddedContainer: {
+            margin: "5%",
+        },
+    }),
+    { name: "MuiMyEmbeddedPenPortfolio" },
+);
 
 interface EmbeddedPenPortfolioProps extends PortfolioProps {
     isScriptLoaded?: boolean;

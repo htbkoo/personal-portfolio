@@ -12,21 +12,24 @@ import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
 import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
 
-const useStyles = makeStyles((theme: Theme) => ({
-    icons: {
-        padding: theme.spacing(3),
-        display: "flex",
-        flexFlow: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    badges: {
-        display: "flex",
-        flexFlow: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-}));
+const useStyles = makeStyles(
+    (theme: Theme) => ({
+        icons: {
+            padding: theme.spacing(3),
+            display: "flex",
+            flexFlow: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+        },
+        badges: {
+            display: "flex",
+            flexFlow: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+        },
+    }),
+    { name: "MuiMyContactPanel" },
+);
 
 const ContactPanel = () => {
     const classes = useStyles();

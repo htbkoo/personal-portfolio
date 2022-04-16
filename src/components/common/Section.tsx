@@ -7,21 +7,24 @@ import classNames from "classnames";
 
 import { getStylesToFixPageHeaderOverlappingInPageAnchorIssue } from "../../utils/cssUtils";
 
-const useStyles = makeStyles((theme: Theme) => ({
-    section: {
-        padding: theme.spacing(3),
-        ...getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme),
-    },
-    header: {
-        paddingTop: theme.spacing(1),
-        paddingBottom: theme.spacing(1),
-        filter: "opacity(0.75)",
-    },
-    body: {},
-    opaqueBody: {
-        filter: "opacity(0.75)",
-    },
-}));
+const useStyles = makeStyles(
+    (theme: Theme) => ({
+        section: {
+            padding: theme.spacing(3),
+            ...getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme),
+        },
+        header: {
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1),
+            filter: "opacity(0.75)",
+        },
+        body: {},
+        opaqueBody: {
+            filter: "opacity(0.75)",
+        },
+    }),
+    { name: "MuiMySection" },
+);
 
 interface SectionProps {
     id: string;

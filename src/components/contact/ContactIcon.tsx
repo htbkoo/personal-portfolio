@@ -13,11 +13,14 @@ const contactIconSizesMappings: Readonly<Record<ContactIconSize | "large", numbe
     large: 16,
 } as const;
 
-const useStyles = makeStyles<Theme>((theme: Theme) => ({
-    icon: {
-        padding: theme.spacing(2),
-    },
-}));
+const useStyles = makeStyles<Theme>(
+    (theme: Theme) => ({
+        icon: {
+            padding: theme.spacing(2),
+        },
+    }),
+    { name: "MuiMyContactIcon" },
+);
 
 export interface ContactIconProps {
     metadata: ContactMetadata;
