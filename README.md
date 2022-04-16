@@ -3,7 +3,10 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ### Major updates
-1. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
+1. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped achitecure (split pages so the [First Contentful Paint (FCP)
+](https://web.dev/fcp/) and [Largest Contentful Paint (LCP)
+](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reduing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/)
+2. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
    1. As a bonus, the version of `React` is also upgraded to [`v18.0`](https://reactjs.org/blog/2022/03/29/react-v18.html) from `v17.0.2`
 
 ### Common known issues
