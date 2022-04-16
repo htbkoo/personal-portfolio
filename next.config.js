@@ -16,8 +16,9 @@ const basePath = isProd ? "/personal-portfolio" : "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // maybe we will need to disable this to fix `material-ui` and `next.js` styles incompatibility issue
     // reference: https://stackoverflow.com/a/67276953
-    reactStrictMode: false, // or remove this line completely
+    reactStrictMode: true,
 
     // reference: https://nextjs.org/docs/api-reference/next.config.js/basepath
     basePath,
