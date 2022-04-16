@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
 }));
 
-const PageMain = ({children}: {children: ReactNode}) => {
+const PageMain = ({ children }: { children: ReactNode }) => {
     const classes = useStyles();
 
     return (
