@@ -32,7 +32,7 @@ interface ResponsivePageDrawerProps {
     onDrawerClose: () => void;
 }
 
-const DrawerContent = ({ configs }: { configs: SectionMetadata[]; }) => {
+const DrawerContent = ({ configs }: { configs: SectionMetadata[] }) => {
     const classes = useStyles();
 
     return (
