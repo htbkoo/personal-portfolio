@@ -15,6 +15,7 @@ const useStyles = makeStyles(
             drawerPaper: {
                 width: drawerWidth,
                 [theme.breakpoints.up("md")]: {
+                    transition: "0.5s",
                     backgroundColor: theme.palette.type === "dark" ? "#42424242" : "#FFFFFF42",
                 },
             },
