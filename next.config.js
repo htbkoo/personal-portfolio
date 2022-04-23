@@ -8,6 +8,11 @@ const optimizedImages = require("next-optimized-images");
 const pwa = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
+// reference: https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer#usage-with-next-compose-plugins
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+})
+
 // reference: https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix
 const isProd = process.env.NODE_ENV === "production";
 
@@ -41,6 +46,8 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([
+    // reference: https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer#usage-with-next-compose-plugins
+    [withBundleAnalyzer],
     [
         optimizedImages,
         {
