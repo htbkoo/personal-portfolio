@@ -8,6 +8,7 @@
     "dev": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
     "start": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next start",
     "build": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build && next export",
+    "build:with-bundle-analyzer": "cross-env ANALYZE=true NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "test": "jest --ci",
     "test:watch": "jest --ci",
     "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
