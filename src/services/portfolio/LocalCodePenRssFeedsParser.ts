@@ -1,6 +1,6 @@
 import RssFeedsParser from "./RssFeedsParser";
-import {RssParser} from "./RssParser";
-import {rssFeedsContent} from "../../metadata/portfolios/rssFeeds.json";
+import { RssParser } from "./RssParser";
+import { rssFeedsContent } from "../../metadata/portfolios/rssFeeds.json";
 
 export default class LocalCodePenRssFeedsParser implements RssFeedsParser {
     private readonly rssParser: RssParser;
