@@ -17,6 +17,7 @@ const useStyles = makeStyles<Theme>(
     (theme: Theme) => ({
         icon: {
             padding: theme.spacing(2),
+            zIndex: 1,
         },
     }),
     { name: "MuiMyContactIcon" },
