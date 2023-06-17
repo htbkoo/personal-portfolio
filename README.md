@@ -3,9 +3,9 @@
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
 ### Major updates
-1. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped achitecure (split pages so the [First Contentful Paint (FCP)
+1. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP)
 ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP)
-](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reduing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/)
+](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/)
 2. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
    1. As a bonus, the version of `React` is also upgraded to [`v18.0`](https://reactjs.org/blog/2022/03/29/react-v18.html) from `v17.0.2`
 
@@ -18,7 +18,7 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 ###### TL;DR solution
 Set the `yarn` / `npm` `script-shell` to `bash` (recommended) or `powershell` by running:
 1. For `yarn`, `yarn config set script-shell bash`
-1. For `npm`, configure the `script-shell` value at `.npmrc`
+2. For `npm`, configure the `script-shell` value at `.npmrc`
 
 ###### Explanation
 This is because, according to [the issue described here at `cross-env`](https://github.com/kentcdodds/cross-env#windows-issues), `npm uses cmd by default and that doesn't support command substitution, so if you want to leverage that, then you need to update your .npmrc to set the script-shell to powershell. Learn more here.`
