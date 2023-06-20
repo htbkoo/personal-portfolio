@@ -5,9 +5,8 @@ const genericErrorMessage = "error: unable to fetch data from leetcode.com";
 
 const query = (user) =>
     `{
-    "operationName": "getUserProfile",
     "variables": { "username" : "${user}" },
-    "query": "query getUserProfile($username: String!) { allQuestionsCount { difficulty count } matchedUser(username: $username) { profile { realName userAvatar starRating ranking } submitStats { acSubmissionNum { difficulty count } } } }"
+    "query": "query getUserProfile($username: String!) { allQuestionsCount { difficulty count } matchedUser(username: $username) { profile { realName userAvatar starRating ranking } submitStats { acSubmissionNum { difficulty count } } } userContestRanking(username: $username)  {rating} }"
 }`;
 
 const fetchLeetCodeData = async ({ user }) => {
