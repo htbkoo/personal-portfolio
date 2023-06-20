@@ -1,0 +1,73 @@
+const functions = require('@google-cloud/functions-framework');
+const axios = require("axios");
+
+const USER = "htbkoo";
+const genericErrorMessage = "error: unable to fetch data from leetcode.com";
+
+const query = (user) =>
+  `{
+    "variables": { "username" : "${user}" },
+    "query": "query getUserProfile($username: String!) { allQuestionsCount { difficulty count } matchedUser(username: $username) { profile { realName userAvatar starRating ranking } submitStats { acSubmissionNum { difficulty count } } } userContestRanking(username: $username)  {rating} }"
+}`;
+
+const fetchLeetCodeData = async ({user}) => {
+  const {data: {data}} = await axios.post(
+    "https://leetcode.com/graphql",
+    query(user),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
+
+  if (!data.matchedUser) {
+    throw new Error("User not found");
+  }
+
+  const {
+    realName,
+    userAvatar: avatarUrl,
+    ranking,
+  } = data.matchedUser.profile;
+  const solved = data.matchedUser.submitStats.acSubmissionNum.filter(({difficulty}) => difficulty === "All")[0].count;
+  const total = data.allQuestionsCount.filter(({difficulty}) => difficulty === "All")[0].count;
+
+  const rating = (data.userContestRanking) ? Math.round(parseFloat(data.userContestRanking.rating)) : "N/A";
+
+  return {
+    realName,
+    avatarUrl,
+    ranking,
+    rating,
+    solved,
+    solvedOverTotal: `${solved}/${total}`,
+    solvedPercentage: `${((solved / total) * 100).toFixed(1)}%`,
+    error: null,
+  };
+}
+
+functions.http('getLeetCodeBadgesUrls', async (req, res) => {
+  // reference: https://github.com/cascandaliato/leetcode-badge/compare/main...li-xin-yi:leetcode-badge:main
+  res.setHeader("Content-Type", "application/json");
+
+  fetchLeetCodeData({user: USER})
+    .then((output) => {
+      res.status(200).json(output);
+    })
+    .catch((err) => {
+      const error = err?.message ?? genericErrorMessage;
+      res.status(200)
+        .json({
+          realName: error,
+          avatarUrl: error,
+          ranking: error,
+          rating: error,
+          solved: error,
+          solvedOverTotal: error,
+          solvedPercentage: error,
+          error,
+        });
+    });
+});
+
