@@ -45,7 +45,7 @@ const fetchLeetCodeData = async ({ user }) => {
     };
 };
 
-functions.http("getLeetCodeBadgesUrls", async (req, res) => {
+functions.http("getLeetCodeData", async (req, res) => {
     // reference: https://github.com/cascandaliato/leetcode-badge/compare/main...li-xin-yi:leetcode-badge:main
     res.setHeader("Content-Type", "application/json");
 
