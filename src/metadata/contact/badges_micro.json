@@ -2,14 +2,14 @@
   {
     "href": "https://leetcode.com/htbkoo/",
     "img": {
-      "src": "https://img.shields.io/badge/dynamic/json?style=flat&labelColor=black&color=%23ffa116&label=Rating&query=rating&url=https%3A%2F%2Fbadges.xyli.codes%2Fapi%2Fusers%2Fhtbkoo&logo=leetcode&logoColor=yellow",
+      "src": "https://img.shields.io/badge/dynamic/json?style=flat&labelColor=black&color=%23ffa116&label=Rating&query=rating&url=https%3A%2F%2Fus-central1-hey-sandbox.cloudfunctions.net%2Fleetcode-badge-generator&logo=leetcode&logoColor=yellow",
       "alt": "LeetCode Contest Rating"
     }
   },
   {
     "href": "https://leetcode.com/htbkoo/",
     "img": {
-      "src": "https://img.shields.io/badge/dynamic/json?style=flat&labelColor=black&color=%23ffa116&label=Solved&query=solvedOverTotal&url=https%3A%2F%2Fleetcode-badge.vercel.app%2Fapi%2Fusers%2Fhtbkoo&logo=leetcode&logoColor=yellow",
+      "src": "https://img.shields.io/badge/dynamic/json?style=flat&labelColor=black&color=%23ffa116&label=Solved&query=solvedOverTotal&url=https%3A%2F%2Fus-central1-hey-sandbox.cloudfunctions.net%2Fleetcode-badge-generator&logo=leetcode&logoColor=yellow",
       "alt": "LeetCode Solved"
     }
   },
