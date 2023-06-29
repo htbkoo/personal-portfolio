@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Script from "next/script";
 
 // reference:
 // 1. https://material-ui.com/components/typography/#install-with-npm
@@ -12,7 +11,7 @@ import "@fontsource/roboto";
 
 import AppBody from "@/src/components/AppBody";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
-import { isTrue } from "@/src/utils/IsTrue";
+import { GoogleAnalyticsScripts } from "@/src/services/GoogleAnalyticsScripts";
 
 const MyApp = (appProps: AppProps) => {
     useEffect(() => {
@@ -22,11 +21,6 @@ const MyApp = (appProps: AppProps) => {
             jssStyles.parentElement?.removeChild(jssStyles);
         }
     }, []);
-
-    const isGoogleAnalyticsTrackingEnabled = isTrue(
-        process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED,
-    );
-    const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_GA_MEASUREMENT_ID;
 
     // reference https://nextjs.org/docs/messages/next-script-for-ga
     return (
@@ -42,21 +36,7 @@ const MyApp = (appProps: AppProps) => {
                 <link rel="prefetch" href={withAssetPrefix("background.jpg")} />
                 <link rel="prefetch" href={withAssetPrefix("background-light.jpg")} />
             </Head>
-
-            {isGoogleAnalyticsTrackingEnabled && (
-                <>
-                    <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-                    <Script id="google-analytics">
-                        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${GA_MEASUREMENT_ID}');
-        `}
-                    </Script>
-                </>
-            )}
+            <GoogleAnalyticsScripts />
             <AppBody {...appProps} />
         </>
     );
