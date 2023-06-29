@@ -3,16 +3,15 @@ import "@/styles/globals.css";
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+
 // reference:
 // 1. https://material-ui.com/components/typography/#install-with-npm
 // 2. https://fontsource.org/docs/guides/nextjs
 import "@fontsource/roboto";
 
 import AppBody from "@/src/components/AppBody";
-import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
-
-const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
+import { GoogleAnalyticsScripts } from "@/src/services/GoogleAnalyticsScripts";
 
 const MyApp = (appProps: AppProps) => {
     useEffect(() => {
@@ -22,15 +21,6 @@ const MyApp = (appProps: AppProps) => {
             jssStyles.parentElement?.removeChild(jssStyles);
         }
     }, []);
-
-    useEffect(() => {
-        gAManager.init();
-    }, []);
-
-    useEffect(() => {
-        const path = window.location.pathname + window.location.search;
-        gAManager.pageview(path);
-    });
 
     return (
         <>
@@ -45,6 +35,7 @@ const MyApp = (appProps: AppProps) => {
                 <link rel="prefetch" href={withAssetPrefix("background.jpg")} />
                 <link rel="prefetch" href={withAssetPrefix("background-light.jpg")} />
             </Head>
+            <GoogleAnalyticsScripts />
             <AppBody {...appProps} />
         </>
     );
