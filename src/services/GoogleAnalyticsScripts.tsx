@@ -9,7 +9,11 @@ export const GoogleAnalyticsScripts = () => {
     );
     const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_GA_MEASUREMENT_ID;
 
-    if (isGoogleAnalyticsTrackingEnabled) {
+    if (isGoogleAnalyticsTrackingEnabled && GA_MEASUREMENT_ID) {
+        console.log(
+            "Google Analytics tracking is enabled and trackingId is defined, running Google Analytics scripts now",
+        );
+
         // reference https://nextjs.org/docs/messages/next-script-for-ga
         return (
             <>
@@ -26,6 +30,13 @@ export const GoogleAnalyticsScripts = () => {
             </>
         );
     } else {
+        if (!isGoogleAnalyticsTrackingEnabled) {
+            console.log(
+                "Google Analytics tracking is disabled and trackingId is defined, thus not initializing",
+            );
+        } else {
+            console.log("Google Analytics trackingId is not defined, thus not initializing");
+        }
         return null;
     }
 };
