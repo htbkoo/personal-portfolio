@@ -12,7 +12,7 @@ export const GoogleAnalyticsScripts = () => {
     if (isGoogleAnalyticsTrackingEnabled) {
         // reference https://nextjs.org/docs/messages/next-script-for-ga
         return (
-            <>8
+            <>
                 <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
                 <Script id="google-analytics">
                     {`
