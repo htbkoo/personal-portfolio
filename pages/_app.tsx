@@ -3,16 +3,16 @@ import "@/styles/globals.css";
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
+
 // reference:
 // 1. https://material-ui.com/components/typography/#install-with-npm
 // 2. https://fontsource.org/docs/guides/nextjs
 import "@fontsource/roboto";
 
 import AppBody from "@/src/components/AppBody";
-import GoogleAnalyticsManager from "@/src/services/GoogleAnalyticsManager";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
-
-const gAManager: GoogleAnalyticsManager = new GoogleAnalyticsManager();
+import { isTrue } from "@/src/utils/IsTrue";
 
 const MyApp = (appProps: AppProps) => {
     useEffect(() => {
@@ -23,15 +23,12 @@ const MyApp = (appProps: AppProps) => {
         }
     }, []);
 
-    useEffect(() => {
-        gAManager.init();
-    }, []);
+    const isGoogleAnalyticsTrackingEnabled = isTrue(
+        process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED,
+    );
+    const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_GA_MEASUREMENT_ID;
 
-    useEffect(() => {
-        const path = window.location.pathname + window.location.search;
-        gAManager.pageview(path);
-    });
-
+    // reference https://nextjs.org/docs/messages/next-script-for-ga
     return (
         <>
             <Head>
@@ -45,6 +42,21 @@ const MyApp = (appProps: AppProps) => {
                 <link rel="prefetch" href={withAssetPrefix("background.jpg")} />
                 <link rel="prefetch" href={withAssetPrefix("background-light.jpg")} />
             </Head>
+
+            {isGoogleAnalyticsTrackingEnabled && (
+                <>
+                    <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+                    <Script id="google-analytics">
+                        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+                    </Script>
+                </>
+            )}
             <AppBody {...appProps} />
         </>
     );
