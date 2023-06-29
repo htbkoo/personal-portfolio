@@ -22,7 +22,6 @@ const MyApp = (appProps: AppProps) => {
         }
     }, []);
 
-    // reference https://nextjs.org/docs/messages/next-script-for-ga
     return (
         <>
             <Head>

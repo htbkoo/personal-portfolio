@@ -10,8 +10,9 @@ export const GoogleAnalyticsScripts = () => {
     const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_GA_MEASUREMENT_ID;
 
     if (isGoogleAnalyticsTrackingEnabled) {
+        // reference https://nextjs.org/docs/messages/next-script-for-ga
         return (
-            <>
+            <>8
                 <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
                 <Script id="google-analytics">
                     {`
