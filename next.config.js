@@ -1,5 +1,4 @@
 // reference: https://github.com/cyrilwanner/next-optimized-images#installation
-const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
 // reference:
@@ -9,9 +8,9 @@ const pwa = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
 // reference: https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer#usage-with-next-compose-plugins
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true',
-})
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
 
 // reference: https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix
 const isProd = process.env.NODE_ENV === "production";
@@ -45,31 +44,26 @@ const nextConfig = {
     trailingSlash: true,
 };
 
-module.exports = withPlugins([
-    // reference: https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer#usage-with-next-compose-plugins
-    [withBundleAnalyzer],
-    [
-        optimizedImages,
-        {
-            /* config for next-optimized-images */
-        },
-    ],
+const plugins = [
+    withBundleAnalyzer,
+    optimizedImages,
+    pwa({
+        dest: `public`,
+        runtimeCaching,
+        // Don't precache files under .next/static/chunks/images (Highly recommend this to work with next-optimized-images plugin)
+        // reference: https://github.com/shadowwalker/next-pwa#available-options
+        buildExcludes: [/chunks\/images\/.*$/],
+        // recommend: set to false if your start url always returns same HTML document, then start url will be precached, this will help to speed up first load.
+        dynamicStartUrl: false,
+    }),
+];
 
-    // your other plugins here
-    [
-        pwa,
-        {
-            pwa: {
-                dest: `public`,
-                runtimeCaching,
-                // Don't precache files under .next/static/chunks/images (Highly recommend this to work with next-optimized-images plugin)
-                // reference: https://github.com/shadowwalker/next-pwa#available-options
-                buildExcludes: [/chunks\/images\/.*$/],
-                // recommend: set to false if your start url always returns same HTML document, then start url will be precached, this will help to speed up first load.
-                dynamicStartUrl: false,
-            },
+// reference: https://github.com/cyrilwanner/next-compose-plugins/issues/59#issuecomment-1341060113
+module.exports = (phase, defaultConfig) =>
+    plugins.reduce(
+        (acc, plugin) => {
+            const update = plugin(acc);
+            return typeof update === "function" ? update(phase, defaultConfig) : update;
         },
-    ],
-
-    nextConfig,
-]);
+        { ...nextConfig },
+    );
