@@ -17,8 +17,11 @@ export const GoogleAnalyticsScripts = () => {
         // reference https://nextjs.org/docs/messages/next-script-for-ga
         return (
             <>
-                <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-                <Script id="google-analytics">
+                <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+                    strategy="beforeInteractive"
+                />
+                <Script id="google-analytics" strategy="beforeInteractive">
                     {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
