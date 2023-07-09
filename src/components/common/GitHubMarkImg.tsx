@@ -2,6 +2,8 @@ import * as React from "react";
 import { useTheme } from "@material-ui/core/styles";
 import Image from "next/image";
 
+import { withStaticPrefix } from "@/src/utils/assetUtils";
+
 const DEFAULT_MAX_ICON_SIZE = 16;
 const DEFAULT_IS_LIGHT = "black";
 
@@ -28,8 +30,8 @@ export function GitHubMarkImg({
 
 export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
     return color === "black"
-        ? "/static/GitHub-Mark/PNG/GitHub-Mark-120px-plus.png"
-        : "/static/GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png";
+        ? withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-120px-plus.png")
+        : withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png");
 }
 
 export function useGitHubMarkImgColorBasedOnTheme() {
