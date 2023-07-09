@@ -81,7 +81,7 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
                             className={classNames(classes.scrollSpyListItem, {
                                 [classes.isCurrent]: pathname === url,
                             })}>
-                            <ListItem button>
+                            <ListItem button tabIndex={-1}>
                                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                 <ListItemText primary={name} />
                             </ListItem>
