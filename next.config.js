@@ -29,11 +29,9 @@ const nextConfig = {
     // Use the GitHub Pages subpath in production and localhost for development.
     assetPrefix: `${basePath}/`,
 
-    // reference: https://github.com/cyrilwanner/next-optimized-images/issues/272
     images: {
-        loader: "custom",
-        // reference: https://stackoverflow.com/a/68012194
-        disableStaticImages: true,
+        formats: ["image/webp"],
+        unoptimized: true,
     },
 
     env: {

@@ -1,6 +1,6 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "1.8.1",
+  "version": "2.0.0",
   "private": true,
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
@@ -30,7 +30,7 @@
     "@material-ui/styles": "4.11.4",
     "@next/bundle-analyzer": "12.1.5",
     "cheerio": "1.0.0-rc.10",
-    "next": "12.3.4",
+    "next": "13.4.9",
     "promise-polyfill": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
