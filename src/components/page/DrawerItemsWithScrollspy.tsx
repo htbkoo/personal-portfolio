@@ -75,6 +75,7 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
                 {configs.map(({ name, url }, index) => (
                     <Link key={name} href={url} passHref>
                         <MuiLink
+                            component="div"
                             color="inherit"
                             underline="always"
                             className={classNames(classes.scrollSpyListItem, {
