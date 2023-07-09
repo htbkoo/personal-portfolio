@@ -30,7 +30,8 @@ const nextConfig = {
     assetPrefix: `${basePath}/`,
 
     images: {
-        formats: ['image/webp'],
+        formats: ["image/webp"],
+        unoptimized: true,
     },
 
     env: {
