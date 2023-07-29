@@ -23,7 +23,7 @@ const useStyles = makeStyles(
         },
         badges: {
             display: "flex",
-            flexFlow: "wrap",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
         },
