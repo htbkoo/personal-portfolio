@@ -3,8 +3,6 @@ import { makeStyles, Theme } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { useBadgesMetadatas } from "@/src/metadata/contact/useBadgesMetadatas";
-
 import ContactIcon, { ContactIconProps } from "./ContactIcon";
 
 import iconMetadatas from "../../metadata/contact/icons.json";
@@ -12,6 +10,7 @@ import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json"
 import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
 import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
+import { useBadgesMetadatas } from "../../metadata/contact/useBadgesMetadatas";
 
 const useStyles = makeStyles(
     (theme: Theme) => ({
