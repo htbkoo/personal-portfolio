@@ -33,7 +33,7 @@ const useStyles = makeStyles(
             padding: theme.spacing(3),
         },
         toolbar: theme.mixins.toolbar,
-        scrollSpyListItem: {
+        drawerListItem: {
             display: "flex",
         },
         oldVersionLinkButton: {
@@ -66,7 +66,7 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
                         component="div"
                         color="inherit"
                         underline="always"
-                        className={classNames(classes.scrollSpyListItem, {
+                        className={classNames(classes.drawerListItem, {
                             [classes.isCurrent]: pathname === url,
                         })}>
                         <ListItem button tabIndex={-1}>
