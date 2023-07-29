@@ -52,7 +52,7 @@ const getLeetCodeBadgeMetadata = ({
     return {
         href: "https://leetcode.com/htbkoo/",
         img: {
-            src: `https://img.shields.io/badge/${value}?style=${style}&labelColor=black&color=%23ffa116&label=${label}&logo=leetcode&logoColor=yellow`,
+            src: `https://img.shields.io/badge/${value}-%23ffa116?style=${style}&logo=leetcode&logoColor=yellow&label=${label}&labelColor=black`,
             alt,
         },
     };
