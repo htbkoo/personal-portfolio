@@ -35,13 +35,13 @@ interface SectionProps {
 }
 
 const Section = ({
-                     id,
-                     title,
-                     subtitle,
-                     hasDivider = false,
-                     isBodyOpaque = false,
-                     children,
-                 }: PropsWithChildren<SectionProps>) => {
+    id,
+    title,
+    subtitle,
+    hasDivider = false,
+    isBodyOpaque = false,
+    children,
+}: PropsWithChildren<SectionProps>) => {
     const classes = useStyles();
     return (
         <div id={id} className={classes.section}>

@@ -22,6 +22,7 @@ const useStyles = makeStyles(
             },
             main: {
                 width: "100%",
+                zIndex: 1,
             },
         }),
     { name: "MuiMyPortfolioPageShell" },
