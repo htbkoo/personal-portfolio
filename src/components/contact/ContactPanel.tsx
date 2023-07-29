@@ -1,13 +1,14 @@
 import * as React from "react";
 import { makeStyles, Theme } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import { useBadgesMetadatas } from "@/src/metadata/contact/useBadgesMetadatas";
 
 import ContactIcon, { ContactIconProps } from "./ContactIcon";
 
 import iconMetadatas from "../../metadata/contact/icons.json";
 import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json";
-import badgeMetadatas from "../../metadata/contact/badges.json";
-import badgeMicroMetadatas from "../../metadata/contact/badges_micro.json";
 import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
 import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
@@ -91,6 +92,18 @@ function SecondaryIcons() {
 }
 
 function Badges() {
+    const { data, loading } = useBadgesMetadatas();
+
+    if (loading) {
+        return <CircularProgress />;
+    }
+
+    if (!data) {
+        return null;
+    }
+
+    const { badgeMetadatas, badgeMicroMetadatas } = data;
+
     return (
         <>
             <Hidden smUp>{contactIcons(badgeMicroMetadatas, { useLegacyImgElement: true })}</Hidden>
