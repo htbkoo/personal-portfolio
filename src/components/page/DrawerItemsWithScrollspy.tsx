@@ -33,10 +33,6 @@ const useStyles = makeStyles(
             padding: theme.spacing(3),
         },
         toolbar: theme.mixins.toolbar,
-        scrollSpyList: {
-            margin: 0,
-            padding: 0,
-        },
         scrollSpyListItem: {
             display: "flex",
         },
@@ -55,8 +51,6 @@ const useStyles = makeStyles(
 interface DrawerItemsWithScrollspyProps {
     configs: SectionMetadata[];
 }
-
-const EMPIRICAL_OFFSET = -80;
 
 const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
     const classes = useStyles();
