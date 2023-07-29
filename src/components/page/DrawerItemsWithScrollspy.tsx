@@ -60,22 +60,22 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
 
     return (
         <React.Fragment>
-          {configs.map(({ name, url }, index) => (
-            <Link key={name} href={url} passHref>
-              <MuiLink
-                component="div"
-                color="inherit"
-                underline="always"
-                className={classNames(classes.scrollSpyListItem, {
-                  [classes.isCurrent]: pathname === url,
-                })}>
-                <ListItem button tabIndex={-1}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={name} />
-                </ListItem>
-              </MuiLink>
-            </Link>
-          ))}
+            {configs.map(({ name, url }, index) => (
+                <Link key={name} href={url} passHref>
+                    <MuiLink
+                        component="div"
+                        color="inherit"
+                        underline="always"
+                        className={classNames(classes.scrollSpyListItem, {
+                            [classes.isCurrent]: pathname === url,
+                        })}>
+                        <ListItem button tabIndex={-1}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={name} />
+                        </ListItem>
+                    </MuiLink>
+                </Link>
+            ))}
             <Hidden mdUp>
                 <div className={classes.oldVersionLinkButton}>
                     <OldVersionLinkButton />
