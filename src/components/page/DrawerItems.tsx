@@ -48,11 +48,11 @@ const useStyles = makeStyles(
     { name: "MuiMyDrawerItems" },
 );
 
-interface DrawerItemsWithScrollspyProps {
+interface DrawerItemsProps {
     configs: SectionMetadata[];
 }
 
-const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
+const DrawerItems = (props: DrawerItemsProps) => {
     const classes = useStyles();
     const { configs } = props;
 
@@ -84,4 +84,4 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
         </React.Fragment>
     );
 };
-export default DrawerItemsWithScrollspy;
+export default DrawerItems;

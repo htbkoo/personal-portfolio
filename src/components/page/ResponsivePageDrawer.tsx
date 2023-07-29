@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme, useTheme } from "@material-ui/core/sty
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 
-import DrawerItemsWithScrollspy from "./DrawerItemsWithScrollspy";
+import DrawerItems from "./DrawerItems";
 import SectionMetadata from "../../model/SectionMetadata";
 import { VersionText } from "../common/VersionText";
 
@@ -41,7 +41,7 @@ const DrawerContent = ({ configs }: { configs: SectionMetadata[] }) => {
     return (
         <>
             <div className={classes.toolbar} />
-            <DrawerItemsWithScrollspy configs={configs} />
+            <DrawerItems configs={configs} />
             <div className={classes.versionText}>
                 <VersionText />
             </div>
