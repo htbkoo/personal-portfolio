@@ -8,7 +8,6 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "next/link";
-import Scrollspy from "react-scrollspy";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
@@ -34,11 +33,7 @@ const useStyles = makeStyles(
             padding: theme.spacing(3),
         },
         toolbar: theme.mixins.toolbar,
-        scrollSpyList: {
-            margin: 0,
-            padding: 0,
-        },
-        scrollSpyListItem: {
+        drawerListItem: {
             display: "flex",
         },
         oldVersionLinkButton: {
@@ -50,16 +45,14 @@ const useStyles = makeStyles(
             backgroundColor: theme.palette.primary.light,
         },
     }),
-    { name: "MuiMyDrawerItemsWithScrollspy" },
+    { name: "MuiMyDrawerItems" },
 );
 
-interface DrawerItemsWithScrollspyProps {
+interface DrawerItemsProps {
     configs: SectionMetadata[];
 }
 
-const EMPIRICAL_OFFSET = -80;
-
-const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
+const DrawerItems = (props: DrawerItemsProps) => {
     const classes = useStyles();
     const { configs } = props;
 
@@ -67,27 +60,22 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
 
     return (
         <React.Fragment>
-            <Scrollspy
-                items={configs.map(({ name }) => name.toLowerCase())} // TODO: refactor this
-                currentClassName={classes.isCurrent}
-                className={classes.scrollSpyList}
-                offset={EMPIRICAL_OFFSET}>
-                {configs.map(({ name, url }, index) => (
-                    <Link key={name} href={url} passHref>
-                        <MuiLink
-                            color="inherit"
-                            underline="always"
-                            className={classNames(classes.scrollSpyListItem, {
-                                [classes.isCurrent]: pathname === url,
-                            })}>
-                            <ListItem button>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={name} />
-                            </ListItem>
-                        </MuiLink>
-                    </Link>
-                ))}
-            </Scrollspy>
+            {configs.map(({ name, url }, index) => (
+                <Link key={name} href={url} passHref>
+                    <MuiLink
+                        component="div"
+                        color="inherit"
+                        underline="always"
+                        className={classNames(classes.drawerListItem, {
+                            [classes.isCurrent]: pathname === url,
+                        })}>
+                        <ListItem button tabIndex={-1}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={name} />
+                        </ListItem>
+                    </MuiLink>
+                </Link>
+            ))}
             <Hidden mdUp>
                 <div className={classes.oldVersionLinkButton}>
                     <OldVersionLinkButton />
@@ -96,4 +84,4 @@ const DrawerItemsWithScrollspy = (props: DrawerItemsWithScrollspyProps) => {
         </React.Fragment>
     );
 };
-export default DrawerItemsWithScrollspy;
+export default DrawerItems;
