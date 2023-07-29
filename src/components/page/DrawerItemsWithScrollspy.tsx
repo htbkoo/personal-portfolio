@@ -45,7 +45,7 @@ const useStyles = makeStyles(
             backgroundColor: theme.palette.primary.light,
         },
     }),
-    { name: "MuiMyDrawerItemsWithScrollspy" },
+    { name: "MuiMyDrawerItems" },
 );
 
 interface DrawerItemsWithScrollspyProps {
