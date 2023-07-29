@@ -44,25 +44,46 @@ const fetchLeetCodeData = async ({ user }) => {
     };
 };
 
+/**
+ * To fetch the leetcode data for user htbkoo.
+ *
+ * @param {Object} req Cloud Function request context.
+ * @param {Object} res Cloud Function response context.
+ */
 functions.http("getLeetCodeData", async (req, res) => {
-    // reference: https://github.com/cascandaliato/leetcode-badge/compare/main...li-xin-yi:leetcode-badge:main
-    res.setHeader("Content-Type", "application/json");
+    // reference: https://cloud.google.com/functions/docs/samples/functions-http-cors#functions_http_cors-nodejs
+    // To make this HTTP function supports CORS requests
+    // Set CORS headers for preflight requests
+    // Allows GETs from any origin with the Content-Type header
+    // and caches preflight response for 3600s
+    res.set("Access-Control-Allow-Origin", "*");
 
-    fetchLeetCodeData({ user: USER })
-        .then((output) => {
-            res.status(200).json(output);
-        })
-        .catch((err) => {
-            const error = err?.message ?? genericErrorMessage;
-            res.status(200).json({
-                realName: error,
-                avatarUrl: error,
-                ranking: error,
-                rating: error,
-                solved: error,
-                solvedOverTotal: error,
-                solvedPercentage: error,
-                error,
+    if (req.method === "OPTIONS") {
+        // Send response to OPTIONS requests
+        res.set("Access-Control-Allow-Methods", "GET");
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        res.set("Access-Control-Max-Age", "3600");
+        res.status(204).send("");
+    } else {
+        // reference: https://github.com/cascandaliato/leetcode-badge/compare/main...li-xin-yi:leetcode-badge:main
+        res.setHeader("Content-Type", "application/json");
+
+        fetchLeetCodeData({ user: USER })
+            .then((output) => {
+                res.status(200).json(output);
+            })
+            .catch((err) => {
+                const error = err?.message ?? genericErrorMessage;
+                res.status(200).json({
+                    realName: error,
+                    avatarUrl: error,
+                    ranking: error,
+                    rating: error,
+                    solved: error,
+                    solvedOverTotal: error,
+                    solvedPercentage: error,
+                    error,
+                });
             });
-        });
+    }
 });
