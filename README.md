@@ -2,6 +2,20 @@
 
 Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
 
+## Getting Started
+
+###### Copied from the `README.md` from the [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+First, run the development server:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the portfolio page.
+
+## Other information
+
 ### Major updates
 1. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13`
 2. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP)
