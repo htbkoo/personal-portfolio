@@ -1,13 +1,13 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "private": true,
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
     "lint": "next lint",
     "dev": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
     "start": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next start",
-    "build": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build && next export",
+    "build": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "build:with-bundle-analyzer": "cross-env ANALYZE=true NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "test": "jest --ci",
     "test:watch": "jest --ci",

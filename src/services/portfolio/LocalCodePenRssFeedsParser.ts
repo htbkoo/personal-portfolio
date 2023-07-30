@@ -1,12 +1,12 @@
 import RssFeedsParser from "./RssFeedsParser";
-import {RssParser} from "./RssParser";
-import {rssFeedsContent} from "../../metadata/portfolios/rssFeeds.json";
+import { RssParser } from "./RssParser";
+import rssFeedsJson from "@/src/metadata/portfolios/rssFeeds.json";
 
 export default class LocalCodePenRssFeedsParser implements RssFeedsParser {
     private readonly rssParser: RssParser;
     private rssFeeds: string;
 
-    constructor(rssParser: RssParser, rssFeeds: string = rssFeedsContent) {
+    constructor(rssParser: RssParser, rssFeeds: string = rssFeedsJson.rssFeedsContent) {
         this.rssParser = rssParser;
         this.rssFeeds = rssFeeds;
     }
