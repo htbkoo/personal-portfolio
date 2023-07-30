@@ -2,7 +2,7 @@ import React from "react";
 import { Link, makeStyles } from "@material-ui/core";
 
 import { GitHubMarkImg, useGitHubMarkImgColorBasedOnTheme } from "./GitHubMarkImg";
-import { version } from "../../../package.json";
+import packageJson from "../../../package.json";
 
 const LINK_TO_GITHUB_REPO = "https://github.com/htbkoo/personal-portfolio";
 
@@ -31,7 +31,7 @@ export function VersionText() {
             rel="noopener noreferrer">
             <div className={classes.container}>
                 <div>
-                    v{version}-{process.env.NEXT_PUBLIC_GIT_SHA}
+                    v{packageJson.version}-{process.env.NEXT_PUBLIC_GIT_SHA}
                 </div>
                 <div className={classes.linkIconContainer}>
                     <GitHubMarkImg color={useGitHubMarkImgColorBasedOnTheme()} />
