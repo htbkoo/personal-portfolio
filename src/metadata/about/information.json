@@ -6,7 +6,7 @@
     },
     {
       "key": "Is-a",
-      "value": "Software Developer"
+      "value": "Software Engineer"
     }
   ],
   [
@@ -16,7 +16,7 @@
     },
     {
       "key": "Backend",
-      "value": "TypeScript / ES6+, Python or Java"
+      "value": "Python or Node.js (with TypeScript) or Java"
     },
     {
       "key": "Self-study",
