@@ -49,11 +49,9 @@ const DrawerContent = ({ configs }: { configs: SectionMetadata[] }) => {
     );
 };
 
-const ResponsivePageDrawer = (props: ResponsivePageDrawerProps) => {
+const ResponsivePageDrawer = ({ sectionConfigs, drawerOpen, onDrawerClose }: ResponsivePageDrawerProps) => {
     const classes = useStyles();
     const theme = useTheme();
-
-    const { sectionConfigs, drawerOpen, onDrawerClose } = props;
 
     return (
         <>
