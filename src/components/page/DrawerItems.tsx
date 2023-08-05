@@ -52,9 +52,8 @@ interface DrawerItemsProps {
     configs: SectionMetadata[];
 }
 
-const DrawerItems = (props: DrawerItemsProps) => {
+const DrawerItems = ({ configs }: DrawerItemsProps) => {
     const classes = useStyles();
-    const { configs } = props;
 
     const { pathname } = useRouter();
 
