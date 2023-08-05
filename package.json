@@ -78,7 +78,7 @@
     "rimraf": "^2.6.3",
     "storybook-addon-next": "^1.6.2",
     "svg-sprite-loader": "6.0.11",
-    "typescript": "4.7.4",
+    "typescript": "4.8.4",
     "webp-loader": "0.6.0"
   },
   "resolutions": {
