@@ -4,8 +4,6 @@ import { Link as MuiLink, makeStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "next/link";
 import classNames from "classnames";
@@ -59,7 +57,7 @@ const DrawerItems = ({ configs }: DrawerItemsProps) => {
 
     return (
         <React.Fragment>
-            {configs.map(({ name, url, icon }, index) => (
+            {configs.map(({ name, url, icon }) => (
                 <Link key={name} href={url} passHref>
                     <MuiLink
                         component="div"
