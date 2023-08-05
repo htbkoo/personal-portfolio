@@ -59,7 +59,7 @@ const DrawerItems = ({ configs }: DrawerItemsProps) => {
 
     return (
         <React.Fragment>
-            {configs.map(({ name, url }, index) => (
+            {configs.map(({ name, url, icon }, index) => (
                 <Link key={name} href={url} passHref>
                     <MuiLink
                         component="div"
@@ -69,7 +69,7 @@ const DrawerItems = ({ configs }: DrawerItemsProps) => {
                             [classes.isCurrent]: pathname === url,
                         })}>
                         <ListItem button tabIndex={-1}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{icon}</ListItemIcon>
                             <ListItemText primary={name} />
                         </ListItem>
                     </MuiLink>

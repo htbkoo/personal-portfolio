@@ -4,4 +4,5 @@ export default interface SectionMetadata {
     name: string;
     url: string;
     component: React.ReactNode;
+    icon: React.ReactNode;
 }

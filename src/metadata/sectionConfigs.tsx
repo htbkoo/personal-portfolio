@@ -1,5 +1,8 @@
 import React from "react";
 import RssParser from "rss-parser";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import ImportContactsIcon from "@material-ui/icons/ImportContacts";
+import MailIcon from "@material-ui/icons/Mail";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
@@ -19,16 +22,19 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
         name: "About",
         url: "/",
         component: <AboutPanel />,
+        icon: <AssignmentIndIcon />,
     },
     portfolio: {
         name: "Portfolio",
         url: "/portfolio",
         component: <PortfoliosPanel portfoliosFactory={factory} />,
+        icon: <ImportContactsIcon />,
     },
     contact: {
         name: "Contact",
         url: "/contact",
         component: <ContactPanel />,
+        icon: <MailIcon />,
     },
 } as const;
 
