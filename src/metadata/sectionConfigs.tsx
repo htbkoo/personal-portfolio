@@ -16,7 +16,7 @@ const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
 const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
 const PAGES = ["about", "exercises", "contact"] as const;
-type PageType = typeof PAGES[number];
+type PageType = (typeof PAGES)[number];
 
 export const sectionConfigs = Object.freeze({
     about: {
@@ -40,4 +40,3 @@ export const sectionConfigs = Object.freeze({
 }) satisfies Readonly<Record<PageType, SectionMetadata>>;
 
 export const ALL_SECTION_CONFIGS_VALUES = PAGES.map((page) => sectionConfigs[page]);
-
