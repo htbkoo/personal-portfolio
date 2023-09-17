@@ -1,12 +1,11 @@
 {
   "name": "hey-personal-portfolio",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "homepage": "https://htbkoo.github.io/personal-portfolio",
   "scripts": {
     "lint": "next lint",
-    "dev": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
-    "start": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next start",
+    "start": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
     "build": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "build:with-bundle-analyzer": "cross-env ANALYZE=true NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "test": "jest --ci",
@@ -30,7 +29,7 @@
     "@material-ui/styles": "4.11.4",
     "cheerio": "1.0.0-rc.10",
     "classnames": "^2.3.2",
-    "next": "13.2.4",
+    "next": "13.4.19",
     "promise-polyfill": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
