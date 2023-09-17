@@ -24,26 +24,26 @@ export const sectionConfigs = Object.freeze({
     about: {
         name: "About",
         url: "/",
-        component: <AboutPanel />,
-        icon: <AssignmentIndIcon />,
+        component: <AboutPanel/>,
+        icon: <AssignmentIndIcon/>,
     },
     tools: {
         name: "Tools",
         url: "/tools",
-        component: <ToolsPanel />,
-        icon: <BuildIcon />,
+        component: <ToolsPanel/>,
+        icon: <BuildIcon/>,
     },
     portfolio: {
         name: "Portfolio",
         url: "/portfolio",
-        component: <PortfoliosPanel portfoliosFactory={factory} />,
-        icon: <ImportContactsIcon />,
+        component: <PortfoliosPanel portfoliosFactory={factory}/>,
+        icon: <ImportContactsIcon/>,
     },
     contact: {
         name: "Contact",
         url: "/contact",
-        component: <ContactPanel />,
-        icon: <MailIcon />,
+        component: <ContactPanel/>,
+        icon: <MailIcon/>,
     },
 }) satisfies Readonly<Record<PageType, SectionMetadata>>;
 
