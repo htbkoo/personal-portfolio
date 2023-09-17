@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme } from "@material-ui/core/styles";
+import { Theme, useTheme } from "@material-ui/core/styles";
 import { Link as MuiLink, makeStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -42,6 +42,11 @@ const useStyles = makeStyles(
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.light,
         },
+        isSecondaryCurrent: {
+            fontWeight: "bolder",
+            color: theme.palette.info.contrastText,
+            backgroundColor: theme.palette.info.dark,
+        },
         drawerSubList: {
             marginLeft: theme.spacing(2),
         },
@@ -61,6 +66,7 @@ const DrawerItem = ({
     layer = 0,
 }: DrawerItemProps) => {
     const classes = useStyles();
+    const theme = useTheme();
 
     const { pathname } = useRouter();
 
@@ -74,24 +80,22 @@ const DrawerItem = ({
                     color="inherit"
                     underline="always"
                     className={classNames(classes.drawerListItem, {
-                        [classes.isCurrent]: isCurrentListItem,
+                        [classes.isCurrent]: isCurrentListItem && layer === 0,
+                        [classes.isSecondaryCurrent]: isCurrentListItem && layer > 0,
                     })}>
                     <ListItem button tabIndex={-1}>
-                        {/*{layer > 0 && <div style={{ width: `${layer * 16}px` }} />}*/}
-                        <ListItemIcon style={{marginLeft: `${layer * 16}px`}}>{icon}</ListItemIcon>
+                        <ListItemIcon style={{ marginLeft: `${layer * theme.spacing(2)}px` }}>
+                            {icon}
+                        </ListItemIcon>
                         <ListItemText primary={name} />
                     </ListItem>
                 </MuiLink>
             </Link>
-            {isCurrentListItem && subPages && (
-                // <div className={classNames(classes.drawerSubList)}>
-                //     {
-                        Object.values(subPages).map((subPage) => (
-                        <DrawerItem config={subPage} urlPrefix={url} layer={layer + 1} />
-                    ))
-                    // }
-                // </div>
-            )}
+            {isCurrentListItem &&
+                subPages &&
+                Object.values(subPages).map((subPage) => (
+                    <DrawerItem config={subPage} urlPrefix={url} layer={layer + 1} />
+                ))}
         </>
     );
 };
