@@ -1,6 +1,7 @@
 import React from "react";
 import RssParser from "rss-parser";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import BuildIcon from "@material-ui/icons/Build";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import MailIcon from "@material-ui/icons/Mail";
 
@@ -10,12 +11,13 @@ import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
 import ContactPanel from "../components/contact/ContactPanel";
 import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
 import LocalCodePenRssFeedsParser from "../services/portfolio/LocalCodePenRssFeedsParser";
+import ToolsPanel from "@/src/components/tools/ToolsPanel";
 
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
 const factory = new EmbeddedPenPortfoliosFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
-const PAGES = ["about", "portfolio", "contact"] as const;
+const PAGES = ["about", "tools", "portfolio", "contact"] as const;
 type PageType = typeof PAGES[number];
 
 const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
@@ -24,6 +26,12 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
         url: "/",
         component: <AboutPanel />,
         icon: <AssignmentIndIcon />,
+    },
+    tools: {
+        name: "Tools",
+        url: "/tools",
+        component: <ToolsPanel />,
+        icon: <BuildIcon />,
     },
     portfolio: {
         name: "Portfolio",
