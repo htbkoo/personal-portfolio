@@ -2,11 +2,11 @@ import React from "react";
 
 import type { NextPage } from "next";
 
-import { getSectionConfig } from "@/src/metadata/sectionConfigs";
+import { sectionConfigs } from "@/src/metadata/sectionConfigs";
 import PageSection from "@/src/components/page/PageSection";
 
 const Portfolio: NextPage = () => {
-    return <PageSection config={getSectionConfig("portfolio")} />;
+    return <PageSection config={sectionConfigs.portfolio} />;
 };
 
 export default Portfolio;
