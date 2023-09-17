@@ -4,9 +4,11 @@ import { createStyles, makeStyles } from "@material-ui/core";
 import Section from "../common/Section";
 
 const useStyles = makeStyles(
-    () =>
+    (theme) =>
         createStyles({
-            toolsPanel: {},
+            toolsPanel: {
+                padding: theme.spacing(3),
+            },
         }),
     { name: "MuiMyToolsPanel" },
 );
