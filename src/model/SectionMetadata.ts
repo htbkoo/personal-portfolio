@@ -5,4 +5,5 @@ export default interface SectionMetadata {
     url: string;
     component: React.ReactNode;
     icon: React.ReactNode;
+    subPages?: Readonly<Record<string, SectionMetadata>>;
 }

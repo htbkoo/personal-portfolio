@@ -1,5 +1,6 @@
 import React from "react";
 import RssParser from "rss-parser";
+import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import BuildIcon from "@material-ui/icons/Build";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
@@ -12,6 +13,7 @@ import ContactPanel from "../components/contact/ContactPanel";
 import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
 import LocalCodePenRssFeedsParser from "../services/portfolio/LocalCodePenRssFeedsParser";
 import ToolsPanel from "@/src/components/tools/ToolsPanel";
+import PomodoroTracker from "@/src/components/tools/pomodoro/PomodoroTracker";
 
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
@@ -32,6 +34,15 @@ export const sectionConfigs = Object.freeze({
         url: "/tools",
         component: <ToolsPanel/>,
         icon: <BuildIcon/>,
+        subPages: {
+            // TODO: find out how to enforce the order of subPages
+            pomodoro: {
+                name: "Pomodoro Tracker",
+                url: "/pomodoro",
+                component: <PomodoroTracker/>,
+                icon: <AccessAlarmIcon/>,
+            },
+        },
     },
     portfolio: {
         name: "Portfolio",
