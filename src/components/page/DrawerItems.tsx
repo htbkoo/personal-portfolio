@@ -51,28 +51,37 @@ interface DrawerItemsProps {
     configs: SectionMetadata[];
 }
 
-const DrawerItems = ({ configs }: DrawerItemsProps) => {
+const DrawerItem = ({ config: { name, url, icon } }: { config: SectionMetadata }) => {
     const classes = useStyles();
 
     const { pathname } = useRouter();
 
+    const isCurrentListItem = url === "/" ? pathname === url : pathname.startsWith(url);
+    return (
+        <Link key={name} href={url} passHref>
+            <MuiLink
+                component="div"
+                color="inherit"
+                underline="always"
+                className={classNames(classes.drawerListItem, {
+                    [classes.isCurrent]: isCurrentListItem,
+                })}>
+                <ListItem button tabIndex={-1}>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText primary={name} />
+                </ListItem>
+            </MuiLink>
+        </Link>
+    );
+};
+
+const DrawerItems = ({ configs }: DrawerItemsProps) => {
+    const classes = useStyles();
+
     return (
         <React.Fragment>
-            {configs.map(({ name, url, icon }) => (
-                <Link key={name} href={url} passHref>
-                    <MuiLink
-                        component="div"
-                        color="inherit"
-                        underline="always"
-                        className={classNames(classes.drawerListItem, {
-                            [classes.isCurrent]: pathname === url,
-                        })}>
-                        <ListItem button tabIndex={-1}>
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            <ListItemText primary={name} />
-                        </ListItem>
-                    </MuiLink>
-                </Link>
+            {configs.map((config) => (
+                <DrawerItem key={config.name} config={config} />
             ))}
             <Hidden mdUp>
                 <div className={classes.oldVersionLinkButton}>
