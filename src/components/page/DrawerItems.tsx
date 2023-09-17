@@ -43,37 +43,63 @@ const useStyles = makeStyles(
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.light,
         },
+        drawerSubList: {
+            marginLeft: theme.spacing(2),
+        },
     }),
     { name: "MuiMyDrawerItems" },
 );
 
-interface DrawerItemsProps {
-    configs: SectionMetadata[];
+interface DrawerItemProps {
+    config: SectionMetadata;
+    urlPrefix?: string;
+    layer?: number;
 }
 
-const DrawerItem = ({ config: { name, url, icon } }: { config: SectionMetadata }) => {
+const DrawerItem = ({
+    config: { name, url, icon, subPages },
+    urlPrefix = "",
+    layer = 0,
+}: DrawerItemProps) => {
     const classes = useStyles();
 
     const { pathname } = useRouter();
 
-    const isCurrentListItem = url === "/" ? pathname === url : pathname.startsWith(url);
+    const actualUrl = urlPrefix + url;
+    const isCurrentListItem = actualUrl === "/" ? pathname === actualUrl : pathname.startsWith(actualUrl);
     return (
-        <Link key={name} href={url} passHref>
-            <MuiLink
-                component="div"
-                color="inherit"
-                underline="always"
-                className={classNames(classes.drawerListItem, {
-                    [classes.isCurrent]: isCurrentListItem,
-                })}>
-                <ListItem button tabIndex={-1}>
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <ListItemText primary={name} />
-                </ListItem>
-            </MuiLink>
-        </Link>
+        <>
+            <Link key={name} href={actualUrl} passHref>
+                <MuiLink
+                    component="div"
+                    color="inherit"
+                    underline="always"
+                    className={classNames(classes.drawerListItem, {
+                        [classes.isCurrent]: isCurrentListItem,
+                    })}>
+                    <ListItem button tabIndex={-1}>
+                        {/*{layer > 0 && <div style={{ width: `${layer * 16}px` }} />}*/}
+                        <ListItemIcon style={{marginLeft: `${layer * 16}px`}}>{icon}</ListItemIcon>
+                        <ListItemText primary={name} />
+                    </ListItem>
+                </MuiLink>
+            </Link>
+            {isCurrentListItem && subPages && (
+                // <div className={classNames(classes.drawerSubList)}>
+                //     {
+                        Object.values(subPages).map((subPage) => (
+                        <DrawerItem config={subPage} urlPrefix={url} layer={layer + 1} />
+                    ))
+                    // }
+                // </div>
+            )}
+        </>
     );
 };
+
+interface DrawerItemsProps {
+    configs: SectionMetadata[];
+}
 
 const DrawerItems = ({ configs }: DrawerItemsProps) => {
     const classes = useStyles();
