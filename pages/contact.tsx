@@ -2,11 +2,11 @@ import React from "react";
 
 import type { NextPage } from "next";
 
-import sectionConfigs from "@/src/metadata/sectionConfigs";
+import { getSectionConfig } from "@/src/metadata/sectionConfigs";
 import PageSection from "@/src/components/page/PageSection";
 
 const Contact: NextPage = () => {
-    return <PageSection config={sectionConfigs.contact} />;
+    return <PageSection config={getSectionConfig("contact")!} />;
 };
 
 export default Contact;

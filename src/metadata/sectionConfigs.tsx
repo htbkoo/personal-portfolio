@@ -15,7 +15,8 @@ const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
 const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
-export type PageType = "about" | "exercises" | "contact";
+const PAGES = ["about", "exercises", "contact"] as const;
+type PageType = typeof PAGES[number];
 
 const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
     about: {
@@ -38,4 +39,5 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
     },
 } as const;
 
-export default sectionConfigs;
+export const ALL_SECTION_CONFIGS_VALUES = PAGES.map((page) => sectionConfigs[page]);
+export const getSectionConfig = (page: PageType): SectionMetadata => sectionConfigs[page];
