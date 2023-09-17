@@ -95,7 +95,7 @@ const DrawerItem = ({
             {isCurrentListItem &&
                 subPages &&
                 Object.values(subPages).map((subPage) => (
-                    <DrawerItem config={subPage} urlPrefix={url} layer={layer + 1} />
+                    <DrawerItem key={subPage.name} config={subPage} urlPrefix={url} layer={layer + 1} />
                 ))}
         </>
     );
