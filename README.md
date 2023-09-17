@@ -9,7 +9,7 @@ Attempting to write my personal portfolio page again, this time with [`React`](h
 First, run the development server:
 
 ```bash
-yarn dev
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the portfolio page.
@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 #### Windows compatibility
 
-##### The `yarn run dev`, `yarn start` and `yarn build` does not work on Windows machine
+##### The `yarn start` and `yarn build` does not work on Windows machine
 
 ###### TL;DR solution
 Set the `yarn` / `npm` `script-shell` to `bash` (recommended) or `powershell` by running:
