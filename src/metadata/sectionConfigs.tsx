@@ -18,7 +18,7 @@ const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(n
 const PAGES = ["about", "exercises", "contact"] as const;
 type PageType = typeof PAGES[number];
 
-const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
+export const sectionConfigs = Object.freeze({
     about: {
         name: "About",
         url: "/",
@@ -37,7 +37,7 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
         component: <ContactPanel />,
         icon: <MailIcon />,
     },
-} as const;
+}) satisfies Readonly<Record<PageType, SectionMetadata>>;
 
 export const ALL_SECTION_CONFIGS_VALUES = PAGES.map((page) => sectionConfigs[page]);
-export const getSectionConfig = (page: PageType): SectionMetadata => sectionConfigs[page];
+
