@@ -14,7 +14,7 @@ describe("CodePenRssFeedsParser", function () {
 
             // when
             const parser = new CodePenRssFeedsParser(mockRssParser);
-            const items = await parser.parseUrl(url);
+            const items = await parser.load(url);
 
             // then
             return expect(items).toEqual(sampleParseOutput.items);
@@ -29,7 +29,7 @@ describe("CodePenRssFeedsParser", function () {
             const parser = new CodePenRssFeedsParser(mockRssParser);
 
             // then
-            return parser.parseUrl(url)
+            return parser.load(url)
                 .catch(error => expect(error.message).toEqual("Unable to parse from url: 'https://codepen.io/collection/invalid/feed' due to Error: Missing 'items' from the parsed output"));
         });
 
@@ -42,7 +42,7 @@ describe("CodePenRssFeedsParser", function () {
             const parser = new CodePenRssFeedsParser(mockRssParser);
 
             // then
-            return parser.parseUrl(url)
+            return parser.load(url)
                 .catch(error => expect(error.message).toEqual("Unable to parse from url: 'some unreachable url' due to Error: getaddrinfo ENOTFOUND some unreachable url"));
         });
     });

@@ -13,7 +13,7 @@ xdescribe("CodePenRssFeedsParser (external test)", function () {
         const parser = new CodePenRssFeedsParser(rssParser);
 
         // when
-        const results = await parser.parseUrl(url);
+        const results = await parser.load(url);
 
         // then
         expect(results).toBeInstanceOf(Array);

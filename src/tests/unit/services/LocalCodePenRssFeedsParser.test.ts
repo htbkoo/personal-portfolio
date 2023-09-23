@@ -1,6 +1,6 @@
 import {when} from "jest-when";
 
-import LocalCodePenRssFeedsParser from "@/src/services/exercise/LocalCodePenRssFeedsParser";
+import LocalCodePenRssFeedsLoader from "@/src/services/exercise/LocalCodePenRssFeedsLoader";
 
 
 import sampleParseOutput from "../../resources/services/CodePenRssFeedsParser/sampleParsedOutput.json";
@@ -16,8 +16,8 @@ describe("LocalCodePenRssFeedsParser", function () {
             const mockRssParser = createMockRssParser().whenParseString(mockContent).willResolve(sampleParseOutput);
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
-            const items = await parser.parseUrl();
+            const parser = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
+            const items = await parser.load();
 
             // then
             return expect(items).toEqual(sampleParseOutput.items);
@@ -28,10 +28,10 @@ describe("LocalCodePenRssFeedsParser", function () {
             const mockRssParser = createMockRssParser().whenParseString(mockContent).willResolve(invalidParsedOutput);
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
+            const parser = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
 
             // then
-            return parser.parseUrl()
+            return parser.load()
                 .catch(error => expect(error.message).toEqual("Missing 'items' from the parsed output: 'someContent'"));
         });
 
@@ -40,10 +40,10 @@ describe("LocalCodePenRssFeedsParser", function () {
             const mockRssParser = createMockRssParser().whenParseString(mockContent).willReject(new Error("unable to parse content"));
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
+            const parser = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
 
             // then
-            return parser.parseUrl()
+            return parser.load()
                 .catch(error => expect(error.message).toEqual("Unable to read or parse rssFeedsString due to: 'Error: unable to parse content'"));
         });
     });
