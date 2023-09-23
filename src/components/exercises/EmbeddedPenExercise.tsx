@@ -12,8 +12,10 @@ import { useCodepenEmbedScriptTag } from "@/src/hooks/useCodepenEmbedScriptTag";
 import Section from "@/src/components/common/Section";
 
 const useStyles = makeStyles(
-    () => ({
-        embeddedContainer: {},
+    (theme) => ({
+        embeddedContainer: {
+            marginTop: theme.spacing(4)
+        },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
@@ -42,7 +44,7 @@ const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
                     user={user}
                     hash={hash}
                     title={title}
-                    height={MAPPING_HEIGHTS[width]}
+                    height={0.75 * window.screen.availHeight}
                     loader={() => <CircularProgress />}
                     defaultTab="result"
                     shouldLoadScript={false}
