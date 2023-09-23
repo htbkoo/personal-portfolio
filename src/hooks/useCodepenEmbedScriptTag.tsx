@@ -1,26 +1,29 @@
-// TODO: improve this
-// We only want to append the script once globally
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CodepenEmbedScriptTagBuilder } from "ts-react-codepen-embed";
 
-let isScriptAdded = false;
-let isAddingScript = false;
+const SCRIPT_TAG_ELEMENT_ID = "HeyPortfolio--Exercise--CodepenEmbedScript";
 
 export const useCodepenEmbedScriptTag = () => {
+    const SCRIPT_TAG_PARENT = document.body;
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (!isScriptAdded && !isAddingScript) {
-            isAddingScript = true;
-            new CodepenEmbedScriptTagBuilder()
-                .setAsync(true)
-                .withOnLoadHandler(() => {
-                    isAddingScript = false;
-                    isScriptAdded = true;
-                })
-                .withOnErrorHandler(() => console.error("Failed to load the pen"))
-                .appendTo(document.body);
-        }
+        new CodepenEmbedScriptTagBuilder()
+            .setAsync(true)
+            .withOnLoadHandler(() => {
+                setLoaded(true);
+            })
+            .withOnErrorHandler(() => console.error("Failed to load the pen"))
+            .appendTo(SCRIPT_TAG_PARENT, () => {
+                const el = document.createElement("script");
+                el.id = SCRIPT_TAG_ELEMENT_ID;
+                return el;
+            });
+
+        return () => {
+            SCRIPT_TAG_PARENT.querySelector(`#${SCRIPT_TAG_ELEMENT_ID}`)?.remove();
+        };
     }, []);
 
-    return { loading: isAddingScript, loaded: isScriptAdded };
+    return { loaded };
 };

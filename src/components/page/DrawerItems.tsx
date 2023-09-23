@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Theme, useTheme } from "@mui/material/styles";
 import { Link as MuiLink } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
@@ -10,8 +10,10 @@ import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
+import SectionMetadata, { SubPagesType } from "@/src/model/SectionMetadata";
+import { parsePxValue } from "@/src/utils/cssUtils";
+
 import OldVersionLinkButton from "./OldVersionLinkButton";
-import SectionMetadata from "@/src/model/SectionMetadata";
 
 const drawerWidth = 240;
 
@@ -61,18 +63,44 @@ interface DrawerItemProps {
     layer?: number;
 }
 
+const useSubPages = ({
+    getSubPages,
+    skip = false,
+}: {
+    getSubPages: SectionMetadata["getSubPages"];
+    skip?: boolean;
+}) => {
+    const [subPages, setSubPages] = useState<SubPagesType | undefined>(undefined);
+
+    useEffect(() => {
+        if (!skip) {
+            getSubPages?.()?.then(({ data, error }) => {
+                // TODO: handling loading and error
+                setSubPages(data);
+            });
+        }
+    }, [getSubPages, skip]);
+
+    return subPages;
+};
+
 const DrawerItem = ({
-    config: { name, url, icon, subPages },
+    config: { name, url, icon, getSubPages },
     urlPrefix = "",
     layer = 0,
 }: DrawerItemProps) => {
     const classes = useStyles();
     const theme = useTheme();
-
     const { pathname } = useRouter();
 
     const actualUrl = urlPrefix + url;
     const isCurrentListItem = actualUrl === "/" ? pathname === actualUrl : pathname.startsWith(actualUrl);
+
+    const subPages = useSubPages({
+        getSubPages,
+        skip: !isCurrentListItem,
+    });
+
     return (
         <>
             <Link key={name} href={actualUrl} passHref>
@@ -85,7 +113,7 @@ const DrawerItem = ({
                         [classes.isSecondaryCurrent]: isCurrentListItem && layer > 0,
                     })}>
                     <ListItem button tabIndex={-1}>
-                        <ListItemIcon style={{ marginLeft: `${layer * theme.spacing(2)}px` }}>
+                        <ListItemIcon style={{ marginLeft: `${layer * parsePxValue(theme.spacing(2))}px` }}>
                             {icon}
                         </ListItemIcon>
                         <ListItemText primary={name} />

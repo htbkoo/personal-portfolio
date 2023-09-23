@@ -10,18 +10,18 @@ xdescribe("CodePenRssFeedsParser (external test)", function () {
         // given
         const url = "https://codepen.io/collection/neBvQa/feed";
         const rssParser = new RssParser();
-        const parser = new CodePenRssFeedsParser(rssParser);
+        const parser = new CodePenRssFeedsParser(rssParser, url);
 
         // when
-        const results = await parser.load(url);
+        const { data } = await parser.load();
 
         // then
-        expect(results).toBeInstanceOf(Array);
+        expect(Array.isArray(data)).toBeTruthy();
 
-        results.forEach(result => {
+        data!.forEach((result) => {
             expect(result).toHaveProperty("title");
             expect(result).toHaveProperty("link");
             expect(result).toHaveProperty("content");
-        })
+        });
     });
 });

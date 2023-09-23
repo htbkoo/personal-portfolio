@@ -1,5 +1,8 @@
 import { Items } from "rss-parser";
 
 export default interface RssFeedsLoader {
-    load(): Promise<Items[]>;
+    load(): Promise<{
+        data?: Items[];
+        error?: any;
+    }>;
 }
