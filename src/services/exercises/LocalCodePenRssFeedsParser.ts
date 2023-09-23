@@ -3,7 +3,7 @@ import { RssParser } from "./RssParser";
 
 export default class LocalCodePenRssFeedsParser implements RssFeedsParser {
     private readonly rssParser: RssParser;
-    private rssFeeds: string;
+    private readonly rssFeeds: string;
 
     constructor(rssParser: RssParser, rssFeeds: string) {
         this.rssParser = rssParser;
@@ -11,18 +11,19 @@ export default class LocalCodePenRssFeedsParser implements RssFeedsParser {
     }
 
     async parseUrl() {
-        let output;
-
-        try {
-            output = await this.rssParser.parseString(this.rssFeeds);
-        } catch (e) {
-            throw new Error(`Unable to read or parse rssFeedsString due to: '${e}'`);
-        }
-
-        if (output && output.items) {
+        const output = await this.parseRssFeeds();
+        if (output?.items) {
             return output.items;
         } else {
             throw new Error(`Missing 'items' from the parsed output: '${this.rssFeeds}'`);
+        }
+    }
+
+    private async parseRssFeeds() {
+        try {
+            return await this.rssParser.parseString(this.rssFeeds);
+        } catch (e) {
+            throw new Error(`Unable to read or parse rssFeedsString due to: '${e}'`);
         }
     }
 }
