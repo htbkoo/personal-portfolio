@@ -8,6 +8,7 @@ import { ExerciseProps } from "./ExerciseProps";
 import CodePenItemContentParser from "@/src/services/exercises/CodePenItemContentParser";
 import { credentialsExtractor } from "@/src/services/exercises/CodePenItemContentExtractor";
 import { useWidth } from "../../hooks/muiHooks";
+import { useCodepenEmbedScriptTag } from "@/src/hooks/useCodepenEmbedScriptTag";
 
 const useStyles = makeStyles(
     () => ({
@@ -18,10 +19,6 @@ const useStyles = makeStyles(
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
 
-interface EmbeddedPenExerciseProps extends ExerciseProps {
-    isScriptLoaded?: boolean;
-}
-
 const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xs: 288,
     sm: 384,
@@ -30,11 +27,12 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xl: 768,
 };
 
-const EmbeddedPenExercise = (props: EmbeddedPenExerciseProps) => {
+const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
     const width = useWidth();
 
-    const { title, content, isScriptLoaded } = props;
+    const { loaded } = useCodepenEmbedScriptTag();
+
     const contentParser = CodePenItemContentParser.newParser(content);
     const { user, hash } = contentParser.parseContent(credentialsExtractor);
 
@@ -48,7 +46,7 @@ const EmbeddedPenExercise = (props: EmbeddedPenExerciseProps) => {
                 loader={() => <CircularProgress />}
                 defaultTab="result"
                 shouldLoadScript={false}
-                overrideAsLoaded={isScriptLoaded}
+                overrideAsLoaded={loaded}
             />
         </div>
     );
