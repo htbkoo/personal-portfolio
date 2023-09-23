@@ -17,11 +17,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Other information
 
 ### Major updates
-1. [`v4.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v4.0.0) - upgraded [`material-ui`](https://mui.com/material-ui/migration/migration-v4/) to `v5` ([#178](https://github.com/htbkoo/personal-portfolio/pull/178))
-2. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v3.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v14` ([#175](https://github.com/htbkoo/personal-portfolio/pull/175))
-3. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13` ([#143](https://github.com/htbkoo/personal-portfolio/pull/143))
-4. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP) ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP) ](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/) ([#112](https://github.com/htbkoo/personal-portfolio/pull/112)) 
-5. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
+1. [`v5.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v5.0.0) - Another major re-architecture - now the [`<DrawerItems />`](src%2Fcomponents%2Fpage%2FDrawerItems.tsx) supports `subPages` and `Exercises` (formerly `Portfolio` page) are split into their own page for faster loading performance
+2. [`v4.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v4.0.0) - upgraded [`material-ui`](https://mui.com/material-ui/migration/migration-v4/) to `v5` ([#178](https://github.com/htbkoo/personal-portfolio/pull/178))
+3. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v3.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v14` ([#175](https://github.com/htbkoo/personal-portfolio/pull/175))
+4. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13` ([#143](https://github.com/htbkoo/personal-portfolio/pull/143))
+5. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP) ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP) ](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/) ([#112](https://github.com/htbkoo/personal-portfolio/pull/112)) 
+6. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
    1. As a bonus, the version of `React` is also upgraded to [`v18.0`](https://reactjs.org/blog/2022/03/29/react-v18.html) from `v17.0.2`
 
 ### Common known issues
