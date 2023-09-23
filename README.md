@@ -17,6 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Other information
 
 ### Major updates
+1. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - Another major re-architecture - now the [`<DrawerItems />`](src%2Fcomponents%2Fpage%2FDrawerItems.tsx) supports `subPages` and `Exercises` (formerly `Portfolio` page) are split into their own page for faster loading performance
 1. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13`
 2. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP)
 ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP)
