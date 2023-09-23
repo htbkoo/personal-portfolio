@@ -17,7 +17,7 @@ describe("LocalCodePenRssFeedsParser", function () {
 
             // when
             const parser = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
-            const items = await parser.load();
+            const { data: items} = await parser.load();
 
             // then
             return expect(items).toEqual(sampleParseOutput.items);
