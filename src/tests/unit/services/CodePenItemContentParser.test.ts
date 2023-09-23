@@ -1,7 +1,7 @@
 import {when} from "jest-when";
 
-import CodePenItemContentParser from "../../../services/portfolio/CodePenItemContentParser";
-import * as extractors from "../../../services/portfolio/CodePenItemContentExtractor";
+import CodePenItemContentParser from "@/src/services/exercise/CodePenItemContentParser";
+import * as extractors from "@/src/services/exercise/CodePenItemContentExtractor";
 
 describe("CodePenItemContentParser", function () {
     describe("parseContent", function () {

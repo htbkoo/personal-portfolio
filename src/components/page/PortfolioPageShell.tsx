@@ -31,7 +31,7 @@ const useStyles = makeStyles(
     { name: "MuiMyPortfolioPageShell" },
 );
 
-const DRAWER_ITEMS: Array<PageType> = ["about", "portfolio", "contact"];
+const DRAWER_ITEMS: Array<PageType> = ["about", "exercise", "contact"];
 
 const sectionConfigs = DRAWER_ITEMS.map((page) => SectionConfigs[page]);
 

@@ -1,6 +1,6 @@
 import RssParser from "rss-parser";
 
-import CodePenRssFeedsParser from "../../services/portfolio/CodePenRssFeedsParser";
+import CodePenRssFeedsParser from "@/src/services/exercise/CodePenRssFeedsParser";
 
 // TODO: fix this or remove this
 //  apparently the response format from codepen.io has changed and thus this test is failing

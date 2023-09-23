@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import { Items } from "rss-parser";
 import { CodepenEmbedScriptTagBuilder } from "ts-react-codepen-embed";
 
-import RssFeedsParser from "../../services/portfolio/RssFeedsParser";
-import EmbeddedPenPortfolio from "./EmbeddedPenPortfolio";
+import RssFeedsParser from "@/src/services/exercise/RssFeedsParser";
+import EmbeddedPenExercise from "./EmbeddedPenExercise";
 
 interface Props {
     parser: RssFeedsParser;
     rssFeedUrl: string;
 }
 
-const EmbeddedPenPortfolios = ({ parser, rssFeedUrl }: Props) => {
+const EmbeddedPenExercises = ({ parser, rssFeedUrl }: Props) => {
     const [loaded, setLoaded] = useState(false);
     const [items, setItems] = useState<Items[]>([]);
 
@@ -32,7 +32,7 @@ const EmbeddedPenPortfolios = ({ parser, rssFeedUrl }: Props) => {
     return (
         <div>
             {items.map(({ content = "", link = "", title = "" }: Items, index: number) => (
-                <EmbeddedPenPortfolio
+                <EmbeddedPenExercise
                     key={`${index}_${title}`}
                     content={content}
                     link={link}
@@ -43,4 +43,4 @@ const EmbeddedPenPortfolios = ({ parser, rssFeedUrl }: Props) => {
         </div>
     );
 };
-export default EmbeddedPenPortfolios;
+export default EmbeddedPenExercises;
