@@ -4,7 +4,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import MailIcon from "@material-ui/icons/Mail";
 
 import ExercisePanel from "@/src/components/exercise/ExercisePanel";
-import { factory } from "@/src/metadata/exercise/exercisesFactory";
+import { exercisesLoader } from "@/src/metadata/exercise/exercisesLoader";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
@@ -23,8 +23,11 @@ export const sectionConfigs = Object.freeze({
     exercise: {
         name: "Exercise",
         url: "/exercise",
-        component: <ExercisePanel exercisesFactory={factory} />,
+        component: <ExercisePanel exercisesLoader={exercisesLoader} />,
         icon: <ImportContactsIcon />,
+        async getSubPages() {
+            return exercisesLoader.loadAsSubPageMetaData();
+        },
     },
     contact: {
         name: "Contact",
