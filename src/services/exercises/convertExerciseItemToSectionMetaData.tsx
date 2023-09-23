@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Items } from "rss-parser";
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import SectionMetadata from "@/src/model/SectionMetadata";
 import EmbeddedPenExercise from "@/src/components/exercises/EmbeddedPenExercise";
@@ -13,5 +14,5 @@ export const convertExerciseItemToSectionMetaData = (
     name: title,
     url: `/${codePenTitleAsUrl(title)}`,
     component: <EmbeddedPenExercise key={`${index}_${title}`} content={content} link={link} title={title} />,
-    icon: <div />,
+    icon: <ArrowRightIcon />,
 });
