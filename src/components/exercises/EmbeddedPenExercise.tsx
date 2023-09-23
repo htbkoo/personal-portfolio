@@ -7,14 +7,13 @@ import CodePen from "ts-react-codepen-embed";
 import { ExerciseProps } from "./ExerciseProps";
 import CodePenItemContentParser from "@/src/services/exercises/CodePenItemContentParser";
 import { credentialsExtractor } from "@/src/services/exercises/CodePenItemContentExtractor";
-import { useWidth } from "../../hooks/muiHooks";
 import { useCodepenEmbedScriptTag } from "@/src/hooks/useCodepenEmbedScriptTag";
 import Section from "@/src/components/common/Section";
 
 const useStyles = makeStyles(
     (theme) => ({
         embeddedContainer: {
-            marginTop: theme.spacing(4)
+            marginTop: theme.spacing(4),
         },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
@@ -30,7 +29,6 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
 
 const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
-    const width = useWidth();
 
     const { loaded } = useCodepenEmbedScriptTag();
 
