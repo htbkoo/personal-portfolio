@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme } from "@material-ui/core/styles";
+import { Theme, useTheme } from "@material-ui/core/styles";
 import { Link as MuiLink, makeStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -42,9 +42,63 @@ const useStyles = makeStyles(
             color: theme.palette.primary.contrastText,
             backgroundColor: theme.palette.primary.light,
         },
+        isSecondaryCurrent: {
+            fontWeight: "bolder",
+            color: theme.palette.info.contrastText,
+            backgroundColor: theme.palette.info.dark,
+        },
+        drawerSubList: {
+            marginLeft: theme.spacing(2),
+        },
     }),
     { name: "MuiMyDrawerItems" },
 );
+
+interface DrawerItemProps {
+    config: SectionMetadata;
+    urlPrefix?: string;
+    layer?: number;
+}
+
+const DrawerItem = ({
+    config: { name, url, icon, subPages },
+    urlPrefix = "",
+    layer = 0,
+}: DrawerItemProps) => {
+    const classes = useStyles();
+    const theme = useTheme();
+
+    const { pathname } = useRouter();
+
+    const actualUrl = urlPrefix + url;
+    const isCurrentListItem = actualUrl === "/" ? pathname === actualUrl : pathname.startsWith(actualUrl);
+    return (
+        <>
+            <Link key={name} href={actualUrl} passHref>
+                <MuiLink
+                    component="div"
+                    color="inherit"
+                    underline="always"
+                    className={classNames(classes.drawerListItem, {
+                        [classes.isCurrent]: isCurrentListItem && layer === 0,
+                        [classes.isSecondaryCurrent]: isCurrentListItem && layer > 0,
+                    })}>
+                    <ListItem button tabIndex={-1}>
+                        <ListItemIcon style={{ marginLeft: `${layer * theme.spacing(2)}px` }}>
+                            {icon}
+                        </ListItemIcon>
+                        <ListItemText primary={name} />
+                    </ListItem>
+                </MuiLink>
+            </Link>
+            {isCurrentListItem &&
+                subPages &&
+                Object.values(subPages).map((subPage) => (
+                    <DrawerItem key={subPage.name} config={subPage} urlPrefix={url} layer={layer + 1} />
+                ))}
+        </>
+    );
+};
 
 interface DrawerItemsProps {
     configs: SectionMetadata[];
@@ -53,25 +107,10 @@ interface DrawerItemsProps {
 const DrawerItems = ({ configs }: DrawerItemsProps) => {
     const classes = useStyles();
 
-    const { pathname } = useRouter();
-
     return (
         <React.Fragment>
-            {configs.map(({ name, url, icon }) => (
-                <Link key={name} href={url} passHref>
-                    <MuiLink
-                        component="div"
-                        color="inherit"
-                        underline="always"
-                        className={classNames(classes.drawerListItem, {
-                            [classes.isCurrent]: pathname === url,
-                        })}>
-                        <ListItem button tabIndex={-1}>
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            <ListItemText primary={name} />
-                        </ListItem>
-                    </MuiLink>
-                </Link>
+            {configs.map((config) => (
+                <DrawerItem key={config.name} config={config} />
             ))}
             <Hidden mdUp>
                 <div className={classes.oldVersionLinkButton}>

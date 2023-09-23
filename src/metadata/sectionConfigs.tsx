@@ -1,6 +1,8 @@
 import React from "react";
 import RssParser from "rss-parser";
+import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import BuildIcon from "@material-ui/icons/Build";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import MailIcon from "@material-ui/icons/Mail";
 
@@ -10,32 +12,51 @@ import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
 import ContactPanel from "../components/contact/ContactPanel";
 import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
 import LocalCodePenRssFeedsParser from "../services/portfolio/LocalCodePenRssFeedsParser";
+import ToolsPanel from "@/src/components/tools/ToolsPanel";
+import PomodoroTracker from "@/src/components/tools/pomodoro/PomodoroTracker";
 
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
 const factory = new EmbeddedPenPortfoliosFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
-export type PageType = "about" | "portfolio" | "contact";
+const PAGES = ["about", "tools", "portfolio", "contact"] as const;
+type PageType = typeof PAGES[number];
 
-const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
+export const sectionConfigs = Object.freeze({
     about: {
         name: "About",
         url: "/",
-        component: <AboutPanel />,
-        icon: <AssignmentIndIcon />,
+        component: <AboutPanel/>,
+        icon: <AssignmentIndIcon/>,
+    },
+    tools: {
+        name: "Tools",
+        url: "/tools",
+        component: <ToolsPanel/>,
+        icon: <BuildIcon/>,
+        subPages: {
+            // TODO: find out how to enforce the order of subPages
+            pomodoro: {
+                name: "Pomodoro Tracker",
+                url: "/pomodoro",
+                component: <PomodoroTracker/>,
+                icon: <AccessAlarmIcon/>,
+            },
+        },
     },
     portfolio: {
         name: "Portfolio",
         url: "/portfolio",
-        component: <PortfoliosPanel portfoliosFactory={factory} />,
-        icon: <ImportContactsIcon />,
+        component: <PortfoliosPanel portfoliosFactory={factory}/>,
+        icon: <ImportContactsIcon/>,
     },
     contact: {
         name: "Contact",
         url: "/contact",
-        component: <ContactPanel />,
-        icon: <MailIcon />,
+        component: <ContactPanel/>,
+        icon: <MailIcon/>,
     },
-} as const;
+}) satisfies Readonly<Record<PageType, SectionMetadata>>;
 
-export default sectionConfigs;
+export const ALL_SECTION_CONFIGS_VALUES = PAGES.map((page) => sectionConfigs[page]);
+

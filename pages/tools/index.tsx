@@ -5,8 +5,8 @@ import type { NextPage } from "next";
 import { sectionConfigs } from "@/src/metadata/sectionConfigs";
 import PageSection from "@/src/components/page/PageSection";
 
-const Contact: NextPage = () => {
-    return <PageSection config={sectionConfigs.contact} />;
+const Tools: NextPage = () => {
+    return <PageSection config={sectionConfigs.tools} />;
 };
 
-export default Contact;
+export default Tools;
