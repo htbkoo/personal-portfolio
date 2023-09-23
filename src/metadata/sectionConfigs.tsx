@@ -1,19 +1,14 @@
 import React from "react";
-import RssParser from "rss-parser";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import MailIcon from "@material-ui/icons/Mail";
 
+import ExercisePanel from "@/src/components/exercise/ExercisePanel";
+import { factory } from "@/src/metadata/exercise/exercisesFactory";
+
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
-import ExercisePanel from "@/src/components/exercise/ExercisePanel";
 import ContactPanel from "../components/contact/ContactPanel";
-import EmbeddedPenExercisesFactory from "@/src/components/exercise/EmbeddedPenExercisesFactory";
-import LocalCodePenRssFeedsParser from "@/src/services/exercise/LocalCodePenRssFeedsParser";
-
-const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
-const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
-const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
 const PAGES = ["about", "exercise", "contact"] as const;
 type PageType = (typeof PAGES)[number];
