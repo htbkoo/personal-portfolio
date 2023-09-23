@@ -1,19 +1,17 @@
 import * as React from "react";
 
-import RssFeedsParser from "@/src/services/exercises/RssFeedsParser";
+import RssFeedsLoader from "@/src/services/exercises/RssFeedsLoader";
 import {ExercisesFactory} from "./ExercisesFactory";
 import EmbeddedPenExercises from "./EmbeddedPenExercises";
 
 export default class EmbeddedPenExercisesFactory implements ExercisesFactory {
-    private readonly parser: RssFeedsParser;
-    private readonly rssFeedUrl: string;
+    private readonly loader: RssFeedsLoader;
 
-    constructor(parser: RssFeedsParser, rssFeedUrl: string) {
-        this.parser = parser;
-        this.rssFeedUrl = rssFeedUrl;
+    constructor(parser: RssFeedsLoader) {
+        this.loader = parser;
     }
 
     async createExercises() {
-        return <EmbeddedPenExercises parser={this.parser} rssFeedUrl={this.rssFeedUrl}/>;
+        return <EmbeddedPenExercises loader={this.loader} />;
     }
 }

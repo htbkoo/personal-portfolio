@@ -1,14 +1,14 @@
-import RssFeedsParser from "./RssFeedsParser";
+import RssFeedsLoader from "./RssFeedsLoader";
 import {RssParser} from "./RssParser";
 
-export default class CodePenRssFeedsParser implements RssFeedsParser {
+export default class CodePenRssFeedsParser implements RssFeedsLoader {
     private readonly rssParser: RssParser;
 
     constructor(rssParser: RssParser) {
         this.rssParser = rssParser;
     }
 
-    async parseUrl(url: string) {
+    async load(url: string) {
         try {
             const output = await this.rssParser.parseURL(url);
             if (output && output.items) {

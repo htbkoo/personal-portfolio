@@ -4,7 +4,7 @@ import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MailIcon from "@mui/icons-material/Mail";
 
 import ExercisesPanel from "@/src/components/exercises/ExercisePanel";
-import { factory } from "@/src/metadata/exercise/exercisesFactory";
+import { factory } from "@/src/metadata/exercises/exercisesFactory";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
