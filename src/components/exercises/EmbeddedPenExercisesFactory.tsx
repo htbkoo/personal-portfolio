@@ -7,8 +7,8 @@ import EmbeddedPenExercises from "./EmbeddedPenExercises";
 export default class EmbeddedPenExercisesFactory implements ExercisesFactory {
     private readonly loader: RssFeedsLoader;
 
-    constructor(parser: RssFeedsLoader) {
-        this.loader = parser;
+    constructor(loader: RssFeedsLoader) {
+        this.loader = loader;
     }
 
     async createExercises() {
