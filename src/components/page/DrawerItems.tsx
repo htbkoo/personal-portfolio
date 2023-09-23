@@ -91,10 +91,10 @@ const DrawerItem = ({
 }: DrawerItemProps) => {
     const classes = useStyles();
     const theme = useTheme();
-    const { pathname } = useRouter();
+    const { asPath } = useRouter();
 
     const actualUrl = urlPrefix + url;
-    const isCurrentListItem = actualUrl === "/" ? pathname === actualUrl : pathname.startsWith(actualUrl);
+    const isCurrentListItem = actualUrl === "/" ? asPath === actualUrl : asPath.startsWith(actualUrl);
 
     const subPages = useSubPages({
         getSubPages,
