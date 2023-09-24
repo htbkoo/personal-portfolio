@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import type { NextPage } from "next";
 
 import { sectionConfigs } from "@/src/metadata/sectionConfigs";
 import PageSection from "@/src/components/page/PageSection";
-import { useRouter } from "next/router";
 import SectionMetadata from "@/src/model/SectionMetadata";
-import CircularProgress from "@mui/material/CircularProgress";
+import { useAppGlobalStateContext } from "@/src/contexts/AppGlobalStateContext";
 
 const Exercise = () => {
-    const { asPath } = useRouter();
-    const pagePath = asPath.split("/").at(-2);
+    const { currDisplayPath } = useAppGlobalStateContext();
+
+    const pagePath = currDisplayPath.split("/").at(-2);
 
     const [isLoading, setLoading] = useState(true);
     const [pageData, setPageData] = useState<SectionMetadata | undefined>(undefined);
@@ -38,6 +39,6 @@ const Exercise = () => {
     return null;
 };
 
-const NoSsrExercise: NextPage = dynamic(async () => Exercise, {ssr: false});
+const NoSsrExercise: NextPage = dynamic(async () => Exercise, { ssr: false });
 
 export default NoSsrExercise;
