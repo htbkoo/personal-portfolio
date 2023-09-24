@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import { createStyles, makeStyles } from "@material-ui/core";
 
 import Section from "../common/Section";
-import { ExercisesFactory } from "./ExercisesFactory";
+import RssFeedsLoader from "@/src/services/exercise/RssFeedsLoader";
 
 const useStyles = makeStyles(
     () =>
@@ -14,21 +13,15 @@ const useStyles = makeStyles(
 );
 
 interface ExercisePanelProps {
-    exercisesFactory: ExercisesFactory;
+    exercisesLoader: RssFeedsLoader;
 }
 
-const ExercisePanel = ({ exercisesFactory }: ExercisePanelProps) => {
+const ExercisePanel = ({ exercisesLoader }: ExercisePanelProps) => {
     const classes = useStyles();
-
-    const [exercises, setExercises] = useState<React.ReactNode>([]);
-
-    useEffect(() => {
-        exercisesFactory.createExercises().then((exercises) => setExercises(exercises));
-    }, [exercisesFactory]);
 
     return (
         <Section id="exercise" hasDivider={true} title="Exercise" subtitle="Some of my previous works">
-            <div className={classes.exercisePanel}>{exercises}</div>
+            <div className={classes.exercisePanel}></div>
         </Section>
     );
 };

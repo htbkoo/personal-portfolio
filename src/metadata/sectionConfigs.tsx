@@ -1,23 +1,20 @@
 import React from "react";
-import RssParser from "rss-parser";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import MailIcon from "@material-ui/icons/Mail";
 
+import ExercisePanel from "@/src/components/exercise/ExercisePanel";
+import { exercisesLoader } from "@/src/metadata/exercise/exercisesLoader";
+import { convertExerciseItemsToSubPagesMetaData } from "@/src/services/exercise/convertExerciseItemsToSubPagesMetaData";
+
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
-import ExercisePanel from "@/src/components/exercise/ExercisePanel";
 import ContactPanel from "../components/contact/ContactPanel";
-import EmbeddedPenExercisesFactory from "@/src/components/exercise/EmbeddedPenExercisesFactory";
-import LocalCodePenRssFeedsParser from "@/src/services/exercise/LocalCodePenRssFeedsParser";
 
-const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
-const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
-const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
+const PAGES = ["about", "exercise", "contact"] as const;
+type PageType = (typeof PAGES)[number];
 
-export type PageType = "about" | "exercise" | "contact";
-
-const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
+export const sectionConfigs = Object.freeze({
     about: {
         name: "About",
         url: "/",
@@ -27,8 +24,15 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
     exercise: {
         name: "Exercise",
         url: "/exercise",
-        component: <ExercisePanel exercisesFactory={factory} />,
+        component: <ExercisePanel exercisesLoader={exercisesLoader} />,
         icon: <ImportContactsIcon />,
+        async getSubPages() {
+            const { data, error } = await exercisesLoader.load();
+            if (error) {
+                return { error };
+            }
+            return { data: convertExerciseItemsToSubPagesMetaData(data) };
+        },
     },
     contact: {
         name: "Contact",
@@ -36,6 +40,6 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
         component: <ContactPanel />,
         icon: <MailIcon />,
     },
-} as const;
+}) satisfies Readonly<Record<PageType, SectionMetadata>>;
 
-export default sectionConfigs;
+export const ALL_SECTION_CONFIGS_VALUES = PAGES.map((page) => sectionConfigs[page]);

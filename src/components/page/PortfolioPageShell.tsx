@@ -7,7 +7,7 @@ import PageAppBar from "./PageAppBar";
 import PageDrawer from "./ResponsivePageDrawer";
 import PageMain from "./PageMain";
 import TransitionLayout from "@/src/components/TransitionLayout";
-import SectionConfigs, { PageType } from "@/src/metadata/sectionConfigs";
+import { ALL_SECTION_CONFIGS_VALUES } from "@/src/metadata/sectionConfigs";
 
 const drawerWidth = 240;
 
@@ -28,10 +28,6 @@ const useStyles = makeStyles(
     { name: "MuiMyPortfolioPageShell" },
 );
 
-const DRAWER_ITEMS: Array<PageType> = ["about", "exercise", "contact"];
-
-const sectionConfigs = DRAWER_ITEMS.map((page) => SectionConfigs[page]);
-
 const PortfolioPageShell = ({ children }: { children: ReactNode }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -46,7 +42,7 @@ const PortfolioPageShell = ({ children }: { children: ReactNode }) => {
             </div>
             <nav className={classes.drawer}>
                 <PageDrawer
-                    sectionConfigs={sectionConfigs}
+                    sectionConfigs={ALL_SECTION_CONFIGS_VALUES}
                     drawerOpen={drawerOpen}
                     onDrawerClose={handleDrawerToggle}
                 />
