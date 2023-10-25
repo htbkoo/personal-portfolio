@@ -29,7 +29,7 @@
     "@material-ui/styles": "4.11.4",
     "cheerio": "1.0.0-rc.10",
     "classnames": "^2.3.2",
-    "next": "13.4.19",
+    "next": "13.5.0",
     "promise-polyfill": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
