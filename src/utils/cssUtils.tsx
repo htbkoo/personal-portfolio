@@ -1,4 +1,4 @@
-import { Theme } from "@material-ui/core";
+import { Theme } from "@mui/material";
 
 export function getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme: Theme) {
     // To fix the AppBar overlapping in-page anchors issue

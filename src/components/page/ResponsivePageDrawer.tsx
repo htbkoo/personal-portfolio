@@ -1,7 +1,9 @@
 import React from "react";
-import { createStyles, makeStyles, Theme, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import Hidden from "@material-ui/core/Hidden";
+import { Theme, useTheme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import Drawer from "@mui/material/Drawer";
+import Hidden from "@mui/material/Hidden";
 
 import DrawerItems from "./DrawerItems";
 import SectionMetadata from "../../model/SectionMetadata";
@@ -16,7 +18,7 @@ const useStyles = makeStyles(
                 width: drawerWidth,
                 [theme.breakpoints.up("md")]: {
                     transition: "0.5s",
-                    backgroundColor: theme.palette.type === "dark" ? "#42424242" : "#FFFFFF42",
+                    backgroundColor: theme.palette.mode === "dark" ? "#42424242" : "#FFFFFF42",
                 },
             },
             toolbar: theme.mixins.toolbar,
@@ -53,32 +55,30 @@ const ResponsivePageDrawer = ({ sectionConfigs, drawerOpen, onDrawerClose }: Res
     const classes = useStyles();
     const theme = useTheme();
 
-    return (
-        <>
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-            <Hidden mdUp>
-                <Drawer
-                    variant="temporary"
-                    anchor={theme.direction === "rtl" ? "right" : "left"}
-                    open={drawerOpen}
-                    onClose={onDrawerClose}
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}>
-                    <DrawerContent configs={sectionConfigs} />
-                </Drawer>
-            </Hidden>
-            <Hidden smDown>
-                <Drawer
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                    variant="permanent"
-                    open>
-                    <DrawerContent configs={sectionConfigs} />
-                </Drawer>
-            </Hidden>
-        </>
-    );
+    return <>
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden mdUp>
+            <Drawer
+                variant="temporary"
+                anchor={theme.direction === "rtl" ? "right" : "left"}
+                open={drawerOpen}
+                onClose={onDrawerClose}
+                classes={{
+                    paper: classes.drawerPaper,
+                }}>
+                <DrawerContent configs={sectionConfigs} />
+            </Drawer>
+        </Hidden>
+        <Hidden mdDown>
+            <Drawer
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+                variant="permanent"
+                open>
+                <DrawerContent configs={sectionConfigs} />
+            </Drawer>
+        </Hidden>
+    </>;
 };
 export default ResponsivePageDrawer;

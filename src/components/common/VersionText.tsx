@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, makeStyles } from "@material-ui/core";
+import { Link } from "@mui/material";
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import { GitHubMarkImg, useGitHubMarkImgColorBasedOnTheme } from "./GitHubMarkImg";
 import packageJson from "../../../package.json";

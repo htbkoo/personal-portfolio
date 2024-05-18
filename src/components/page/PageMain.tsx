@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { Theme } from "@material-ui/core/styles";
-import { makeStyles } from "@material-ui/core";
+import { Theme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(
     (theme: Theme) => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles(
         },
         content: {
             flexGrow: 1,
-            [theme.breakpoints.down("xs")]: {
+            [theme.breakpoints.down('sm')]: {
                 padding: "unset",
             },
             [theme.breakpoints.up("sm")]: {

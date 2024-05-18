@@ -1,10 +1,22 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { createTheme as createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { grey, indigo } from "@material-ui/core/colors";
-import { PaletteType } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { PaletteOptions } from "@material-ui/core/styles/createPalette";
-import { Theme } from "@material-ui/core/styles/createTheme";
+import {
+    createTheme as createMuiTheme,
+    ThemeProvider,
+    StyledEngineProvider,
+    adaptV4Theme,
+    PaletteOptions,
+    Theme,
+} from "@mui/material/styles";
+import { grey, indigo } from "@mui/material/colors";
+import { PaletteType } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     light: {
@@ -17,7 +29,7 @@ const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
 };
 
 const createTheme = (paletteType: PaletteType) =>
-    createMuiTheme({
+    createMuiTheme(adaptV4Theme({
         palette: {
             ...PALETTES[paletteType],
             type: paletteType,
@@ -35,9 +47,9 @@ const createTheme = (paletteType: PaletteType) =>
                 },
             },
         },
-    });
+    }));
 
-export const DARK_THEME = createTheme("dark");
+export const DARK_THEME = createTheme(adaptV4Theme("dark"));
 
 const themesCache: Partial<Record<PaletteType, Theme>> = {
     dark: DARK_THEME,
@@ -45,7 +57,7 @@ const themesCache: Partial<Record<PaletteType, Theme>> = {
 
 const getTheme = (paletteType: PaletteType): Theme => {
     if (!(paletteType in themesCache)) {
-        themesCache[paletteType] = createTheme(paletteType);
+        themesCache[paletteType] = createTheme(adaptV4Theme(paletteType));
     }
     return themesCache[paletteType]!;
 };
@@ -71,7 +83,9 @@ export const AppThemeProvider = ({ children }: { children?: ReactNode }) => {
 
     return (
         <DarkLightModeContext.Provider value={{ darkLightMode, setDarkLightMode }}>
-            <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </StyledEngineProvider>
         </DarkLightModeContext.Provider>
     );
 };

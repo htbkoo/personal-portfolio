@@ -4,7 +4,7 @@ import { AppThemeProvider } from "@/src/services/MuiThemeFactory";
 
 import PortfolioPageShell from "./page/PortfolioPageShell";
 import { AppProps } from "next/app";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import { BackgroundImage } from "@/src/components/BackgroundImage";
 
 const AppBody = ({ Component, pageProps }: AppProps) => {

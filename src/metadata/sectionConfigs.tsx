@@ -1,8 +1,8 @@
 import React from "react";
 import RssParser from "rss-parser";
-import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
-import ImportContactsIcon from "@material-ui/icons/ImportContacts";
-import MailIcon from "@material-ui/icons/Mail";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import ImportContactsIcon from "@mui/icons-material/ImportContacts";
+import MailIcon from "@mui/icons-material/Mail";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
