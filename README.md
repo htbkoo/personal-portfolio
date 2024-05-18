@@ -17,10 +17,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Other information
 
 ### Major updates
-1. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13`
-2. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP)
-](https://web.dev/fcp/) and [Largest Contentful Paint (LCP)
-](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/)
+1. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v14` ([#175](https://github.com/htbkoo/personal-portfolio/pull/175))
+1. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13` ([#143](https://github.com/htbkoo/personal-portfolio/pull/143))
+2. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP) ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP) ](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/) ([#112](https://github.com/htbkoo/personal-portfolio/pull/112)) 
 3. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
    1. As a bonus, the version of `React` is also upgraded to [`v18.0`](https://reactjs.org/blog/2022/03/29/react-v18.html) from `v17.0.2`
 
