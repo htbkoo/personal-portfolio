@@ -1,24 +1,22 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import {
-    createTheme as createMuiTheme,
-    ThemeProvider,
-    StyledEngineProvider,
     adaptV4Theme,
+    createTheme as createMuiTheme,
     PaletteOptions,
+    StyledEngineProvider,
     Theme,
+    ThemeProvider,
 } from "@mui/material/styles";
 import { grey, indigo } from "@mui/material/colors";
-import { PaletteType } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { PaletteMode } from "@mui/material";
 
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
+declare module "@mui/styles/defaultTheme" {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface DefaultTheme extends Theme {}
 }
 
-
-const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
+const PALETTES: { [paletteType in PaletteMode]: PaletteOptions } = {
     light: {
         primary: indigo,
         secondary: { main: grey["A100"] },
@@ -28,43 +26,45 @@ const PALETTES: { [paletteType in PaletteType]: PaletteOptions } = {
     },
 };
 
-const createTheme = (paletteType: PaletteType) =>
-    createMuiTheme(adaptV4Theme({
-        palette: {
-            ...PALETTES[paletteType],
-            type: paletteType,
-        },
-        typography: {},
-        overrides: {
-            MuiTableRow: {
-                root: {
-                    //for the body
-                    height: "100%",
-                },
-                head: {
-                    //for the head
-                    height: "100%",
+const createTheme = (paletteMode: PaletteMode) =>
+    createMuiTheme(
+        adaptV4Theme({
+            palette: {
+                ...PALETTES[paletteMode],
+                mode: paletteMode,
+            },
+            typography: {},
+            overrides: {
+                MuiTableRow: {
+                    root: {
+                        //for the body
+                        height: "100%",
+                    },
+                    head: {
+                        //for the head
+                        height: "100%",
+                    },
                 },
             },
-        },
-    }));
+        }),
+    );
 
-export const DARK_THEME = createTheme(adaptV4Theme("dark"));
+export const DARK_THEME = createTheme("dark");
 
-const themesCache: Partial<Record<PaletteType, Theme>> = {
+const themesCache: Partial<Record<PaletteMode, Theme>> = {
     dark: DARK_THEME,
 };
 
-const getTheme = (paletteType: PaletteType): Theme => {
-    if (!(paletteType in themesCache)) {
-        themesCache[paletteType] = createTheme(adaptV4Theme(paletteType));
+const getTheme = (paletteMode: PaletteMode): Theme => {
+    if (!(paletteMode in themesCache)) {
+        themesCache[paletteMode] = createTheme(paletteMode);
     }
-    return themesCache[paletteType]!;
+    return themesCache[paletteMode]!;
 };
 
 const DarkLightModeContext = createContext<{
-    darkLightMode: PaletteType;
-    setDarkLightMode: (PaletteType) => void;
+    darkLightMode: PaletteMode;
+    setDarkLightMode: (paletteMode: PaletteMode) => void;
 }>({
     darkLightMode: "dark",
     setDarkLightMode: () => {},
@@ -77,7 +77,7 @@ export const useDarkLightModeToggler = () => {
 
 export const AppThemeProvider = ({ children }: { children?: ReactNode }) => {
     const prefersLightMode = useMediaQuery("(prefers-color-scheme: light)");
-    const [darkLightMode, setDarkLightMode] = useState<PaletteType>(prefersLightMode ? "light" : "dark");
+    const [darkLightMode, setDarkLightMode] = useState<PaletteMode>(prefersLightMode ? "light" : "dark");
 
     const theme = getTheme(darkLightMode);
 
