@@ -28,7 +28,7 @@ const ExercisePanel = ({ exercisesFactory }: ExercisePanelProps) => {
     }, [exercisesFactory]);
 
     return (
-        <Section id="exercise" hasDivider={true} title="Exercise" subtitle="Some of my previous works">
+        <Section id="exercise" hasDivider={true} title="Exercises" subtitle="Some of my previous works">
             <div className={classes.exercisePanel}>{exercises}</div>
         </Section>
     );

@@ -5,8 +5,8 @@ import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { ExerciseProps } from "./ExerciseProps";
-import CodePenItemContentParser from "@/src/services/exercise/CodePenItemContentParser";
-import { credentialsExtractor } from "@/src/services/exercise/CodePenItemContentExtractor";
+import CodePenItemContentParser from "@/src/services/exercises/CodePenItemContentParser";
+import { credentialsExtractor } from "@/src/services/exercises/CodePenItemContentExtractor";
 import { useWidth } from "../../hooks/muiHooks";
 
 const useStyles = makeStyles(

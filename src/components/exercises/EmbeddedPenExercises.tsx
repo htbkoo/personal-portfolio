@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Items } from "rss-parser";
 import { CodepenEmbedScriptTagBuilder } from "ts-react-codepen-embed";
 
-import RssFeedsParser from "@/src/services/exercise/RssFeedsParser";
+import RssFeedsParser from "@/src/services/exercises/RssFeedsParser";
 import EmbeddedPenExercise from "./EmbeddedPenExercise";
 
 interface Props {

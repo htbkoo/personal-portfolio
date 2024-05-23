@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import RssFeedsParser from "@/src/services/exercise/RssFeedsParser";
+import RssFeedsParser from "@/src/services/exercises/RssFeedsParser";
 import {ExercisesFactory} from "./ExercisesFactory";
 import EmbeddedPenExercises from "./EmbeddedPenExercises";
 

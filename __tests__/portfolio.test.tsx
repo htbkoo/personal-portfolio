@@ -1,13 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Exercise from "@/pages/exercise";
+import Exercises from "@/pages/exercises";
 
-describe("<Exercise/>", function () {
+describe("<Exercises/>", function () {
     it("renders without crashing", () => {
         const div = document.createElement("div");
         // @ts-ignore: TODO: remove this once @types/react and @types/react-dom is upgraded to v18
         const root = createRoot(div!);
-        root.render(<Exercise />);
+        root.render(<Exercises />);
         root.unmount();
     });
 });

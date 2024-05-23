@@ -1,6 +1,6 @@
 import {when} from "jest-when";
 
-import CodePenRssFeedsParser from "@/src/services/exercise/CodePenRssFeedsParser";
+import CodePenRssFeedsParser from "@/src/services/exercises/CodePenRssFeedsParser";
 
 import sampleParseOutput from "../../resources/services/CodePenRssFeedsParser/sampleParsedOutput.json";
 import invalidParsedOutput from "../../resources/services/CodePenRssFeedsParser/invalidParsedOutput.json";
