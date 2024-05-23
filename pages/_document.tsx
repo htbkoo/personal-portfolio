@@ -1,6 +1,6 @@
 import React, { Children } from "react";
 import Document, { DocumentContext, Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
+import ServerStyleSheets from '@mui/styles/ServerStyleSheets';
 
 import { DARK_THEME } from "@/src/services/MuiThemeFactory";
 import { withAssetPrefix } from "@/src/utils/assetUtils";

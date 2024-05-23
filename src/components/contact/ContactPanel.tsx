@@ -1,7 +1,8 @@
 import * as React from "react";
-import { makeStyles, Theme } from "@material-ui/core";
-import Hidden from "@material-ui/core/Hidden";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { Theme } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import Hidden from "@mui/material/Hidden";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import ContactIcon, { ContactIconProps } from "./ContactIcon";
 
@@ -60,34 +61,28 @@ function GitHubIcon() {
             alt: "GitHub",
         },
     };
-    return (
-        <>
-            <Hidden smUp>
-                <ContactIcon metadata={metadata} cappedIconSize={"medium"} />
-            </Hidden>
-            <Hidden xsDown>
-                <ContactIcon metadata={metadata} />
-            </Hidden>
-        </>
-    );
+    return <>
+        <Hidden smUp>
+            <ContactIcon metadata={metadata} cappedIconSize={"medium"} />
+        </Hidden>
+        <Hidden smDown>
+            <ContactIcon metadata={metadata} />
+        </Hidden>
+    </>;
 }
 
 function Icons() {
-    return (
-        <>
-            <Hidden smUp>{contactIcons(iconMetadatas, { cappedIconSize: "medium" })}</Hidden>
-            <Hidden xsDown>{contactIcons(iconMetadatas)}</Hidden>
-        </>
-    );
+    return <>
+        <Hidden smUp>{contactIcons(iconMetadatas, { cappedIconSize: "medium" })}</Hidden>
+        <Hidden smDown>{contactIcons(iconMetadatas)}</Hidden>
+    </>;
 }
 
 function SecondaryIcons() {
-    return (
-        <>
-            <Hidden smUp>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "small" })}</Hidden>
-            <Hidden xsDown>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "medium" })}</Hidden>
-        </>
-    );
+    return <>
+        <Hidden smUp>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "small" })}</Hidden>
+        <Hidden smDown>{contactIcons(iconSecondaryMetadatas, { cappedIconSize: "medium" })}</Hidden>
+    </>;
 }
 
 function Badges() {
@@ -103,12 +98,10 @@ function Badges() {
 
     const { badgeMetadatas, badgeMicroMetadatas } = data;
 
-    return (
-        <>
-            <Hidden smUp>{contactIcons(badgeMicroMetadatas, { useLegacyImgElement: true })}</Hidden>
-            <Hidden xsDown>{contactIcons(badgeMetadatas, { useLegacyImgElement: true })}</Hidden>
-        </>
-    );
+    return <>
+        <Hidden smUp>{contactIcons(badgeMicroMetadatas, { useLegacyImgElement: true })}</Hidden>
+        <Hidden smDown>{contactIcons(badgeMetadatas, { useLegacyImgElement: true })}</Hidden>
+    </>;
 }
 
 function contactIcons(

@@ -1,8 +1,8 @@
 import * as React from "react";
-import { makeStyles } from "@material-ui/core";
-import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import makeStyles from '@mui/styles/makeStyles';
+import { Breakpoint } from '@mui/material/styles';
 import CodePen from "ts-react-codepen-embed";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { PortfolioProps } from "./PortfolioProps";
 import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";

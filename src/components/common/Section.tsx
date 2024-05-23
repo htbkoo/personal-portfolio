@@ -1,8 +1,9 @@
 import * as React from "react";
 import { PropsWithChildren } from "react";
-import { makeStyles, Theme, TypographyTypeMap } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
+import { Theme, TypographyTypeMap } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import classNames from "classnames";
 
 import { getStylesToFixPageHeaderOverlappingInPageAnchorIssue } from "../../utils/cssUtils";

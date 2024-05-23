@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 
 import { withStaticPrefix } from "@/src/utils/assetUtils";
@@ -36,5 +36,5 @@ export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
 
 export function useGitHubMarkImgColorBasedOnTheme() {
     const theme = useTheme();
-    return theme.palette.type === "dark" ? "white" : "black";
+    return theme.palette.mode === "dark" ? "white" : "black";
 }

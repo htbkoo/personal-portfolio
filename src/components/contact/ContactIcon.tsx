@@ -1,6 +1,7 @@
 import * as React from "react";
-import { makeStyles, Theme } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Theme } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 
 import ContactMetadata from "../../model/ContactMetadata";
@@ -40,7 +41,12 @@ const ContactIcon = ({ metadata, cappedIconSize, useLegacyImgElement }: ContactI
                 {useLegacyImgElement ? (
                     <img src={metadata.img.src} alt={metadata.img.alt} />
                 ) : (
-                    <Image src={metadata.img.src} alt={metadata.img.alt} width={imgSize} height={imgSize} />
+                    <Image
+                        src={metadata.img.src}
+                        alt={metadata.img.alt}
+                        width={parseInt(imgSize)}
+                        height={parseInt(imgSize)}
+                    />
                 )}
             </a>
         </div>
