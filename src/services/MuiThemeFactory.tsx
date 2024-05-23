@@ -18,11 +18,12 @@ declare module "@mui/styles/defaultTheme" {
 
 const PALETTES: { [paletteType in PaletteMode]: PaletteOptions } = {
     light: {
-        primary: indigo,
-        secondary: { main: grey["A100"] },
+        primary: { main: indigo["500"] },
+        secondary: { main: grey["400"] },
     },
     dark: {
-        secondary: grey,
+        primary: { main: indigo["900"] },
+        secondary: { main: grey["600"] },
     },
 };
 
