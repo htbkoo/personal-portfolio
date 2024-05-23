@@ -6,16 +6,16 @@ import MailIcon from "@mui/icons-material/Mail";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
-import PortfoliosPanel from "../components/portfolio/PortfoliosPanel";
+import ExercisesPanel from "@/src/components/exercises/ExercisePanel";
 import ContactPanel from "../components/contact/ContactPanel";
-import EmbeddedPenPortfoliosFactory from "../components/portfolio/EmbeddedPenPortfoliosFactory";
-import LocalCodePenRssFeedsParser from "../services/portfolio/LocalCodePenRssFeedsParser";
+import EmbeddedPenExercisesFactory from "@/src/components/exercises/EmbeddedPenExercisesFactory";
+import LocalCodePenRssFeedsParser from "@/src/services/exercises/LocalCodePenRssFeedsParser";
 
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com";
 const rssFeedUrl = `${CORS_PROXY}/https://codepen.io/collection/neBvQa/feed`;
-const factory = new EmbeddedPenPortfoliosFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
+const factory = new EmbeddedPenExercisesFactory(new LocalCodePenRssFeedsParser(new RssParser()), rssFeedUrl);
 
-export type PageType = "about" | "portfolio" | "contact";
+export type PageType = "about" | "exercises" | "contact";
 
 const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
     about: {
@@ -24,10 +24,10 @@ const sectionConfigs: Readonly<Record<PageType, SectionMetadata>> = {
         component: <AboutPanel />,
         icon: <AssignmentIndIcon />,
     },
-    portfolio: {
-        name: "Portfolio",
-        url: "/portfolio",
-        component: <PortfoliosPanel portfoliosFactory={factory} />,
+    exercises: {
+        name: "Exercises",
+        url: "/exercises",
+        component: <ExercisesPanel exercisesFactory={factory} />,
         icon: <ImportContactsIcon />,
     },
     contact: {

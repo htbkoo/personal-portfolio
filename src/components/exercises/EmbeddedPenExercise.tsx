@@ -4,9 +4,9 @@ import { Breakpoint } from '@mui/material/styles';
 import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import { PortfolioProps } from "./PortfolioProps";
-import CodePenItemContentParser from "../../services/portfolio/CodePenItemContentParser";
-import { credentialsExtractor } from "../../services/portfolio/CodePenItemContentExtractor";
+import { ExerciseProps } from "./ExerciseProps";
+import CodePenItemContentParser from "@/src/services/exercises/CodePenItemContentParser";
+import { credentialsExtractor } from "@/src/services/exercises/CodePenItemContentExtractor";
 import { useWidth } from "../../hooks/muiHooks";
 
 const useStyles = makeStyles(
@@ -18,7 +18,7 @@ const useStyles = makeStyles(
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
 
-interface EmbeddedPenPortfolioProps extends PortfolioProps {
+interface EmbeddedPenExerciseProps extends ExerciseProps {
     isScriptLoaded?: boolean;
 }
 
@@ -30,7 +30,7 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xl: 768,
 };
 
-const EmbeddedPenPortfolio = (props: EmbeddedPenPortfolioProps) => {
+const EmbeddedPenExercise = (props: EmbeddedPenExerciseProps) => {
     const classes = useStyles();
     const width = useWidth();
 
@@ -53,4 +53,4 @@ const EmbeddedPenPortfolio = (props: EmbeddedPenPortfolioProps) => {
         </div>
     );
 };
-export default EmbeddedPenPortfolio;
+export default EmbeddedPenExercise;
