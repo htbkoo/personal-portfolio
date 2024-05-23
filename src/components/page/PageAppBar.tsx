@@ -49,7 +49,7 @@ export default function PageAppBar({ onIconButtonClick }: PageAppBarProps) {
     const toggleDarkLightMode = useDarkLightModeToggler();
 
     return (
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar position="fixed" className={classes.appBar} enableColorOnDark >
             <Toolbar>
                 <IconButton
                     color="inherit"
