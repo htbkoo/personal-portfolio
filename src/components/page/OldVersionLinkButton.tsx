@@ -14,7 +14,11 @@ const useStyles = makeStyles(
 
 const OLD_VERSION_URL = "https://codepen.io/htbkoo/";
 
-const OldVersionLinkButton = () => {
+interface OldVersionLinkButtonProps {
+    isOnDrawer?: boolean;
+}
+
+const OldVersionLinkButton = ({ isOnDrawer = false }: OldVersionLinkButtonProps) => {
     const classes = useStyles();
     return (
         <Button href={OLD_VERSION_URL} variant="contained" color="secondary" className={classes.button}>
