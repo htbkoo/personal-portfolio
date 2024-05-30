@@ -22,10 +22,12 @@ const useStyles = makeStyles(
                 },
             },
             toolbar: theme.mixins.toolbar,
+            drawerItemsContainer: {
+                flexGrow: 1,
+            },
             versionText: {
-                position: "absolute",
-                left: "16px",
-                bottom: "16px",
+                margin: theme.spacing(2),
+                marginTop: theme.spacing(4),
             },
         }),
     { name: "MuiMyResponsivePageDrawer" },
@@ -43,7 +45,9 @@ const DrawerContent = ({ configs }: { configs: SectionMetadata[] }) => {
     return (
         <>
             <div className={classes.toolbar} />
-            <DrawerItems configs={configs} />
+            <div className={classes.drawerItemsContainer}>
+                <DrawerItems configs={configs} />
+            </div>
             <div className={classes.versionText}>
                 <VersionText />
             </div>
