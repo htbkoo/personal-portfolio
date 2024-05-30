@@ -1,6 +1,6 @@
 import { Theme } from "@mui/material";
 
-const parsePxValue = (valuePx: string): number =>
+export const parsePxValue = (valuePx: string): number =>
     valuePx.endsWith("px") ? parseInt(valuePx.substring(0, valuePx.length - 2)) : parseInt(valuePx);
 
 export function getStylesToFixPageHeaderOverlappingInPageAnchorIssue(theme: Theme) {

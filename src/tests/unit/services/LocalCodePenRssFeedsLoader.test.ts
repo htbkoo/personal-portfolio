@@ -1,23 +1,23 @@
-import {when} from "jest-when";
+import { when } from "jest-when";
 
-import LocalCodePenRssFeedsParser from "@/src/services/exercises/LocalCodePenRssFeedsParser";
-
+import LocalCodePenRssFeedsLoader from "@/src/services/exercises/LocalCodePenRssFeedsLoader";
 
 import sampleParseOutput from "../../resources/services/CodePenRssFeedsParser/sampleParsedOutput.json";
 import invalidParsedOutput from "../../resources/services/CodePenRssFeedsParser/invalidParsedOutput.json";
 
-
-describe("LocalCodePenRssFeedsParser", function () {
+describe("LocalCodePenRssFeedsLoader", function () {
     describe("parseUrl", function () {
         const mockContent = "someContent";
 
         it("should parse rss feeds for url and return parsed object accordingly", async function () {
             // given
-            const mockRssParser = createMockRssParser().whenParseString(mockContent).willResolve(sampleParseOutput);
+            const mockRssParser = createMockRssParser()
+                .whenParseString(mockContent)
+                .willResolve(sampleParseOutput);
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
-            const items = await parser.parseUrl();
+            const loader = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
+            const { data: items } = await loader.load();
 
             // then
             return expect(items).toEqual(sampleParseOutput.items);
@@ -25,26 +25,38 @@ describe("LocalCodePenRssFeedsParser", function () {
 
         it("should throw error if parsed rss feeds is invalid (missing 'items')", async function () {
             // given
-            const mockRssParser = createMockRssParser().whenParseString(mockContent).willResolve(invalidParsedOutput);
+            const mockRssParser = createMockRssParser()
+                .whenParseString(mockContent)
+                .willResolve(invalidParsedOutput);
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
+            const loader = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
 
             // then
-            return parser.parseUrl()
-                .catch(error => expect(error.message).toEqual("Missing 'items' from the parsed output: 'someContent'"));
+            return loader
+                .load()
+                .catch((error) =>
+                    expect(error.message).toEqual("Missing 'items' from the parsed output: 'someContent'"),
+                );
         });
 
         it("should throw error if given content is unparsable", async function () {
             // given
-            const mockRssParser = createMockRssParser().whenParseString(mockContent).willReject(new Error("unable to parse content"));
+            const mockRssParser = createMockRssParser()
+                .whenParseString(mockContent)
+                .willReject(new Error("unable to parse content"));
 
             // when
-            const parser = new LocalCodePenRssFeedsParser(mockRssParser, mockContent);
+            const loader = new LocalCodePenRssFeedsLoader(mockRssParser, mockContent);
 
             // then
-            return parser.parseUrl()
-                .catch(error => expect(error.message).toEqual("Unable to read or parse rssFeedsString due to: 'Error: unable to parse content'"));
+            return loader
+                .load()
+                .catch((error) =>
+                    expect(error.message).toEqual(
+                        "Unable to read or parse rssFeedsString due to: 'Error: unable to parse content'",
+                    ),
+                );
         });
     });
 
@@ -61,7 +73,7 @@ describe("LocalCodePenRssFeedsParser", function () {
                     },
                     willReject(error) {
                         return withMockImplementation("mockRejectedValue", error);
-                    }
+                    },
                 };
 
                 function withMockImplementation(method, arg) {
@@ -71,5 +83,4 @@ describe("LocalCodePenRssFeedsParser", function () {
             },
         };
     }
-
 });

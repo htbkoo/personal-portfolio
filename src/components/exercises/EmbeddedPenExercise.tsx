@@ -1,26 +1,23 @@
 import * as React from "react";
 import makeStyles from '@mui/styles/makeStyles';
 import { Breakpoint } from '@mui/material/styles';
-import CodePen from "ts-react-codepen-embed";
 import CircularProgress from "@mui/material/CircularProgress";
+import CodePen from "ts-react-codepen-embed";
 
 import { ExerciseProps } from "./ExerciseProps";
 import CodePenItemContentParser from "@/src/services/exercises/CodePenItemContentParser";
 import { credentialsExtractor } from "@/src/services/exercises/CodePenItemContentExtractor";
-import { useWidth } from "../../hooks/muiHooks";
+import { useCodepenEmbedScriptTag } from "@/src/hooks/useCodepenEmbedScriptTag";
+import Section from "@/src/components/common/Section";
 
 const useStyles = makeStyles(
-    () => ({
+    (theme) => ({
         embeddedContainer: {
-            margin: "5%",
+            marginTop: theme.spacing(4),
         },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
-
-interface EmbeddedPenExerciseProps extends ExerciseProps {
-    isScriptLoaded?: boolean;
-}
 
 const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xs: 288,
@@ -30,27 +27,29 @@ const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
     xl: 768,
 };
 
-const EmbeddedPenExercise = (props: EmbeddedPenExerciseProps) => {
+const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
-    const width = useWidth();
 
-    const { title, content, isScriptLoaded } = props;
+    const { loaded } = useCodepenEmbedScriptTag();
+
     const contentParser = CodePenItemContentParser.newParser(content);
     const { user, hash } = contentParser.parseContent(credentialsExtractor);
 
     return (
-        <div className={classes.embeddedContainer}>
-            <CodePen
-                user={user}
-                hash={hash}
-                title={title}
-                height={MAPPING_HEIGHTS[width]}
-                loader={() => <CircularProgress />}
-                defaultTab="result"
-                shouldLoadScript={false}
-                overrideAsLoaded={isScriptLoaded}
-            />
-        </div>
+        <Section id="codePenExercise" hasDivider={true} title={title}>
+            <div className={classes.embeddedContainer}>
+                <CodePen
+                    user={user}
+                    hash={hash}
+                    title={title}
+                    height={0.75 * window.screen.availHeight}
+                    loader={() => <CircularProgress />}
+                    defaultTab="result"
+                    shouldLoadScript={false}
+                    overrideAsLoaded={loaded}
+                />
+            </div>
+        </Section>
     );
 };
 export default EmbeddedPenExercise;

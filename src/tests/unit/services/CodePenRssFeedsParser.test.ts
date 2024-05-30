@@ -1,4 +1,4 @@
-import {when} from "jest-when";
+import { when } from "jest-when";
 
 import CodePenRssFeedsParser from "@/src/services/exercises/CodePenRssFeedsParser";
 
@@ -13,11 +13,11 @@ describe("CodePenRssFeedsParser", function () {
             const mockRssParser = createMockRssParser().whenParseUrl(url).willResolve(sampleParseOutput);
 
             // when
-            const parser = new CodePenRssFeedsParser(mockRssParser);
-            const items = await parser.parseUrl(url);
+            const parser = new CodePenRssFeedsParser(mockRssParser, url);
+            const items = await parser.load();
 
             // then
-            return expect(items).toEqual(sampleParseOutput.items);
+            return expect(items).toEqual({ data: sampleParseOutput.items });
         });
 
         it("should throw error if parsed rss feeds is invalid (missing 'items')", async function () {
@@ -26,24 +26,30 @@ describe("CodePenRssFeedsParser", function () {
             const mockRssParser = createMockRssParser().whenParseUrl(url).willResolve(invalidParsedOutput);
 
             // when
-            const parser = new CodePenRssFeedsParser(mockRssParser);
+            const parser = new CodePenRssFeedsParser(mockRssParser, url);
+            const { error } = await parser.load();
 
             // then
-            return parser.parseUrl(url)
-                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'https://codepen.io/collection/invalid/feed' due to Error: Missing 'items' from the parsed output"));
+            expect(error?.message).toEqual(
+                "Missing 'items' from the parsed output",
+            );
         });
 
         it("should throw error if trying to parse unreachable url", async function () {
             // given
             const url = "some unreachable url";
-            const mockRssParser = createMockRssParser().whenParseUrl(url).willReject(new Error("getaddrinfo ENOTFOUND some unreachable url"));
+            const mockRssParser = createMockRssParser()
+                .whenParseUrl(url)
+                .willReject(new Error("getaddrinfo ENOTFOUND some unreachable url"));
 
             // when
-            const parser = new CodePenRssFeedsParser(mockRssParser);
+            const parser = new CodePenRssFeedsParser(mockRssParser, url);
+            const { error } = await parser.load();
 
             // then
-            return parser.parseUrl(url)
-                .catch(error => expect(error.message).toEqual("Unable to parse from url: 'some unreachable url' due to Error: getaddrinfo ENOTFOUND some unreachable url"));
+            expect(error?.message).toEqual(
+                "Unable to parse from url: 'some unreachable url' due to Error: getaddrinfo ENOTFOUND some unreachable url",
+            );
         });
     });
 
@@ -60,7 +66,7 @@ describe("CodePenRssFeedsParser", function () {
                     },
                     willReject(error) {
                         return withMockImplementation("mockRejectedValue", error);
-                    }
+                    },
                 };
 
                 function withMockImplementation(method, arg) {
@@ -70,5 +76,4 @@ describe("CodePenRssFeedsParser", function () {
             },
         };
     }
-
 });
