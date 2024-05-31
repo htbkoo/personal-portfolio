@@ -25,7 +25,7 @@ export const sectionConfigs = Object.freeze({
         component: <ExercisesPanel />,
         icon: <ImportContactsIcon />,
         async getSubPages() {
-            const { exercisesLoader } = await import("@/src/metadata/exercises/exercisesLoader");
+            const { exercisesLoader } = await import("@/src/services/exercises/exercisesLoader");
 
             const { data, error } = await exercisesLoader.load();
             if (error) {
