@@ -28,13 +28,13 @@ export function GitHubMarkImg({
     return <Image src={src} alt="github-htbkoo-personal-portfolio" width={size} height={size} />;
 }
 
-export function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
-    return color === "black"
-        ? withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-120px-plus.png")
-        : withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png");
-}
-
 export function useGitHubMarkImgColorBasedOnTheme() {
     const theme = useTheme();
     return theme.palette.mode === "dark" ? "white" : "black";
+}
+
+function getGitHubMarkImgSrc(color: GitHubMarkImgProps["color"]) {
+    return color === "black"
+        ? withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-120px-plus.png")
+        : withStaticPrefix("GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png");
 }

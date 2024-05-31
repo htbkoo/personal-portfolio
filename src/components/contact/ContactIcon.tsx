@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 
 import ContactMetadata from "@/src/model/ContactMetadata";
-import { withAssetPrefix } from "@/src/utils/assetUtils";
+import { withStaticPrefix } from "@/src/utils/assetUtils";
 
 export type ContactIconSize = "small" | "medium";
 
@@ -31,24 +31,38 @@ export interface ContactIconProps {
     useLegacyImgElement?: boolean;
 }
 
-const ContactIcon = ({ metadata, cappedIconSize, useLegacyImgElement }: ContactIconProps) => {
-    const classes = useStyles({ cappedIconSize });
+const ContactImage = ({ metadata, cappedIconSize, useLegacyImgElement }: ContactIconProps) => {
     const theme = useTheme();
     const imgSize = theme.spacing(contactIconSizesMappings[cappedIconSize ?? "large"]);
+
+    if ("node" in metadata.img) {
+        return <>{metadata.img.node}</>;
+    }
+    if (useLegacyImgElement) {
+        return <img src={metadata.img.src} alt={metadata.img.alt} />;
+    }
+
+    return (
+        <Image
+            src={withStaticPrefix(metadata.img.src)}
+            alt={metadata.img.alt}
+            width={parseInt(imgSize)}
+            height={parseInt(imgSize)}
+        />
+    );
+};
+
+const ContactIcon = ({ metadata, cappedIconSize, useLegacyImgElement }: ContactIconProps) => {
+    const classes = useStyles({ cappedIconSize });
 
     return (
         <div className={classes.icon}>
             <a href={metadata.href} target="_blank" rel="noopener noreferrer">
-                {useLegacyImgElement ? (
-                    <img src={metadata.img.src} alt={metadata.img.alt} />
-                ) : (
-                    <Image
-                        src={withAssetPrefix(metadata.img.src)}
-                        alt={metadata.img.alt}
-                        width={parseInt(imgSize)}
-                        height={parseInt(imgSize)}
-                    />
-                )}
+                <ContactImage
+                    metadata={metadata}
+                    cappedIconSize={cappedIconSize}
+                    useLegacyImgElement={useLegacyImgElement}
+                />
             </a>
         </div>
     );
