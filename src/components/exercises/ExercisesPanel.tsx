@@ -1,9 +1,8 @@
 import * as React from "react";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import createStyles from "@mui/styles/createStyles";
+import makeStyles from "@mui/styles/makeStyles";
 
 import Section from "../common/Section";
-import RssFeedsLoader from "@/src/services/exercises/RssFeedsLoader";
 
 const useStyles = makeStyles(
     () =>
@@ -13,11 +12,7 @@ const useStyles = makeStyles(
     { name: "MuiMyExercisePanel" },
 );
 
-interface ExercisePanelProps {
-    exercisesLoader: RssFeedsLoader;
-}
-
-const ExercisesPanel = ({ exercisesLoader }: ExercisePanelProps) => {
+const ExercisesPanel = () => {
     const classes = useStyles();
 
     return (
