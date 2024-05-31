@@ -18,5 +18,6 @@
         "plugin:testing-library/react"
       ]
     }
-  ]
+  ],
+  "parser": "@typescript-eslint/parser"
 }
