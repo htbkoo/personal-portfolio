@@ -28,7 +28,6 @@ const useStyles = makeStyles(
                 paddingBottom: theme.spacing(2),
             },
             exerciseLinkText: {
-                // textAlign: "center",
             },
         }),
     { name: "MuiMyExercisePanel" },
