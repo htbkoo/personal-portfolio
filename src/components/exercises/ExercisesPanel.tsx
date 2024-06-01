@@ -68,8 +68,7 @@ const ExercisesPanelContent = () => {
     }
 
     if (!data) {
-        console.log(`no data?`);
-        // TODO: improve this
+        // TODO: improve this / handle error
         return null;
     }
 
