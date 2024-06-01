@@ -4,6 +4,7 @@ import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MailIcon from "@mui/icons-material/Mail";
 
 import ExercisesPanel from "@/src/components/exercises/ExercisesPanel";
+import { loadExercisesSubPagesMetadata } from "@/src/services/exercises/loadExercisesSubPagesMetadata";
 
 import SectionMetadata from "../model/SectionMetadata";
 import AboutPanel from "../components/about/AboutPanel";
@@ -24,17 +25,7 @@ export const sectionConfigs = Object.freeze({
         url: "/exercises",
         component: <ExercisesPanel />,
         icon: <ImportContactsIcon />,
-        async getSubPages() {
-            const { exercisesLoader } = await import("@/src/services/exercises/exercisesLoader");
-
-            const { data, error } = await exercisesLoader.load();
-            if (error) {
-                return { error };
-            }
-
-            const { convertExerciseItemsToSubPagesMetaData } = await import("@/src/services/exercises/convertExerciseItemsToSubPagesMetaData");
-            return { data: convertExerciseItemsToSubPagesMetaData(data) };
-        },
+        getSubPages: loadExercisesSubPagesMetadata,
     },
     contact: {
         name: "Contact",
