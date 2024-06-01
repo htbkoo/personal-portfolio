@@ -6,17 +6,11 @@ import { SubPagesType } from "@/src/model/SectionMetadata";
 import CircularProgress from "@mui/material/CircularProgress";
 import Link from "next/link";
 import { Link as MuiLink } from "@mui/material";
-import classNames from "classnames";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import { parsePxValue } from "@/src/utils/cssUtils";
 import ListItemText from "@mui/material/ListItemText";
 
 import Section from "../common/Section";
 import { loadExercisesSubPagesMetadata } from "@/src/services/exercises/loadExercisesSubPagesMetadata";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 
 const useStyles = makeStyles(
@@ -81,7 +75,6 @@ const ExercisesPanelContent = () => {
         return null;
     }
 
-    // TODO: eliminate duplication with `<DrawerItems/>`
     return (
         <>
             {Object.values(data).map(({ name, url, icon }, i) => (
@@ -90,7 +83,6 @@ const ExercisesPanelContent = () => {
                     <div className={classes.exerciseLink}>
                         <Link key={name} href={`exercises${url}`} passHref>
                             <MuiLink component="div" color="inherit" underline="always">
-                                {/*<ListItemButton component="a" href={`exercises${url}`} tabIndex={-1}>*/}
                                 <ListItemButton tabIndex={-1}>
                                     <ListItemText
                                         primary={name}
@@ -105,21 +97,11 @@ const ExercisesPanelContent = () => {
                         </Link>
                     </div>
                 </>
-                // <div>
-                //     <Button
-                //         key={name}
-                //         component={NextLinkComposed}
-                //         to={{
-                //             pathname: `exercises${url}`,
-                //             // query: {name: 'test'},
-                //         }}>
-                //         {name}
-                //     </Button>
-                // </div>
             ))}
         </>
     );
 };
+
 const ExercisesPanel = () => {
     const classes = useStyles();
 
