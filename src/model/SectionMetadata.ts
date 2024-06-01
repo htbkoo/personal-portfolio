@@ -8,7 +8,7 @@ export default interface SectionMetadata {
     component: React.ReactNode;
     icon: React.ReactNode;
     getSubPages?: () => Promise<{
-        data?: SubPagesType;
+        data?: SubPagesType | null;
         error?: any;
     }>;
 }
