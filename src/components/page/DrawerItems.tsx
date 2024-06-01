@@ -76,7 +76,9 @@ const useSubPages = ({
         if (!skip) {
             getSubPages?.()?.then(({ data, error }) => {
                 // TODO: handling loading and error
-                setSubPages(data);
+                if (data) {
+                    setSubPages(data);
+                }
             });
         }
     }, [getSubPages, skip]);
