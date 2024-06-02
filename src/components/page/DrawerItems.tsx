@@ -76,7 +76,7 @@ const DrawerItem = ({
     const actualUrl = urlPrefix + url;
     const isCurrentListItem = actualUrl === "/" ? asPath === actualUrl : asPath.startsWith(actualUrl);
 
-    const subPages = useSubPages({
+    const { data: subPages } = useSubPages({
         getSubPages,
         skip: !isCurrentListItem,
     });

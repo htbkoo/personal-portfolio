@@ -1,7 +1,16 @@
+import SectionMetadata from "@/src/model/SectionMetadata";
 import { useEffect, useState } from "react";
 
-import SectionMetadata, { SubPagesType } from "@/src/model/SectionMetadata";
+import { WithLoading } from "@/src/utils/types";
 
+type GetSubPagesReturnType = Awaited<ReturnType<NonNullable<SectionMetadata["getSubPages"]>>>;
+
+/**
+ * This hook loads the SubPages metadata from the give async function
+ *
+ * @param getSubPages The async function to load the SubPages metadata
+ * @param skip (optional, default to `false`) Skip the loading if this parameter is yes
+ */
 export const useSubPages = ({
     getSubPages,
     skip = false,
@@ -9,18 +18,19 @@ export const useSubPages = ({
     getSubPages: SectionMetadata["getSubPages"];
     skip?: boolean;
 }) => {
-    const [subPages, setSubPages] = useState<SubPagesType | undefined>(undefined);
+    const [state, setState] = useState<GetSubPagesReturnType & WithLoading>({ loading: !skip });
 
     useEffect(() => {
-        if (!skip) {
-            getSubPages?.()?.then(({ data, error }) => {
-                // TODO: handling loading and error
-                if (data) {
-                    setSubPages(data);
-                }
-            });
+        if (!skip && getSubPages) {
+            getSubPages()
+                .then((res) => {
+                    setState({ ...res, loading: false });
+                })
+                .catch((error) => {
+                    setState({ data: null, error, loading: false });
+                });
         }
     }, [getSubPages, skip]);
 
-    return subPages;
+    return state;
 };
