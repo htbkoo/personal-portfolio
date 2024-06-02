@@ -31,6 +31,11 @@ const useStyles = makeStyles(
     { name: "MuiMyExercisePanel" },
 );
 
+const LINK_TEXT_STYLE = {
+    align: "center",
+    fontSize: "1.5rem",
+} as const;
+
 const ExercisesPanelContent = () => {
     const classes = useStyles();
 
@@ -56,10 +61,7 @@ const ExercisesPanelContent = () => {
                                 <ListItemButton tabIndex={-1}>
                                     <ListItemText
                                         primary={name}
-                                        primaryTypographyProps={{
-                                            align: "center",
-                                            fontSize: "1.5rem",
-                                        }}
+                                        primaryTypographyProps={LINK_TEXT_STYLE}
                                         className={classes.exerciseLinkText}
                                     />
                                 </ListItemButton>
