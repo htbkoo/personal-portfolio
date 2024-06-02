@@ -1,7 +1,7 @@
 import styles from "@/styles/PortfolioPageShell.module.css";
 
 import React, { ReactNode, useState } from "react";
-import { Theme } from "@mui/material/styles";
+import { type Theme } from "@mui/material/styles";
 
 import createStyles from '@mui/styles/createStyles';
 import makeStyles from '@mui/styles/makeStyles';

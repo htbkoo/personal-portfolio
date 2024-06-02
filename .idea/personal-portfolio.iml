@@ -17,6 +17,7 @@
       <excludePattern pattern="yarn-*.log" />
       <excludePattern pattern="yarn.lock" />
       <excludePattern pattern="workbox-*.js" />
+      <excludePattern pattern="workbox-*.js.map" />
       <excludePattern pattern="sw.js" />
       <excludePattern pattern="sw.js.map" />
     </content>

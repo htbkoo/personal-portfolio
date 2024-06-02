@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme, useTheme } from "@mui/material/styles";
+import { type Theme, useTheme } from "@mui/material/styles";
 import createStyles from '@mui/styles/createStyles';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from "@mui/material/AppBar";

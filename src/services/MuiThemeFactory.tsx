@@ -9,7 +9,7 @@ import {
 } from "@mui/material/styles";
 import { grey, indigo } from "@mui/material/colors";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { PaletteMode } from "@mui/material";
+import { type PaletteMode } from "@mui/material";
 
 declare module "@mui/styles/defaultTheme" {
     interface DefaultTheme extends Theme {}

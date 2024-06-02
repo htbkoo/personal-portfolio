@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@mui/material";
+import Link from "@mui/material/Link";
 
 import makeStyles from '@mui/styles/makeStyles';
 

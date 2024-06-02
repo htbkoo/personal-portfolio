@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PropsWithChildren } from "react";
-import { Theme, TypographyTypeMap } from "@mui/material";
+import { type Theme, type TypographyTypeMap } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";

@@ -3,7 +3,7 @@ import createStyles from "@mui/styles/createStyles";
 import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import Link from "next/link";
-import { Link as MuiLink } from "@mui/material";
+import { default as MuiLink } from "@mui/material/Link";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
