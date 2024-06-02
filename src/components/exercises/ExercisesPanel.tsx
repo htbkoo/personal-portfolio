@@ -21,7 +21,7 @@ const useStyles = makeStyles(
                 paddingRight: theme.spacing(4),
             },
             loadingSpinner: {
-                paddingTop: theme.spacing(2),
+                marginTop: theme.spacing(2),
             },
             exerciseLink: {
                 paddingTop: theme.spacing(2),
