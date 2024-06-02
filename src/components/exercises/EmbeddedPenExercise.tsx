@@ -1,6 +1,5 @@
 import * as React from "react";
-import makeStyles from '@mui/styles/makeStyles';
-import { type Breakpoint } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import CodePen from "ts-react-codepen-embed";
 
@@ -18,14 +17,6 @@ const useStyles = makeStyles(
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
-
-const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
-    xs: 288,
-    sm: 384,
-    md: 384,
-    lg: 640,
-    xl: 768,
-};
 
 const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
