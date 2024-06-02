@@ -38,7 +38,9 @@ const ContactImage = ({ metadata, cappedIconSize, useLegacyImgElement }: Contact
     if ("node" in metadata.img) {
         return <>{metadata.img.node}</>;
     }
+
     if (useLegacyImgElement) {
+        // eslint-disable-next-line @next/next/no-img-element
         return <img src={metadata.img.src} alt={metadata.img.alt} />;
     }
 
