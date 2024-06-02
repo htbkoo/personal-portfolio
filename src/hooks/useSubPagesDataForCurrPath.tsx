@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { CodepenEmbedScriptTagBuilder } from "ts-react-codepen-embed";
+
 import { useAppGlobalStateContext } from "@/src/contexts/AppGlobalStateContext";
 import SectionMetadata from "@/src/model/SectionMetadata";
-import { sectionConfigs } from "@/src/metadata/sectionConfigs";
 
 export const useSubPagesDataForCurrPath = (configs: SectionMetadata) => {
     const { currDisplayPath } = useAppGlobalStateContext();
