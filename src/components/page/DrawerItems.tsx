@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Theme, useTheme } from "@mui/material/styles";
 import { Link as MuiLink } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -10,8 +10,9 @@ import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import SectionMetadata, { SubPagesType } from "@/src/model/SectionMetadata";
+import SectionMetadata from "@/src/model/SectionMetadata";
 import { parsePxValue } from "@/src/utils/cssUtils";
+import { useSubPages } from "@/src/hooks/useSubPages";
 
 import OldVersionLinkButton from "./OldVersionLinkButton";
 
@@ -62,29 +63,6 @@ interface DrawerItemProps {
     urlPrefix?: string;
     layer?: number;
 }
-
-const useSubPages = ({
-    getSubPages,
-    skip = false,
-}: {
-    getSubPages: SectionMetadata["getSubPages"];
-    skip?: boolean;
-}) => {
-    const [subPages, setSubPages] = useState<SubPagesType | undefined>(undefined);
-
-    useEffect(() => {
-        if (!skip) {
-            getSubPages?.()?.then(({ data, error }) => {
-                // TODO: handling loading and error
-                if (data) {
-                    setSubPages(data);
-                }
-            });
-        }
-    }, [getSubPages, skip]);
-
-    return subPages;
-};
 
 const DrawerItem = ({
     config: { name, url, icon, getSubPages },
