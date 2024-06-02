@@ -18,6 +18,10 @@ const useStyles = makeStyles(
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
 
+const CodePenLoader = () => <CircularProgress />;
+
+const CODEPEN_HEIGHT_RAIO = 0.75;
+
 const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
 
@@ -33,8 +37,8 @@ const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
                     user={user}
                     hash={hash}
                     title={title}
-                    height={0.75 * window.screen.availHeight}
-                    loader={() => <CircularProgress />}
+                    height={CODEPEN_HEIGHT_RAIO * window.screen.availHeight}
+                    loader={CodePenLoader}
                     defaultTab="result"
                     shouldLoadScript={false}
                     overrideAsLoaded={loaded}
