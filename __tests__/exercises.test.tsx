@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+
 import ExercisesPage from "@/pages/exercises";
 
 describe("<ExercisesPage/>", function () {

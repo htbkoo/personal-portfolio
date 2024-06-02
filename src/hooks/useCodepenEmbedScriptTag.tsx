@@ -23,7 +23,7 @@ export const useCodepenEmbedScriptTag = () => {
         return () => {
             SCRIPT_TAG_PARENT.querySelector(`#${SCRIPT_TAG_ELEMENT_ID}`)?.remove();
         };
-    }, []);
+    }, [SCRIPT_TAG_PARENT]);
 
     return { loaded };
 };
