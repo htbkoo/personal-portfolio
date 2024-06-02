@@ -53,11 +53,14 @@ export default ContactPanel;
 
 function GitHubIcon() {
     const color = useGitHubMarkImgColorBasedOnTheme();
-
+    const gitHubMarkImgSrc =
+        color === "black"
+            ? "GitHub-Mark/PNG/GitHub-Mark-120px-plus.png"
+            : "GitHub-Mark/PNG/GitHub-Mark-Light-120px-plus.png";
     const metadata = {
         href: "https://github.com/htbkoo",
         img: {
-            src: getGitHubMarkImgSrc(color),
+            src: gitHubMarkImgSrc,
             alt: "GitHub",
         },
     };

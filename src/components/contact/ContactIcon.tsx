@@ -4,7 +4,8 @@ import makeStyles from "@mui/styles/makeStyles";
 import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 
-import ContactMetadata from "../../model/ContactMetadata";
+import ContactMetadata from "@/src/model/ContactMetadata";
+import { withAssetPrefix } from "@/src/utils/assetUtils";
 
 export type ContactIconSize = "small" | "medium";
 
@@ -42,7 +43,7 @@ const ContactIcon = ({ metadata, cappedIconSize, useLegacyImgElement }: ContactI
                     <img src={metadata.img.src} alt={metadata.img.alt} />
                 ) : (
                     <Image
-                        src={metadata.img.src}
+                        src={withAssetPrefix(metadata.img.src)}
                         alt={metadata.img.alt}
                         width={parseInt(imgSize)}
                         height={parseInt(imgSize)}
