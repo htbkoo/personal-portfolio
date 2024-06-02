@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Theme } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import Hidden from "@mui/material/Hidden";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -10,7 +10,7 @@ import iconMetadatas from "../../metadata/contact/icons.json";
 import iconSecondaryMetadatas from "../../metadata/contact/icons_secondary.json";
 import ContactMetadata from "../../model/ContactMetadata";
 import Section from "../common/Section";
-import { getGitHubMarkImgSrc, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
+import { GitHubMarkImg, useGitHubMarkImgColorBasedOnTheme } from "../common/GitHubMarkImg";
 import { useBadgesMetadatas } from "../../metadata/contact/useBadgesMetadatas";
 
 const useStyles = makeStyles(
@@ -53,11 +53,11 @@ export default ContactPanel;
 
 function GitHubIcon() {
     const color = useGitHubMarkImgColorBasedOnTheme();
-
+    const CONTACT_GITHUB_ICON_SIZE = 120;
     const metadata = {
         href: "https://github.com/htbkoo",
         img: {
-            src: getGitHubMarkImgSrc(color),
+            node: <GitHubMarkImg color={color} size={CONTACT_GITHUB_ICON_SIZE} />,
             alt: "GitHub",
         },
     };
