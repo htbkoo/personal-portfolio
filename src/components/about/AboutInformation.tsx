@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Theme } from "@mui/material";
+import { type Theme } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

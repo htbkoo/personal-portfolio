@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Theme } from "@mui/material/styles";
+import { type Theme } from "@mui/material/styles";
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(

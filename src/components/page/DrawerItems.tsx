@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme, useTheme } from "@mui/material/styles";
+import { type Theme, useTheme } from "@mui/material/styles";
 import { default as MuiLink } from "@mui/material/Link";
 import makeStyles from "@mui/styles/makeStyles";
 import ListItem from "@mui/material/ListItem";

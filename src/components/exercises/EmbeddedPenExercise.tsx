@@ -1,6 +1,6 @@
 import * as React from "react";
 import makeStyles from '@mui/styles/makeStyles';
-import { Breakpoint } from '@mui/material/styles';
+import { type Breakpoint } from "@mui/material/styles";
 import CircularProgress from "@mui/material/CircularProgress";
 import CodePen from "ts-react-codepen-embed";
 

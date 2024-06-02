@@ -1,4 +1,4 @@
-import { Theme } from "@mui/material";
+import { type Theme } from "@mui/material";
 
 export const parsePxValue = (valuePx: string): number =>
     valuePx.endsWith("px") ? parseInt(valuePx.substring(0, valuePx.length - 2)) : parseInt(valuePx);
