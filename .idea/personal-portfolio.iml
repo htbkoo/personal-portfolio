@@ -18,6 +18,7 @@
       <excludePattern pattern="yarn.lock" />
       <excludePattern pattern="workbox-*.js" />
       <excludePattern pattern="sw.js" />
+      <excludePattern pattern="sw.js.map" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
