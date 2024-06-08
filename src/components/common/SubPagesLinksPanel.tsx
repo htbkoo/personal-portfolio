@@ -55,7 +55,7 @@ export const SubPagesLinksPanel = ({
     return (
         <>
             {Object.values(data).map(({ name, url, icon }, i) => (
-                <>
+                <React.Fragment key={url}>
                     {i > 0 && <Divider />}
                     <div className={classes.link}>
                         <Link key={name} href={`${urlPrefix}${url}`} passHref>
@@ -70,7 +70,7 @@ export const SubPagesLinksPanel = ({
                             </MuiLink>
                         </Link>
                     </div>
-                </>
+                </React.Fragment>
             ))}
         </>
     );
