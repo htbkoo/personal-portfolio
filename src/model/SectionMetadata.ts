@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { AsyncStateType } from "@/src/utils/types";
+
 export type SubPagesType = Readonly<Record<string, SectionMetadata>>;
 
 export default interface SectionMetadata {
@@ -7,8 +9,5 @@ export default interface SectionMetadata {
     url: string;
     component: React.ReactNode;
     icon: React.ReactNode;
-    getSubPages?: () => Promise<{
-        data?: SubPagesType | null;
-        error?: any;
-    }>;
+    getSubPages?: () => Promise<AsyncStateType<SubPagesType>>;
 }
