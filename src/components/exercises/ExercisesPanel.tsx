@@ -36,6 +36,8 @@ const LINK_TEXT_STYLE = {
     fontSize: "1.5rem",
 } as const;
 
+const EXERCISES_URL_PREFIX = "exercises";
+
 const ExercisesPanelContent = () => {
     const classes = useStyles();
 
@@ -56,7 +58,7 @@ const ExercisesPanelContent = () => {
                 <>
                     {i > 0 && <Divider />}
                     <div className={classes.exerciseLink}>
-                        <Link key={name} href={`exercises${url}`} passHref>
+                        <Link key={name} href={`${EXERCISES_URL_PREFIX}${url}`} passHref>
                             <MuiLink component="div" color="inherit" underline="always">
                                 <ListItemButton tabIndex={-1}>
                                     <ListItemText
