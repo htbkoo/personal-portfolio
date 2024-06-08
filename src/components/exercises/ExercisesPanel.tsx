@@ -6,10 +6,10 @@ import Link from "next/link";
 import { default as MuiLink } from "@mui/material/Link";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
 
 import Section from "../common/Section";
 import { loadExercisesSubPagesMetadata } from "@/src/services/exercises/loadExercisesSubPagesMetadata";
-import Divider from "@mui/material/Divider";
 import { useSubPages } from "@/src/hooks/useSubPages";
 
 const useStyles = makeStyles(
