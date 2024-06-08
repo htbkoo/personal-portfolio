@@ -2,14 +2,16 @@ import React from "react";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MailIcon from "@mui/icons-material/Mail";
+import BuildIcon from "@mui/icons-material/Build";
 
-import ExercisesPanel from "@/src/components/exercises/ExercisesPanel";
 import AboutPanel from "@/src/components/about/AboutPanel";
 import ContactPanel from "@/src/components/contact/ContactPanel";
+import ExercisesPanel from "@/src/components/exercises/ExercisesPanel";
+import ToolsPanel from "@/src/components/tools/ToolsPanel";
 import { loadExercisesSubPagesMetadata } from "@/src/services/exercises/loadExercisesSubPagesMetadata";
 import type SectionMetadata from "@/src/model/SectionMetadata";
 
-const PAGES = ["about", "exercises", "contact"] as const;
+const PAGES = ["about", "tools", "exercises", "contact"] as const;
 type PageType = (typeof PAGES)[number];
 
 export const sectionConfigs = Object.freeze({
@@ -18,6 +20,22 @@ export const sectionConfigs = Object.freeze({
         url: "/",
         component: <AboutPanel />,
         icon: <AssignmentIndIcon />,
+    },
+    tools: {
+        name: "Tools",
+        url: "/tools",
+        component: <ToolsPanel />,
+        icon: <BuildIcon />,
+        async getSubPages() {
+            return {};
+            // TODO: find out how to enforce the order of subPages
+            // pomodoro: {
+            //     name: "Pomodoro Tracker",
+            //     url: "/pomodoro",
+            //     component: <PomodoroTracker/>,
+            //     icon: <AccessAlarmIcon/>,
+            // },
+        },
     },
     exercises: {
         name: "Exercises",
