@@ -4,11 +4,10 @@ import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MailIcon from "@mui/icons-material/Mail";
 
 import ExercisesPanel from "@/src/components/exercises/ExercisesPanel";
+import AboutPanel from "@/src/components/about/AboutPanel";
+import ContactPanel from "@/src/components/contact/ContactPanel";
 import { loadExercisesSubPagesMetadata } from "@/src/services/exercises/loadExercisesSubPagesMetadata";
-
-import SectionMetadata from "../model/SectionMetadata";
-import AboutPanel from "../components/about/AboutPanel";
-import ContactPanel from "../components/contact/ContactPanel";
+import type SectionMetadata from "@/src/model/SectionMetadata";
 
 const PAGES = ["about", "exercises", "contact"] as const;
 type PageType = (typeof PAGES)[number];
