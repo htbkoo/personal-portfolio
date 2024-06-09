@@ -13,7 +13,6 @@ import Link, { type LinkProps } from "@mui/material/Link";
 const useStyles = makeStyles(
     (theme) => ({
         container: {
-            marginTop: theme.spacing(4),
         },
         header: {
             textAlign: "center",
@@ -23,13 +22,12 @@ const useStyles = makeStyles(
             height: "auto",
             width: "auto",
         },
-        loadingSpinner: {
-            marginTop: theme.spacing(2),
+        bodyContainer: {
+            padding: theme.spacing(2),
         },
         converterContainer: {
             display: "flex",
             flexDirection: "column",
-            padding: theme.spacing(2),
         },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
@@ -93,7 +91,7 @@ const CssToAndFromReactConverter = () => {
     );
 
     if (loading) {
-        return <CircularProgress className={classes.loadingSpinner} />;
+        return <CircularProgress />;
     }
 
     if (!data) {
@@ -127,10 +125,7 @@ export const CssToAndFromReact = () => {
     const classes = useStyles();
 
     return (
-        <Section
-            id="cssToAndFromReact"
-            hasDivider={true}
-            title="A small tool to convert between CSS and React styles">
+        <Section id="cssToAndFromReact">
             <div className={classes.container}>
                 <header className={classes.header}>
                     <Image
@@ -148,10 +143,10 @@ export const CssToAndFromReact = () => {
                         React in-line style
                     </UnderlinedLink>{" "}
                     specific JSON representation.
+                    <br/>
+                    Making it easy to copy and paste into an inline React component or a CSS stylesheet.
                 </p>
-                <p></p>
-                <p>Making it easy to copy and paste into an inline React component or a CSS stylesheet.</p>
-                <section>
+                <section className={classes.bodyContainer}>
                     {/* TODO: add link to GitHub repo / npm page */}
                     <CssToAndFromReactConverter />
                 </section>
