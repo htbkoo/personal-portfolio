@@ -3,7 +3,6 @@ import { type TextareaHTMLAttributes } from "react";
 import Image from "next/image";
 import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
-import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import Link, { type LinkProps } from "@mui/material/Link";
 import { TextField } from "@mui/material";
 
@@ -30,10 +29,14 @@ const useStyles = makeStyles(
             flexDirection: "column",
             alignItems: "center",
         },
-        textArea: {
+        textField: {
             margin: theme.spacing(2),
             width: "100%",
             maxWidth: theme.spacing(100),
+        },
+        textarea: {
+            // reference: https://stackoverflow.com/a/64596414
+            resize: "vertical",
         },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
@@ -108,21 +111,23 @@ const CssToAndFromReactConverter = () => {
     return (
         <div className={classes.converterContainer}>
             <TextField
-                className={classes.textArea}
+                className={classes.textField}
                 id="cssTextInput"
                 label="CSS"
                 multiline
-                rows={5}
+                minRows={5}
+                maxRows={15}
                 variant="filled"
                 onChange={handleCssChange}
                 value={cssText}
             />
             <TextField
-                className={classes.textArea}
+                className={classes.textField}
                 id="reactTextInput"
                 label="React in-line style object"
                 multiline
-                rows={5}
+                minRows={5}
+                maxRows={15}
                 variant="filled"
                 onChange={handleReactStyleChange}
                 value={reactText}
