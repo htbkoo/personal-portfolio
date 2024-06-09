@@ -1,6 +1,5 @@
 import * as React from "react";
-import makeStyles from '@mui/styles/makeStyles';
-import { type Breakpoint } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import CodePen from "ts-react-codepen-embed";
 
@@ -19,13 +18,9 @@ const useStyles = makeStyles(
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
 
-const MAPPING_HEIGHTS: { [b in Breakpoint]: number } = {
-    xs: 288,
-    sm: 384,
-    md: 384,
-    lg: 640,
-    xl: 768,
-};
+const CodePenLoader = () => <CircularProgress />;
+
+const CODEPEN_HEIGHT_RAIO = 0.75;
 
 const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
     const classes = useStyles();
@@ -42,8 +37,8 @@ const EmbeddedPenExercise = ({ title, content }: ExerciseProps) => {
                     user={user}
                     hash={hash}
                     title={title}
-                    height={0.75 * window.screen.availHeight}
-                    loader={() => <CircularProgress />}
+                    height={CODEPEN_HEIGHT_RAIO * window.screen.availHeight}
+                    loader={CodePenLoader}
                     defaultTab="result"
                     shouldLoadScript={false}
                     overrideAsLoaded={loaded}

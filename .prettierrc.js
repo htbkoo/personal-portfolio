@@ -1,6 +1,7 @@
+/** @type {import('prettier').Options} */
 module.exports = {
   bracketSpacing: true,
-  jsxBracketSameLine: true,
+  jsxBracketSameLine: false,
   singleQuote: false,
   trailingComma: "all",
   printWidth: 110,

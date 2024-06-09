@@ -21,7 +21,7 @@ const basePath = isProd ? "/personal-portfolio" : "";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // https://nextjs.org/docs/app/building-your-application/deploying/static-exports#configuration
-    output: 'export',
+    output: "export",
 
     // maybe we will need to disable this to fix `material-ui` and `next.js` styles incompatibility issue
     // reference: https://stackoverflow.com/a/67276953
@@ -43,6 +43,13 @@ const nextConfig = {
 
     // reference: https://nextjs.org/docs/api-reference/next.config.js/exportPathMap#adding-a-trailing-slash
     trailingSlash: true,
+
+    // To ignore the indirect dependency to `fs` which is not available at the client side
+    // reference: https://stackoverflow.com/a/68098547
+    webpack: (config) => {
+        config.resolve.fallback = { fs: false };
+        return config;
+    },
 };
 
 const plugins = [

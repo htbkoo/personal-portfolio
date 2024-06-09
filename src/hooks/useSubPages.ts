@@ -29,6 +29,8 @@ export const useSubPages = ({
                 .catch((error) => {
                     setState({ data: null, error, loading: false });
                 });
+        } else {
+            setState({ loading: false });
         }
     }, [getSubPages, skip]);
 

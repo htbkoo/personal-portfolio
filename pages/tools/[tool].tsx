@@ -6,10 +6,10 @@ import type { NextPage } from "next";
 import { sectionConfigs } from "@/src/metadata/sectionConfigs";
 import { SimpleSubPage } from "@/src/components/common/SimpleSubPage";
 
-const Exercise = () => {
-    return <SimpleSubPage configs={sectionConfigs.exercises} />;
+const Tool = () => {
+    return <SimpleSubPage configs={sectionConfigs.tools} />;
 };
 
-const NoSsrExercise: NextPage = dynamic(async () => Exercise, { ssr: false });
+const NoSsrTool: NextPage = dynamic(async () => Tool, { ssr: false });
 
-export default NoSsrExercise;
+export default NoSsrTool;
