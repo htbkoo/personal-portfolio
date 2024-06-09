@@ -30,14 +30,14 @@ export const sectionConfigs = Object.freeze({
             const { CssToAndFromReact } = await import("@/src/components/tools");
             const { default: SyncIcon } = await import("@mui/icons-material/Sync");
 
-            const CSS_TO_FROM_REACT = `cssToFromReact`;
+            const CSS_TO_FROM_REACT = `cssToAndFromReact`;
 
             return {
                 loading: false,
                 data: {
                     // TODO: find out how to enforce the order of subPages
                     [CSS_TO_FROM_REACT]: {
-                        name: "CSS to and from React",
+                        name: "CSS <-> React",
                         url: `/${CSS_TO_FROM_REACT}`,
                         component: <CssToAndFromReact />,
                         icon: <SyncIcon />,
