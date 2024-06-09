@@ -118,12 +118,11 @@ const CssToAndFromReactConverter = () => {
 
     const { loading, data } = useCssToAndFromReact();
 
-    const handleCssChange: TextareaHTMLAttributes<HTMLTextAreaElement>["onChange"] = React.useCallback(
-        (event) => {
-            const newCssText = event.target.value;
+    const transform = React.useCallback(
+        (newCssText, shouldFormat) => {
             setCssText(newCssText);
             try {
-                setReactText(JSON.stringify(data?.transform(newCssText), null, format ? 2 : 0));
+                setReactText(JSON.stringify(data?.transform(newCssText), null, shouldFormat ? 2 : 0));
                 setTransformError(null);
                 setReverseError(null);
             } catch (error) {
@@ -134,7 +133,14 @@ const CssToAndFromReactConverter = () => {
                 }
             }
         },
-        [data, format],
+        [data],
+    );
+
+    const handleCssChange: TextareaHTMLAttributes<HTMLTextAreaElement>["onChange"] = React.useCallback(
+        (event) => {
+            transform(event.target.value, format);
+        },
+        [transform, format],
     );
     const handleReactStyleChange: TextareaHTMLAttributes<HTMLTextAreaElement>["onChange"] = React.useCallback(
         (event) => {
@@ -157,9 +163,14 @@ const CssToAndFromReactConverter = () => {
         [data],
     );
 
-    const handleFormatChange: CheckboxProps["onChange"] = React.useCallback((event) => {
-        setFormat(event.target.checked);
-    }, []);
+    const handleFormatChange: CheckboxProps["onChange"] = React.useCallback(
+        (event) => {
+            const checked = event.target.checked;
+            setFormat(checked);
+            transform(cssText, checked);
+        },
+        [transform, cssText],
+    );
 
     if (loading) {
         return <CircularProgress />;
