@@ -5,6 +5,7 @@ import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import Link, { type LinkProps } from "@mui/material/Link";
 import { TextField } from "@mui/material";
+import { FilledTextFieldProps } from "@mui/material/TextField/TextField";
 
 import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
@@ -68,11 +69,28 @@ const useCssToAndFromReact = () => {
     return { ...state };
 };
 
+const FilledStyledTextField = (props: Omit<FilledTextFieldProps, "variant">) => {
+    const classes = useStyles();
+
+    return (
+        <TextField
+            className={classes.textField}
+            multiline
+            minRows={5}
+            maxRows={15}
+            variant="filled"
+            {...props}
+        />
+    );
+};
+
 const CssToAndFromReactConverter = () => {
     const classes = useStyles();
 
     const [cssText, setCssText] = React.useState("");
+    const [transformError, setTransformError] = React.useState<string | null>(null);
     const [reactText, setReactText] = React.useState("");
+    const [reverseError, setReverseError] = React.useState<string | null>(null);
 
     const { loading, data } = useCssToAndFromReact();
 
@@ -82,7 +100,15 @@ const CssToAndFromReactConverter = () => {
             setCssText(newCssText);
             try {
                 setReactText(JSON.stringify(data?.transform(newCssText)));
-            } catch (error) {}
+                setTransformError(null);
+                setReverseError(null);
+            } catch (error) {
+                if (typeof error?.toString === "function") {
+                    setTransformError(error.toString());
+                } else {
+                    setTransformError("Unknown error, unable to transform to React in-line style object");
+                }
+            }
         },
         [data],
     );
@@ -93,8 +119,16 @@ const CssToAndFromReactConverter = () => {
             data?.promiseReverse(newReactText)
                 .then((result) => {
                     setCssText(result.css);
+                    setTransformError(null);
+                    setReverseError(null);
                 })
-                .catch((error) => {}); // TODO: handle error
+                .catch((error) => {
+                    if (typeof error?.toString === "function") {
+                        setReverseError(error.toString());
+                    } else {
+                        setReverseError("Unknown error, unable to transform to CSS");
+                    }
+                });
         },
         [data],
     );
@@ -108,29 +142,26 @@ const CssToAndFromReactConverter = () => {
         return null;
     }
 
+    const reverseErrorText = reverseError ? JSON.stringify(reverseError) : null;
+    const transformErrorText = transformError ? JSON.stringify(transformError) : null;
+
     return (
         <div className={classes.converterContainer}>
-            <TextField
-                className={classes.textField}
+            <FilledStyledTextField
                 id="cssTextInput"
                 label="CSS"
-                multiline
-                minRows={5}
-                maxRows={15}
-                variant="filled"
                 onChange={handleCssChange}
                 value={cssText}
+                error={!!transformError}
+                helperText={transformError}
             />
-            <TextField
-                className={classes.textField}
+            <FilledStyledTextField
                 id="reactTextInput"
                 label="React in-line style object"
-                multiline
-                minRows={5}
-                maxRows={15}
-                variant="filled"
                 onChange={handleReactStyleChange}
                 value={reactText}
+                error={!!reverseError}
+                helperText={reverseError}
             />
         </div>
     );
