@@ -61,7 +61,7 @@ const useStyles = makeStyles(
             width: "100%",
             maxWidth: theme.spacing(100),
             alignItems: "end",
-        }
+        },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
@@ -123,7 +123,7 @@ const CssToAndFromReactConverter = () => {
             const newCssText = event.target.value;
             setCssText(newCssText);
             try {
-                setReactText(JSON.stringify(data?.transform(newCssText)));
+                setReactText(JSON.stringify(data?.transform(newCssText), null, format ? 2 : 0));
                 setTransformError(null);
                 setReverseError(null);
             } catch (error) {
@@ -134,7 +134,7 @@ const CssToAndFromReactConverter = () => {
                 }
             }
         },
-        [data],
+        [data, format],
     );
     const handleReactStyleChange: TextareaHTMLAttributes<HTMLTextAreaElement>["onChange"] = React.useCallback(
         (event) => {
