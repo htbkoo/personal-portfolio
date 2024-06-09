@@ -10,6 +10,4 @@ const Tool = () => {
     return <SimpleSubPage configs={sectionConfigs.tools} />;
 };
 
-const NoSsrTool: NextPage = dynamic(async () => Tool, { ssr: false });
-
-export default NoSsrTool;
+export default Tool;
