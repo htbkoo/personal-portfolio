@@ -7,8 +7,6 @@ export const GoogleAnalyticsScripts = () => {
     const gaId = getGaMeasurementId();
 
     useEffect(() => {
-        console.log(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED)
-
         if (shouldTrackGoogleAnalytics(gaId)) {
             console.log(
                 "Google Analytics tracking is enabled and trackingId is defined, running Google Analytics scripts now",
