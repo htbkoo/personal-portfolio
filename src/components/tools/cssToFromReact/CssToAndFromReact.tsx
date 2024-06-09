@@ -46,7 +46,6 @@ const useStyles = makeStyles(
             maxWidth: theme.spacing(100),
         },
         errorAlert: {
-            margin: theme.spacing(2),
             width: "100%",
             maxWidth: theme.spacing(100),
         },
