@@ -15,12 +15,19 @@ const useStyles = makeStyles(
     (theme) => ({
         container: {},
         header: {
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
         },
         logo: {
             maxWidth: "100%",
             height: "auto",
             width: "auto",
+        },
+        badge: {
+            maxWidth: "100%",
+            height: "auto",
+            width: "auto",
+            marginTop: theme.spacing(1),
         },
         bodyContainer: {
             padding: theme.spacing(2),
@@ -142,9 +149,6 @@ const CssToAndFromReactConverter = () => {
         return null;
     }
 
-    const reverseErrorText = reverseError ? JSON.stringify(reverseError) : null;
-    const transformErrorText = transformError ? JSON.stringify(transformError) : null;
-
     return (
         <div className={classes.converterContainer}>
             <FilledStyledTextField
@@ -188,13 +192,32 @@ export const CssToAndFromReact = () => {
         <Section id="cssToAndFromReact">
             <div className={classes.container}>
                 <header className={classes.header}>
-                    <Image
-                        className={classes.logo}
-                        src={withStaticPrefix("img/CssToAndFromReact-logo.svg")}
-                        alt="CSS to and from React logo"
-                        width={444}
-                        height={168}
-                    />
+                    <Link
+                        href={"https://github.com/htbkoo/CssToAndFromReact"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            className={classes.logo}
+                            src={withStaticPrefix("img/CssToAndFromReact-logo.svg")}
+                            alt="CSS to and from React logo"
+                            width={444}
+                            height={168}
+                        />
+                    </Link>
+                    <Link
+                        href={"https://www.npmjs.com/package/css-to-and-from-react"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            className={classes.badge}
+                            src={"https://img.shields.io/npm/v/css-to-and-from-react.svg"}
+                            alt="npm badge of css-to-and-from-react"
+                            width={80}
+                            height={20}
+                        />
+                    </Link>
                 </header>
                 <p>
                     This simple little tool is intended to help translate plain <code>CSS</code> into and back
@@ -220,9 +243,9 @@ export const CssToAndFromReact = () => {
                     <UnderlinedLink href="https://github.com/htbkoo/CssToAndFromReact">
                         htbkoo/CssToAndFromReact
                     </UnderlinedLink>{" "}
-                    from{" "}
-                    <UnderlinedLink href="https://github.com/staxmanade/CssToReact">
-                        staxmanade/CssToReact
+                    and published as library to <code>npm</code>:{" "}
+                    <UnderlinedLink href="https://www.npmjs.com/package/css-to-and-from-react">
+                        css-to-and-from-react
                     </UnderlinedLink>
                     )
                 </footer>
