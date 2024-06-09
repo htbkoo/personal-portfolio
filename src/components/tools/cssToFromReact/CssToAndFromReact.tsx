@@ -230,7 +230,6 @@ export const CssToAndFromReact = () => {
                     Making it easy to copy and paste into an inline React component or a CSS stylesheet.
                 </p>
                 <section className={classes.bodyContainer}>
-                    {/* TODO: add link to GitHub repo / npm page */}
                     <CssToAndFromReactConverter />
                 </section>
                 <p>Hint: Just edit one of the textarea and the other would update accordingly.</p>
