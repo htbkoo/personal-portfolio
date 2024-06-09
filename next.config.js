@@ -43,6 +43,13 @@ const nextConfig = {
 
     // reference: https://nextjs.org/docs/api-reference/next.config.js/exportPathMap#adding-a-trailing-slash
     trailingSlash: true,
+
+    // To ignore the indirect dependency to `fs` which is not available at the client side
+    // reference: https://stackoverflow.com/a/68098547
+    webpack: (config) => {
+        config.resolve.fallback = { fs: false };
+        return config;
+    },
 };
 
 const plugins = [
