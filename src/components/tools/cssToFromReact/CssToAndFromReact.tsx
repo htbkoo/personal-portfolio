@@ -4,9 +4,13 @@ import Image from "next/image";
 import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import Link, { type LinkProps } from "@mui/material/Link";
-import { TextField } from "@mui/material";
-import { FilledTextFieldProps } from "@mui/material/TextField/TextField";
+import TextField from "@mui/material/TextField";
+import Checkbox from "@mui/material/Checkbox";
 import Alert from "@mui/material/Alert";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { type CheckboxProps } from "@mui/material/Checkbox/Checkbox";
+import { type FilledTextFieldProps } from "@mui/material/TextField/TextField";
 
 import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
@@ -53,6 +57,11 @@ const useStyles = makeStyles(
             // reference: https://stackoverflow.com/a/64596414
             resize: "vertical",
         },
+        formatCheckboxContainer: {
+            width: "100%",
+            maxWidth: theme.spacing(100),
+            alignItems: "end",
+        }
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
 );
@@ -105,6 +114,7 @@ const CssToAndFromReactConverter = () => {
     const [transformError, setTransformError] = React.useState<string | null>(null);
     const [reactText, setReactText] = React.useState("");
     const [reverseError, setReverseError] = React.useState<string | null>(null);
+    const [format, setFormat] = React.useState(false);
 
     const { loading, data } = useCssToAndFromReact();
 
@@ -147,6 +157,10 @@ const CssToAndFromReactConverter = () => {
         [data],
     );
 
+    const handleFormatChange: CheckboxProps["onChange"] = React.useCallback((event) => {
+        setFormat(event.target.checked);
+    }, []);
+
     if (loading) {
         return <CircularProgress />;
     }
@@ -182,6 +196,19 @@ const CssToAndFromReactConverter = () => {
                 error={!!reverseError}
                 helperText={reverseError}
             />
+
+            <FormGroup className={classes.formatCheckboxContainer}>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={format}
+                            onChange={handleFormatChange}
+                            inputProps={{ "aria-label": "Format" }}
+                        />
+                    }
+                    label="Format"
+                />
+            </FormGroup>
         </>
     );
 };
