@@ -32,11 +32,13 @@ const useStyles = makeStyles(
         },
         bodyContainer: {
             padding: theme.spacing(2),
-        },
-        converterContainer: {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            flex: 1,
+            justifyContent: "center",
+            minHeight: theme.spacing(45),
+            width: "100%",
         },
         textField: {
             margin: theme.spacing(2),
@@ -164,7 +166,7 @@ const CssToAndFromReactConverter = () => {
     }
 
     return (
-        <div className={classes.converterContainer}>
+        <>
             <FilledStyledTextField
                 id="cssTextInput"
                 label="CSS"
@@ -181,7 +183,7 @@ const CssToAndFromReactConverter = () => {
                 error={!!reverseError}
                 helperText={reverseError}
             />
-        </div>
+        </>
     );
 };
 
