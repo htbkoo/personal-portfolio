@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Link, { type LinkProps } from "@mui/material/Link";
 import { TextField } from "@mui/material";
 import { FilledTextFieldProps } from "@mui/material/TextField/TextField";
+import Alert from "@mui/material/Alert";
 
 import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
@@ -38,6 +39,11 @@ const useStyles = makeStyles(
             alignItems: "center",
         },
         textField: {
+            margin: theme.spacing(2),
+            width: "100%",
+            maxWidth: theme.spacing(100),
+        },
+        errorAlert: {
             margin: theme.spacing(2),
             width: "100%",
             maxWidth: theme.spacing(100),
@@ -145,8 +151,16 @@ const CssToAndFromReactConverter = () => {
     }
 
     if (!data) {
-        // TODO: show error message
-        return null;
+        // TODO: log analytics event for error case
+        return (
+            <Alert variant="filled" severity="error" className={classes.errorAlert}>
+                Unable to load the{" "}
+                <UnderlinedLink href="https://www.npmjs.com/package/css-to-and-from-react">
+                    css-to-and-from-react
+                </UnderlinedLink>{" "}
+                library, please try again later.
+            </Alert>
+        );
     }
 
     return (
