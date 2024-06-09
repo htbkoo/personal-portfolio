@@ -1,19 +1,19 @@
 import * as React from "react";
 import { type TextareaHTMLAttributes } from "react";
+import Image from "next/image";
 import makeStyles from "@mui/styles/makeStyles";
 import CircularProgress from "@mui/material/CircularProgress";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
-import Image from "next/image";
+import Link, { type LinkProps } from "@mui/material/Link";
+import { TextField } from "@mui/material";
 
 import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
 import { withStaticPrefix } from "@/src/utils/assetUtils";
-import Link, { type LinkProps } from "@mui/material/Link";
 
 const useStyles = makeStyles(
     (theme) => ({
-        container: {
-        },
+        container: {},
         header: {
             textAlign: "center",
         },
@@ -28,6 +28,12 @@ const useStyles = makeStyles(
         converterContainer: {
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
+        },
+        textArea: {
+            margin: theme.spacing(2),
+            width: "100%",
+            maxWidth: theme.spacing(100),
         },
     }),
     { name: "MuiMyEmbeddedPenPortfolio" },
@@ -101,8 +107,26 @@ const CssToAndFromReactConverter = () => {
 
     return (
         <div className={classes.converterContainer}>
-            <TextareaAutosize onChange={handleCssChange} value={cssText} />
-            <TextareaAutosize onChange={handleReactStyleChange} value={reactText} />
+            <TextField
+                className={classes.textArea}
+                id="cssTextInput"
+                label="CSS"
+                multiline
+                rows={5}
+                variant="filled"
+                onChange={handleCssChange}
+                value={cssText}
+            />
+            <TextField
+                className={classes.textArea}
+                id="reactTextInput"
+                label="React in-line style object"
+                multiline
+                rows={5}
+                variant="filled"
+                onChange={handleReactStyleChange}
+                value={reactText}
+            />
         </div>
     );
 };
@@ -143,7 +167,7 @@ export const CssToAndFromReact = () => {
                         React in-line style
                     </UnderlinedLink>{" "}
                     specific JSON representation.
-                    <br/>
+                    <br />
                     Making it easy to copy and paste into an inline React component or a CSS stylesheet.
                 </p>
                 <section className={classes.bodyContainer}>
