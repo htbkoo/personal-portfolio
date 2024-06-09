@@ -11,7 +11,7 @@ import "@fontsource/roboto";
 
 import AppBody from "@/src/components/AppBody";
 import { withAssetPrefix } from "@/src/utils/assetUtils";
-import { GoogleAnalyticsScripts } from "@/src/services/GoogleAnalyticsScripts";
+import { GoogleAnalyticsScripts } from "@/src/services/analytics";
 
 const MyApp = (appProps: AppProps) => {
     useEffect(() => {
