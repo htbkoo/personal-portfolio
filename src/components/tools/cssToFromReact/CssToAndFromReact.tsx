@@ -15,6 +15,7 @@ import { type FilledTextFieldProps } from "@mui/material/TextField/TextField";
 import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
 import { withStaticPrefix } from "@/src/utils/assetUtils";
+import { tracking } from "@/src/services/analytics";
 
 const useStyles = makeStyles(
     (theme) => ({
@@ -119,17 +120,25 @@ const CssToAndFromReactConverter = () => {
     const { loading, data: library } = useCssToAndFromReact();
 
     const transform = React.useCallback(
-        (newCssText, shouldFormat) => {
+        (newCssText, shouldFormat, causedByFormat = false) => {
             setCssText(newCssText);
             try {
                 setReactText(JSON.stringify(library?.transform(newCssText), null, shouldFormat ? 2 : 0));
                 setTransformError(null);
                 setReverseError(null);
+
+                if (!causedByFormat) {
+                    tracking.cssToAndFromReact.trackTranslation({ fromCss: true, isError: false });
+                }
             } catch (error) {
                 if (typeof error?.toString === "function") {
                     setTransformError(error.toString());
                 } else {
                     setTransformError("Unknown error, unable to transform to React in-line style object");
+                }
+
+                if (!causedByFormat) {
+                    tracking.cssToAndFromReact.trackTranslation({ fromCss: true, isError: true });
                 }
             }
         },
@@ -152,6 +161,8 @@ const CssToAndFromReactConverter = () => {
                     setCssText(result.css);
                     setTransformError(null);
                     setReverseError(null);
+
+                    tracking.cssToAndFromReact.trackTranslation({ fromCss: false, isError: false });
                 })
                 .catch((error) => {
                     if (typeof error?.toString === "function") {
@@ -159,6 +170,8 @@ const CssToAndFromReactConverter = () => {
                     } else {
                         setReverseError("Unknown error, unable to transform to CSS");
                     }
+
+                    tracking.cssToAndFromReact.trackTranslation({ fromCss: false, isError: true });
                 });
         },
         [library],
@@ -168,7 +181,9 @@ const CssToAndFromReactConverter = () => {
         (event) => {
             const checked = event.target.checked;
             setFormat(checked);
-            transform(cssText, checked);
+            transform(cssText, checked, true);
+
+            tracking.cssToAndFromReact.trackFormatSwitch({ format: checked });
         },
         [transform, cssText],
     );
