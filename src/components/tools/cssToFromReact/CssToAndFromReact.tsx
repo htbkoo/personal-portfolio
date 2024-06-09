@@ -116,13 +116,13 @@ const CssToAndFromReactConverter = () => {
     const [reverseError, setReverseError] = React.useState<string | null>(null);
     const [format, setFormat] = React.useState(false);
 
-    const { loading, data } = useCssToAndFromReact();
+    const { loading, data: library } = useCssToAndFromReact();
 
     const transform = React.useCallback(
         (newCssText, shouldFormat) => {
             setCssText(newCssText);
             try {
-                setReactText(JSON.stringify(data?.transform(newCssText), null, shouldFormat ? 2 : 0));
+                setReactText(JSON.stringify(library?.transform(newCssText), null, shouldFormat ? 2 : 0));
                 setTransformError(null);
                 setReverseError(null);
             } catch (error) {
@@ -133,7 +133,7 @@ const CssToAndFromReactConverter = () => {
                 }
             }
         },
-        [data],
+        [library],
     );
 
     const handleCssChange: TextareaHTMLAttributes<HTMLTextAreaElement>["onChange"] = React.useCallback(
@@ -146,7 +146,8 @@ const CssToAndFromReactConverter = () => {
         (event) => {
             const newReactText = event.target.value;
             setReactText(newReactText);
-            data?.promiseReverse(newReactText)
+            library
+                ?.promiseReverse(newReactText)
                 .then((result) => {
                     setCssText(result.css);
                     setTransformError(null);
@@ -160,7 +161,7 @@ const CssToAndFromReactConverter = () => {
                     }
                 });
         },
-        [data],
+        [library],
     );
 
     const handleFormatChange: CheckboxProps["onChange"] = React.useCallback(
@@ -176,7 +177,7 @@ const CssToAndFromReactConverter = () => {
         return <CircularProgress />;
     }
 
-    if (!data) {
+    if (!library) {
         // TODO: log analytics event for error case
         return (
             <Alert variant="filled" severity="error" className={classes.errorAlert}>
