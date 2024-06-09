@@ -26,15 +26,25 @@ export const sectionConfigs = Object.freeze({
         url: "/tools",
         component: <ToolsPanel />,
         icon: <BuildIcon />,
-        async getSubPages() {
-            return {};
-            // TODO: find out how to enforce the order of subPages
-            // pomodoro: {
-            //     name: "Pomodoro Tracker",
-            //     url: "/pomodoro",
-            //     component: <PomodoroTracker/>,
-            //     icon: <AccessAlarmIcon/>,
-            // },
+        getSubPages: async () => {
+            const { CssToAndFromReact } = await import("@/src/components/tools");
+            const { default: SyncIcon } = await import("@mui/icons-material/Sync");
+
+            const CSS_TO_FROM_REACT = `cssToFromReact`;
+
+            return {
+                loading: false,
+                data: {
+                    // TODO: find out how to enforce the order of subPages
+                    [CSS_TO_FROM_REACT]: {
+                        name: "CSS to and from React",
+                        url: `/${CSS_TO_FROM_REACT}`,
+                        component: <CssToAndFromReact />,
+                        icon: <SyncIcon />,
+                    },
+                },
+                error: null,
+            } satisfies Awaited<ReturnType<NonNullable<SectionMetadata["getSubPages"]>>>;
         },
     },
     exercises: {
