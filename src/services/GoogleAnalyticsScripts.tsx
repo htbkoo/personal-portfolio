@@ -3,10 +3,9 @@ import Script from "next/script";
 
 import { isTrue } from "@/src/utils/IsTrue";
 
+const isGoogleAnalyticsTrackingEnabled = isTrue(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED);
+
 export const GoogleAnalyticsScripts = () => {
-    const isGoogleAnalyticsTrackingEnabled = isTrue(
-        process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ENABLED,
-    );
     const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_GA_MEASUREMENT_ID;
 
     if (isGoogleAnalyticsTrackingEnabled && GA_MEASUREMENT_ID) {
