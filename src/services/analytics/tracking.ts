@@ -19,13 +19,13 @@ const safeSendGAEvent = (eventName: string, ...eventParams: Parameters<typeof se
         // sendGAEvent({ event: eventName }, ...eventParams);
 
         // prettier-ignore
-        const trackDescription = `event '${eventName}'${eventParams ? `, with args: ${JSON.stringify(eventParams)}` : ""}`;
+        // const trackDescription = `event '${eventName}'${eventParams ? `, with args: ${JSON.stringify(eventParams)}` : ""}`;
         const isInitialized = typeof window["gtag"] === "function";
         if (isInitialized) {
-            console.log(trackDescription);
+            // console.log(trackDescription);
             window["gtag"]("event", eventName, ...eventParams);
         } else {
-            console.warn(`Not initialized - not going to send ${trackDescription}`);
+            // console.warn(`Not initialized - not going to send ${trackDescription}`);
         }
     } catch (error) {
         // console.debug(`Unable to send event: ${error?.toString?.()}`);
