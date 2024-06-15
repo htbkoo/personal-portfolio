@@ -109,7 +109,6 @@ const useCssToAndFromReact = () => {
 const debouncedTrackingTranslation = debounce(
     (...args: Parameters<typeof tracking.cssToAndFromReact.trackTranslation>) => {
         tracking.cssToAndFromReact.trackTranslation(...args);
-        console.log(`tracked translation: ${JSON.stringify(args)}`);
     },
     1000,
 );
@@ -117,7 +116,6 @@ const debouncedTrackingTranslation = debounce(
 const debouncedTrackingFormatSwitch = debounce(
     (...args: Parameters<typeof tracking.cssToAndFromReact.trackFormatSwitch>) => {
         tracking.cssToAndFromReact.trackFormatSwitch(...args);
-        console.log(`tracked formatSwitch: ${JSON.stringify(args)}`);
     },
     200,
 );
