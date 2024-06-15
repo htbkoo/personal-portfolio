@@ -16,6 +16,7 @@ import Section from "../../common/Section";
 import { AsyncStateType } from "@/src/utils/types";
 import { withStaticPrefix } from "@/src/utils/assetUtils";
 import { tracking } from "@/src/services/analytics";
+import { debounce } from "@/src/utils";
 
 const useStyles = makeStyles(
     (theme) => ({
@@ -93,6 +94,34 @@ const useCssToAndFromReact = () => {
     return { ...state };
 };
 
+// TODO: fix this and refactor
+// type TrackingCssToAndFromReactType = typeof tracking.cssToAndFromReact;
+// type TrackingType = keyof TrackingCssToAndFromReactType;
+// type TrackingArguments<T extends TrackingType> = Parameters<TrackingCssToAndFromReactType[T]>;
+
+// const debouncedTrackingCssToAndFromReact = debounce(
+//     <T extends TrackingType>(type: T, args: Parameters<TrackingCssToAndFromReactType[T]>) => {
+//         tracking.cssToAndFromReact[type](args);
+//     },
+//     1000,
+// );
+
+const debouncedTrackingTranslation = debounce(
+    (...args: Parameters<typeof tracking.cssToAndFromReact.trackTranslation>) => {
+        tracking.cssToAndFromReact.trackTranslation(...args);
+        console.log(`tracked translation: ${JSON.stringify(args)}`);
+    },
+    1000,
+);
+
+const debouncedTrackingFormatSwitch = debounce(
+    (...args: Parameters<typeof tracking.cssToAndFromReact.trackFormatSwitch>) => {
+        tracking.cssToAndFromReact.trackFormatSwitch(...args);
+        console.log(`tracked formatSwitch: ${JSON.stringify(args)}`);
+    },
+    200,
+);
+
 const FilledStyledTextField = (props: Omit<FilledTextFieldProps, "variant">) => {
     const classes = useStyles();
 
@@ -128,7 +157,7 @@ const CssToAndFromReactConverter = () => {
                 setReverseError(null);
 
                 if (!causedByFormat) {
-                    tracking.cssToAndFromReact.trackTranslation({ fromCss: true, isError: false });
+                    debouncedTrackingTranslation({ fromCss: true, isError: false });
                 }
             } catch (error) {
                 if (typeof error?.toString === "function") {
@@ -138,7 +167,7 @@ const CssToAndFromReactConverter = () => {
                 }
 
                 if (!causedByFormat) {
-                    tracking.cssToAndFromReact.trackTranslation({ fromCss: true, isError: true });
+                    debouncedTrackingTranslation({ fromCss: true, isError: true });
                 }
             }
         },
@@ -162,7 +191,7 @@ const CssToAndFromReactConverter = () => {
                     setTransformError(null);
                     setReverseError(null);
 
-                    tracking.cssToAndFromReact.trackTranslation({ fromCss: false, isError: false });
+                    debouncedTrackingTranslation({ fromCss: false, isError: false });
                 })
                 .catch((error) => {
                     if (typeof error?.toString === "function") {
@@ -171,7 +200,7 @@ const CssToAndFromReactConverter = () => {
                         setReverseError("Unknown error, unable to transform to CSS");
                     }
 
-                    tracking.cssToAndFromReact.trackTranslation({ fromCss: false, isError: true });
+                    debouncedTrackingTranslation({ fromCss: false, isError: true });
                 });
         },
         [library],
@@ -183,7 +212,7 @@ const CssToAndFromReactConverter = () => {
             setFormat(checked);
             transform(cssText, checked, true);
 
-            tracking.cssToAndFromReact.trackFormatSwitch({ format: checked });
+            debouncedTrackingFormatSwitch({ format: checked });
         },
         [transform, cssText],
     );
