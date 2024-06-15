@@ -28,7 +28,7 @@ const safeSendGAEvent = (eventName: string, ...eventParams: Parameters<typeof se
             console.warn(`Not initialized - not going to send ${trackDescription}`);
         }
     } catch (error) {
-        console.debug(`Unable to send event: ${error?.toString?.()}`);
+        // console.debug(`Unable to send event: ${error?.toString?.()}`);
     }
 };
 
