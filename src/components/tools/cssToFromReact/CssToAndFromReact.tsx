@@ -24,6 +24,7 @@ const useStyles = makeStyles(
         header: {
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
         },
         logo: {
             maxWidth: "100%",
