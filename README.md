@@ -17,7 +17,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Other information
 
 ### Major updates
-1. [`v5.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v5.0.0) - Another major re-architecture - now the [`<DrawerItems />`](src%2Fcomponents%2Fpage%2FDrawerItems.tsx) supports `subPages` and `Exercises` (formerly `Portfolio` page) are split into their own page for faster loading performance
+1. [`v6.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v6.0.0) - Redirect all 404 errors to home page
+2. [`v5.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v5.0.0) - Another major re-architecture - now the [`<DrawerItems />`](src%2Fcomponents%2Fpage%2FDrawerItems.tsx) supports `subPages` and `Exercises` (formerly `Portfolio` page) are split into their own page for faster loading performance
 2. [`v4.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v4.0.0) - upgraded [`material-ui`](https://mui.com/material-ui/migration/migration-v4/) to `v5` ([#178](https://github.com/htbkoo/personal-portfolio/pull/178))
 3. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v3.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v14` ([#175](https://github.com/htbkoo/personal-portfolio/pull/175))
 4. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13` ([#143](https://github.com/htbkoo/personal-portfolio/pull/143))
