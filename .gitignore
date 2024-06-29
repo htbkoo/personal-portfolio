@@ -210,3 +210,10 @@ examples/angular-cli/addon-jest.testresults.json
 #------
 # From storybook - END
 #------
+
+### Custom - START
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+### Custom - END
