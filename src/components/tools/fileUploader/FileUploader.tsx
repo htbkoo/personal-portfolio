@@ -121,7 +121,7 @@ export const FileUploader = () => {
             isBodyOpaque={false}
         >
             <div className={classes.container}>
-                <Input type="file" inputRef={fileRef} />
+                <Input type="file" inputRef={fileRef} inputProps={{ multiple: true }} />
                 <Button variant="contained" type="submit" onClick={handleSubmit}>
                     Upload
                 </Button>
