@@ -95,9 +95,11 @@ export const FileUploader = () => {
             const response = await apiPost({
                 path: "/api/upload",
                 options: {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
+                    // Warning: When using FormData to submit POST requests using XMLHttpRequest or the Fetch API with the multipart/form-data content type (e.g. when uploading files and blobs to the server), do not explicitly set the Content-Type header on the request. Doing so will prevent the browser from being able to set the Content-Type header with the boundary expression it will use to delimit form fields in the request body.
+                    // reference: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects#sending_files_using_a_formdata_object
+                    // headers: {
+                        // "Content-Type": "multipart/form-data; boundary=fileUpload",
+                    // },
                     body: formData,
                 },
             });
