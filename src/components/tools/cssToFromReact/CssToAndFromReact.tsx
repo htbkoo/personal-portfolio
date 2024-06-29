@@ -65,7 +65,7 @@ const useStyles = makeStyles(
             alignItems: "end",
         },
     }),
-    { name: "MuiMyEmbeddedPenPortfolio" },
+    { name: "MuiMyCssToAndFromReact" },
 );
 
 type CssToAndFromReactModuleType = typeof import("css-to-and-from-react");
@@ -95,6 +95,7 @@ const useCssToAndFromReact = () => {
 };
 
 // TODO: fix this and refactor
+//  reference: https://stackoverflow.com/questions/71372485/typescript-generics-with-functions-parameters
 // type TrackingCssToAndFromReactType = typeof tracking.cssToAndFromReact;
 // type TrackingType = keyof TrackingCssToAndFromReactType;
 // type TrackingArguments<T extends TrackingType> = Parameters<TrackingCssToAndFromReactType[T]>;
