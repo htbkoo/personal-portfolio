@@ -27,10 +27,12 @@ export const sectionConfigs = Object.freeze({
         component: <ToolsPanel />,
         icon: <BuildIcon />,
         getSubPages: async () => {
-            const { CssToAndFromReact } = await import("@/src/components/tools");
+            const { CssToAndFromReact, FileUploader } = await import("@/src/components/tools");
             const { default: SyncIcon } = await import("@mui/icons-material/Sync");
+            const { default: AttachFileIcon } = await import("@mui/icons-material/AttachFile");
 
             const CSS_TO_FROM_REACT = `cssToAndFromReact`;
+            const FILE_UPLOADER = `fileUploader`;
 
             return {
                 loading: false,
@@ -41,6 +43,12 @@ export const sectionConfigs = Object.freeze({
                         url: `/${CSS_TO_FROM_REACT}`,
                         component: <CssToAndFromReact />,
                         icon: <SyncIcon />,
+                    },
+                    [FILE_UPLOADER]: {
+                        name: "File uploader",
+                        url: `/${FILE_UPLOADER}`,
+                        component: <FileUploader />,
+                        icon: <AttachFileIcon />,
                     },
                 },
                 error: null,
