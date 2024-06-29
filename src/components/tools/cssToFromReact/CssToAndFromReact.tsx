@@ -65,7 +65,7 @@ const useStyles = makeStyles(
             alignItems: "end",
         },
     }),
-    { name: "MuiMyEmbeddedPenPortfolio" },
+    { name: "MuiMyCssToAndFromReact" },
 );
 
 type CssToAndFromReactModuleType = typeof import("css-to-and-from-react");
