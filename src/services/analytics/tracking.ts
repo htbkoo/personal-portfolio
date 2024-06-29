@@ -33,6 +33,15 @@ const safeSendGAEvent = (eventName: string, ...eventParams: Parameters<typeof se
 };
 
 export const tracking = {
+    common: {
+        error: {
+            pageNotFound({ url }: { url: string }) {
+                safeSendGAEvent(GA_TRACKING_EVENT_NAMES.COMMON_ERROR__PAGE_NOT_FOUND, {
+                    url,
+                });
+            },
+        },
+    },
     cssToAndFromReact: {
         trackTranslation({ fromCss, isError }: { fromCss: boolean; isError: boolean }) {
             safeSendGAEvent(GA_TRACKING_EVENT_NAMES.TOOLS_CSS__TRANSLATION, {
