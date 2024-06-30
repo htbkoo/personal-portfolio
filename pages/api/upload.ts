@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             console.log(`header: ${req.headers} ${JSON.stringify(req.headers)}`);
 
             try {
-                const { fields, files } = await parseForm(req);
+                // const { fields, files } = await parseForm(req);
 
                 console.log(`parse successful`);
 
@@ -69,8 +69,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
                     console.log(`message from appServer: ${backendMessage}`);
 
-                    const numFiles = Object.keys(files).length;
-                    const resMessage = `${numFiles} Files uploaded - response from AppServer: ${backendMessage}`;
+                    // const numFiles = Object.keys(files).length;
+                    // const resMessage = `${numFiles} Files uploaded - response from AppServer: ${backendMessage}`;
+                    const resMessage = `Files uploaded - response from AppServer: ${backendMessage}`;
                     res.status(StatusCodes.OK).json({
                         message: resMessage,
                     });
@@ -93,6 +94,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 // reference: https://github.com/vercel/next.js/discussions/20071#discussioncomment-188579
 export const config = {
     api: {
-        bodyParser: false,
+        bodyParser: true,
     },
 };
