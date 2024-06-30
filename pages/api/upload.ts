@@ -23,6 +23,30 @@ const parseForm = async <FieldKey extends string, FileKey extends string>(req: N
         });
     });
 
+// TODO: extract this to env var
+const APP_SERVER_HOST_NAME = "http://localhost:8000";
+
+const buildAppServerApiUrl = (path: string) => `${APP_SERVER_HOST_NAME}${path}`;
+// const api = async ({ path, method, options }: { path: string; method: Method; options?: FetchOptions }) => {
+//     return fetch(buildAppServerApiUrl(path), { ...options, method });
+// };
+//
+// const apiPost = async ({ path, options }: { path: string; options?: Omit<FetchOptions, "method"> }) => {
+//     return api({ path, options, method: "POST" });
+// };
+
+const forwardRequestToAppServer = async ({ path, req }: { path: string; req: NextApiRequest }) => {
+    const url = buildAppServerApiUrl(path);
+
+    console.log(`url: ${url}`);
+
+    return fetch(url, {
+        body: req.body,
+        headers: req.headers as any,
+        method: "POST",
+    });
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
     try {
         console.log(`upload: ${req.method}`);
@@ -32,7 +56,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
             try {
                 const { fields, files } = await parseForm(req);
-                res.status(StatusCodes.OK).json({ message: `${Object.keys(files).length} Files uploaded` });
+
+                console.log(`parse successful`);
+
+                // TODO: refactor this :(
+                try {
+                    const appServerResponse = await forwardRequestToAppServer({
+                        req,
+                        path: "/api/upload/file/",
+                    });
+                    const backendMessage = JSON.stringify(await appServerResponse.json());
+
+                    console.log(`message from appServer: ${backendMessage}`);
+
+                    const numFiles = Object.keys(files).length;
+                    const resMessage = `${numFiles} Files uploaded - response from AppServer: ${backendMessage}`;
+                    res.status(StatusCodes.OK).json({
+                        message: resMessage,
+                    });
+                } catch (appServerError) {
+                    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                        message: `Unable to upload files: ${appServerError}}`,
+                    });
+                }
             } catch (parseError) {
                 res.status(StatusCodes.BAD_REQUEST).json({ message: "Unable to upload files" });
             }
