@@ -1,10 +1,11 @@
 import * as React from "react";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import makeStyles from "@mui/styles/makeStyles";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 
 import Section from "../../common/Section";
+import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles(
     (theme) => ({
@@ -13,7 +14,7 @@ const useStyles = makeStyles(
             flexDirection: "column",
             alignItems: "center",
         },
-        header: {
+        group: {
             display: "flex",
             flexDirection: "column",
         },
@@ -79,40 +80,72 @@ export const FileUploader = () => {
 
     const fileRef = useRef<HTMLInputElement>();
 
+    const [uploadState, setUploadState] = useState<{
+        data: string;
+        error: string | null;
+        loading: boolean;
+    }>({ data: "", error: null, loading: false });
+
+    const [filename, setFilename] = useState("");
+
     const handleSubmit = useCallback(async () => {
-        const fileInputEl = fileRef.current;
-        if (fileInputEl && fileInputEl.files) {
-            // console.log(`has fileInputEl:`)
-            // console.log(fileInputEl)
-            // console.log(fileInputEl.files)
+        try {
+            const fileInputEl = fileRef.current;
+            if (fileInputEl && fileInputEl.files) {
+                setUploadState({
+                    loading: true,
+                    data: "",
+                    error: null,
+                });
 
-            const files = Array.from(fileInputEl.files);
+                // console.log(`has fileInputEl:`)
+                // console.log(fileInputEl)
+                // console.log(fileInputEl.files)
 
-            // reference: https://medium.com/@mohammedaziz_14594/sending-files-to-the-server-using-formdata-in-javascript-c2a4ed8fc85f
-            const formData = new FormData();
-            files.forEach((file, i) => formData.append(`file ${i}`, file));
+                const files = Array.from(fileInputEl.files);
 
-            const response = await apiPost({
-                path: "/api/upload",
-                options: {
-                    // Warning: When using FormData to submit POST requests using XMLHttpRequest or the Fetch API with the multipart/form-data content type (e.g. when uploading files and blobs to the server), do not explicitly set the Content-Type header on the request. Doing so will prevent the browser from being able to set the Content-Type header with the boundary expression it will use to delimit form fields in the request body.
-                    // reference: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects#sending_files_using_a_formdata_object
-                    // headers: {
-                    // "Content-Type": "multipart/form-data; boundary=fileUpload",
-                    // },
-                    body: formData,
-                },
-            });
-            const j = await response.json();
-            console.log(j);
+                if (files.length > 0) {
+                    // reference: https://medium.com/@mohammedaziz_14594/sending-files-to-the-server-using-formdata-in-javascript-c2a4ed8fc85f
+                    const formData = new FormData();
+                    files.forEach((file, i) => formData.append(`file ${i}`, file));
 
-            // [...fileInputEl.files]
+                    const response = await apiPost({
+                        path: "/api/upload",
+                        options: {
+                            // Warning: When using FormData to submit POST requests using XMLHttpRequest or the Fetch API with the multipart/form-data content type (e.g. when uploading files and blobs to the server), do not explicitly set the Content-Type header on the request. Doing so will prevent the browser from being able to set the Content-Type header with the boundary expression it will use to delimit form fields in the request body.
+                            // reference: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects#sending_files_using_a_formdata_object
+                            // headers: {
+                            // "Content-Type": "multipart/form-data; boundary=fileUpload",
+                            // },
+                            body: formData,
+                        },
+                    });
+                    const j = await response.json();
+                    console.log(j);
 
-            // for (const file of fileInputEl.files) {
-            //     console.log(file)
-            // }
-        }
+                    // [...fileInputEl.files]
+
+                    // for (const file of fileInputEl.files) {
+                    //     console.log(file)
+                    // }
+                } else {
+                    setUploadState({
+                        loading: false,
+                        data: "",
+                        error: "Select at least 1 file to upload",
+                    });
+                }
+            }
+        } catch (e) {}
     }, []);
+
+    const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+        setFilename(event.target.value);
+    }, []);
+
+    const handleDownload = useCallback(async () => {
+        await fetch(`http://localhost:8000/api/upload/file/?name=${filename}`);
+    }, [filename]);
 
     return (
         <Section
@@ -123,9 +156,25 @@ export const FileUploader = () => {
             isBodyOpaque={false}
         >
             <div className={classes.container}>
-                <Input type="file" inputRef={fileRef} inputProps={{ multiple: true }} />
+                <Input
+                    type="file"
+                    inputRef={fileRef}
+                    inputProps={{ multiple: true }}
+                    error={!!uploadState.error}
+                    color={!uploadState.error ? "primary" : "error"}
+                />
                 <Button variant="contained" type="submit" onClick={handleSubmit}>
                     Upload
+                </Button>
+                <br />
+                <Typography variant={"h4"} paragraph>
+                    {uploadState.data}
+                </Typography>
+                <br />
+                <br />
+                <Input type="text" value={filename} onChange={handleChange} />
+                <Button variant="contained" type="submit" onClick={handleDownload}>
+                    Download
                 </Button>
             </div>
         </Section>
