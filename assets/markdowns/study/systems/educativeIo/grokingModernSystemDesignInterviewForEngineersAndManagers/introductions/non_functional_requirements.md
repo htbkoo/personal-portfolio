@@ -2,6 +2,21 @@
 
 ## Mentioned in `Non-functional System Characteristics`
 
+| Building Blocks ＼ Characteristics | Availability | Reliability | Scalability | Maintainability | Fault tolerance |  
+|-----------------------------------|--------------|-------------|-------------|-----------------|-----------------|
+| Key-value Store                   | ✅            |             | ✅           |                 | ✅               |
+| CDN                               | ✅            | ✅           | ✅           |                 |                 |
+| Sequencer                         | ✅            |             | ✅           |                 |                 |
+| Distributed Cache                 | ✅            |             | ✅           |                 |                 |
+| Distributed Messaging Queue       | ✅            |             | ✅           |                 |                 |
+| Pub-sub                           | ✅            |             | ✅           |                 | ✅               |
+| Rate-limiter                      | ✅            |             | ✅           |                 |                 |
+| Blob Store                        | ✅            | ✅           | ✅           |                 |                 |
+| Distributed Search                | ✅            |             | ✅           |                 |                 |
+| Distributed Logging               | ✅            |             | ✅           |                 |                 |
+| Distributed Task Scheduler        | ✅            |             | ✅           |                 | ✅               |
+| Sharded Counter                   | ✅            | ✅           | ✅           |                 |                 |
+
 ### Availability
 #### Key-value Store
 #### CDN
@@ -43,6 +58,21 @@
 #### Distributed Task Scheduler
 
 ## Mentioned in `Building Blocks`
+
+| Building Blocks ＼ Characteristics | Performance | Security | Durability | Uniqueness | Consistency | Affordability | Concurrency | Low latency | Throughput | Fast search on big data | Reduced cost | Bounded waiting time |
+|-----------------------------------|-------------|----------|------------|------------|-------------|---------------|-------------|-------------|------------|-------------------------|--------------|----------------------|
+| Key-value Store                   |             |          |            |            |             |               |             |             |            |                         |              |                      |
+| CDN                               | ✅           | ✅        |            |            |             |               |             |             |            |                         |              |                      |
+| Sequencer                         |             |          |            | ✅          |             |               |             |             |            |                         |              |                      |
+| Distributed Cache                 | ✅           |          |            |            | ✅           | ✅             |             |             |            |                         |              |                      |
+| Distributed Messaging Queue       | ✅           |          | ✅          |            |             |               |             |             |            |                         |              |                      |
+| Pub-sub                           |             |          | ✅          |            |             |               | ✅           |             |            |                         |              |                      |
+| Rate-limiter                      |             |          |            |            |             |               |             | ✅           |            |                         |              |                      |
+| Blob Store                        |             |          | ✅          |            | ✅           |               |             |             | ✅          |                         |              |                      |
+| Distributed Search                |             |          |            |            |             |               |             |             |            | ✅                       | ✅            |                      |
+| Distributed Logging               |             |          |            |            |             |               |             | ✅           |            |                         |              |                      |
+| Distributed Task Scheduler        |             |          | ✅          |            |             |               |             |             |            |                         |              | ✅                    |
+| Sharded Counter                   |             |          |            |            |             |               |             |             |            |                         |              |                      |
 
 ### Performance
 #### CDN
