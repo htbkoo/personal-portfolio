@@ -10,7 +10,7 @@
     "build:with-bundle-analyzer": "cross-env ANALYZE=true NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
     "test": "jest --ci",
     "test:watch": "jest --ci",
-    "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
+    "gh-pages:rebuild": "pnpm run gh-pages:clean && pnpm run build && pnpm run gh-pages:rename",
     "gh-pages:clean": "rimraf docs",
     "gh-pages:rename": "node ./bin/rename -s out -d docs"
   },
@@ -82,6 +82,5 @@
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.15"
   },
-  "license": "MIT",
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "license": "MIT"
 }
