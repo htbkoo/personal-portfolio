@@ -45,7 +45,7 @@ jobs:
 
       # reference: https://nextjs.org/docs/messages/no-cache#github-actions
     - name: Cache dependencies
-      uses: actions/cache@v2
+      uses: actions/cache@v4  # reference: https://github.com/pnpm/action-setup/issues/135
       with:
         path: |
           ${{ steps.pnpm-cache.outputs.dir }}
