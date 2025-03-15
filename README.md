@@ -1,46 +1,44 @@
-# [personal-portfolio](https://htbkoo.github.io/personal-portfolio/) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/htbkoo/personal-portfolio/blob/master/LICENSE.md)
+# Hello Node!
 
-Attempting to write my personal portfolio page again, this time with [`React`](https://github.com/facebook/react) + [`TypeScript`](https://github.com/Microsoft/TypeScript/)
+This project includes a Node.js server script and a web page that connects to it. The front-end page presents a form the visitor can use to submit a color name, sending the submitted value to the back-end API running on the server. The server returns info to the page that allows it to update the display with the chosen color. 🎨
 
-## Getting Started
+[Node.js](https://nodejs.org/en/about/) is a popular runtime that lets you run server-side JavaScript. This project uses the [Fastify](https://www.fastify.io/) framework and explores basic templating with [Handlebars](https://handlebarsjs.com/).
 
-###### Copied from the `README.md` from the [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+_Last updated: 14 August 2023_
 
-First, run the development server:
+## Prerequisites
 
-```bash
-yarn start
-```
+You'll get best use out of this project if you're familiar with basic JavaScript. If you've written JavaScript for client-side web pages this is a little different because it uses server-side JS, but the syntax is the same!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the portfolio page.
+## What's in this project?
 
-## Other information
+← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
 
-### Major updates
-1. [`v5.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v5.0.0) - Another major re-architecture - now the [`<DrawerItems />`](src%2Fcomponents%2Fpage%2FDrawerItems.tsx) supports `subPages` and `Exercises` (formerly `Portfolio` page) are split into their own page for faster loading performance
-2. [`v4.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v4.0.0) - upgraded [`material-ui`](https://mui.com/material-ui/migration/migration-v4/) to `v5` ([#178](https://github.com/htbkoo/personal-portfolio/pull/178))
-3. [`v3.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v3.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v14` ([#175](https://github.com/htbkoo/personal-portfolio/pull/175))
-4. [`v2.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v2.0.0) - upgraded [`next.js`](https://nextjs.org/) to `v13` ([#143](https://github.com/htbkoo/personal-portfolio/pull/143))
-5. [`v1.0.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v1.0.0) - revamped architecture (split pages so the [First Contentful Paint (FCP) ](https://web.dev/fcp/) and [Largest Contentful Paint (LCP) ](https://web.dev/lcp/) would be quicker) and improved UX, e.g. by reducing [Time-To-Interactive (TTI)](https://web.dev/interactive/) and [Total-Blocking-Time (TBT)](https://web.dev/tbt/) ([#112](https://github.com/htbkoo/personal-portfolio/pull/112)) 
-6. [`v0.10.0`](https://github.com/htbkoo/personal-portfolio/releases/tag/v0.10.0) - migrated to [`Next.js`](https://nextjs.org/) from [`Create React App`](https://create-react-app.dev/)
-   1. As a bonus, the version of `React` is also upgraded to [`v18.0`](https://reactjs.org/blog/2022/03/29/react-v18.html) from `v17.0.2`
+← `public/style.css`: The styling rules for the pages in your site.
 
-### Common known issues
+← `server.js`: The **Node.js** server script for your new site. The JavaScript defines the endpoints in the site back-end, one to return the homepage and one to update with the submitted color. Each one sends data to a Handlebars template which builds these parameter values into the web page the visitor sees.
 
-#### Windows compatibility
+← `package.json`: The NPM packages for your project's dependencies.
 
-##### The `yarn start` and `yarn build` does not work on Windows machine
+← `src/`: This folder holds the site template along with some basic data files.
 
-###### TL;DR solution
-Set the `yarn` / `npm` `script-shell` to `bash` (recommended) or `powershell` by running:
-1. For `yarn`, `yarn config set script-shell bash`
-2. For `npm`, configure the `script-shell` value at `.npmrc`
+← `src/pages/index.hbs`: This is the main page template for your site. The template receives parameters from the server script, which it includes in the page HTML. The page sends the user submitted color value in the body of a request, or as a query parameter to choose a random color.
 
-###### Explanation
-This is because, according to [the issue described here at `cross-env`](https://github.com/kentcdodds/cross-env#windows-issues), `npm uses cmd by default and that doesn't support command substitution, so if you want to leverage that, then you need to update your .npmrc to set the script-shell to powershell. Learn more here.`
+← `src/colors.json`: A collection of CSS color names. We use this in the server script to pick a random color, and to match searches against color names.
 
-###### Reference
-1. https://stackoverflow.com/questions/65953667/yarn-cant-run-any-script
-2. https://classic.yarnpkg.com/lang/en/docs/yarnrc/
-3. https://github.com/kentcdodds/cross-env/issues/192#issuecomment-513341729
-4. https://github.com/kentcdodds/cross-env#windows-issues 
+← `src/seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
+
+## Try this next 🏗️
+
+Take a look in `TODO.md` for next steps you can try out in your new site!
+
+___Want a minimal version of this project to build your own Node.js app? Check out [Blank Node](https://glitch.com/edit/#!/remix/glitch-blank-node)!___
+
+![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
+
+## You built this with Glitch!
+
+[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.
+
+- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.
+- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.

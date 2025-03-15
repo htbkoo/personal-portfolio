@@ -1,87 +1,27 @@
 {
-  "name": "hey-personal-portfolio",
-  "version": "5.9.0",
-  "private": true,
-  "homepage": "https://htbkoo.github.io/personal-portfolio",
+  "name": "glitch-hello-node",
+  "version": "0.1.0",
+  "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
+  "main": "server.js",
   "scripts": {
-    "lint": "next lint",
-    "start": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` BROWSER=none next dev",
-    "build": "cross-env NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
-    "build:with-bundle-analyzer": "cross-env ANALYZE=true NEXT_PUBLIC_GIT_SHA=`git rev-parse --short HEAD` next build",
-    "test": "jest --ci",
-    "test:watch": "jest --ci",
-    "gh-pages:rebuild": "yarn run gh-pages:clean && yarn run build && yarn run gh-pages:rename",
-    "gh-pages:clean": "rimraf docs",
-    "gh-pages:rename": "node ./bin/rename -s out -d docs"
+    "start": "node server.js"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@fontsource/roboto": "4.4.0",
-    "@mui/icons-material": "^5.15.18",
-    "@mui/material": "^5.15.18",
-    "@mui/styles": "^5.15.18",
-    "cheerio": "1.0.0-rc.10",
-    "classnames": "^2.3.2",
-    "next": "14.1.1",
-    "promise-polyfill": "^8.1.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "rss-parser": "3.6.2",
-    "ts-react-codepen-embed": "^0.3.3",
-    "url-polyfill": "^1.1.5",
-    "css-to-and-from-react": "0.6.0",
-    "@next/third-parties": "14.2.3"
+    "fastify": "^4.21.0",
+    "handlebars": "^4.7.8",
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/static": "^6.10.2",
+    "@fastify/view": "^8.0.0"
   },
-  "devDependencies": {
-    "@next/bundle-analyzer": "12.1.5",
-    "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.0.1",
-    "@testing-library/user-event": "14.1.0",
-    "@types/cheerio": "0.22.30",
-    "@types/jest": "26.0.20",
-    "@types/node": "17.0.23",
-    "@types/react": "17.0.44",
-    "@types/react-dom": "17.0.15",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
-    "args": "^5.0.0",
-    "babel-jest": "27.5.1",
-    "cross-env": "^5.2.0",
-    "eslint": "8.13.0",
-    "eslint-config-next": "12.1.5",
-    "eslint-plugin-only-warn": "^1.0.3",
-    "eslint-plugin-testing-library": "5.3.1",
-    "image-trace-loader": "1.0.2",
-    "imagemin-gifsicle": "7.0.0",
-    "imagemin-mozjpeg": "9.0.0",
-    "imagemin-optipng": "8.0.0",
-    "imagemin-svgo": "9.0.0",
-    "jest": "27.5.1",
-    "jest-when": "^2.2.0",
-    "jimp": "0.16.1",
-    "lqip-loader": "2.2.1",
-    "mv": "^2.1.1",
-    "next-optimized-images": "2.6.2",
-    "next-pwa": "5.6.0",
-    "prettier": "2.x.x",
-    "prop-types": "15.7.2",
-    "responsive-loader": "2.3.0",
-    "rimraf": "^2.6.3",
-    "svg-sprite-loader": "6.0.11",
-    "typescript": "5.2.2",
-    "webp-loader": "0.6.0"
+  "engines": {
+    "node": "14.x"
   },
-  "resolutions": {
-    "@types/react": "17.0.44",
-    "@types/react-dom": "17.0.15"
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-hello-node"
   },
   "license": "MIT",
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "keywords": [
+    "node",
+    "glitch"
+  ]
 }
