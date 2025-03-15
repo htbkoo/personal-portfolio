@@ -31,7 +31,7 @@ jobs:
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       with:
-        version: ${{ env.NODE_ACTIVE_LTS_VERSION }}
+        version: ${{ env.PNPM_VERSION }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -45,7 +45,7 @@ jobs:
 
       # reference: https://nextjs.org/docs/messages/no-cache#github-actions
     - name: Cache dependencies
-      uses: actions/cache@v4  # reference: https://github.com/pnpm/action-setup/issues/135
+      uses: actions/cache@v4
       with:
         path: |
           ${{ steps.pnpm-cache.outputs.dir }}
