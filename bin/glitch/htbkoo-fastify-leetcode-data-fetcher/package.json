@@ -1,0 +1,13 @@
+{
+  "name": "htbkoo-fastify-leetcode-data-fetcher",
+  "version": "0.1.0",
+  "description": "A Node app built with Fastify to fetch the data from Leetcode",
+  "main": "index.js",
+  "repository": "https://github.com/htbkoo/personal-portfolio",
+  "author": "htbkoo",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fastify": "^5.2.1"
+  }
+}

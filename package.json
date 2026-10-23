@@ -42,7 +42,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "12.1.5",
     "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.0.1",
+    "@testing-library/react": "13.1.x",
     "@testing-library/user-event": "14.1.0",
     "@types/cheerio": "0.22.30",
     "@types/jest": "26.0.20",

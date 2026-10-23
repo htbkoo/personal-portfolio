@@ -71,8 +71,8 @@ importers:
         specifier: 5.16.4
         version: 5.16.4
       '@testing-library/react':
-        specifier: 13.0.1
-        version: 13.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 13.1.x
+        version: 13.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: 14.1.0
         version: 14.1.0(@testing-library/dom@8.20.1)
@@ -1545,8 +1545,8 @@ packages:
     resolution: {integrity: sha512-Gy+IoFutbMQcky0k+bqqumXZ1cTGswLsFqmNLzNdSKkU9KGV2u9oXhukCbbJ9/LRPKiqwxEE8VpV/+YZlfkPUA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
 
-  '@testing-library/react@13.0.1':
-    resolution: {integrity: sha512-zeHx3PohYYp+4bTJwrixQY8zSBZjWUGwYc7OhD1EpWTHS92RleApLoP72NdwaWxOrM1P1Uezt3XvGf6t2XSWPQ==}
+  '@testing-library/react@13.1.1':
+    resolution: {integrity: sha512-8mirlAa0OKaUvnqnZF6MdAh2tReYA2KtWVw1PKvaF5EcCZqgK5pl8iF+3uW90JdG5Ua2c2c2E2wtLdaug3dsVg==}
     engines: {node: '>=12'}
     peerDependencies:
       react: ^18.0.0
@@ -8068,7 +8068,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@13.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@13.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@testing-library/dom': 8.20.1
